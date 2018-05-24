@@ -65,7 +65,6 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.aspose.asposecloudpdfandroid.*;
-import com.aspose.asposecloudpdfandroid.auth.*;
 import com.aspose.asposecloudpdfandroid.model.*;
 import com.aspose.asposecloudpdfandroid.api.PdfApi;
 

@@ -91,7 +91,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 27 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: com.google.code.gson:gson:2.8.1@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.squareup.okio:okio:1.6.0@jar" level="project" />
@@ -103,6 +103,6 @@
     <orderEntry type="library" exported="" name="Gradle: javax.annotation:jsr250-api:1.0@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: io.gsonfire:gson-fire:1.8.0@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.squareup.okhttp:logging-interceptor:2.7.5@jar" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: android-android-25" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: android-android-27" level="project" />
   </component>
 </module>

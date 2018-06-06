@@ -82,12 +82,17 @@ public class ApiClient {
      */
     public ApiClient() {
         httpClient = new OkHttpClient();
-
+        // PDFCLOUD-419
+        httpClient.setProtocols(Arrays.asList(Protocol.HTTP_1_1));
+        
 
         json = new JSON();
 
         // Set default User-Agent.
         setUserAgent("aspose pdf java sdk");
+        
+        // PDFCLOUD-418 Set default Connect Timeout
+        setConnectTimeout(5 * 60 * 1000);
     }
 
      /**
@@ -586,10 +591,6 @@ public class ApiClient {
             contentType = "application/json";
         }
         if (isJsonMime(contentType)) {
-        
-            //add class names
-            respBody = addClassNames(respBody, returnType);
-            
             return json.deserialize(respBody, returnType);
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
@@ -1069,67 +1070,6 @@ public class ApiClient {
         catch (IOException ex)
         {
             throw new ApiException(ex);
-        }
-    }
-    
-    
-    /**
-     * Add Class name to all Json Objects
-     *
-     * @param respBody original response json String
-     * @param returnType Type of according Response
-     */
-    private String addClassNames(String respBody, Type returnType)
-    {
-        JsonParser jsonParser = new JsonParser();
-        JsonObject respJson = jsonParser.parse(respBody).getAsJsonObject();
-        addClassName(respJson, returnType);
-        return respJson.toString();
-    }
-
-     /**
-     * Recursively add Class name to Json Object
-     *
-     * @param jsonObj JsonObject
-     * @param objType Type of according DTO
-     */
-    private void addClassName(JsonObject jsonObj, Type objType)
-    {
-        String fullClassName = ((Class)objType).getName();
-        String className = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-        jsonObj.addProperty("_class_name", className);
-
-        for (String key : jsonObj.keySet())
-        {
-            if (jsonObj.get(key).isJsonObject())
-            {
-                try {
-                    Method method = ((Class) objType).getMethod("get" + key);
-                    addClassName(jsonObj.get(key).getAsJsonObject(),  method.getReturnType());
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-            }
-            else if (jsonObj.get(key).isJsonArray())
-            {
-                try
-                {
-                    Method method = ((Class) objType).getMethod("get" + key);
-                    ParameterizedType pType = (ParameterizedType) method.getGenericReturnType();
-                    Class<?> pClass = (Class<?>) pType.getActualTypeArguments()[0];
-                    
-                    for (JsonElement el : jsonObj.get(key).getAsJsonArray())
-                    {
-                        if (el.isJsonObject())
-                        {
-                            addClassName(el.getAsJsonObject(), pClass);
-                        }
-                    }
-
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 

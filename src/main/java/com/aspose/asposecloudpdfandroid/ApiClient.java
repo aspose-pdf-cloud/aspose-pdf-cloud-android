@@ -90,6 +90,9 @@ public class ApiClient {
 
         // Set default User-Agent.
         setUserAgent("aspose pdf java sdk");
+        
+        // PDFCLOUD-418 Set default Connect Timeout
+        setConnectTimeout(5 * 60 * 1000);
     }
 
      /**

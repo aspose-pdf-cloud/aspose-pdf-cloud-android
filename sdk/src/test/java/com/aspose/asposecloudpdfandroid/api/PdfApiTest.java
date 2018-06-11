@@ -91,6 +91,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -1832,8 +1835,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.doc";
 
-        File response = this.pdfApi.putPdfInStorageToDoc(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToDoc(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -1849,8 +1852,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.doc";
 
-        File response = this.pdfApi.putPdfInRequestToDoc(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToDoc(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -1889,8 +1892,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.pdf";
 
-        File response = this.pdfApi.putPdfInStorageToPdfA(name, this.tempFolder + '/' + resFileName, type, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToPdfA(name, this.tempFolder + '/' + resFileName, type, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -1907,8 +1910,8 @@ public class PdfApiTest
         String type = PdfAType.PDFA1A.toString();
         String resFileName = "result.pdf";
 
-        File response = this.pdfApi.putPdfInRequestToPdfA(this.tempFolder + '/' + resFileName, type, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToPdfA(this.tempFolder + '/' + resFileName, type, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -1945,8 +1948,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.tiff";
 
-        File response = this.pdfApi.putPdfInStorageToTiff(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToTiff(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -1962,8 +1965,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.tiff";
 
-        File response = this.pdfApi.putPdfInRequestToTiff(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToTiff(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2000,8 +2003,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.svg";
 
-        File response = this.pdfApi.putPdfInStorageToSvg(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToSvg(name, this.tempFolder + '/' + resFileName, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2017,8 +2020,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.svg";
 
-        File response = this.pdfApi.putPdfInRequestToSvg(this.tempFolder + '/' + resFileName, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToSvg(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2055,8 +2058,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.xps";
 
-        File response = this.pdfApi.putPdfInStorageToXps(name, this.tempFolder + '/' + resFileName, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXps(name, this.tempFolder + '/' + resFileName, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2072,8 +2075,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.xps";
 
-        File response = this.pdfApi.putPdfInRequestToXps(this.tempFolder + '/' + resFileName, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXps(this.tempFolder + '/' + resFileName, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2110,8 +2113,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.xls";
 
-        File response = this.pdfApi.putPdfInStorageToXls(name, this.tempFolder + '/' + resFileName, null, null, null, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXls(name, this.tempFolder + '/' + resFileName, null, null, null, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2127,8 +2130,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.xls";
 
-        File response = this.pdfApi.putPdfInRequestToXls(this.tempFolder + '/' + resFileName, null, null, null, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXls(this.tempFolder + '/' + resFileName, null, null, null, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2167,7 +2170,7 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.html";
 
-        File response = this.pdfApi.putPdfInStorageToHtml(
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToHtml(
                 name,
                 this.tempFolder + '/' + resFileName,
             null,
@@ -2199,7 +2202,7 @@ public class PdfApiTest
             null,
             null,
             folder);
-        assertNotNull(response);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2215,7 +2218,7 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.html";
 
-        File response = this.pdfApi.putPdfInRequestToHtml(
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToHtml(
                 this.tempFolder + '/' + resFileName,
             null,
             null,
@@ -2246,7 +2249,7 @@ public class PdfApiTest
             null,
             null,
             file);
-        assertNotNull(response);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2283,8 +2286,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.epub";
 
-        File response = this.pdfApi.putPdfInStorageToEpub(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToEpub(name, this.tempFolder + '/' + resFileName, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2300,8 +2303,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.epub";
 
-        File response = this.pdfApi.putPdfInRequestToEpub(this.tempFolder + '/' + resFileName, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToEpub(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2339,8 +2342,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.pptx";
 
-        File response = this.pdfApi.putPdfInStorageToPptx(name, this.tempFolder + '/' + resFileName, null, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToPptx(name, this.tempFolder + '/' + resFileName, null, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2356,8 +2359,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.pptx";
 
-        File response = this.pdfApi.putPdfInRequestToPptx(this.tempFolder + '/' + resFileName, null, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToPptx(this.tempFolder + '/' + resFileName, null, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2395,8 +2398,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.latex";
 
-        File response = this.pdfApi.putPdfInStorageToLaTeX(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToLaTeX(name, this.tempFolder + '/' + resFileName, null, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2412,8 +2415,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.latex";
 
-        File response = this.pdfApi.putPdfInRequestToLaTeX(this.tempFolder + '/' + resFileName, null, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToLaTeX(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2452,8 +2455,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.mobi";
 
-        File response = this.pdfApi.putPdfInStorageToMobiXml(name, this.tempFolder + '/' + resFileName, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToMobiXml(name, this.tempFolder + '/' + resFileName, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2470,8 +2473,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.mobi";
 
-        File response = this.pdfApi.putPdfInRequestToMobiXml(this.tempFolder + '/' + resFileName, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToMobiXml(this.tempFolder + '/' + resFileName, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2509,8 +2512,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.pdf";
 
-        File response = this.pdfApi.putXfaPdfInStorageToAcroForm(name, this.tempFolder + '/' + resFileName, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putXfaPdfInStorageToAcroForm(name, this.tempFolder + '/' + resFileName, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2526,8 +2529,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.pdf";
 
-        File response = this.pdfApi.putXfaPdfInRequestToAcroForm(this.tempFolder + '/' + resFileName, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putXfaPdfInRequestToAcroForm(this.tempFolder + '/' + resFileName, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 
@@ -2565,8 +2568,8 @@ public class PdfApiTest
         String folder = this.tempFolder;
         String resFileName = "result.xml";
 
-        File response = this.pdfApi.putPdfInStorageToXml(name, this.tempFolder + '/' + resFileName, folder);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXml(name, this.tempFolder + '/' + resFileName, folder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
     /**
@@ -2582,8 +2585,8 @@ public class PdfApiTest
         File file = new File(testDataFolder + "/" + name);
         String resFileName = "result.xml";
 
-        File response = this.pdfApi.putPdfInRequestToXml(this.tempFolder + '/' + resFileName, file);
-        assertNotNull(response);
+        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXml(this.tempFolder + '/' + resFileName, file);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
     }
 
 

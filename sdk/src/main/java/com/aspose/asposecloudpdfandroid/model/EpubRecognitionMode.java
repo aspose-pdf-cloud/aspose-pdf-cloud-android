@@ -33,18 +33,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Allows to control how a PDF document is converted into a word processing document.
+ * When PDF file (that usually has fixed layout) is being converted,             the conversion engine tries to perform grouping and multi-level analysis to restore             the original document author&#39;s intent and produce result in flow layout.  This property tunes that conversion for this or that             desirable method of recognition of content.             
  */
-@JsonAdapter(RecognitionMode.Adapter.class)
-public enum RecognitionMode {
+@JsonAdapter(EpubRecognitionMode.Adapter.class)
+public enum EpubRecognitionMode {
   
-  TEXTBOX("Textbox"),
+  FLOW("Flow"),
   
-  FLOW("Flow");
+  PDFFLOW("PdfFlow"),
+  
+  FIXED("Fixed");
 
   private String value;
 
-  RecognitionMode(String value) {
+  EpubRecognitionMode(String value) {
     this.value = value;
   }
 
@@ -57,8 +59,8 @@ public enum RecognitionMode {
     return String.valueOf(value);
   }
 
-  public static RecognitionMode fromValue(String text) {
-    for (RecognitionMode b : RecognitionMode.values()) {
+  public static EpubRecognitionMode fromValue(String text) {
+    for (EpubRecognitionMode b : EpubRecognitionMode.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
@@ -66,16 +68,16 @@ public enum RecognitionMode {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<RecognitionMode> {
+  public static class Adapter extends TypeAdapter<EpubRecognitionMode> {
     @Override
-    public void write(final JsonWriter jsonWriter, final RecognitionMode enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final EpubRecognitionMode enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public RecognitionMode read(final JsonReader jsonReader) throws IOException {
+    public EpubRecognitionMode read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return RecognitionMode.fromValue(String.valueOf(value));
+      return EpubRecognitionMode.fromValue(String.valueOf(value));
     }
   }
 }

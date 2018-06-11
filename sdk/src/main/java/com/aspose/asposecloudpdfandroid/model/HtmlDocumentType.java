@@ -33,21 +33,22 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * 
+ * Represents enumeration of the Html document types.
  */
 @JsonAdapter(HtmlDocumentType.Adapter.class)
 public enum HtmlDocumentType {
   
-  XHTML(0),
-  HTML_5(1);
+  XHTML("Xhtml"),
+  
+  HTML5("Html5");
 
-  private Integer value;
+  private String value;
 
-  HtmlDocumentType(Integer value) {
+  HtmlDocumentType(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -73,7 +74,7 @@ public enum HtmlDocumentType {
 
     @Override
     public HtmlDocumentType read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return HtmlDocumentType.fromValue(String.valueOf(value));
     }
   }

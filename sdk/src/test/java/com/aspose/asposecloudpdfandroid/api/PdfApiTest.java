@@ -85,6 +85,7 @@ import com.aspose.asposecloudpdfandroid.model.WrapMode;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -2650,5 +2651,417 @@ public class PdfApiTest
         assertEquals(response.getCode(), HttpStatusCode.OK);
     }
 
+    // Convert To PDF Tests
 
+    /**
+     * GetEpubInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getEpubInStorageToPdfTest() throws ApiException
+    {
+        String name = "4pages.epub";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getEpubInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutEpubInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putEpubInStorageToPdfTest() throws ApiException
+    {
+        String name = "4pages.epub";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromEpub.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putEpubInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+    /**
+     * GetWebInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getWebInStorageToPdfTest() throws ApiException
+    {
+        String sourceUrl = "http://google.com";
+
+        File response = this.pdfApi.getWebInStorageToPdf(sourceUrl, null, null , null,
+                null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutWebInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putWebInStorageToPdfTest() throws ApiException
+    {
+        String sourceUrl = "http://google.com";
+        String resultName = "fromWeb.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putWebInStorageToPdf(resultName, sourceUrl, null,
+                null, null, null, null, null,
+                null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetLaTeXInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getLaTeXInStorageToPdfTest() throws ApiException
+    {
+        String name = "TexExample.tex";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getLaTeXInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutLaTeXInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putLaTeXInStorageToPdfTest() throws ApiException
+    {
+        String name = "TexExample.tex";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromTex.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putLaTeXInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetMhtInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getMhtInStorageToPdfTest() throws ApiException
+    {
+        String name = "MhtExample.mht";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getMhtInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutMhtInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putMhtInStorageToPdfTest() throws ApiException
+    {
+        String name = "MhtExample.mht";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromMht.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putMhtInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetHtmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getHtmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "HtmlWithImage.zip";
+        this.uploadFile(name);
+
+        String htmlFileName = "HtmlWithImage.html";
+        double height = 650;
+        double width = 250;
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getHtmlInStorageToPdf(srcPath, htmlFileName, height, width,
+                null, null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutHtmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putHtmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "HtmlWithImage.zip";
+        this.uploadFile(name);
+
+        String htmlFileName = "HtmlWithImage.html";
+        double height = 650;
+        double width = 250;
+        String resultName = "fromHtml.pdf";
+        String srcPath = this.tempFolder + '/' + name;
+
+
+        SaaSposeResponse response = this.pdfApi.putHtmlInStorageToPdf(name, srcPath, htmlFileName,
+                height, width, null, null, null,
+                null, null, null);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+    /**
+     * GetXslFoInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXslFoInStorageToPdfTest() throws ApiException
+    {
+        String name = "XslfoExample.xslfo";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXslFoInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXslFoInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXslFoInStorageToPdfTest() throws ApiException
+    {
+        String name = "XslfoExample.xslfo";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXlsFo.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putXslFoInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetXpsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXpsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.xps";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXpsInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXpsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXpsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.xps";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXps.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putXpsInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetSvgInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getSvgInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.svg";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getSvgInStorageToPdf(srcPath, null, null, null,
+                null, null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutSvgInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putSvgInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.svg";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromSvg.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putSvgInStorageToPdf(resultName, srcPath, null,
+                null, null, null, null, null,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+    /**
+     * GetPclInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPclInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.pcl";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getPclInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutPclInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPclInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.pcl";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromPcl.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putPclInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetXmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.xml";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXmlInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.xml";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXml.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putXmlInStorageToPdf(resultName, srcPath, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
 }

@@ -33,20 +33,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * When PDF file (that usually has fixed layout) is being converted,             the conversion engine tries to perform grouping and multi-level analysis to restore             the original document author&#39;s intent and produce result in flow layout.  This property tunes that conversion for this or that             desirable method of recognition of content.             
+ * Allows to control how a PDF document is converted into a word processing document.
  */
-@JsonAdapter(RecognitionMode2.Adapter.class)
-public enum RecognitionMode2 {
+@JsonAdapter(DocRecognitionMode.Adapter.class)
+public enum DocRecognitionMode {
   
-  FLOW("Flow"),
+  TEXTBOX("Textbox"),
   
-  PDFFLOW("PdfFlow"),
-  
-  FIXED("Fixed");
+  FLOW("Flow");
 
   private String value;
 
-  RecognitionMode2(String value) {
+  DocRecognitionMode(String value) {
     this.value = value;
   }
 
@@ -59,8 +57,8 @@ public enum RecognitionMode2 {
     return String.valueOf(value);
   }
 
-  public static RecognitionMode2 fromValue(String text) {
-    for (RecognitionMode2 b : RecognitionMode2.values()) {
+  public static DocRecognitionMode fromValue(String text) {
+    for (DocRecognitionMode b : DocRecognitionMode.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
@@ -68,16 +66,16 @@ public enum RecognitionMode2 {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<RecognitionMode2> {
+  public static class Adapter extends TypeAdapter<DocRecognitionMode> {
     @Override
-    public void write(final JsonWriter jsonWriter, final RecognitionMode2 enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final DocRecognitionMode enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public RecognitionMode2 read(final JsonReader jsonReader) throws IOException {
+    public DocRecognitionMode read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return RecognitionMode2.fromValue(String.valueOf(value));
+      return DocRecognitionMode.fromValue(String.valueOf(value));
     }
   }
 }

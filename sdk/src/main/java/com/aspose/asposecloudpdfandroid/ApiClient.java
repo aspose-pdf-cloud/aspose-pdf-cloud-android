@@ -93,6 +93,7 @@ public class ApiClient {
         
         // PDFCLOUD-418 Set default Connect Timeout
         setConnectTimeout(5 * 60 * 1000);
+        setReadTimeout(5 * 60 * 1000);
     }
 
      /**

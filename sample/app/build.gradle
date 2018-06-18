@@ -26,7 +26,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "18.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -49,5 +49,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.github.tiagohm.MarkdownView:library:0.19.0'
-    implementation 'com.aspose:aspose-cloud-pdf-android:18.4.1'
+    implementation 'com.aspose:aspose-cloud-pdf-android:18.5.0'
 }

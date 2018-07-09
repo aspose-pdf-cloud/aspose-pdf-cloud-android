@@ -54,6 +54,7 @@ import com.aspose.asposecloudpdfandroid.model.Fields;
 import com.aspose.asposecloudpdfandroid.model.FieldsResponse;
 import java.io.File;
 import com.aspose.asposecloudpdfandroid.model.ImageResponse;
+import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
 import com.aspose.asposecloudpdfandroid.model.ImagesListRequest;
 import com.aspose.asposecloudpdfandroid.model.ImagesResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotationResponse;
@@ -3466,7 +3467,9 @@ public class PdfApi {
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getPageCall(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
@@ -3520,6 +3523,7 @@ public class PdfApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getPageValidateBeforeCall(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -3551,7 +3555,9 @@ public class PdfApi {
      * @param folder The document folder. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public File getPage(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder) throws ApiException {
         ApiResponse<File> resp = getPageWithHttpInfo(name, pageNumber, format, width, height, storage, folder);
         return resp.getData();
@@ -3569,7 +3575,9 @@ public class PdfApi {
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<File> getPageWithHttpInfo(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder) throws ApiException {
         com.squareup.okhttp.Call call = getPageValidateBeforeCall(name, pageNumber, format, width, height, storage, folder, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
@@ -3589,7 +3597,9 @@ public class PdfApi {
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getPageAsync(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -3913,6 +3923,912 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getPageAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToBmp
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToBmpCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/bmp"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToBmp(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToBmp(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToBmpCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Bmp image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToBmp(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Bmp image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Bmp image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToBmpAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToEmf
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToEmfCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/emf"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToEmf(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToEmf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToEmfCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Emf image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToEmf(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Emf image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Emf image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToEmfAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToGif
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToGifCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/gif"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToGif(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToGif(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToGifCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Gif image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToGif(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Gif image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToGifWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Gif image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToGifAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToJpeg
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToJpegCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/jpeg"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToJpeg(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToJpeg(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToJpegCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Jpeg image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Jpeg image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Jpeg image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToJpegAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToPng
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToPngCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/png"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToPng(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToPng(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToPngCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Png image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToPng(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Png image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToPngWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Png image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToPngAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageConvertToTiff
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToTiffCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/tiff"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageConvertToTiff(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageConvertToTiff(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageConvertToTiffCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Tiff image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPageConvertToTiff(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Tiff image.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Tiff image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageConvertToTiffAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -6751,6 +7667,130 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = getPdfInStorageToXpsValidateBeforeCall(name, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPsInStorageToPdf
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPsInStorageToPdfCall(String srcPath, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/create/ps";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (srcPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPsInStorageToPdfValidateBeforeCall(String srcPath, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'srcPath' is set
+        if (srcPath == null) {
+            throw new ApiException("Missing the required parameter 'srcPath' when calling getPsInStorageToPdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPsInStorageToPdfCall(srcPath, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and return resulting file in response. 
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPsInStorageToPdf(String srcPath) throws ApiException {
+        ApiResponse<File> resp = getPsInStorageToPdfWithHttpInfo(srcPath);
+        return resp.getData();
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and return resulting file in response. 
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPsInStorageToPdfWithHttpInfo(String srcPath) throws ApiException {
+        com.squareup.okhttp.Call call = getPsInStorageToPdfValidateBeforeCall(srcPath, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and return resulting file in response.  (asynchronously)
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPsInStorageToPdfAsync(String srcPath, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPsInStorageToPdfValidateBeforeCall(srcPath, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -12626,6 +13666,772 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putImageInStorageToPdf
+     * @param name The document name. (required)
+     * @param imageTemplates Image templates (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putImageInStorageToPdfCall(String name, ImageTemplatesRequest imageTemplates, String dstFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = imageTemplates;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/create/images"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (dstFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dstFolder", dstFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putImageInStorageToPdfValidateBeforeCall(String name, ImageTemplatesRequest imageTemplates, String dstFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putImageInStorageToPdf(Async)");
+        }
+        
+        // verify the required parameter 'imageTemplates' is set
+        if (imageTemplates == null) {
+            throw new ApiException("Missing the required parameter 'imageTemplates' when calling putImageInStorageToPdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putImageInStorageToPdfCall(name, imageTemplates, dstFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert image file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param imageTemplates Image templates (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putImageInStorageToPdf(String name, ImageTemplatesRequest imageTemplates, String dstFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putImageInStorageToPdfWithHttpInfo(name, imageTemplates, dstFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert image file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param imageTemplates Image templates (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putImageInStorageToPdfWithHttpInfo(String name, ImageTemplatesRequest imageTemplates, String dstFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putImageInStorageToPdfValidateBeforeCall(name, imageTemplates, dstFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert image file (located on storage) to PDF format and upload resulting file to storage.  (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param imageTemplates Image templates (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putImageInStorageToPdfAsync(String name, ImageTemplatesRequest imageTemplates, String dstFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putImageInStorageToPdfValidateBeforeCall(name, imageTemplates, dstFolder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putImagesExtractAsGif
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsGifCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/gif"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (destFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destFolder", destFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putImagesExtractAsGifValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putImagesExtractAsGif(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putImagesExtractAsGif(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putImagesExtractAsGifCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putImagesExtractAsGif(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsGifWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putImagesExtractAsGifWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putImagesExtractAsGifValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Extract document images in format specified to folder. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsGifAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putImagesExtractAsGifValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putImagesExtractAsJpeg
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsJpegCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/jpeg"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (destFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destFolder", destFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putImagesExtractAsJpegValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putImagesExtractAsJpeg(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putImagesExtractAsJpeg(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putImagesExtractAsJpegCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putImagesExtractAsJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsJpegWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putImagesExtractAsJpegWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putImagesExtractAsJpegValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Extract document images in format specified to folder. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsJpegAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putImagesExtractAsJpegValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putImagesExtractAsPng
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsPngCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/png"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (destFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destFolder", destFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putImagesExtractAsPngValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putImagesExtractAsPng(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putImagesExtractAsPng(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putImagesExtractAsPngCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putImagesExtractAsPng(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsPngWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putImagesExtractAsPngWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putImagesExtractAsPngValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Extract document images in format specified to folder. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsPngAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putImagesExtractAsPngValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putImagesExtractAsTiff
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsTiffCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/tiff"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (destFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destFolder", destFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putImagesExtractAsTiffValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putImagesExtractAsTiff(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putImagesExtractAsTiff(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putImagesExtractAsTiffCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putImagesExtractAsTiff(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsTiffWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Extract document images in format specified to folder.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putImagesExtractAsTiffWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putImagesExtractAsTiffValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Extract document images in format specified to folder. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param destFolder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putImagesExtractAsTiffAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putImagesExtractAsTiffValidateBeforeCall(name, pageNumber, width, height, folder, destFolder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putLaTeXInStorageToPdf
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
@@ -13194,6 +15000,978 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putPageAddStampValidateBeforeCall(name, pageNumber, stamp, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToBmp
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToBmpCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/bmp"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToBmp(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToBmp(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToBmp(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToBmpCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to bmp image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToBmp(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to bmp image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to bmp image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToBmpAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToEmf
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToEmfCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/emf"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToEmf(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToEmf(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToEmf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToEmfCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to emf image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToEmf(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to emf image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to emf image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToEmfAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToGif
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToGifCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/gif"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToGif(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToGif(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToGif(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToGifCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to gif image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToGif(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to gif image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToGifWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to gif image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToGifAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToJpeg
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToJpegCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/jpeg"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToJpeg(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToJpeg(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToJpeg(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToJpegCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Jpeg image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToJpeg(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Jpeg image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Jpeg image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToJpegAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToPng
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToPngCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/png"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToPng(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToPng(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToPng(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToPngCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to png image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToPng(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to png image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToPngWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to png image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToPngAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPageConvertToTiff
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToTiffCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/tiff"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPageConvertToTiff(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling putPageConvertToTiff(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPageConvertToTiff(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPageConvertToTiffCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert document page to Tiff image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPageConvertToTiff(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert document page to Tiff image and save in storage.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert document page to Tiff image and save in storage. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param outPath The out path of result image. (required)
+     * @param width The converted image width. (optional)
+     * @param height The converted image height. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPageConvertToTiffAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -17425,6 +20203,146 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putPrivilegesValidateBeforeCall(name, privileges, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPsInStorageToPdf
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPsInStorageToPdfCall(String name, String srcPath, String dstFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/create/ps"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (srcPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+        if (dstFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dstFolder", dstFolder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPsInStorageToPdfValidateBeforeCall(String name, String srcPath, String dstFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPsInStorageToPdf(Async)");
+        }
+        
+        // verify the required parameter 'srcPath' is set
+        if (srcPath == null) {
+            throw new ApiException("Missing the required parameter 'srcPath' when calling putPsInStorageToPdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPsInStorageToPdfCall(name, srcPath, dstFolder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @return SaaSposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SaaSposeResponse putPsInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
+        ApiResponse<SaaSposeResponse> resp = putPsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+        return resp.getData();
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @return ApiResponse&lt;SaaSposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SaaSposeResponse> putPsInStorageToPdfWithHttpInfo(String name, String srcPath, String dstFolder) throws ApiException {
+        com.squareup.okhttp.Call call = putPsInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, null, null);
+        Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert PS file (located on storage) to PDF format and upload resulting file to storage.  (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.ps) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPsInStorageToPdfAsync(String name, String srcPath, String dstFolder, final ApiCallback<SaaSposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPsInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SaaSposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

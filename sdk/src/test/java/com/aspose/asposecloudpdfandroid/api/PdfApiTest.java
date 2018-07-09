@@ -39,6 +39,9 @@ import com.aspose.asposecloudpdfandroid.model.DocumentResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentTextReplaceResponse;
 import com.aspose.asposecloudpdfandroid.model.FieldType;
 import com.aspose.asposecloudpdfandroid.model.FontStyles;
+import com.aspose.asposecloudpdfandroid.model.ImageSrcType;
+import com.aspose.asposecloudpdfandroid.model.ImageTemplate;
+import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
 import com.aspose.asposecloudpdfandroid.model.PdfAType;
 import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.Field;
@@ -889,6 +892,87 @@ public class PdfApiTest
         String imageFile = folder + '/' + imageFileName;
 
         ImageResponse response = this.pdfApi.postReplaceImage(name, pageNumber, imageNumber, null, null, folder, file);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+
+    /**
+     * PutImagesExtractAsJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImagesExtractAsJpegTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        final String destFolder = this.tempFolder + '/' + "extract_jpg";
+
+        SaaSposeResponse response = this.pdfApi.putImagesExtractAsJpeg(name, pageNumber, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+    /**
+     * PutImagesExtractAsTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImagesExtractAsTiffTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        final String destFolder = this.tempFolder + '/' + "extract_tiff";
+
+        SaaSposeResponse response = this.pdfApi.putImagesExtractAsTiff(name, pageNumber, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+    /**
+     * PutImagesExtractAsGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImagesExtractAsGifTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        final String destFolder = this.tempFolder + '/' + "extract_gif";
+
+        SaaSposeResponse response = this.pdfApi.putImagesExtractAsGif(name, pageNumber, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+    /**
+     * PutImagesExtractAsPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImagesExtractAsPngTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        final String destFolder = this.tempFolder + '/' + "extract_png";
+
+        SaaSposeResponse response = this.pdfApi.putImagesExtractAsPng(name, pageNumber, null, null,
+                this.tempFolder, destFolder);
         assertEquals(response.getCode(), HttpStatusCode.OK);
     }
 
@@ -2169,7 +2253,7 @@ public class PdfApiTest
         this.uploadFile(name);
 
         String folder = this.tempFolder;
-        String resFileName = "result.html";
+        String resFileName = "result.zip";
 
         SaaSposeResponse response = this.pdfApi.putPdfInStorageToHtml(
                 name,
@@ -2217,7 +2301,7 @@ public class PdfApiTest
     {
         String name = "4pages.pdf";
         File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.html";
+        String resFileName = "result.zip";
 
         SaaSposeResponse response = this.pdfApi.putPdfInRequestToHtml(
                 this.tempFolder + '/' + resFileName,
@@ -3063,5 +3147,298 @@ public class PdfApiTest
 
         SaaSposeResponse response = this.pdfApi.putXmlInStorageToPdf(resultName, srcPath, null, this.tempFolder);
         assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * GetPsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Typography.PS";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getPsInStorageToPdf(srcPath);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutPsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Typography.PS";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromPs.pdf";
+
+        SaaSposeResponse response = this.pdfApi.putPsInStorageToPdf(resultName, srcPath, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    /**
+     * PutImageInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putImageInStorageToPdfTest() throws ApiException
+    {
+        final String dataFile1 = "33539.jpg";
+        this.uploadFile(dataFile1);
+
+        final String dataFile2 = "44781.jpg";
+        this.uploadFile(dataFile2);
+
+        String resultName = "result.pdf";
+
+
+        ImageTemplatesRequest imageTemplatesRequest = new ImageTemplatesRequest()
+            .isOCR(true)
+            .ocRLangs("eng")
+            .imagesList(new ArrayList<ImageTemplate>(){{
+                add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile1).imageSrcType(ImageSrcType.COMMON));
+                add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile2).imageSrcType(ImageSrcType.COMMON));
+            }});
+
+        SaaSposeResponse response = this.pdfApi.putImageInStorageToPdf(resultName, imageTemplatesRequest, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+    }
+
+
+    // Page Convert To Image Tests
+
+    /**
+     * GetPageConvertToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToTiffTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToTiff(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToTiffTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.tiff";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToTiff(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+    /**
+     * GetPageConvertToJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToJpegTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToJpeg(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToJpegTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.jpeg";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToJpeg(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+
+    /**
+     * GetPageConvertToPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToPngTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToPng(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToPngTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.png";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToPng(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+
+    /**
+     * GetPageConvertToEmf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToEmfTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToEmf(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToEmf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToEmfTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.emf";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToEmf(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+    /**
+     * GetPageConvertToBmp Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToBmpTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToBmp(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToBmp Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToBmpTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.bmp";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToBmp(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
+    }
+
+
+    /**
+     * GetPageConvertToGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToGifTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToGif(name, pageNumber, null, null, this.tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToGifTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.gif";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        SaaSposeResponse response = this.pdfApi.putPageConvertToGif(name, pageNumber, outPath,
+                null, null, this.tempFolder);
+        assertEquals(response.getCode(), HttpStatusCode.OK);
     }
 }

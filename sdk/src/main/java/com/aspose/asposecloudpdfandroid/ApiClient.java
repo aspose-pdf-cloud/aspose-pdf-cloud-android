@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2018 Aspose.Pdf for Cloud
+ *   Copyright (c) 2018 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -1010,48 +1010,60 @@ public class ApiClient {
      /**
      * Request OAuth token
      */
-    private void requestToken() throws IOException
+    private void requestToken() throws ApiException
     {
-        RequestBody requestBody = new FormEncodingBuilder()
-                .addEncoded("grant_type", "client_credentials")
-                .addEncoded("client_id", getAppSid())
-                .addEncoded("client_secret", getAppKey())
-                .build();
+        try {
+            RequestBody requestBody = new FormEncodingBuilder()
+                    .addEncoded("grant_type", "client_credentials")
+                    .addEncoded("client_id", getAppSid())
+                    .addEncoded("client_secret", getAppKey())
+                    .build();
 
-        String url = basePath.replace("/v1.1", "") + "/oauth2/token";
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .addHeader("Content-Type", " application/x-www-form-urlencoded")
-                .build();
+            String url = basePath.replace("/v1.1", "") + "/oauth2/token";
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .addHeader("Content-Type", " application/x-www-form-urlencoded")
+                    .build();
 
-        Response response = httpClient.newCall(request).execute();
-        GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
-        setAccessToken(result.access_token);
-        setRefreshToken(result.refresh_token);
+            Response response = httpClient.newCall(request).execute();
+            GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
+            setAccessToken(result.access_token);
+            setRefreshToken(result.refresh_token);
+        }
+        catch (Exception ex)
+        {
+            throw new ApiException(ex);
+        }
     }
 
     /**
      * Refresh OAuth token
      */
-    private void refreshToken() throws IOException
+    public void refreshToken() throws ApiException
     {
-        RequestBody requestBody = new FormEncodingBuilder()
-                .addEncoded("grant_type", "refresh_token")
-                .addEncoded("refresh_token", this.refreshToken)
-                .build();
+        try {
+            RequestBody requestBody = new FormEncodingBuilder()
+                    .addEncoded("grant_type", "refresh_token")
+                    .addEncoded("refresh_token", this.refreshToken)
+                    .build();
 
-        String url = basePath.replace("/v1.1", "") + "/oauth2/token";
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .addHeader("Content-Type", " application/x-www-form-urlencoded")
-                .build();
+            String url = basePath.replace("/v1.1", "") + "/oauth2/token";
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .addHeader("Content-Type", " application/x-www-form-urlencoded")
+                    .build();
 
-        Response response = httpClient.newCall(request).execute();
-        GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
-        setAccessToken(result.access_token);
-        setRefreshToken(result.refresh_token);
+            Response response = httpClient.newCall(request).execute();
+            GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
+            setAccessToken(result.access_token);
+            setRefreshToken(result.refresh_token);
+        }
+        catch (Exception ex)
+        {
+            throw new ApiException(ex);
+        }
     }
     
     
@@ -1062,16 +1074,10 @@ public class ApiClient {
      */
     private void addOAuthAuthentication(Map<String, String> headerParams) throws ApiException
     {
-        try {
-            if (null == accessToken) {
-                requestToken();
-            }
-            headerParams.put("Authorization", "Bearer " + accessToken);
+        if (null == accessToken) {
+            requestToken();
         }
-        catch (IOException ex)
-        {
-            throw new ApiException(ex);
-        }
+        headerParams.put("Authorization", "Bearer " + accessToken);
     }
 
     

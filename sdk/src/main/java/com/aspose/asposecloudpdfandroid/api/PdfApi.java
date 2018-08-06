@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2018 Aspose.Pdf for Cloud
+ *   Copyright (c) 2018 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -31,6 +31,7 @@ import com.aspose.asposecloudpdfandroid.Pair;
 import com.aspose.asposecloudpdfandroid.ProgressRequestBody;
 import com.aspose.asposecloudpdfandroid.ProgressResponseBody;
 
+import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -193,8 +194,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse deleteField(String name, String fieldName, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = deleteFieldWithHttpInfo(name, fieldName, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = deleteFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = deleteFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -338,8 +352,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse deletePage(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = deletePageWithHttpInfo(name, pageNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = deletePageWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = deletePageWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -475,8 +502,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse deleteProperties(String name, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -618,8 +658,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse deleteProperty(String name, String propertyName, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -768,8 +821,21 @@ public class PdfApi {
      */
     @Deprecated
     public File getDocument(String name, String format, String storage, String folder, String outPath) throws ApiException {
-        ApiResponse<File> resp = getDocumentWithHttpInfo(name, format, storage, folder, outPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getDocumentWithHttpInfo(name, format, storage, folder, outPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getDocumentWithHttpInfo(name, format, storage, folder, outPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -919,8 +985,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public AttachmentResponse getDocumentAttachmentByIndex(String name, Integer attachmentIndex, String storage, String folder) throws ApiException {
-        ApiResponse<AttachmentResponse> resp = getDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<AttachmentResponse> resp = getDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<AttachmentResponse> resp = getDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1056,8 +1135,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public AttachmentsResponse getDocumentAttachments(String name, String storage, String folder) throws ApiException {
-        ApiResponse<AttachmentsResponse> resp = getDocumentAttachmentsWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<AttachmentsResponse> resp = getDocumentAttachmentsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<AttachmentsResponse> resp = getDocumentAttachmentsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1195,8 +1287,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getDocumentBookmarks(String name, String bookmarkPath, String storage, String folder) throws ApiException {
-        ApiResponse<File> resp = getDocumentBookmarksWithHttpInfo(name, bookmarkPath, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getDocumentBookmarksWithHttpInfo(name, bookmarkPath, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getDocumentBookmarksWithHttpInfo(name, bookmarkPath, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1332,8 +1437,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentPropertiesResponse getDocumentProperties(String name, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1475,8 +1593,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentPropertyResponse getDocumentProperty(String name, String propertyName, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1613,8 +1744,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getDownload(String path, String versionId, String storage) throws ApiException {
-        ApiResponse<File> resp = getDownloadWithHttpInfo(path, versionId, storage);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getDownloadWithHttpInfo(path, versionId, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getDownloadWithHttpInfo(path, versionId, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1756,8 +1900,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getDownloadDocumentAttachmentByIndex(String name, Integer attachmentIndex, String storage, String folder) throws ApiException {
-        ApiResponse<File> resp = getDownloadDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getDownloadDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getDownloadDocumentAttachmentByIndexWithHttpInfo(name, attachmentIndex, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -1886,8 +2043,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getEpubInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getEpubInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getEpubInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getEpubInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2025,8 +2195,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public FieldResponse getField(String name, String fieldName, String storage, String folder) throws ApiException {
-        ApiResponse<FieldResponse> resp = getFieldWithHttpInfo(name, fieldName, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<FieldResponse> resp = getFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<FieldResponse> resp = getFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2162,8 +2345,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public FieldsResponse getFields(String name, String storage, String folder) throws ApiException {
-        ApiResponse<FieldsResponse> resp = getFieldsWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<FieldsResponse> resp = getFieldsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<FieldsResponse> resp = getFieldsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2322,8 +2518,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemsResponse getFragment(String name, Integer pageNumber, Integer fragmentNumber, String withEmpty, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemsResponse> resp = getFragmentWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemsResponse> resp = getFragmentWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemsResponse> resp = getFragmentWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2488,8 +2697,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextFormatResponse getFragmentTextFormat(String name, Integer pageNumber, Integer fragmentNumber, String storage, String folder) throws ApiException {
-        ApiResponse<TextFormatResponse> resp = getFragmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextFormatResponse> resp = getFragmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextFormatResponse> resp = getFragmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2648,8 +2870,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemsResponse getFragments(String name, Integer pageNumber, String withEmpty, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemsResponse> resp = getFragmentsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemsResponse> resp = getFragmentsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemsResponse> resp = getFragmentsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2821,8 +3056,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getHtmlInStorageToPdf(String srcPath, String htmlFileName, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop) throws ApiException {
-        ApiResponse<File> resp = getHtmlInStorageToPdfWithHttpInfo(srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getHtmlInStorageToPdfWithHttpInfo(srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getHtmlInStorageToPdfWithHttpInfo(srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -2996,8 +3244,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getImage(String name, Integer pageNumber, Integer imageNumber, String format, Integer width, Integer height, String storage, String folder) throws ApiException {
-        ApiResponse<File> resp = getImageWithHttpInfo(name, pageNumber, imageNumber, format, width, height, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getImageWithHttpInfo(name, pageNumber, imageNumber, format, width, height, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getImageWithHttpInfo(name, pageNumber, imageNumber, format, width, height, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3149,8 +3410,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ImagesResponse getImages(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        ApiResponse<ImagesResponse> resp = getImagesWithHttpInfo(name, pageNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<ImagesResponse> resp = getImagesWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<ImagesResponse> resp = getImagesWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3279,8 +3553,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getLaTeXInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getLaTeXInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getLaTeXInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getLaTeXInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3403,8 +3690,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getMhtInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3559,8 +3859,21 @@ public class PdfApi {
      */
     @Deprecated
     public File getPage(String name, Integer pageNumber, String format, Integer width, Integer height, String storage, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageWithHttpInfo(name, pageNumber, format, width, height, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageWithHttpInfo(name, pageNumber, format, width, height, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageWithHttpInfo(name, pageNumber, format, width, height, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3722,8 +4035,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public AnnotationResponse getPageAnnotation(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder) throws ApiException {
-        ApiResponse<AnnotationResponse> resp = getPageAnnotationWithHttpInfo(name, pageNumber, annotationNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<AnnotationResponse> resp = getPageAnnotationWithHttpInfo(name, pageNumber, annotationNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<AnnotationResponse> resp = getPageAnnotationWithHttpInfo(name, pageNumber, annotationNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -3869,8 +4195,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public AnnotationsResponse getPageAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        ApiResponse<AnnotationsResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<AnnotationsResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<AnnotationsResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4018,8 +4357,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToBmp(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4169,8 +4521,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToEmf(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4320,8 +4685,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToGif(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4471,8 +4849,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4622,8 +5013,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToPng(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4773,8 +5177,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPageConvertToTiff(String name, Integer pageNumber, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -4928,8 +5345,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public LinkAnnotationResponse getPageLinkAnnotationByIndex(String name, Integer pageNumber, Integer linkIndex, String storage, String folder) throws ApiException {
-        ApiResponse<LinkAnnotationResponse> resp = getPageLinkAnnotationByIndexWithHttpInfo(name, pageNumber, linkIndex, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<LinkAnnotationResponse> resp = getPageLinkAnnotationByIndexWithHttpInfo(name, pageNumber, linkIndex, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<LinkAnnotationResponse> resp = getPageLinkAnnotationByIndexWithHttpInfo(name, pageNumber, linkIndex, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5075,8 +5505,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public LinkAnnotationsResponse getPageLinkAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        ApiResponse<LinkAnnotationsResponse> resp = getPageLinkAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<LinkAnnotationsResponse> resp = getPageLinkAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<LinkAnnotationsResponse> resp = getPageLinkAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5264,8 +5707,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public TextRectsResponse getPageText(String name, Integer pageNumber, Integer X, Integer Y, Integer width, Integer height, List<String> format, String regex, Boolean splitRects, String folder) throws ApiException {
-        ApiResponse<TextRectsResponse> resp = getPageTextWithHttpInfo(name, pageNumber, X, Y, width, height, format, regex, splitRects, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextRectsResponse> resp = getPageTextWithHttpInfo(name, pageNumber, X, Y, width, height, format, regex, splitRects, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextRectsResponse> resp = getPageTextWithHttpInfo(name, pageNumber, X, Y, width, height, format, regex, splitRects, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5430,8 +5886,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemsResponse getPageTextItems(String name, Integer pageNumber, String withEmpty, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemsResponse> resp = getPageTextItemsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemsResponse> resp = getPageTextItemsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemsResponse> resp = getPageTextItemsWithHttpInfo(name, pageNumber, withEmpty, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5573,8 +6042,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentPagesResponse getPages(String name, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentPagesResponse> resp = getPagesWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentPagesResponse> resp = getPagesWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentPagesResponse> resp = getPagesWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5701,8 +6183,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPclInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getPclInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPclInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPclInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5860,8 +6355,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToDoc(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Integer maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -5932,7 +6440,7 @@ public class PdfApi {
     /**
      * Build call for getPdfInStorageToEpub
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -6003,21 +6511,34 @@ public class PdfApi {
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToEpub(String name, String contentRecognitionMode, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToEpubWithHttpInfo(name, contentRecognitionMode, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToEpubWithHttpInfo(name, contentRecognitionMode, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToEpubWithHttpInfo(name, contentRecognitionMode, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6032,7 +6553,7 @@ public class PdfApi {
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content (asynchronously)
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6252,8 +6773,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToHtml(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -6441,8 +6975,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToLaTeX(String name, Integer pagesCount, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, pagesCount, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, pagesCount, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, pagesCount, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -6572,8 +7119,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToMobiXml(String name, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToMobiXmlWithHttpInfo(name, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToMobiXmlWithHttpInfo(name, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToMobiXmlWithHttpInfo(name, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -6710,8 +7270,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToPdfA(String name, String type, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -6849,8 +7422,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToPptx(String name, Boolean separateImages, Boolean slidesAsImages, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -6986,8 +7572,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToSvg(String name, Boolean compressOutputToZipArchive, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToSvgWithHttpInfo(name, compressOutputToZipArchive, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToSvgWithHttpInfo(name, compressOutputToZipArchive, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToSvgWithHttpInfo(name, compressOutputToZipArchive, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7177,8 +7776,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToTiff(String name, Double brightness, String compression, String colorDepth, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String orientation, Boolean skipBlankPages, Integer width, Integer height, Integer xResolution, Integer yResolution, Integer pageIndex, Integer pageCount, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToTiffWithHttpInfo(name, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToTiffWithHttpInfo(name, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToTiffWithHttpInfo(name, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7352,8 +7964,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToXls(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7489,8 +8114,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToXml(String name, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToXmlWithHttpInfo(name, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToXmlWithHttpInfo(name, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToXmlWithHttpInfo(name, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7618,8 +8256,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPdfInStorageToXps(String name, String folder) throws ApiException {
-        ApiResponse<File> resp = getPdfInStorageToXpsWithHttpInfo(name, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToXpsWithHttpInfo(name, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToXpsWithHttpInfo(name, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7744,8 +8395,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getPsInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getPsInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getPsInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPsInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -7904,8 +8568,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemResponse getSegment(String name, Integer pageNumber, Integer fragmentNumber, Integer segmentNumber, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemResponse> resp = getSegmentWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemResponse> resp = getSegmentWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemResponse> resp = getSegmentWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8078,8 +8755,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextFormatResponse getSegmentTextFormat(String name, Integer pageNumber, Integer fragmentNumber, Integer segmentNumber, String storage, String folder) throws ApiException {
-        ApiResponse<TextFormatResponse> resp = getSegmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextFormatResponse> resp = getSegmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextFormatResponse> resp = getSegmentTextFormatWithHttpInfo(name, pageNumber, fragmentNumber, segmentNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8248,8 +8938,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemsResponse getSegments(String name, Integer pageNumber, Integer fragmentNumber, String withEmpty, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemsResponse> resp = getSegmentsWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemsResponse> resp = getSegmentsWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemsResponse> resp = getSegmentsWithHttpInfo(name, pageNumber, fragmentNumber, withEmpty, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8418,8 +9121,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getSvgInStorageToPdf(String srcPath, Boolean adjustPageSize, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop) throws ApiException {
-        ApiResponse<File> resp = getSvgInStorageToPdfWithHttpInfo(srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getSvgInStorageToPdfWithHttpInfo(srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getSvgInStorageToPdfWithHttpInfo(srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8609,8 +9325,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public TextRectsResponse getText(String name, Integer X, Integer Y, Integer width, Integer height, List<String> format, String regex, Boolean splitRects, String folder) throws ApiException {
-        ApiResponse<TextRectsResponse> resp = getTextWithHttpInfo(name, X, Y, width, height, format, regex, splitRects, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextRectsResponse> resp = getTextWithHttpInfo(name, X, Y, width, height, format, regex, splitRects, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextRectsResponse> resp = getTextWithHttpInfo(name, X, Y, width, height, format, regex, splitRects, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8765,8 +9494,21 @@ public class PdfApi {
      */
     @Deprecated
     public TextItemsResponse getTextItems(String name, String withEmpty, String storage, String folder) throws ApiException {
-        ApiResponse<TextItemsResponse> resp = getTextItemsWithHttpInfo(name, withEmpty, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextItemsResponse> resp = getTextItemsWithHttpInfo(name, withEmpty, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextItemsResponse> resp = getTextItemsWithHttpInfo(name, withEmpty, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -8911,8 +9653,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SignatureVerifyResponse getVerifySignature(String name, String signName, String folder) throws ApiException {
-        ApiResponse<SignatureVerifyResponse> resp = getVerifySignatureWithHttpInfo(name, signName, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SignatureVerifyResponse> resp = getVerifySignatureWithHttpInfo(name, signName, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SignatureVerifyResponse> resp = getVerifySignatureWithHttpInfo(name, signName, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9067,8 +9822,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getWebInStorageToPdf(String url, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop) throws ApiException {
-        ApiResponse<File> resp = getWebInStorageToPdfWithHttpInfo(url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getWebInStorageToPdfWithHttpInfo(url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getWebInStorageToPdfWithHttpInfo(url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9212,8 +9980,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public WordCountResponse getWordsPerPage(String name, String storage, String folder) throws ApiException {
-        ApiResponse<WordCountResponse> resp = getWordsPerPageWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<WordCountResponse> resp = getWordsPerPageWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<WordCountResponse> resp = getWordsPerPageWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9343,8 +10124,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getXfaPdfInStorageToAcroForm(String name, String folder) throws ApiException {
-        ApiResponse<File> resp = getXfaPdfInStorageToAcroFormWithHttpInfo(name, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getXfaPdfInStorageToAcroFormWithHttpInfo(name, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getXfaPdfInStorageToAcroFormWithHttpInfo(name, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9473,8 +10267,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getXmlInStorageToPdf(String srcPath, String xslFilePath) throws ApiException {
-        ApiResponse<File> resp = getXmlInStorageToPdfWithHttpInfo(srcPath, xslFilePath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getXmlInStorageToPdfWithHttpInfo(srcPath, xslFilePath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getXmlInStorageToPdfWithHttpInfo(srcPath, xslFilePath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9599,8 +10406,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getXpsInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getXpsInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getXpsInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getXpsInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9723,8 +10543,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public File getXslFoInStorageToPdf(String srcPath) throws ApiException {
-        ApiResponse<File> resp = getXslFoInStorageToPdfWithHttpInfo(srcPath);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = getXslFoInStorageToPdfWithHttpInfo(srcPath);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getXslFoInStorageToPdfWithHttpInfo(srcPath);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -9868,8 +10701,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentResponse postAppendDocument(String name, AppendDocument appendDocument, String appendFile, Integer startPage, Integer endPage, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentResponse> resp = postAppendDocumentWithHttpInfo(name, appendDocument, appendFile, startPage, endPage, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentResponse> resp = postAppendDocumentWithHttpInfo(name, appendDocument, appendFile, startPage, endPage, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentResponse> resp = postAppendDocumentWithHttpInfo(name, appendDocument, appendFile, startPage, endPage, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10022,8 +10868,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse postCreateField(String name, Integer page, Field field, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = postCreateFieldWithHttpInfo(name, page, field, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = postCreateFieldWithHttpInfo(name, page, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = postCreateFieldWithHttpInfo(name, page, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10173,8 +11032,21 @@ public class PdfApi {
      */
     @Deprecated
     public DocumentTextReplaceResponse postDocumentReplaceText(String name, TextReplaceRequest textReplace, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextWithHttpInfo(name, textReplace, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextWithHttpInfo(name, textReplace, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextWithHttpInfo(name, textReplace, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10326,8 +11198,21 @@ public class PdfApi {
      */
     @Deprecated
     public DocumentTextReplaceResponse postDocumentReplaceTextList(String name, TextReplaceListRequest textReplaceListRequest, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextListWithHttpInfo(name, textReplaceListRequest, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextListWithHttpInfo(name, textReplaceListRequest, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentTextReplaceResponse> resp = postDocumentReplaceTextListWithHttpInfo(name, textReplaceListRequest, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10474,8 +11359,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public TextReplaceResponse postDocumentTextReplace(String name, TextReplaceListRequest textReplace, String storage, String folder) throws ApiException {
-        ApiResponse<TextReplaceResponse> resp = postDocumentTextReplaceWithHttpInfo(name, textReplace, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextReplaceResponse> resp = postDocumentTextReplaceWithHttpInfo(name, textReplace, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextReplaceResponse> resp = postDocumentTextReplaceWithHttpInfo(name, textReplace, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10628,8 +11526,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse postMovePage(String name, Integer pageNumber, Integer newIndex, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = postMovePageWithHttpInfo(name, pageNumber, newIndex, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = postMovePageWithHttpInfo(name, pageNumber, newIndex, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = postMovePageWithHttpInfo(name, pageNumber, newIndex, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10769,8 +11680,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse postOptimizeDocument(String name, OptimizeOptions options, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = postOptimizeDocumentWithHttpInfo(name, options, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = postOptimizeDocumentWithHttpInfo(name, options, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = postOptimizeDocumentWithHttpInfo(name, options, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -10926,8 +11850,21 @@ public class PdfApi {
      */
     @Deprecated
     public PageTextReplaceResponse postPageReplaceText(String name, Integer pageNumber, TextReplaceRequest textReplace, String storage, String folder) throws ApiException {
-        ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextWithHttpInfo(name, pageNumber, textReplace, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextWithHttpInfo(name, pageNumber, textReplace, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextWithHttpInfo(name, pageNumber, textReplace, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11089,8 +12026,21 @@ public class PdfApi {
      */
     @Deprecated
     public PageTextReplaceResponse postPageReplaceTextList(String name, Integer pageNumber, TextReplaceListRequest textReplaceListRequest, String storage, String folder) throws ApiException {
-        ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextListWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextListWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<PageTextReplaceResponse> resp = postPageReplaceTextListWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11247,8 +12197,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public TextReplaceResponse postPageTextReplace(String name, Integer pageNumber, TextReplaceListRequest textReplaceListRequest, String storage, String folder) throws ApiException {
-        ApiResponse<TextReplaceResponse> resp = postPageTextReplaceWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<TextReplaceResponse> resp = postPageTextReplaceWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextReplaceResponse> resp = postPageTextReplaceWithHttpInfo(name, pageNumber, textReplaceListRequest, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11408,8 +12371,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ImageResponse postReplaceImage(String name, Integer pageNumber, Integer imageNumber, String imageFile, String storage, String folder, File image) throws ApiException {
-        ApiResponse<ImageResponse> resp = postReplaceImageWithHttpInfo(name, pageNumber, imageNumber, imageFile, storage, folder, image);
-        return resp.getData();
+        try
+        {
+            ApiResponse<ImageResponse> resp = postReplaceImageWithHttpInfo(name, pageNumber, imageNumber, imageFile, storage, folder, image);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<ImageResponse> resp = postReplaceImageWithHttpInfo(name, pageNumber, imageNumber, imageFile, storage, folder, image);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11553,8 +12529,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse postSignDocument(String name, Signature signature, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = postSignDocumentWithHttpInfo(name, signature, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = postSignDocumentWithHttpInfo(name, signature, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = postSignDocumentWithHttpInfo(name, signature, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11700,8 +12689,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse postSignPage(String name, Integer pageNumber, Signature signature, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = postSignPageWithHttpInfo(name, pageNumber, signature, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = postSignPageWithHttpInfo(name, pageNumber, signature, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = postSignPageWithHttpInfo(name, pageNumber, signature, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11851,8 +12853,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SplitResultResponse postSplitDocument(String name, String format, Integer from, Integer to, String storage, String folder) throws ApiException {
-        ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -11992,8 +13007,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentPagesResponse putAddNewPage(String name, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentPagesResponse> resp = putAddNewPageWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentPagesResponse> resp = putAddNewPageWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentPagesResponse> resp = putAddNewPageWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12142,8 +13170,21 @@ public class PdfApi {
      */
     @Deprecated
     public SaaSposeResponse putAddParagraph(String name, Integer pageNumber, Paragraph paragraph, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putAddParagraphWithHttpInfo(name, pageNumber, paragraph, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putAddParagraphWithHttpInfo(name, pageNumber, paragraph, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putAddParagraphWithHttpInfo(name, pageNumber, paragraph, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12291,8 +13332,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putAddText(String name, Integer pageNumber, Paragraph paragraph, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putAddTextWithHttpInfo(name, pageNumber, paragraph, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putAddTextWithHttpInfo(name, pageNumber, paragraph, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putAddTextWithHttpInfo(name, pageNumber, paragraph, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12431,8 +13485,21 @@ public class PdfApi {
      */
     @Deprecated
     public File putConvertDocument(String format, String url, String outPath, File file) throws ApiException {
-        ApiResponse<File> resp = putConvertDocumentWithHttpInfo(format, url, outPath, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<File> resp = putConvertDocumentWithHttpInfo(format, url, outPath, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = putConvertDocumentWithHttpInfo(format, url, outPath, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12580,8 +13647,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putCreate(String path, File file, String versionId, String storage) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putCreateWithHttpInfo(path, file, versionId, storage);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putCreateWithHttpInfo(path, file, versionId, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putCreateWithHttpInfo(path, file, versionId, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12737,8 +13817,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentResponse putCreateDocument(String name, String templateFile, String dataFile, String templateType, String storage, String folder, String url, Boolean fitSize) throws ApiException {
-        ApiResponse<DocumentResponse> resp = putCreateDocumentWithHttpInfo(name, templateFile, dataFile, templateType, storage, folder, url, fitSize);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentResponse> resp = putCreateDocumentWithHttpInfo(name, templateFile, dataFile, templateType, storage, folder, url, fitSize);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentResponse> resp = putCreateDocumentWithHttpInfo(name, templateFile, dataFile, templateType, storage, folder, url, fitSize);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -12892,8 +13985,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentResponse putCreateDocumentFromImages(String name, ImagesListRequest images, Boolean ocr, String ocrLang, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentResponse> resp = putCreateDocumentFromImagesWithHttpInfo(name, images, ocr, ocrLang, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentResponse> resp = putCreateDocumentFromImagesWithHttpInfo(name, images, ocr, ocrLang, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentResponse> resp = putCreateDocumentFromImagesWithHttpInfo(name, images, ocr, ocrLang, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13104,8 +14210,21 @@ public class PdfApi {
      */
     @Deprecated
     public SaaSposeResponse putDocumentSaveAsTiff(String name, TiffExportOptions exportOptions, String resultFile, Double brightness, String compression, String colorDepth, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String orientation, Boolean skipBlankPages, Integer width, Integer height, Integer xResolution, Integer yResolution, Integer pageIndex, Integer pageCount, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putDocumentSaveAsTiffWithHttpInfo(name, exportOptions, resultFile, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putDocumentSaveAsTiffWithHttpInfo(name, exportOptions, resultFile, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putDocumentSaveAsTiffWithHttpInfo(name, exportOptions, resultFile, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13282,8 +14401,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putEpubInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putEpubInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putEpubInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putEpubInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13417,8 +14549,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putFieldsFlatten(String name, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putFieldsFlattenWithHttpInfo(name, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putFieldsFlattenWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putFieldsFlattenWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13594,8 +14739,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putHtmlInStorageToPdf(String name, String srcPath, String htmlFileName, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putHtmlInStorageToPdfWithHttpInfo(name, srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putHtmlInStorageToPdfWithHttpInfo(name, srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putHtmlInStorageToPdfWithHttpInfo(name, srcPath, htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13748,8 +14906,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putImageInStorageToPdf(String name, ImageTemplatesRequest imageTemplates, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putImageInStorageToPdfWithHttpInfo(name, imageTemplates, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putImageInStorageToPdfWithHttpInfo(name, imageTemplates, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putImageInStorageToPdfWithHttpInfo(name, imageTemplates, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -13899,8 +15070,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putImagesExtractAsGif(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsGifWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putImagesExtractAsGifWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putImagesExtractAsGifWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14056,8 +15240,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putImagesExtractAsJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsJpegWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putImagesExtractAsJpegWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putImagesExtractAsJpegWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14213,8 +15410,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putImagesExtractAsPng(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsPngWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putImagesExtractAsPngWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putImagesExtractAsPngWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14370,8 +15580,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putImagesExtractAsTiff(String name, Integer pageNumber, Integer width, Integer height, String folder, String destFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putImagesExtractAsTiffWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putImagesExtractAsTiffWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putImagesExtractAsTiffWithHttpInfo(name, pageNumber, width, height, folder, destFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14516,8 +15739,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putLaTeXInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putLaTeXInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putLaTeXInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putLaTeXInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14653,8 +15889,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentResponse putMergeDocuments(String name, MergeDocuments mergeDocuments, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentResponse> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentResponse> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentResponse> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14795,8 +16044,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putMhtInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -14945,8 +16207,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageAddStamp(String name, Integer pageNumber, Stamp stamp, String storage, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageAddStampWithHttpInfo(name, pageNumber, stamp, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageAddStampWithHttpInfo(name, pageNumber, stamp, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageAddStampWithHttpInfo(name, pageNumber, stamp, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15105,8 +16380,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToBmp(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15267,8 +16555,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToEmf(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15429,8 +16730,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToGif(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15591,8 +16905,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToJpeg(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15753,8 +17080,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToPng(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -15915,8 +17255,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPageConvertToTiff(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -16061,8 +17414,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPclInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPclInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPclInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPclInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -16223,8 +17589,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToDoc(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Integer maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -16295,7 +17674,7 @@ public class PdfApi {
     /**
      * Build call for putPdfInRequestToEpub
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -16365,21 +17744,34 @@ public class PdfApi {
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param file A file to be converted. (optional)
      * @return SaaSposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToEpub(String outPath, String contentRecognitionMode, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToEpubWithHttpInfo(outPath, contentRecognitionMode, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToEpubWithHttpInfo(outPath, contentRecognitionMode, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToEpubWithHttpInfo(outPath, contentRecognitionMode, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;SaaSposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -16394,7 +17786,7 @@ public class PdfApi {
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -16613,8 +18005,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToHtml(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -16801,8 +18206,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToLaTeX(String outPath, Integer pagesCount, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, pagesCount, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, pagesCount, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, pagesCount, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -16931,8 +18349,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToMobiXml(String outPath, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToMobiXmlWithHttpInfo(outPath, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToMobiXmlWithHttpInfo(outPath, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToMobiXmlWithHttpInfo(outPath, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17068,8 +18499,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToPdfA(String outPath, String type, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17206,8 +18650,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToPptx(String outPath, Boolean separateImages, Boolean slidesAsImages, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17342,8 +18799,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToSvg(String outPath, Boolean compressOutputToZipArchive, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToSvgWithHttpInfo(outPath, compressOutputToZipArchive, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToSvgWithHttpInfo(outPath, compressOutputToZipArchive, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToSvgWithHttpInfo(outPath, compressOutputToZipArchive, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17532,8 +19002,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToTiff(String outPath, Double brightness, String compression, String colorDepth, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String orientation, Boolean skipBlankPages, Integer width, Integer height, Integer xResolution, Integer yResolution, Integer pageIndex, Integer pageCount, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToTiffWithHttpInfo(outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToTiffWithHttpInfo(outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToTiffWithHttpInfo(outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17706,8 +19189,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToXls(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17842,8 +19338,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToXml(String outPath, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXmlWithHttpInfo(outPath, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXmlWithHttpInfo(outPath, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXmlWithHttpInfo(outPath, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -17970,8 +19479,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInRequestToXps(String outPath, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXpsWithHttpInfo(outPath, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXpsWithHttpInfo(outPath, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInRequestToXpsWithHttpInfo(outPath, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -18140,8 +19662,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToDoc(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Integer maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -18215,7 +19750,7 @@ public class PdfApi {
      * Build call for putPdfInStorageToEpub
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -18294,14 +19829,27 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @return SaaSposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToEpub(String name, String outPath, String contentRecognitionMode, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToEpubWithHttpInfo(name, outPath, contentRecognitionMode, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToEpubWithHttpInfo(name, outPath, contentRecognitionMode, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToEpubWithHttpInfo(name, outPath, contentRecognitionMode, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -18309,7 +19857,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;SaaSposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -18325,7 +19873,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -18554,8 +20102,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToHtml(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -18754,8 +20315,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToLaTeX(String name, String outPath, Integer pagesCount, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, pagesCount, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, pagesCount, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, pagesCount, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -18896,8 +20470,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToMobiXml(String name, String outPath, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToMobiXmlWithHttpInfo(name, outPath, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToMobiXmlWithHttpInfo(name, outPath, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToMobiXmlWithHttpInfo(name, outPath, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19045,8 +20632,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToPdfA(String name, String outPath, String type, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19195,8 +20795,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToPptx(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19343,8 +20956,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToSvg(String name, String outPath, Boolean compressOutputToZipArchive, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToSvgWithHttpInfo(name, outPath, compressOutputToZipArchive, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToSvgWithHttpInfo(name, outPath, compressOutputToZipArchive, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToSvgWithHttpInfo(name, outPath, compressOutputToZipArchive, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19545,8 +21171,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToTiff(String name, String outPath, Double brightness, String compression, String colorDepth, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String orientation, Boolean skipBlankPages, Integer width, Integer height, Integer xResolution, Integer yResolution, Integer pageIndex, Integer pageCount, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToTiffWithHttpInfo(name, outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToTiffWithHttpInfo(name, outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToTiffWithHttpInfo(name, outPath, brightness, compression, colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages, width, height, xResolution, yResolution, pageIndex, pageCount, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19731,8 +21370,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToXls(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -19879,8 +21531,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToXml(String name, String outPath, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXmlWithHttpInfo(name, outPath, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXmlWithHttpInfo(name, outPath, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXmlWithHttpInfo(name, outPath, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20019,8 +21684,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPdfInStorageToXps(String name, String outPath, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXpsWithHttpInfo(name, outPath, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXpsWithHttpInfo(name, outPath, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPdfInStorageToXpsWithHttpInfo(name, outPath, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20152,8 +21830,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPrivileges(String name, DocumentPrivilege privileges, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPrivilegesWithHttpInfo(name, privileges, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPrivilegesWithHttpInfo(name, privileges, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPrivilegesWithHttpInfo(name, privileges, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20292,8 +21983,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putPsInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putPsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putPsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putPsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20431,8 +22135,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putSearchableDocument(String name, String storage, String folder, String lang) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putSearchableDocumentWithHttpInfo(name, storage, folder, lang);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putSearchableDocumentWithHttpInfo(name, storage, folder, lang);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putSearchableDocumentWithHttpInfo(name, storage, folder, lang);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20578,8 +22295,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public DocumentPropertyResponse putSetProperty(String name, String propertyName, DocumentProperty property, String storage, String folder) throws ApiException {
-        ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, property, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, property, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, property, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20754,8 +22484,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putSvgInStorageToPdf(String name, String srcPath, Boolean adjustPageSize, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putSvgInStorageToPdfWithHttpInfo(name, srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putSvgInStorageToPdfWithHttpInfo(name, srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putSvgInStorageToPdfWithHttpInfo(name, srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -20915,8 +22658,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public FieldResponse putUpdateField(String name, String fieldName, Field field, String storage, String folder) throws ApiException {
-        ApiResponse<FieldResponse> resp = putUpdateFieldWithHttpInfo(name, fieldName, field, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<FieldResponse> resp = putUpdateFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<FieldResponse> resp = putUpdateFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21056,8 +22812,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public FieldsResponse putUpdateFields(String name, Fields fields, String storage, String folder) throws ApiException {
-        ApiResponse<FieldsResponse> resp = putUpdateFieldsWithHttpInfo(name, fields, storage, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<FieldsResponse> resp = putUpdateFieldsWithHttpInfo(name, fields, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<FieldsResponse> resp = putUpdateFieldsWithHttpInfo(name, fields, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21226,8 +22995,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putWebInStorageToPdf(String name, String url, Double height, Double width, Boolean isLandscape, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putWebInStorageToPdfWithHttpInfo(name, url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putWebInStorageToPdfWithHttpInfo(name, url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putWebInStorageToPdfWithHttpInfo(name, url, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21370,8 +23152,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putXfaPdfInRequestToAcroForm(String outPath, File file) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putXfaPdfInRequestToAcroFormWithHttpInfo(outPath, file);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putXfaPdfInRequestToAcroFormWithHttpInfo(outPath, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putXfaPdfInRequestToAcroFormWithHttpInfo(outPath, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21508,8 +23303,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putXfaPdfInStorageToAcroForm(String name, String outPath, String folder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putXfaPdfInStorageToAcroFormWithHttpInfo(name, outPath, folder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putXfaPdfInStorageToAcroFormWithHttpInfo(name, outPath, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putXfaPdfInStorageToAcroFormWithHttpInfo(name, outPath, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21652,8 +23460,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putXmlInStorageToPdf(String name, String srcPath, String xslFilePath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putXmlInStorageToPdfWithHttpInfo(name, srcPath, xslFilePath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putXmlInStorageToPdfWithHttpInfo(name, srcPath, xslFilePath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putXmlInStorageToPdfWithHttpInfo(name, srcPath, xslFilePath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21794,8 +23615,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putXpsInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putXpsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putXpsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putXpsInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**
@@ -21934,8 +23768,21 @@ public class PdfApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public SaaSposeResponse putXslFoInStorageToPdf(String name, String srcPath, String dstFolder) throws ApiException {
-        ApiResponse<SaaSposeResponse> resp = putXslFoInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
-        return resp.getData();
+        try
+        {
+            ApiResponse<SaaSposeResponse> resp = putXslFoInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == HttpStatusCode.UNAUTHORIZED.getValue())
+            {
+                apiClient.refreshToken();
+                ApiResponse<SaaSposeResponse> resp = putXslFoInStorageToPdfWithHttpInfo(name, srcPath, dstFolder);
+                return resp.getData();
+            }
+            throw ex;
+        }
     }
 
     /**

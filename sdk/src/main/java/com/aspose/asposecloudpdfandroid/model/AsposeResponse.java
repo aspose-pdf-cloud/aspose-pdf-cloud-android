@@ -23,9 +23,6 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Color;
-import com.aspose.asposecloudpdfandroid.model.Link;
-import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -34,75 +31,54 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 
 /**
- * Represents text format DTO.
+ * Base class for all responses.
  */
-@ApiModel(description = "Represents text format DTO.")
+@ApiModel(description = "Base class for all responses.")
 
-public class TextFormat extends LinkElement {
-  @SerializedName("Color")
-  private Color color = null;
 
-  @SerializedName("FontSize")
-  private Double fontSize = null;
+public class AsposeResponse {
+  @SerializedName("Code")
+  private Integer code = null;
 
-  @SerializedName("FontName")
-  private String fontName = null;
+  @SerializedName("Status")
+  private String status = null;
 
-  public TextFormat color(Color color) {
-    this.color = color;
+  public AsposeResponse code(Integer code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get color
-   * @return color
+   * Response status code.
+   * @return code
   **/
-  @ApiModelProperty(value = "")
-  public Color getColor() {
-    return color;
+  @ApiModelProperty(required = true, value = "Response status code.")
+  public Integer getCode() {
+    return code;
   }
 
-  public void setColor(Color color) {
-    this.color = color;
+  public void setCode(Integer code) {
+    this.code = code;
   }
 
-  public TextFormat fontSize(Double fontSize) {
-    this.fontSize = fontSize;
+  public AsposeResponse status(String status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * Get fontSize
-   * @return fontSize
+   * Response status.
+   * @return status
   **/
-  @ApiModelProperty(value = "")
-  public Double getFontSize() {
-    return fontSize;
+  @ApiModelProperty(value = "Response status.")
+  public String getStatus() {
+    return status;
   }
 
-  public void setFontSize(Double fontSize) {
-    this.fontSize = fontSize;
-  }
-
-  public TextFormat fontName(String fontName) {
-    this.fontName = fontName;
-    return this;
-  }
-
-   /**
-   * Get fontName
-   * @return fontName
-  **/
-  @ApiModelProperty(value = "")
-  public String getFontName() {
-    return fontName;
-  }
-
-  public void setFontName(String fontName) {
-    this.fontName = fontName;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -114,27 +90,24 @@ public class TextFormat extends LinkElement {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TextFormat textFormat = (TextFormat) o;
-    return Objects.equals(this.color, textFormat.color) &&
-        Objects.equals(this.fontSize, textFormat.fontSize) &&
-        Objects.equals(this.fontName, textFormat.fontName) &&
-        super.equals(o);
+    AsposeResponse asposeResponse = (AsposeResponse) o;
+    return Objects.equals(this.code, asposeResponse.code) &&
+        Objects.equals(this.status, asposeResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, fontSize, fontName, super.hashCode());
+    return Objects.hash(code, status);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TextFormat {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
-    sb.append("    fontSize: ").append(toIndentedString(fontSize)).append("\n");
-    sb.append("    fontName: ").append(toIndentedString(fontName)).append("\n");
+    sb.append("class AsposeResponse {\n");
+    
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

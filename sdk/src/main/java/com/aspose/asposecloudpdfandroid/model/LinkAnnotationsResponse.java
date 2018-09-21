@@ -23,9 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotations;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,7 +38,7 @@ import java.io.IOException;
  * LinkAnnotationsResponse
  */
 
-public class LinkAnnotationsResponse extends SaaSposeResponse {
+public class LinkAnnotationsResponse extends AsposeResponse {
   @SerializedName("Links")
   private LinkAnnotations links = null;
 

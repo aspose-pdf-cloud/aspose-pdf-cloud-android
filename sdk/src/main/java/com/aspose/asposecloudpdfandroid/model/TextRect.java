@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Rectangle;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,7 +46,7 @@ public class TextRect {
   private Integer page = null;
 
   @SerializedName("Rect")
-  private Rectangle rect = null;
+  private RectanglePdf rect = null;
 
   public TextRect text(String text) {
     this.text = text;
@@ -84,7 +84,7 @@ public class TextRect {
     this.page = page;
   }
 
-  public TextRect rect(Rectangle rect) {
+  public TextRect rect(RectanglePdf rect) {
     this.rect = rect;
     return this;
   }
@@ -94,11 +94,11 @@ public class TextRect {
    * @return rect
   **/
   @ApiModelProperty(value = "")
-  public Rectangle getRect() {
+  public RectanglePdf getRect() {
     return rect;
   }
 
-  public void setRect(Rectangle rect) {
+  public void setRect(RectanglePdf rect) {
     this.rect = rect;
   }
 

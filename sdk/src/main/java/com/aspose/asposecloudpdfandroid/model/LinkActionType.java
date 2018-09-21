@@ -38,20 +38,25 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(LinkActionType.Adapter.class)
 public enum LinkActionType {
   
-  GO_TO_ACTION(0),
-  GO_TO_URI_ACTION(1),
-  JAVASCRIPT_ACTION(2),
-  LAUNCH_ACTION(3),
-  NAMED_ACTION(4),
-  SUBMIT_FORM_ACTION(5);
+  GOTOACTION("GoToAction"),
+  
+  GOTOURIACTION("GoToURIAction"),
+  
+  JAVASCRIPTACTION("JavascriptAction"),
+  
+  LAUNCHACTION("LaunchAction"),
+  
+  NAMEDACTION("NamedAction"),
+  
+  SUBMITFORMACTION("SubmitFormAction");
 
-  private Integer value;
+  private String value;
 
-  LinkActionType(Integer value) {
+  LinkActionType(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -77,7 +82,7 @@ public enum LinkActionType {
 
     @Override
     public LinkActionType read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return LinkActionType.fromValue(String.valueOf(value));
     }
   }

@@ -23,9 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
-import com.aspose.asposecloudpdfandroid.model.TextItem;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.Page;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,29 +35,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * TextItemResponse
+ * DocumentPageResponse
  */
 
-public class TextItemResponse extends SaaSposeResponse {
-  @SerializedName("TextItem")
-  private TextItem textItem = null;
+public class DocumentPageResponse extends AsposeResponse {
+  @SerializedName("Page")
+  private Page page = null;
 
-  public TextItemResponse textItem(TextItem textItem) {
-    this.textItem = textItem;
+  public DocumentPageResponse page(Page page) {
+    this.page = page;
     return this;
   }
 
    /**
-   * Get textItem
-   * @return textItem
+   * Get page
+   * @return page
   **/
   @ApiModelProperty(value = "")
-  public TextItem getTextItem() {
-    return textItem;
+  public Page getPage() {
+    return page;
   }
 
-  public void setTextItem(TextItem textItem) {
-    this.textItem = textItem;
+  public void setPage(Page page) {
+    this.page = page;
   }
 
 
@@ -70,23 +69,23 @@ public class TextItemResponse extends SaaSposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TextItemResponse textItemResponse = (TextItemResponse) o;
-    return Objects.equals(this.textItem, textItemResponse.textItem) &&
+    DocumentPageResponse documentPageResponse = (DocumentPageResponse) o;
+    return Objects.equals(this.page, documentPageResponse.page) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(textItem, super.hashCode());
+    return Objects.hash(page, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TextItemResponse {\n");
+    sb.append("class DocumentPageResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    textItem: ").append(toIndentedString(textItem)).append("\n");
+    sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -46,7 +46,7 @@ public class TextLine {
   private TextHorizontalAlignment horizontalAlignment = null;
 
   @SerializedName("Segments")
-  private List<Segment> segments = null;
+  private List<Segment> segments = new ArrayList<Segment>();
 
   public TextLine horizontalAlignment(TextHorizontalAlignment horizontalAlignment) {
     this.horizontalAlignment = horizontalAlignment;
@@ -72,9 +72,6 @@ public class TextLine {
   }
 
   public TextLine addSegmentsItem(Segment segmentsItem) {
-    if (this.segments == null) {
-      this.segments = new ArrayList<Segment>();
-    }
     this.segments.add(segmentsItem);
     return this;
   }
@@ -83,7 +80,7 @@ public class TextLine {
    * Segments that form the line. Every segment has its own formatting.
    * @return segments
   **/
-  @ApiModelProperty(value = "Segments that form the line. Every segment has its own formatting.")
+  @ApiModelProperty(required = true, value = "Segments that form the line. Every segment has its own formatting.")
   public List<Segment> getSegments() {
     return segments;
   }

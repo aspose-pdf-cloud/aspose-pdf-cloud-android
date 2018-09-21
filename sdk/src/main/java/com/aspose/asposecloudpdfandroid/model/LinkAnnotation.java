@@ -28,6 +28,7 @@ import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkActionType;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.aspose.asposecloudpdfandroid.model.LinkHighlightingMode;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,6 +56,12 @@ public class LinkAnnotation extends LinkElement {
 
   @SerializedName("Color")
   private Color color = null;
+
+  @SerializedName("Rect")
+  private RectanglePdf rect = null;
+
+  @SerializedName("Id")
+  private String id = null;
 
   public LinkAnnotation actionType(LinkActionType actionType) {
     this.actionType = actionType;
@@ -128,6 +135,42 @@ public class LinkAnnotation extends LinkElement {
     this.color = color;
   }
 
+  public LinkAnnotation rect(RectanglePdf rect) {
+    this.rect = rect;
+    return this;
+  }
+
+   /**
+   * Get rect
+   * @return rect
+  **/
+  @ApiModelProperty(value = "")
+  public RectanglePdf getRect() {
+    return rect;
+  }
+
+  public void setRect(RectanglePdf rect) {
+    this.rect = rect;
+  }
+
+  public LinkAnnotation id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -142,12 +185,14 @@ public class LinkAnnotation extends LinkElement {
         Objects.equals(this.action, linkAnnotation.action) &&
         Objects.equals(this.highlighting, linkAnnotation.highlighting) &&
         Objects.equals(this.color, linkAnnotation.color) &&
+        Objects.equals(this.rect, linkAnnotation.rect) &&
+        Objects.equals(this.id, linkAnnotation.id) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionType, action, highlighting, color, super.hashCode());
+    return Objects.hash(actionType, action, highlighting, color, rect, id, super.hashCode());
   }
 
 
@@ -160,6 +205,8 @@ public class LinkAnnotation extends LinkElement {
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    highlighting: ").append(toIndentedString(highlighting)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
+    sb.append("    rect: ").append(toIndentedString(rect)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,6 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.Link;
+import com.aspose.asposecloudpdfandroid.model.LinkAnnotation;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,16 +44,16 @@ import java.util.List;
 
 public class LinkAnnotations extends LinkElement {
   @SerializedName("List")
-  private List<LinkElement> list = null;
+  private List<LinkAnnotation> list = null;
 
-  public LinkAnnotations list(List<LinkElement> list) {
+  public LinkAnnotations list(List<LinkAnnotation> list) {
     this.list = list;
     return this;
   }
 
-  public LinkAnnotations addListItem(LinkElement listItem) {
+  public LinkAnnotations addListItem(LinkAnnotation listItem) {
     if (this.list == null) {
-      this.list = new ArrayList<LinkElement>();
+      this.list = new ArrayList<LinkAnnotation>();
     }
     this.list.add(listItem);
     return this;
@@ -63,11 +64,11 @@ public class LinkAnnotations extends LinkElement {
    * @return list
   **/
   @ApiModelProperty(value = "")
-  public List<LinkElement> getList() {
+  public List<LinkAnnotation> getList() {
     return list;
   }
 
-  public void setList(List<LinkElement> list) {
+  public void setList(List<LinkAnnotation> list) {
     this.list = list;
   }
 

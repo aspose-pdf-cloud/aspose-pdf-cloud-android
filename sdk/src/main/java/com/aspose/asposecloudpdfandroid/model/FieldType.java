@@ -38,18 +38,21 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(FieldType.Adapter.class)
 public enum FieldType {
   
-  TEXT(0),
-  INTEGER(1),
-  BOOLEAN(2),
-  LIST(3);
+  TEXT("Text"),
+  
+  INTEGER("Integer"),
+  
+  BOOLEAN("Boolean"),
+  
+  LIST("List");
 
-  private Integer value;
+  private String value;
 
-  FieldType(Integer value) {
+  FieldType(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -75,7 +78,7 @@ public enum FieldType {
 
     @Override
     public FieldType read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return FieldType.fromValue(String.valueOf(value));
     }
   }

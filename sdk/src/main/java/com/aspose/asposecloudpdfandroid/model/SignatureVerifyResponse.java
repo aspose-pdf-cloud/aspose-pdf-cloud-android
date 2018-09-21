@@ -23,8 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,7 +38,7 @@ import java.io.IOException;
  */
 @ApiModel(description = "Returns also a message.")
 
-public class SignatureVerifyResponse extends SaaSposeResponse {
+public class SignatureVerifyResponse extends AsposeResponse {
   @SerializedName("Valid")
   private Boolean valid = null;
 

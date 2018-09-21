@@ -23,8 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -38,7 +37,7 @@ import java.io.IOException;
  * TextReplaceResponse
  */
 
-public class TextReplaceResponse extends SaaSposeResponse {
+public class TextReplaceResponse extends AsposeResponse {
   @SerializedName("Matches")
   private Integer matches = null;
 

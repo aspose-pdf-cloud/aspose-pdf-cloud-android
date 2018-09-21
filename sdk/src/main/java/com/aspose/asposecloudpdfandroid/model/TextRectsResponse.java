@@ -23,8 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.TextRects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -39,7 +38,7 @@ import java.io.IOException;
  * TextRectsResponse
  */
 
-public class TextRectsResponse extends SaaSposeResponse {
+public class TextRectsResponse extends AsposeResponse {
   @SerializedName("TextOccurences")
   private TextRects textOccurences = null;
 

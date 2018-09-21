@@ -24,26 +24,32 @@ package com.aspose.asposecloudpdfandroid.api;
 
 import com.aspose.asposecloudpdfandroid.ApiException;
 import com.aspose.asposecloudpdfandroid.model.AnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.AnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.AppendDocument;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentsResponse;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.ColorDepth;
 import com.aspose.asposecloudpdfandroid.model.CompressionType;
+import com.aspose.asposecloudpdfandroid.model.Document;
+import com.aspose.asposecloudpdfandroid.model.DocumentPageResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPagesResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPrivilege;
 import com.aspose.asposecloudpdfandroid.model.DocumentPropertiesResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentProperty;
 import com.aspose.asposecloudpdfandroid.model.DocumentPropertyResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentResponse;
-import com.aspose.asposecloudpdfandroid.model.DocumentTextReplaceResponse;
 import com.aspose.asposecloudpdfandroid.model.FieldType;
+import com.aspose.asposecloudpdfandroid.model.Fields;
 import com.aspose.asposecloudpdfandroid.model.FontStyles;
 import com.aspose.asposecloudpdfandroid.model.ImageSrcType;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplate;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
+import com.aspose.asposecloudpdfandroid.model.LinkActionType;
+import com.aspose.asposecloudpdfandroid.model.LinkAnnotation;
+import com.aspose.asposecloudpdfandroid.model.LinkAnnotations;
 import com.aspose.asposecloudpdfandroid.model.PdfAType;
-import com.aspose.asposecloudpdfandroid.model.Rectangle;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.aspose.asposecloudpdfandroid.model.Field;
 import com.aspose.asposecloudpdfandroid.model.FieldResponse;
 import com.aspose.asposecloudpdfandroid.model.FieldsResponse;
@@ -58,31 +64,23 @@ import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 
 import java.io.File;
 
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
 import com.aspose.asposecloudpdfandroid.model.ImageResponse;
-import com.aspose.asposecloudpdfandroid.model.ImagesListRequest;
 import com.aspose.asposecloudpdfandroid.model.ImagesResponse;
 import com.aspose.asposecloudpdfandroid.model.LineSpacing;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.MergeDocuments;
 import com.aspose.asposecloudpdfandroid.model.OptimizeOptions;
-import com.aspose.asposecloudpdfandroid.model.PageTextReplaceResponse;
 import com.aspose.asposecloudpdfandroid.model.Paragraph;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.Signature;
 import com.aspose.asposecloudpdfandroid.model.SignatureType;
 import com.aspose.asposecloudpdfandroid.model.SignatureVerifyResponse;
 import com.aspose.asposecloudpdfandroid.model.SplitResultResponse;
 import com.aspose.asposecloudpdfandroid.model.Stamp;
-import com.aspose.asposecloudpdfandroid.model.TextFormatResponse;
-import com.aspose.asposecloudpdfandroid.model.TextItemResponse;
-import com.aspose.asposecloudpdfandroid.model.TextItemsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextRectsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceListRequest;
-import com.aspose.asposecloudpdfandroid.model.TextReplaceRequest;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceResponse;
-import com.aspose.asposecloudpdfandroid.model.TiffExportOptions;
 import com.aspose.asposecloudpdfandroid.model.WordCountResponse;
 import com.aspose.asposecloudpdfandroid.model.WrapMode;
 import com.google.gson.Gson;
@@ -135,10 +133,11 @@ public class PdfApiTest
     private void uploadFile(String name) throws ApiException
     {
         File file = new File(testDataFolder + "/" + name);
-        SaaSposeResponse response = pdfApi.putCreate(tempFolder + '/' + name, file, null, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = pdfApi.putCreate(tempFolder + '/' + name, file, null, null);
+        assertEquals(200, (int)response.getCode());
     }
 
+    //Annotations Tests
 
     /**
      * GetPageAnnotationsTest
@@ -153,9 +152,27 @@ public class PdfApiTest
 
         uploadFile(name);
         AnnotationsResponse response = pdfApi.getPageAnnotations(name, pageNumber, null, tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
+    /**
+     * GetPageAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        int pageNumber = 2;
+        int annotationNumber = 2;
+
+        uploadFile(name);
+        AnnotationResponse response = pdfApi.getPageAnnotation(name, pageNumber, annotationNumber,null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    //Append Tests
 
     /**
      * PostAppendDocumentUsingQueryParams Test
@@ -176,7 +193,7 @@ public class PdfApiTest
         int endPage = 4;
 
         DocumentResponse response = this.pdfApi.postAppendDocument(name, null, this.tempFolder + '/' + appendFileName, startPage, endPage, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -200,7 +217,7 @@ public class PdfApiTest
         appendDocument.setEndPage(4);
 
         DocumentResponse response = this.pdfApi.postAppendDocument(name, appendDocument, null, null, null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -215,13 +232,13 @@ public class PdfApiTest
     @Test
     public void getDocumentAttachmentByIndexTest() throws ApiException
     {
-        String name = "PdfWithEmbeddedFiles.pdf"; 
+        String name = "PdfWithEmbeddedFiles.pdf";
         this.uploadFile(name);
 
         int attachmentIndex = 1;
 
         AttachmentResponse response = this.pdfApi.getDocumentAttachmentByIndex(name, attachmentIndex, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -233,11 +250,11 @@ public class PdfApiTest
     @Test
     public void getDocumentAttachmentsTest() throws ApiException
     {
-        String name = "PdfWithEmbeddedFiles.pdf"; 
+        String name = "PdfWithEmbeddedFiles.pdf";
         this.uploadFile(name);
 
         AttachmentsResponse response = this.pdfApi.getDocumentAttachments(name, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -249,7 +266,7 @@ public class PdfApiTest
     @Test
     public void getDownloadDocumentAttachmentByIndexTest() throws ApiException
     {
-        String name = "PdfWithEmbeddedFiles.pdf"; 
+        String name = "PdfWithEmbeddedFiles.pdf";
         this.uploadFile(name);
 
         int attachmentIndex = 1;
@@ -257,7 +274,6 @@ public class PdfApiTest
         File response = this.pdfApi.getDownloadDocumentAttachmentByIndex(name, attachmentIndex, null, this.tempFolder);
         assertNotNull(response);
     }
-
 
     // Bookmarks Tests
 
@@ -270,92 +286,1286 @@ public class PdfApiTest
     @Test
     public void getDocumentBookmarksTest() throws ApiException
     {
-        String name = "PdfWithBookmarks.pdf"; 
+        String name = "PdfWithBookmarks.pdf";
         this.uploadFile(name);
 
         File response = this.pdfApi.getDocumentBookmarks(name, null, null, this.tempFolder);
         assertNotNull(response);
     }
 
-
-    // Document Save As Tiff Tests
+    // Convert Tests
 
     /**
-     * PutDocumentSaveAsTiffUsingQueryParams Test
+     * GetPdfInStorageToDoc Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void putDocumentSaveAsTiffUsingQueryParamsTest() throws ApiException
+    public void getPdfInStorageToDocTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
-
-        String resultFile = "4pages.tiff"; 
-        double brightness = 0.6;
-        String compression = CompressionType.CCITT4.toString();
-        String colorDepth = ColorDepth.FORMAT1BPP.toString();
-        int leftMargin = 0;
-        int rightMargin = 0;
-        int topMargin = 0;
-        int bottomMargin = 0;
-        String orientation = ShapeType.PORTRAIT.toString();
-        boolean skipBlankPages = true;
-        int width = 1200;
-        int height = 1600;
-        int xResolution = 200;
-        int yResolution = 200;
-        int pageIndex = 2;
-        int pageCount = 2;
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.putDocumentSaveAsTiff(name, null, resultFile, brightness, compression,
-                colorDepth, leftMargin, rightMargin, topMargin, bottomMargin, orientation, skipBlankPages,
-                width, height, xResolution, yResolution, pageIndex, pageCount, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        File response = this.pdfApi.getPdfInStorageToDoc(name, null, null, null, null, null, null, null, null, folder, null);
+        assertNotNull(response);
     }
 
     /**
-     * PutDocumentSaveAsTiffUsingBodyParams Test
+     * PutPdfInStorageToDoc Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void putDocumentSaveAsTiffUsingBodyParamsTest() throws ApiException
+    public void putPdfInStorageToDocTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+        String folder = this.tempFolder;
+        String resFileName = "result.doc";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToDoc(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToDoc Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToDocTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.doc";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToDoc(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToPdfA Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToPdfATest() throws ApiException
+    {
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
-        TiffExportOptions exportOptions = new TiffExportOptions();
-        exportOptions.setResultFile("4pages.tiff");
-        exportOptions.setBrightness(0.6);
-        exportOptions.setCompression(CompressionType.CCITT4);
-        exportOptions.setColorDepth(ColorDepth.FORMAT1BPP);
-        exportOptions.setLeftMargin(0);
-        exportOptions.setRightMargin(0);
-        exportOptions.setTopMargin(0);
-        exportOptions.setBottomMargin(0);
-        exportOptions.setOrientation(ShapeType.PORTRAIT);
-        exportOptions.setSkipBlankPages(true);
-        exportOptions.setWidth(1200);
-        exportOptions.setHeight(1600);
-        exportOptions.setXresolution(200);
-        exportOptions.setYresolution(200);
-        exportOptions.setPageIndex(2);
-        exportOptions.setPageCount(2);
+        String type = PdfAType.PDFA1A.toString();
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToPdfA(name, type, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToPdfA Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToPdfATest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String type = PdfAType.PDFA1A.toString();
+        String folder = this.tempFolder;
+        String resFileName = "result.pdf";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToPdfA(name, this.tempFolder + '/' + resFileName, type, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToPdfA Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToPdfATest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String type = PdfAType.PDFA1A.toString();
+        String resFileName = "result.pdf";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToPdfA(this.tempFolder + '/' + resFileName, type, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToTiffTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
 
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.putDocumentSaveAsTiff(name, exportOptions, null,
-                null, null, null, null, null,
-                null, null, null, null, null,
-                null, null, null, null, null,
-                null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+
+        File response = this.pdfApi.getPdfInStorageToTiff(name, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null);
+        assertNotNull(response);
     }
 
+    /**
+     * PutPdfInStorageToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToTiffTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.tiff";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToTiff(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToTiffTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.tiff";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToTiff(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToSvg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToSvgTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToSvg(name, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToSvg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToSvgTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.svg";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToSvg(name, this.tempFolder + '/' + resFileName, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToSvg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToSvgTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.svg";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToSvg(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToXps Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToXpsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToXps(name, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToXps Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToXpsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.xps";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToXps(name, this.tempFolder + '/' + resFileName, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToXps Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToXpsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.xps";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToXps(this.tempFolder + '/' + resFileName, null , file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToXls Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToXlsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToXls(name, null, null, null, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToXls Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToXlsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.xls";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToXls(name, this.tempFolder + '/' + resFileName, null, null, null, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToXls Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToXlsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.xls";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToXls(this.tempFolder + '/' + resFileName, null, null, null, null, null , file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPdfInStorageToHtml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToHtmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToHtml(name, null, null, null, null, null,  null,  null, null,
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToHtml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToHtmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.zip";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToHtml(
+                name,
+                this.tempFolder + '/' + resFileName,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                folder,
+                null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToHtml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToHtmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.zip";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToHtml(
+                this.tempFolder + '/' + resFileName,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToEpub Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToEpubTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToEpub(name, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToEpub Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToEpubTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.epub";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToEpub(name, this.tempFolder + '/' + resFileName, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToEpub Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToEpubTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.epub";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToEpub(this.tempFolder + '/' + resFileName, null, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPdfInStorageToPptx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToPptxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToPptx(name, null, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToPptx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToPptxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.pptx";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToPptx(name, this.tempFolder + '/' + resFileName, null, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToPptx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToPptxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.pptx";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToPptx(this.tempFolder + '/' + resFileName, null, null, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPdfInStorageToLaTeX Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToLaTeXTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToLaTeX(name, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToLaTeX Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToLaTeXTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.latex";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToLaTeX(name, this.tempFolder + '/' + resFileName, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToLaTeX Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToLaTeXTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.latex";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToLaTeX(this.tempFolder + '/' + resFileName, null, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPdfInStorageToMobiXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToMobiXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToMobiXml(name, folder, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutPdfInStorageToMobiXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToMobiXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.mobi";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToMobiXml(name, this.tempFolder + '/' + resFileName, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutPdfInRequestToMobiXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToMobiXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.mobi";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToMobiXml(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetXfaPdfInStorageToAcroForm Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXfaPdfInStorageToAcroFormTest() throws ApiException
+    {
+        String name = "PdfWithXfaForm.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getXfaPdfInStorageToAcroForm(name, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutXfaPdfInStorageToAcroForm Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXfaPdfInStorageToAcroFormTest() throws ApiException
+    {
+        String name = "PdfWithXfaForm.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.pdf";
+
+        AsposeResponse response = this.pdfApi.putXfaPdfInStorageToAcroForm(name, this.tempFolder + '/' + resFileName, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutXfaPdfInRequestToAcroForm Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXfaPdfInRequestToAcroFormTest() throws ApiException
+    {
+        String name = "PdfWithXfaForm.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.pdf";
+
+        AsposeResponse response = this.pdfApi.putXfaPdfInRequestToAcroForm(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPdfInStorageToXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToXml(name, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.xml";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToXml(name, this.tempFolder + '/' + resFileName, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToXml Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToXmlTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.xml";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToXml(this.tempFolder + '/' + resFileName, null, file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Convert To PDF Tests
+
+    /**
+     * GetEpubInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getEpubInStorageToPdfTest() throws ApiException
+    {
+        String name = "4pages.epub";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getEpubInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutEpubInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putEpubInStorageToPdfTest() throws ApiException
+    {
+        String name = "4pages.epub";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromEpub.pdf";
+
+        AsposeResponse response = this.pdfApi.putEpubInStorageToPdf(resultName, srcPath, null, this.tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetWebInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getWebInStorageToPdfTest() throws ApiException
+    {
+        String sourceUrl = "http://google.com";
+
+        File response = this.pdfApi.getWebInStorageToPdf(sourceUrl, null, null , null,
+                null, null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutWebInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putWebInStorageToPdfTest() throws ApiException
+    {
+        String sourceUrl = "http://google.com";
+        String resultName = "fromWeb.pdf";
+
+        AsposeResponse response = this.pdfApi.putWebInStorageToPdf(resultName, sourceUrl, null,
+                null, null, null, null, null,
+                null, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetLaTeXInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getLaTeXInStorageToPdfTest() throws ApiException
+    {
+        String name = "TexExample.tex";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getLaTeXInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutLaTeXInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putLaTeXInStorageToPdfTest() throws ApiException
+    {
+        String name = "TexExample.tex";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromTex.pdf";
+
+        AsposeResponse response = this.pdfApi.putLaTeXInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetMhtInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getMhtInStorageToPdfTest() throws ApiException
+    {
+        String name = "MhtExample.mht";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getMhtInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutMhtInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putMhtInStorageToPdfTest() throws ApiException
+    {
+        String name = "MhtExample.mht";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromMht.pdf";
+
+        AsposeResponse response = this.pdfApi.putMhtInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetHtmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getHtmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "HtmlWithImage.zip";
+        this.uploadFile(name);
+
+        String htmlFileName = "HtmlWithImage.html";
+        double height = 650;
+        double width = 250;
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getHtmlInStorageToPdf(srcPath, htmlFileName, height, width,
+                null, null, null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutHtmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putHtmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "HtmlWithImage.zip";
+        this.uploadFile(name);
+
+        String htmlFileName = "HtmlWithImage.html";
+        double height = 650;
+        double width = 250;
+        String resultName = "fromHtml.pdf";
+        String srcPath = this.tempFolder + '/' + name;
+
+
+        AsposeResponse response = this.pdfApi.putHtmlInStorageToPdf(name, srcPath, htmlFileName,
+                height, width, null, null, null,
+                null, null, null, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetXslFoInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXslFoInStorageToPdfTest() throws ApiException
+    {
+        String name = "XslfoExample.xslfo";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXslFoInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXslFoInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXslFoInStorageToPdfTest() throws ApiException
+    {
+        String name = "XslfoExample.xslfo";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXlsFo.pdf";
+
+        AsposeResponse response = this.pdfApi.putXslFoInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetXpsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXpsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.xps";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXpsInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXpsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXpsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.xps";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXps.pdf";
+
+        AsposeResponse response = this.pdfApi.putXpsInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetSvgInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getSvgInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.svg";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getSvgInStorageToPdf(srcPath, null, null, null,
+                null, null, null, null, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutSvgInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putSvgInStorageToPdfTest() throws ApiException
+    {
+        String name = "Simple.svg";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromSvg.pdf";
+
+        AsposeResponse response = this.pdfApi.putSvgInStorageToPdf(resultName, srcPath, null,
+                null, null, null, null, null,
+                null, null, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPclInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPclInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.pcl";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getPclInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutPclInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPclInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.pcl";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromPcl.pdf";
+
+        AsposeResponse response = this.pdfApi.putPclInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetXmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getXmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.xml";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getXmlInStorageToPdf(srcPath, null, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutXmlInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putXmlInStorageToPdfTest() throws ApiException
+    {
+        String name = "template.xml";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromXml.pdf";
+
+        AsposeResponse response = this.pdfApi.putXmlInStorageToPdf(resultName, srcPath, null, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Typography.PS";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+
+        File response = this.pdfApi.getPsInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutPsInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPsInStorageToPdfTest() throws ApiException
+    {
+        String name = "Typography.PS";
+        this.uploadFile(name);
+
+
+        String srcPath = this.tempFolder + '/' + name;
+        String resultName = "fromPs.pdf";
+
+        AsposeResponse response = this.pdfApi.putPsInStorageToPdf(resultName, srcPath, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutImageInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putImageInStorageToPdfTest() throws ApiException
+    {
+        final String dataFile1 = "33539.jpg";
+        this.uploadFile(dataFile1);
+
+        final String dataFile2 = "44781.jpg";
+        this.uploadFile(dataFile2);
+
+        String resultName = "result.pdf";
+
+
+        ImageTemplatesRequest imageTemplatesRequest = new ImageTemplatesRequest()
+                .isOCR(true)
+                .ocRLangs("eng")
+                .imagesList(new ArrayList<ImageTemplate>(){{
+                    add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile1).imageSrcType(ImageSrcType.COMMON));
+                    add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile2).imageSrcType(ImageSrcType.COMMON));
+                }});
+
+        AsposeResponse response = this.pdfApi.putImageInStorageToPdf(resultName, imageTemplatesRequest, this.tempFolder, null);
+        assertEquals(201, (int)response.getCode());
+    }
 
     // Document Tests
 
@@ -368,13 +1578,13 @@ public class PdfApiTest
     @Test
     public void getDocumentTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
-        File response = this.pdfApi.getDocument(name, null, null, folder, null);
-        assertNotNull(response);
+        DocumentResponse response = this.pdfApi.getDocument(name, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -387,7 +1597,7 @@ public class PdfApiTest
     @Test
     public void postOptimizeDocumentTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         OptimizeOptions optimizeOptions = new OptimizeOptions();
@@ -401,8 +1611,8 @@ public class PdfApiTest
 
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.postOptimizeDocument(name, optimizeOptions, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.postOptimizeDocument(name, optimizeOptions, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -414,30 +1624,13 @@ public class PdfApiTest
     @Test
     public void postSplitDocumentTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
         SplitResultResponse response = this.pdfApi.postSplitDocument(name, null, null, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PutConvertDocument Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putConvertDocumentTest() throws ApiException
-    {
-        String url = "http://pdf995.com/samples/pdf.pdf";
-        String format = "tiff";
-
-        File response = this.pdfApi.putConvertDocument(format, url, null, null);
-        assertNotNull(response);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -450,68 +1643,12 @@ public class PdfApiTest
     @Test
     public void putCreateEmptyDocumentTest() throws ApiException
     {
-        String name = "empty.pdf"; 
+        String name = "empty.pdf";
 
         String folder = this.tempFolder;
 
-        DocumentResponse response = this.pdfApi.putCreateDocument(name, null, null, null, null, folder, null, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PutCreateDocument Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putCreateDocumentTest() throws ApiException
-    {
-        String name = "HtmlExample1.pdf"; 
-        String templateName = "HtmlExample1.html"; 
-        String folder = this.tempFolder;
-        String templateFile = folder + '/' + templateName;
-
-        this.uploadFile(templateName);
-
-        String templateType = "html";
-
-        DocumentResponse response = this.pdfApi.putCreateDocument(name, templateFile, null, templateType,
-                null, folder, null, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PutCreateDocumentFromImages Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putCreateDocumentFromImagesTest() throws ApiException
-    {
-        final String image1 = "33539.jpg";
-        this.uploadFile(image1);
-
-        final String image2 = "44781.jpg";
-        this.uploadFile(image2);
-
-        String resultDocName = "pdffromimagesinquery.pdf"; 
-        String folder = this.tempFolder;
-
-        ImagesListRequest images = new ImagesListRequest();
-        List<String> imagesList = new ArrayList<String>(){{
-            add(tempFolder + '/' + image1);
-            add(tempFolder + '/' + image2);
-        }};
-        images.setImagesList(imagesList);
-
-        boolean ocr = false;
-        String ocrLang = "eng";
-        DocumentResponse response = this.pdfApi.putCreateDocumentFromImages(resultDocName, images , ocr, ocrLang, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        DocumentResponse response = this.pdfApi.putCreateDocument(name, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -526,14 +1663,14 @@ public class PdfApiTest
     @Test
     public void getFieldTest() throws ApiException
     {
-        String name = "PdfWithAcroForm.pdf"; 
+        String name = "PdfWithAcroForm.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
         String fieldName = "textField";
 
         FieldResponse response = this.pdfApi.getField(name, fieldName, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -546,13 +1683,13 @@ public class PdfApiTest
     @Test
     public void getFieldsTest() throws ApiException
     {
-        String name = "PdfWithAcroForm.pdf"; 
+        String name = "PdfWithAcroForm.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
         FieldsResponse response = this.pdfApi.getFields(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -568,12 +1705,11 @@ public class PdfApiTest
         String name = "Hello world.pdf";
         this.uploadFile(name);
 
-        Rectangle rect = new Rectangle();
-        rect.setX(50);
-        rect.setY(200);
-        rect.setWidth(150);
-        rect.setHeight(200);
-
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(50.)
+                .LLY(200.)
+                .URX(200.)
+                .URY(400.);
 
         Field field = new Field();
         field.setName("checkboxfield");
@@ -584,8 +1720,61 @@ public class PdfApiTest
         int pageNumber = 1;
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.postCreateField(name, pageNumber, field, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.postCreateField(name, pageNumber, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutUpdateField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putUpdateFieldTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        String fieldName = "textField";
+
+        Field field = new Field();
+        field.setName(fieldName);
+        field.setValues(new ArrayList<String>(){{ add("Text field updated value.");}});
+        field.setType(FieldType.TEXT);
+
+        String folder = this.tempFolder;
+
+        FieldResponse response = this.pdfApi.putUpdateField(name, fieldName, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutUpdateField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putUpdateFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        Field field = new Field();
+        field.setName("textField");
+        field.setValues(new ArrayList<String>(){{ add("1");}});
+        field.setType(FieldType.TEXT);
+
+        ArrayList<Field> fieldsList = new ArrayList<Field>();
+        fieldsList.add(field);
+
+        Fields fields = new Fields().list(fieldsList);
+
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.putUpdateFields(name, fields,null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -598,41 +1787,15 @@ public class PdfApiTest
     @Test
     public void deleteFieldTest() throws ApiException
     {
-        String name = "PdfWithAcroForm.pdf"; 
+        String name = "PdfWithAcroForm.pdf";
         this.uploadFile(name);
 
-        String fieldName = "textField"; 
+        String fieldName = "textField";
 
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.deleteField(name, fieldName, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PutUpdateField Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putUpdateFieldTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        String fieldName = "textField"; 
-
-        Field field = new Field();
-        field.setName(fieldName);
-        field.setValues(new ArrayList<String>(){{ add("Text field updated value.");}});
-        field.setType(FieldType.TEXT);
-
-        String folder = this.tempFolder;
-
-        FieldResponse response = this.pdfApi.putUpdateField(name, fieldName, field, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.deleteField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -645,142 +1808,13 @@ public class PdfApiTest
     @Test
     public void putFieldsFlattenTest() throws ApiException
     {
-        String name = "PdfWithAcroForm.pdf"; 
+        String name = "PdfWithAcroForm.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.putFieldsFlatten(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Fragments And Segments Tests
-
-    /**
-     * GetFragment Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getFragmentTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int fragmentNumber = 1;
-        String folder = this.tempFolder;
-
-        TextItemsResponse response = this.pdfApi.getFragment(name, pageNumber, fragmentNumber, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetFragmentTextFormat Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getFragmentTextFormatTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int fragmentNumber = 1;
-        String folder = this.tempFolder;
-
-        TextFormatResponse response = this.pdfApi.getFragmentTextFormat(name, pageNumber, fragmentNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetFragments Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getFragmentsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        String folder = this.tempFolder;
-
-        TextItemsResponse response = this.pdfApi.getFragments(name, pageNumber, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetSegment Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getSegmentTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int fragmentNumber = 1;
-        int segmentNumber = 1;
-        String folder = this.tempFolder;
-
-        TextItemResponse response = this.pdfApi.getSegment(name, pageNumber, fragmentNumber, segmentNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetSegmentTextFormat Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getSegmentTextFormatTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int fragmentNumber = 1;
-        int segmentNumber = 1;
-        String folder = this.tempFolder;
-
-        TextFormatResponse response = this.pdfApi.getSegmentTextFormat(name, pageNumber, fragmentNumber, segmentNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetSegments Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getSegmentsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int fragmentNumber = 1;
-        String folder = this.tempFolder;
-
-        TextItemsResponse response = this.pdfApi.getSegments(name, pageNumber, fragmentNumber, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.putFieldsFlatten(name, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -795,17 +1829,43 @@ public class PdfApiTest
     @Test
     public void getImageTest() throws ApiException
     {
-        String name = "PdfWithImages2.pdf"; 
+        String name = "PdfWithImages2.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
-        int imageNumber = 1;
         String folder = this.tempFolder;
 
-        File response = this.pdfApi.getImage(name, pageNumber, imageNumber, null, 0, 0, null, folder);
-        assertNotNull(response);
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, folder);
+        assertEquals((int)imagesResponse.getCode(), 200);
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        ImageResponse response = this.pdfApi.getImage(name, imageId, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
+
+    /**
+     * DeleteImage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deleteImageTest() throws ApiException
+    {
+        String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        String folder = this.tempFolder;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, folder);
+        assertEquals((int)imagesResponse.getCode(), 200);
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        AsposeResponse response = this.pdfApi.deleteImage(name, imageId, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 
     /**
      * GetImages Test
@@ -816,14 +1876,14 @@ public class PdfApiTest
     @Test
     public void getImagesTest() throws ApiException
     {
-        String name = "PdfWithImages2.pdf"; 
+        String name = "PdfWithImages2.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
         String folder = this.tempFolder;
 
         ImagesResponse response = this.pdfApi.getImages(name, pageNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -834,65 +1894,53 @@ public class PdfApiTest
      */
 
     @Test
-    public void postReplaceImageTest() throws ApiException
+    public void putReplaceImageTest() throws ApiException
     {
-        String name = "PdfWithImages2.pdf"; 
+        String name = "PdfWithImages2.pdf";
         this.uploadFile(name);
 
-        String imageFileName = "Koala.jpg"; 
+        String imageFileName = "Koala.jpg";
         this.uploadFile(imageFileName);
 
         int pageNumber = 1;
-        int imageNumber = 1;
         String folder = this.tempFolder;
         String imageFile = folder + '/' + imageFileName;
 
-        ImageResponse response = this.pdfApi.postReplaceImage(name, pageNumber, imageNumber, imageFile, null, folder, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, folder);
+        assertEquals((int)imagesResponse.getCode(), 200);
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        ImageResponse response = this.pdfApi.putReplaceImage(name, imageId, imageFile, null, folder, null);
+        assertEquals(200, (int)response.getCode());
     }
 
+
     /**
-     * GetImageWithFormat Test
+     * PostInsertImage Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void getImageWithFormatTest() throws ApiException
+    public void postInsertImageTest() throws ApiException
     {
-        String name = "PdfWithImages2.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int imageNumber = 1;
-        String folder = this.tempFolder;
-
-        File response = this.pdfApi.getImage(name, pageNumber, imageNumber, "jpeg", 100, 100, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PostReplaceImageFromRequest Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postReplaceImageFromRequestTest() throws ApiException
-    {
-        String name = "PdfWithImages2.pdf"; 
+        String name = "PdfWithImages2.pdf";
         this.uploadFile(name);
 
         String imageFileName = "Koala.jpg";
         File file = new File(testDataFolder + "/" + imageFileName);
 
         int pageNumber = 1;
-        int imageNumber = 1;
         String folder = this.tempFolder;
         String imageFile = folder + '/' + imageFileName;
 
-        ImageResponse response = this.pdfApi.postReplaceImage(name, pageNumber, imageNumber, null, null, folder, file);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        double llx = 10;
+        double lly = 10;
+        double urx = 100;
+        double ury = 100;
+
+        AsposeResponse response = this.pdfApi.postInsertImage(name, pageNumber, llx, lly, urx, ury, imageFile, null, folder, null);
+        assertEquals(201, (int)response.getCode());
     }
 
 
@@ -911,9 +1959,9 @@ public class PdfApiTest
         int pageNumber = 1;
         final String destFolder = this.tempFolder + '/' + "extract_jpg";
 
-        SaaSposeResponse response = this.pdfApi.putImagesExtractAsJpeg(name, pageNumber, null, null,
+        AsposeResponse response = this.pdfApi.putImagesExtractAsJpeg(name, pageNumber, null, null, null,
                 this.tempFolder, destFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -931,9 +1979,9 @@ public class PdfApiTest
         int pageNumber = 1;
         final String destFolder = this.tempFolder + '/' + "extract_tiff";
 
-        SaaSposeResponse response = this.pdfApi.putImagesExtractAsTiff(name, pageNumber, null, null,
+        AsposeResponse response = this.pdfApi.putImagesExtractAsTiff(name, pageNumber, null, null, null,
                 this.tempFolder, destFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -951,9 +1999,9 @@ public class PdfApiTest
         int pageNumber = 1;
         final String destFolder = this.tempFolder + '/' + "extract_gif";
 
-        SaaSposeResponse response = this.pdfApi.putImagesExtractAsGif(name, pageNumber, null, null,
+        AsposeResponse response = this.pdfApi.putImagesExtractAsGif(name, pageNumber, null, null, null,
                 this.tempFolder, destFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -971,31 +2019,263 @@ public class PdfApiTest
         int pageNumber = 1;
         final String destFolder = this.tempFolder + '/' + "extract_png";
 
-        SaaSposeResponse response = this.pdfApi.putImagesExtractAsPng(name, pageNumber, null, null,
+        AsposeResponse response = this.pdfApi.putImagesExtractAsPng(name, pageNumber, null, null, null,
                 this.tempFolder, destFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
-    // Links Tests
 
     /**
-     * GetPageLinkAnnotationByIndex Test
+     * PutImageExtractAsJpeg Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void getPageLinkAnnotationByIndexTest() throws ApiException
+    public void putImageExtractAsJpegTest() throws ApiException
     {
-        String name = "PdfWithLinks.pdf"; 
+        final String name = "PdfWithImages2.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
-        int linkIndex = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        final String destFolder = this.tempFolder + '/' + "extract_jpg";
+
+        AsposeResponse response = this.pdfApi.putImageExtractAsJpeg(name, imageId, null, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetImageExtractAsJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getImageExtractAsJpegTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+
+        File response = this.pdfApi.getImageExtractAsJpeg(name, imageId, null, null, null,
+                this.tempFolder);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutImageExtractAsTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImageExtractAsTiffTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        final String destFolder = this.tempFolder + '/' + "extract_tiff";
+
+        AsposeResponse response = this.pdfApi.putImageExtractAsTiff(name, imageId, null, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetImageExtractAsTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getImageExtractAsTiffTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+
+        File response = this.pdfApi.getImageExtractAsTiff(name, imageId, null, null, null,
+                this.tempFolder);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutImageExtractAsGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImageExtractAsGifTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        final String destFolder = this.tempFolder + '/' + "extract_gif";
+
+        AsposeResponse response = this.pdfApi.putImageExtractAsGif(name, imageId, null, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetImageExtractAsGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getImageExtractAsGifTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+
+        File response = this.pdfApi.getImageExtractAsGif(name, imageId, null, null, null,
+                this.tempFolder);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutImageExtractAsPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putImageExtractAsPngTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+        final String destFolder = this.tempFolder + '/' + "extract_png";
+
+        AsposeResponse response = this.pdfApi.putImageExtractAsPng(name, imageId, null, null, null,
+                this.tempFolder, destFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetImageExtractAsPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getImageExtractAsPngTest() throws ApiException
+    {
+        final String name = "PdfWithImages2.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+
+        ImagesResponse imagesResponse = this.pdfApi.getImages(name, pageNumber, null, this.tempFolder);
+        assertEquals(200, (int)imagesResponse.getCode());
+        String imageId = imagesResponse.getImages().getList().get(0).getId();
+
+
+        File response = this.pdfApi.getImageExtractAsPng(name, imageId, null, null, null,
+                this.tempFolder);
+        assertNotNull(response);
+    }
+
+
+    // Links Tests
+
+    /**
+     * GetPageLinkAnnotation Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageLinkAnnotationTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
         String folder = this.tempFolder;
 
-        LinkAnnotationResponse response = this.pdfApi.getPageLinkAnnotationByIndex(name, pageNumber, linkIndex, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        LinkAnnotationsResponse linksResponse = this.pdfApi.getPageLinkAnnotations(name, pageNumber, null, folder);
+        assertEquals(200, (int)linksResponse.getCode());
+        String linkId = linksResponse.getLinks().getList().get(0).getId();
+
+        LinkAnnotationResponse response = this.pdfApi.getPageLinkAnnotation(name, pageNumber, linkId, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * DeleteLinkAnnotation Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deleteLinkAnnotationTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        String folder = this.tempFolder;
+
+        LinkAnnotationsResponse linksResponse = this.pdfApi.getPageLinkAnnotations(name, pageNumber, null, folder);
+        assertEquals(200, (int)linksResponse.getCode());
+        String linkId = linksResponse.getLinks().getList().get(0).getId();
+
+        AsposeResponse response = this.pdfApi.deleteLinkAnnotation(name, linkId, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1008,14 +2288,110 @@ public class PdfApiTest
     @Test
     public void getPageLinkAnnotationsTest() throws ApiException
     {
-        String name = "PdfWithLinks.pdf"; 
+        String name = "PdfWithLinks.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
         String folder = this.tempFolder;
 
         LinkAnnotationsResponse response = this.pdfApi.getPageLinkAnnotations(name, pageNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * PostPageLinkAnnotations Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postPageLinkAnnotationsTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        String folder = this.tempFolder;
+
+        LinkAnnotation link = new LinkAnnotation()
+                .actionType(LinkActionType.GOTOURIACTION)
+                .action("https://products.aspose.cloud/pdf")
+                .rect(new RectanglePdf().LLX(100.).LLY(100.).URX(500.).URY(500.));
+
+        ArrayList<LinkAnnotation> links = new ArrayList<>();
+        links.add(link);
+
+        AsposeResponse response = this.pdfApi.postPageLinkAnnotations(name, pageNumber, links, null, folder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutLinkAnnotation Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putLinkAnnotationTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        String folder = this.tempFolder;
+
+        LinkAnnotation link = new LinkAnnotation()
+                .actionType(LinkActionType.GOTOURIACTION)
+                .action("https://products.aspose.cloud/pdf")
+                .rect(new RectanglePdf().LLX(100.).LLY(100.).URX(500.).URY(500.));
+
+        LinkAnnotationsResponse linksResponse = this.pdfApi.getPageLinkAnnotations(name, pageNumber, null, folder);
+        assertEquals(200, (int)linksResponse.getCode());
+        String linkId = linksResponse.getLinks().getList().get(0).getId();
+
+        AsposeResponse response = this.pdfApi.putLinkAnnotation(name, linkId, link, null, folder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * DeletePageLinkAnnotations Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deletePageLinkAnnotationsTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.deletePageLinkAnnotations(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * DeleteDocumentLinkAnnotations Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deleteDocumentLinkAnnotationsTest() throws ApiException
+    {
+        String name = "PdfWithLinks.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.deleteDocumentLinkAnnotations(name, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1040,7 +2416,7 @@ public class PdfApiTest
             this.uploadFile(name);
         }
 
-        String resultName = "MergingResult.pdf"; 
+        String resultName = "MergingResult.pdf";
 
         MergeDocuments mergeDocuments = new MergeDocuments();
 
@@ -1054,9 +2430,270 @@ public class PdfApiTest
         String folder = this.tempFolder;
 
         DocumentResponse response = this.pdfApi.putMergeDocuments(resultName, mergeDocuments, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
+
+    // OCR Tests
+
+    /**
+     * PutSearchableDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putSearchableDocumentTest() throws ApiException
+    {
+        String name = "rusdoc.pdf";
+        this.uploadFile(name);
+
+        String lang = "rus,eng";
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.putSearchableDocument(name, null, folder, lang);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutSearchableDocumentWithDefaultLang Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putSearchableDocumentWithDefaultLangTest() throws ApiException
+    {
+        String name = "rusdoc.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.putSearchableDocument(name, null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    // Page Convert To Image Tests
+
+    /**
+     * GetPageConvertToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToTiffTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToTiff(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToTiff Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToTiffTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.tiff";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToTiff(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageConvertToJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToJpegTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToJpeg(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToJpeg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToJpegTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.jpeg";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToJpeg(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPageConvertToPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToPngTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToPng(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToPng Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToPngTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.png";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToPng(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPageConvertToEmf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToEmfTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToEmf(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToEmf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToEmfTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.emf";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToEmf(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageConvertToBmp Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToBmpTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToBmp(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToBmp Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToBmpTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.bmp";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToBmp(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPageConvertToGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageConvertToGifTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+
+        File response = this.pdfApi.getPageConvertToGif(name, pageNumber, null, null, this.tempFolder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPageConvertToGif Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPageConvertToGifTest() throws ApiException
+    {
+        final String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 2;
+        final String resultFile = "page.gif";
+        final String outPath = this.tempFolder + '/' + resultFile;
+        AsposeResponse response = this.pdfApi.putPageConvertToGif(name, pageNumber, outPath,
+                null, null, this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 
 
     // Pages Tests
@@ -1070,14 +2707,14 @@ public class PdfApiTest
     @Test
     public void deletePageTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
         String folder = this.tempFolder;
 
-        SaaSposeResponse response = this.pdfApi.deletePage(name, pageNumber, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.deletePage(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1090,34 +2727,16 @@ public class PdfApiTest
     @Test
     public void getPageTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         int pageNumber = 3;
         String folder = this.tempFolder;
 
-        File response = this.pdfApi.getPage(name, pageNumber, null, 0, 0, null, folder);
+        DocumentPageResponse response = this.pdfApi.getPage(name, pageNumber, null, folder);
         assertNotNull(response);
     }
 
-    /**
-     * GetPageWithFormat Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPageWithFormatTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 3;
-        String folder = this.tempFolder;
-
-        File response = this.pdfApi.getPage(name, pageNumber, "jpeg", 100, 100, null, folder);
-        assertNotNull(response);
-    }
 
     /**
      * GetPages Test
@@ -1128,13 +2747,13 @@ public class PdfApiTest
     @Test
     public void getPagesTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
         DocumentPagesResponse response = this.pdfApi.getPages(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1147,13 +2766,13 @@ public class PdfApiTest
     @Test
     public void getWordsPerPageTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
         WordCountResponse response = this.pdfApi.getWordsPerPage(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1166,15 +2785,15 @@ public class PdfApiTest
     @Test
     public void postMovePageTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
         int pageNumber = 1;
         int newIndex = 1;
 
-        SaaSposeResponse response = this.pdfApi.postMovePage(name, pageNumber, newIndex, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.postMovePage(name, pageNumber, newIndex, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1187,13 +2806,13 @@ public class PdfApiTest
     @Test
     public void putAddNewPageTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String folder = this.tempFolder;
 
         DocumentPagesResponse response = this.pdfApi.putAddNewPage(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        assertEquals(200, (int)response.getCode());
     }
 
 
@@ -1206,10 +2825,10 @@ public class PdfApiTest
     @Test
     public void putPageAddStampTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
-        String stampFileName = "Penguins.jpg"; 
+        String stampFileName = "Penguins.jpg";
         this.uploadFile(stampFileName);
 
         int pageNumber = 1;
@@ -1225,12 +2844,424 @@ public class PdfApiTest
         stamp.setXindent(100.);
         stamp.setYindent(100.);
 
-        SaaSposeResponse response = this.pdfApi.putPageAddStamp(name, pageNumber, stamp, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.putPageAddStamp(name, pageNumber, stamp, null, folder);
+        assertEquals(200, (int)response.getCode());
     }
 
 
-    // Paragraphs Tests
+    // Privileges Tests
+
+    /**
+     * PutPrivileges Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPrivilegesTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        DocumentPrivilege documentPrivilege = new DocumentPrivilege();
+        documentPrivilege.setAllowCopy(false);
+        documentPrivilege.setAllowPrint(false);
+
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.putPrivileges(name, documentPrivilege, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    // Properties Tests
+
+    /**
+     * DeleteProperties Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deletePropertiesTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        DocumentProperty property1 = new DocumentProperty();
+        property1.setName("prop1");
+        property1.setValue("val1");
+
+        String folder = this.tempFolder;
+
+        DocumentProperty property2 = new DocumentProperty();
+        property2.setName("prop2");
+        property2.setValue("val2");
+
+
+        this.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        this.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder);
+
+        AsposeResponse response = this.pdfApi.deleteProperties(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * DeleteProperty Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deletePropertyTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        DocumentProperty property1 = new DocumentProperty();
+        property1.setName("prop1");
+        property1.setValue("val1");
+
+        String folder = this.tempFolder;
+
+        this.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+
+        AsposeResponse response = this.pdfApi.deleteProperty(name, property1.getName(), null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetDocumentProperties Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentPropertiesTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        DocumentProperty property1 = new DocumentProperty();
+        property1.setName("prop1");
+        property1.setValue("val1");
+
+        String folder = this.tempFolder;
+
+        DocumentProperty property2 = new DocumentProperty();
+        property2.setName("prop2");
+        property2.setValue("val2");
+
+        this.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        this.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder);
+
+        DocumentPropertiesResponse response = this.pdfApi.getDocumentProperties(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetDocumentProperty Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentPropertyTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        DocumentProperty property1 = new DocumentProperty();
+        property1.setName("prop1");
+        property1.setValue("val1");
+
+        String folder = this.tempFolder;
+
+        this.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+
+        DocumentPropertyResponse response = this.pdfApi.getDocumentProperty(name, property1.getName(), null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * PutSetProperty Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putSetPropertyTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        DocumentProperty property1 = new DocumentProperty();
+        property1.setName("prop1");
+        property1.setValue("val1");
+
+        String folder = this.tempFolder;
+
+        DocumentPropertyResponse response = this.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    // Sign Tests
+
+    /**
+     * PostSignDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postSignDocumentTest() throws ApiException
+    {
+        String name = "BlankWithSignature.pdf";
+        this.uploadFile(name);
+
+        String signatureFileName = "test1234.pfx";
+        this.uploadFile(signatureFileName);
+
+        RectanglePdf rectangle = new RectanglePdf()
+            .LLX(100.)
+            .LLY(100.)
+            .URX(500.)
+            .URY(200.);
+
+        String folder = this.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("test1234");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        AsposeResponse response = this.pdfApi.postSignDocument(name, signature, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * PostSignPage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postSignPageTest() throws ApiException
+    {
+        String name = "BlankWithSignature.pdf";
+        this.uploadFile(name);
+
+        String signatureFileName = "test1234.pfx";
+        this.uploadFile(signatureFileName);
+
+        int pageNumber = 1;
+
+        RectanglePdf rectangle = new RectanglePdf()
+            .LLX(100.)
+            .LLY(100.)
+            .URX(500.)
+            .URY(200.);
+
+        String folder = this.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("test1234");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        AsposeResponse response = this.pdfApi.postSignPage(name, pageNumber, signature, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetVerifySignature Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getVerifySignatureTest() throws ApiException
+    {
+        String name = "BlankWithSignature.pdf";
+        this.uploadFile(name);
+
+        String signatureFileName = "test1234.pfx";
+        this.uploadFile(signatureFileName);
+
+        RectanglePdf rectangle = new RectanglePdf()
+            .LLX(100.)
+            .LLY(100.)
+            .URX(500.)
+            .URY(200.);
+
+        String folder = this.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("test1234");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        AsposeResponse responseSign = this.pdfApi.postSignDocument(name, signature, null, folder);
+        assertEquals(200, (int)responseSign.getCode());
+
+        SignatureVerifyResponse response = this.pdfApi.getVerifySignature(name, signature.getFormFieldName(), null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    // Text Replace Tests
+
+    /**
+     * PostDocumentTextReplace Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentTextReplaceTest() throws ApiException
+    {
+        String name = "marketing.pdf";
+        this.uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+            .LLX(100.)
+            .LLY(100.)
+            .URX(300.)
+            .URY(300.);
+
+        final TextReplace textReplace = new TextReplace();
+        textReplace.setOldValue("market");
+        textReplace.setNewValue("m_a_r_k_e_t");
+        textReplace.setRegex(false);
+        textReplace.setRect(rect);
+
+        TextReplaceListRequest textReplaceList = new TextReplaceListRequest();
+        textReplaceList.setTextReplaces(new ArrayList<TextReplace>(){{ add(textReplace); }});
+        textReplaceList.setStartIndex(0);
+        textReplaceList.setCountReplace(0);
+
+        String folder = this.tempFolder;
+
+        TextReplaceResponse response  = this.pdfApi.postDocumentTextReplace(name, textReplaceList, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * PostPageTextReplaceByRect Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postPageTextReplaceByRectTest() throws ApiException
+    {
+        String name = "marketing.pdf";
+        this.uploadFile(name);
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+            .LLX(100.)
+            .LLY(700.)
+            .URX(400.)
+            .URY(1000.);
+
+        final TextReplace textReplace = new TextReplace();
+        textReplace.setOldValue("market");
+        textReplace.setNewValue("m_a_r_k_e_t");
+        textReplace.setRegex(false);
+        textReplace.setRect(rect);
+
+        TextReplaceListRequest textReplaceList = new TextReplaceListRequest();
+        textReplaceList.setTextReplaces(new ArrayList<TextReplace>(){{ add(textReplace); }});
+        textReplaceList.setStartIndex(0);
+        textReplaceList.setCountReplace(0);
+
+        String folder = this.tempFolder;
+
+        TextReplaceResponse response = this.pdfApi.postPageTextReplace(name, pageNumber, textReplaceList, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    // Text Tests
+
+    /**
+     * GetText Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getTextTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        double llx = 0;
+        double lly = 0;
+        double urx = 0;
+        double ury = 0;
+        String folder = this.tempFolder;
+
+        TextRectsResponse response = this.pdfApi.getText(name, llx, lly, urx, ury, null, null, null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPageTextByTwoTextOnPage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageTextByTwoTextOnPageTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        int pageNumber = 1;
+        double llx = 0;
+        double lly = 0;
+        double urx = 0;
+        double ury = 0;
+
+        List<String> format = new ArrayList<String>(){{ add("First Page"); add("Second Page");}};
+        String folder = this.tempFolder;
+
+        TextRectsResponse response = this.pdfApi.getPageText(name, pageNumber, llx, lly, urx, ury, format, null, null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
 
     /**
      * PutAddText Test
@@ -1241,17 +3272,17 @@ public class PdfApiTest
     @Test
     public void putAddTextTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         int pageNumber = 1;
         String folder = this.tempFolder;
 
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(100);
-        rectangle.setY(100);
-        rectangle.setWidth(200);
-        rectangle.setHeight(200);
+        RectanglePdf rectangle = new RectanglePdf();
+        rectangle.setLLX(100.);
+        rectangle.setLLY(100.);
+        rectangle.setURX(200.);
+        rectangle.setURY(200.);
 
         Color foregroundColor = new Color();
         foregroundColor.setA(0x00);
@@ -1295,1387 +3326,13 @@ public class PdfApiTest
         paragraph.setLines(new ArrayList<TextLine>(){{ add(textLine);}});
 
 
-        SaaSposeResponse response = this.pdfApi.putAddText(name, pageNumber, paragraph, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Properties Tests
-
-    /**
-     * DeleteProperties Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void deletePropertiesTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        DocumentProperty property1 = new DocumentProperty();
-        property1.setName("prop1");
-        property1.setValue("val1");
-
-        String folder = this.tempFolder;
-
-        DocumentProperty property2 = new DocumentProperty();
-        property2.setName("prop2");
-        property2.setValue("val2");
-
-
-        this.pdfApi.putSetProperty(name, property1.getName(), property1, null, folder);
-        this.pdfApi.putSetProperty(name, property2.getName(), property2, null, folder);
-
-        SaaSposeResponse response = this.pdfApi.deleteProperties(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * DeleteProperty Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void deletePropertyTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        DocumentProperty property1 = new DocumentProperty();
-        property1.setName("prop1");
-        property1.setValue("val1");
-
-        String folder = this.tempFolder;
-
-        this.pdfApi.putSetProperty(name, property1.getName(), property1, null, folder);
-
-        SaaSposeResponse response = this.pdfApi.deleteProperty(name, property1.getName(), null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetDocumentProperties Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getDocumentPropertiesTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        DocumentProperty property1 = new DocumentProperty();
-        property1.setName("prop1");
-        property1.setValue("val1");
-
-        String folder = this.tempFolder;
-
-        DocumentProperty property2 = new DocumentProperty();
-        property2.setName("prop2");
-        property2.setValue("val2");
-
-        this.pdfApi.putSetProperty(name, property1.getName(), property1, null, folder);
-        this.pdfApi.putSetProperty(name, property2.getName(), property2, null, folder);
-
-        DocumentPropertiesResponse response = this.pdfApi.getDocumentProperties(name, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetDocumentProperty Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getDocumentPropertyTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        DocumentProperty property1 = new DocumentProperty();
-        property1.setName("prop1");
-        property1.setValue("val1");
-
-        String folder = this.tempFolder;
-
-        this.pdfApi.putSetProperty(name, property1.getName(), property1, null, folder);
-
-        DocumentPropertyResponse response = this.pdfApi.getDocumentProperty(name, property1.getName(), null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PutSetProperty Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putSetPropertyTest() throws ApiException
-    {
-        String name = "PdfWithAcroForm.pdf"; 
-        this.uploadFile(name);
-
-        DocumentProperty property1 = new DocumentProperty();
-        property1.setName("prop1");
-        property1.setValue("val1");
-
-        String folder = this.tempFolder;
-
-        DocumentPropertyResponse response = this.pdfApi.putSetProperty(name, property1.getName(), property1, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-
-    // Sign Tests
-
-    /**
-     * PostSignDocument Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postSignDocumentTest() throws ApiException
-    {
-        String name = "BlankWithSignature.pdf"; 
-        this.uploadFile(name);
-
-        String signatureFileName = "test1234.pfx"; 
-        this.uploadFile(signatureFileName);
-
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(100);
-        rectangle.setY(100);
-        rectangle.setWidth(400);
-        rectangle.setHeight(100);
-
-        String folder = this.tempFolder;
-
-        Signature signature = new Signature();
-        signature.setAuthority("Sergey Smal");
-        signature.setContact("test@mail.ru");
-        signature.setDate("08/01/2012 12:15:00.000 PM");
-        signature.setFormFieldName("Signature1");
-        signature.setLocation("Ukraine");
-        signature.setPassword("test1234");
-        signature.setRectangle(rectangle);
-        signature.setSignaturePath(folder + '/' + signatureFileName);
-        signature.setSignatureType(SignatureType.PKCS_7);
-        signature.setVisible(true);
-
-        SaaSposeResponse response = this.pdfApi.postSignDocument(name, signature, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PostSignPage Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postSignPageTest() throws ApiException
-    {
-        String name = "BlankWithSignature.pdf"; 
-        this.uploadFile(name);
-
-        String signatureFileName = "test1234.pfx"; 
-        this.uploadFile(signatureFileName);
-
-        int pageNumber = 1;
-
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(100);
-        rectangle.setY(100);
-        rectangle.setWidth(400);
-        rectangle.setHeight(100);
-
-        String folder = this.tempFolder;
-
-        Signature signature = new Signature();
-        signature.setAuthority("Sergey Smal");
-        signature.setContact("test@mail.ru");
-        signature.setDate("08/01/2012 12:15:00.000 PM");
-        signature.setFormFieldName("Signature1");
-        signature.setLocation("Ukraine");
-        signature.setPassword("test1234");
-        signature.setRectangle(rectangle);
-        signature.setSignaturePath(folder + '/' + signatureFileName);
-        signature.setSignatureType(SignatureType.PKCS_7);
-        signature.setVisible(true);
-
-        SaaSposeResponse response = this.pdfApi.postSignPage(name, pageNumber, signature, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetVerifySignature Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getVerifySignatureTest() throws ApiException
-    {
-        String name = "BlankWithSignature.pdf"; 
-        this.uploadFile(name);
-
-        String signatureFileName = "test1234.pfx"; 
-        this.uploadFile(signatureFileName);
-
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(100);
-        rectangle.setY(100);
-        rectangle.setWidth(400);
-        rectangle.setHeight(100);
-
-        String folder = this.tempFolder;
-
-        Signature signature = new Signature();
-        signature.setAuthority("Sergey Smal");
-        signature.setContact("test@mail.ru");
-        signature.setDate("08/01/2012 12:15:00.000 PM");
-        signature.setFormFieldName("Signature1");
-        signature.setLocation("Ukraine");
-        signature.setPassword("test1234");
-        signature.setRectangle(rectangle);
-        signature.setSignaturePath(folder + '/' + signatureFileName);
-        signature.setSignatureType(SignatureType.PKCS_7);
-        signature.setVisible(true);
-
-        SaaSposeResponse responseSign = this.pdfApi.postSignDocument(name, signature, null, folder);
-        assertEquals(responseSign.getCode(), HttpStatusCode.OK);
-
-        SignatureVerifyResponse response = this.pdfApi.getVerifySignature(name, signature.getFormFieldName(), folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    // Text Items Tests
-
-    /**
-     * GetPageTextItems Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPageTextItemsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        String folder = this.tempFolder;
-
-        TextItemsResponse response = this.pdfApi.getPageTextItems(name, pageNumber, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    /**
-     * GetTextItems Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getTextItemsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-        TextItemsResponse response = this.pdfApi.getTextItems(name, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Text Replace Tests
-
-    /**
-     * PostDocumentReplaceText Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postDocumentReplaceTextTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        TextReplaceRequest textReplaceRequest = new TextReplaceRequest();
-        textReplaceRequest.setOldValue("Page");
-        textReplaceRequest.setNewValue("p_a_g_e");
-        textReplaceRequest.setRegex(false);
-
-        String folder = this.tempFolder;
-
-        DocumentTextReplaceResponse response = this.pdfApi.postDocumentReplaceText(name, textReplaceRequest, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PostDocumentReplaceTextList Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postDocumentReplaceTextListTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        final TextReplaceRequest textReplaceRequest1 = new TextReplaceRequest();
-        textReplaceRequest1.setOldValue("First");
-        textReplaceRequest1.setNewValue("1");
-        textReplaceRequest1.setRegex(false);
-
-        final TextReplaceRequest textReplaceRequest2 = new TextReplaceRequest();
-        textReplaceRequest2.setOldValue("Page");
-        textReplaceRequest2.setNewValue("p_a_g_e");
-        textReplaceRequest2.setRegex(false);
-
-        TextReplaceListRequest textReplaceListRequest = new TextReplaceListRequest();
-        textReplaceListRequest.setTextReplaces(new ArrayList<TextReplace>()
-                                               {{ add(textReplaceRequest1); add(textReplaceRequest2);}});
-
-        String folder = this.tempFolder;
-
-        DocumentTextReplaceResponse response = this.pdfApi.postDocumentReplaceTextList(name, textReplaceListRequest, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PostPageReplaceText Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postPageReplaceTextTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-
-        TextReplaceRequest textReplaceRequest = new TextReplaceRequest();
-        textReplaceRequest.setOldValue("Page");
-        textReplaceRequest.setNewValue("p_a_g_e");
-        textReplaceRequest.setRegex(false);
-
-        String folder = this.tempFolder;
-
-        PageTextReplaceResponse response = this.pdfApi.postPageReplaceText(name, pageNumber, textReplaceRequest, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PostPageReplaceTextList Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postPageReplaceTextListTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-
-        final TextReplaceRequest textReplaceRequest1 = new TextReplaceRequest();
-        textReplaceRequest1.setOldValue("First");
-        textReplaceRequest1.setNewValue("1");
-        textReplaceRequest1.setRegex(false);
-
-        final TextReplaceRequest textReplaceRequest2 = new TextReplaceRequest();
-        textReplaceRequest2.setOldValue("Page");
-        textReplaceRequest2.setNewValue("p_a_g_e");
-        textReplaceRequest2.setRegex(false);
-
-        TextReplaceListRequest textReplaceListRequest = new TextReplaceListRequest();
-        textReplaceListRequest.setTextReplaces(new ArrayList<TextReplace>()
-                    {{ add(textReplaceRequest1); add(textReplaceRequest2);}});
-
-        String folder = this.tempFolder;
-
-        PageTextReplaceResponse response = this.pdfApi.postPageReplaceTextList(name, pageNumber, textReplaceListRequest, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // OCR Tests
-
-    /**
-     * PutSearchableDocument Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putSearchableDocumentTest() throws ApiException
-    {
-        String name = "rusdoc.pdf"; 
-        this.uploadFile(name);
-
-        String lang = "rus,eng";
-        String folder = this.tempFolder;
-
-        SaaSposeResponse response = this.pdfApi.putSearchableDocument(name, null, folder, lang);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    /**
-     * PutSearchableDocumentWithDefaultLang Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putSearchableDocumentWithDefaultLangTest() throws ApiException
-    {
-        String name = "rusdoc.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-        SaaSposeResponse response = this.pdfApi.putSearchableDocument(name, null, folder, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Text Tests
-
-    /**
-     * GetText Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getTextTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int x = 0;
-        int y = 0;
-        int width = 0;
-        int height = 0;
-        String folder = this.tempFolder;
-
-        TextRectsResponse response = this.pdfApi.getText(name, x, y, width, height, null, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetPageTextByTwoTextOnPage Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPageTextByTwoTextOnPageTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        int pageNumber = 1;
-        int x = 0;
-        int y = 0;
-        int width = 0;
-        int height = 0;
-
-        List<String> format = new ArrayList<String>(){{ add("First Page"); add("Second Page");}};
-        String folder = this.tempFolder;
-
-        TextRectsResponse response = this.pdfApi.getPageText(name, pageNumber, x, y, width, height, format, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Text Replace Tests
-
-    /**
-     * PostDocumentTextReplaceWholeDocByRect Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postDocumentTextReplaceWholeDocByRectTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        Rectangle rect = new Rectangle();
-        rect.setX(100);
-        rect.setY(700);
-        rect.setWidth(300);
-        rect.setHeight(300);
-
-        final TextReplace textReplace = new TextReplace();
-        textReplace.setOldValue("Page");
-        textReplace.setNewValue("p_a_g_e");
-        textReplace.setRect(rect);
-
-        TextReplaceListRequest textReplaceList = new TextReplaceListRequest();
-        textReplaceList.setTextReplaces(new ArrayList<TextReplace>(){{ add(textReplace); }});
-        textReplaceList.setStartIndex(0);
-        textReplaceList.setCountReplace(0);
-
-        String folder = this.tempFolder;
-
-        TextReplaceResponse response  = this.pdfApi.postDocumentTextReplace(name, textReplaceList, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * PostPageTextReplaceByRect Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void postPageTextReplaceByRectTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-        int pageNumber = 1;
-
-        Rectangle rect = new Rectangle();
-        rect.setX(100);
-        rect.setY(700);
-        rect.setWidth(300);
-        rect.setHeight(300);
-
-        final TextReplace textReplace = new TextReplace();
-        textReplace.setOldValue("Page");
-        textReplace.setNewValue("p_a_g_e");
-        textReplace.setRect(rect);
-
-        TextReplaceListRequest textReplaceList = new TextReplaceListRequest();
-        textReplaceList.setTextReplaces(new ArrayList<TextReplace>(){{ add(textReplace); }});
-        textReplaceList.setStartIndex(0);
-        textReplaceList.setCountReplace(0);
-
-        String folder = this.tempFolder;
-
-        TextReplaceResponse response = this.pdfApi.postPageTextReplace(name, pageNumber, textReplaceList, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    // Convert Tests
-
-    /**
-     * GetPdfInStorageToDoc Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToDocTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-        String folder = this.tempFolder;
-
-        File response = this.pdfApi.getPdfInStorageToDoc(name, null, null, null, null, null, null, null, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToDoc Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToDocTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-        String folder = this.tempFolder;
-        String resFileName = "result.doc";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToDoc(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToDoc Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToDocTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.doc";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToDoc(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToPdfA Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToPdfATest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String type = PdfAType.PDFA1A.toString();
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToPdfA(name, type, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToPdfA Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToPdfATest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String type = PdfAType.PDFA1A.toString();
-        String folder = this.tempFolder;
-        String resFileName = "result.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToPdfA(name, this.tempFolder + '/' + resFileName, type, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToPdfA Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToPdfATest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String type = PdfAType.PDFA1A.toString();
-        String resFileName = "result.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToPdfA(this.tempFolder + '/' + resFileName, type, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToTiff Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToTiffTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToTiff(name, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToTiff Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToTiffTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.tiff";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToTiff(name, this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToTiff Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToTiffTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.tiff";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToTiff(this.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToSvg Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToSvgTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToSvg(name, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToSvg Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToSvgTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.svg";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToSvg(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToSvg Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToSvgTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.svg";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToSvg(this.tempFolder + '/' + resFileName, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToXps Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToXpsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToXps(name, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToXps Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToXpsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.xps";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXps(name, this.tempFolder + '/' + resFileName, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToXps Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToXpsTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.xps";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXps(this.tempFolder + '/' + resFileName, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToXls Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToXlsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToXls(name, null, null, null, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToXls Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToXlsTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.xls";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXls(name, this.tempFolder + '/' + resFileName, null, null, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToXls Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToXlsTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.xls";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXls(this.tempFolder + '/' + resFileName, null, null, null, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPdfInStorageToHtml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToHtmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToHtml(name, null, null, null, null, null,  null,  null, null,
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToHtml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToHtmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.zip";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToHtml(
-                name,
-                this.tempFolder + '/' + resFileName,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToHtml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToHtmlTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.zip";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToHtml(
-                this.tempFolder + '/' + resFileName,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPdfInStorageToEpub Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToEpubTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToEpub(name, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToEpub Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToEpubTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.epub";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToEpub(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToEpub Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToEpubTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.epub";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToEpub(this.tempFolder + '/' + resFileName, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPdfInStorageToPptx Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToPptxTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToPptx(name, null, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToPptx Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToPptxTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.pptx";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToPptx(name, this.tempFolder + '/' + resFileName, null, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToPptx Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToPptxTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.pptx";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToPptx(this.tempFolder + '/' + resFileName, null, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPdfInStorageToLaTeX Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToLaTeXTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToLaTeX(name, null, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToLaTeX Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToLaTeXTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.latex";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToLaTeX(name, this.tempFolder + '/' + resFileName, null, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToLaTeX Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToLaTeXTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.latex";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToLaTeX(this.tempFolder + '/' + resFileName, null, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPdfInStorageToMobiXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToMobiXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToMobiXml(name, folder);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutPdfInStorageToMobiXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToMobiXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.mobi";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToMobiXml(name, this.tempFolder + '/' + resFileName, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * PutPdfInRequestToMobiXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToMobiXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.mobi";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToMobiXml(this.tempFolder + '/' + resFileName, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetXfaPdfInStorageToAcroForm Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getXfaPdfInStorageToAcroFormTest() throws ApiException
-    {
-        String name = "PdfWithXfaForm.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getXfaPdfInStorageToAcroForm(name, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutXfaPdfInStorageToAcroForm Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putXfaPdfInStorageToAcroFormTest() throws ApiException
-    {
-        String name = "PdfWithXfaForm.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putXfaPdfInStorageToAcroForm(name, this.tempFolder + '/' + resFileName, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutXfaPdfInRequestToAcroForm Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putXfaPdfInRequestToAcroFormTest() throws ApiException
-    {
-        String name = "PdfWithXfaForm.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putXfaPdfInRequestToAcroForm(this.tempFolder + '/' + resFileName, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPdfInStorageToXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPdfInStorageToXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-
-
-        File response = this.pdfApi.getPdfInStorageToXml(name, folder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPdfInStorageToXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInStorageToXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf"; 
-        this.uploadFile(name);
-
-        String folder = this.tempFolder;
-        String resFileName = "result.xml";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInStorageToXml(name, this.tempFolder + '/' + resFileName, folder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * PutPdfInRequestToXml Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPdfInRequestToXmlTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        File file = new File(testDataFolder + "/" + name);
-        String resFileName = "result.xml";
-
-        SaaSposeResponse response = this.pdfApi.putPdfInRequestToXml(this.tempFolder + '/' + resFileName, file);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
+        AsposeResponse response = this.pdfApi.putAddText(name, pageNumber, paragraph, folder, null);
+        assertEquals(200, (int)response.getCode());
     }
 
 
     // Upload/Download Tests
+
     /**
      * UploadFile Test
      * @throws ApiException
@@ -2688,8 +3345,8 @@ public class PdfApiTest
         String name = "4pages.pdf";
         String path = this.tempFolder + '/' + name;
         File file = new File(testDataFolder + "/" + name);
-        SaaSposeResponse response = this.pdfApi.putCreate(path, file, null, null);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
+        AsposeResponse response = this.pdfApi.putCreate(path, file, null, null);
+        assertEquals(200, (int)response.getCode());
     }
 
     /**
@@ -2701,744 +3358,12 @@ public class PdfApiTest
     @Test
     public void getDownloadTest() throws ApiException
     {
-        String name = "4pages.pdf"; 
+        String name = "4pages.pdf";
         this.uploadFile(name);
 
         String path = this.tempFolder + '/' + name;
 
         File response = this.pdfApi.getDownload(path, null, null);
         assertNotNull(response);
-    }
-
-
-    // Privileges Tests
-
-    /**
-     * PutPrivileges Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPrivilegesTest() throws ApiException
-    {
-        String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        DocumentPrivilege documentPrivilege = new DocumentPrivilege();
-        documentPrivilege.setAllowCopy(false);
-        documentPrivilege.setAllowPrint(false);
-
-        String folder = this.tempFolder;
-
-        SaaSposeResponse response = this.pdfApi.putPrivileges(name, documentPrivilege, folder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    // Convert To PDF Tests
-
-    /**
-     * GetEpubInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getEpubInStorageToPdfTest() throws ApiException
-    {
-        String name = "4pages.epub";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getEpubInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutEpubInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putEpubInStorageToPdfTest() throws ApiException
-    {
-        String name = "4pages.epub";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromEpub.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putEpubInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetWebInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getWebInStorageToPdfTest() throws ApiException
-    {
-        String sourceUrl = "http://google.com";
-
-        File response = this.pdfApi.getWebInStorageToPdf(sourceUrl, null, null , null,
-                null, null, null, null);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutWebInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putWebInStorageToPdfTest() throws ApiException
-    {
-        String sourceUrl = "http://google.com";
-        String resultName = "fromWeb.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putWebInStorageToPdf(resultName, sourceUrl, null,
-                null, null, null, null, null,
-                null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetLaTeXInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getLaTeXInStorageToPdfTest() throws ApiException
-    {
-        String name = "TexExample.tex";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getLaTeXInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutLaTeXInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putLaTeXInStorageToPdfTest() throws ApiException
-    {
-        String name = "TexExample.tex";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromTex.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putLaTeXInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetMhtInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getMhtInStorageToPdfTest() throws ApiException
-    {
-        String name = "MhtExample.mht";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getMhtInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutMhtInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putMhtInStorageToPdfTest() throws ApiException
-    {
-        String name = "MhtExample.mht";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromMht.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putMhtInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetHtmlInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getHtmlInStorageToPdfTest() throws ApiException
-    {
-        String name = "HtmlWithImage.zip";
-        this.uploadFile(name);
-
-        String htmlFileName = "HtmlWithImage.html";
-        double height = 650;
-        double width = 250;
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getHtmlInStorageToPdf(srcPath, htmlFileName, height, width,
-                null, null, null, null, null);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutHtmlInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putHtmlInStorageToPdfTest() throws ApiException
-    {
-        String name = "HtmlWithImage.zip";
-        this.uploadFile(name);
-
-        String htmlFileName = "HtmlWithImage.html";
-        double height = 650;
-        double width = 250;
-        String resultName = "fromHtml.pdf";
-        String srcPath = this.tempFolder + '/' + name;
-
-
-        SaaSposeResponse response = this.pdfApi.putHtmlInStorageToPdf(name, srcPath, htmlFileName,
-                height, width, null, null, null,
-                null, null, null);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetXslFoInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getXslFoInStorageToPdfTest() throws ApiException
-    {
-        String name = "XslfoExample.xslfo";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getXslFoInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutXslFoInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putXslFoInStorageToPdfTest() throws ApiException
-    {
-        String name = "XslfoExample.xslfo";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromXlsFo.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putXslFoInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetXpsInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getXpsInStorageToPdfTest() throws ApiException
-    {
-        String name = "Simple.xps";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getXpsInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutXpsInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putXpsInStorageToPdfTest() throws ApiException
-    {
-        String name = "Simple.xps";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromXps.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putXpsInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetSvgInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getSvgInStorageToPdfTest() throws ApiException
-    {
-        String name = "Simple.svg";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getSvgInStorageToPdf(srcPath, null, null, null,
-                null, null, null, null, null);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutSvgInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putSvgInStorageToPdfTest() throws ApiException
-    {
-        String name = "Simple.svg";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromSvg.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putSvgInStorageToPdf(resultName, srcPath, null,
-                null, null, null, null, null,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-    /**
-     * GetPclInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPclInStorageToPdfTest() throws ApiException
-    {
-        String name = "template.pcl";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getPclInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutPclInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPclInStorageToPdfTest() throws ApiException
-    {
-        String name = "template.pcl";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromPcl.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putPclInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetXmlInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getXmlInStorageToPdfTest() throws ApiException
-    {
-        String name = "template.xml";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getXmlInStorageToPdf(srcPath, null);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutXmlInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putXmlInStorageToPdfTest() throws ApiException
-    {
-        String name = "template.xml";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromXml.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putXmlInStorageToPdf(resultName, srcPath, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * GetPsInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getPsInStorageToPdfTest() throws ApiException
-    {
-        String name = "Typography.PS";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-
-        File response = this.pdfApi.getPsInStorageToPdf(srcPath);
-        assertNotNull(response);
-    }
-
-
-    /**
-     * PutPsInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void putPsInStorageToPdfTest() throws ApiException
-    {
-        String name = "Typography.PS";
-        this.uploadFile(name);
-
-
-        String srcPath = this.tempFolder + '/' + name;
-        String resultName = "fromPs.pdf";
-
-        SaaSposeResponse response = this.pdfApi.putPsInStorageToPdf(resultName, srcPath, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    /**
-     * PutImageInStorageToPdf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putImageInStorageToPdfTest() throws ApiException
-    {
-        final String dataFile1 = "33539.jpg";
-        this.uploadFile(dataFile1);
-
-        final String dataFile2 = "44781.jpg";
-        this.uploadFile(dataFile2);
-
-        String resultName = "result.pdf";
-
-
-        ImageTemplatesRequest imageTemplatesRequest = new ImageTemplatesRequest()
-            .isOCR(true)
-            .ocRLangs("eng")
-            .imagesList(new ArrayList<ImageTemplate>(){{
-                add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile1).imageSrcType(ImageSrcType.COMMON));
-                add(new ImageTemplate().imagePath(PdfApiTest.this.tempFolder + '/' + dataFile2).imageSrcType(ImageSrcType.COMMON));
-            }});
-
-        SaaSposeResponse response = this.pdfApi.putImageInStorageToPdf(resultName, imageTemplatesRequest, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.CREATED);
-    }
-
-
-    // Page Convert To Image Tests
-
-    /**
-     * GetPageConvertToTiff Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToTiffTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToTiff(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToTiff Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToTiffTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.tiff";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToTiff(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    /**
-     * GetPageConvertToJpeg Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToJpegTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToJpeg(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToJpeg Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToJpegTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.jpeg";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToJpeg(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetPageConvertToPng Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToPngTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToPng(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToPng Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToPngTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.png";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToPng(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetPageConvertToEmf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToEmfTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToEmf(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToEmf Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToEmfTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.emf";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToEmf(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-    /**
-     * GetPageConvertToBmp Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToBmpTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToBmp(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToBmp Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToBmpTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.bmp";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToBmp(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
-    }
-
-
-    /**
-     * GetPageConvertToGif Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPageConvertToGifTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-
-        File response = this.pdfApi.getPageConvertToGif(name, pageNumber, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
-    /**
-     * PutPageConvertToGif Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void putPageConvertToGifTest() throws ApiException
-    {
-        final String name = "4pages.pdf";
-        this.uploadFile(name);
-
-        int pageNumber = 2;
-        final String resultFile = "page.gif";
-        final String outPath = this.tempFolder + '/' + resultFile;
-        SaaSposeResponse response = this.pdfApi.putPageConvertToGif(name, pageNumber, outPath,
-                null, null, this.tempFolder);
-        assertEquals(response.getCode(), HttpStatusCode.OK);
     }
 }

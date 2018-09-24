@@ -23,9 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.Image;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,7 +38,7 @@ import java.io.IOException;
  * ImageResponse
  */
 
-public class ImageResponse extends SaaSposeResponse {
+public class ImageResponse extends AsposeResponse {
   @SerializedName("Image")
   private Image image = null;
 

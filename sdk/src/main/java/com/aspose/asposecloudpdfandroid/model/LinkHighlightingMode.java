@@ -33,24 +33,28 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Enumerates the annotation�s highlighting mode, the visual effect to be used when the mouse button is pressed or held down inside its active area.
+ * Enumerates the annotation?s highlighting mode, the visual effect to be used when the mouse button is pressed or held down inside its active area.
  */
 @JsonAdapter(LinkHighlightingMode.Adapter.class)
 public enum LinkHighlightingMode {
   
-  NONE(0),
-  INVERT(1),
-  OUTLINE(2),
-  PUSH(3),
-  TOGGLE(4);
+  NONE("None"),
+  
+  INVERT("Invert"),
+  
+  OUTLINE("Outline"),
+  
+  PUSH("Push"),
+  
+  TOGGLE("Toggle");
 
-  private Integer value;
+  private String value;
 
-  LinkHighlightingMode(Integer value) {
+  LinkHighlightingMode(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -76,7 +80,7 @@ public enum LinkHighlightingMode {
 
     @Override
     public LinkHighlightingMode read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return LinkHighlightingMode.fromValue(String.valueOf(value));
     }
   }

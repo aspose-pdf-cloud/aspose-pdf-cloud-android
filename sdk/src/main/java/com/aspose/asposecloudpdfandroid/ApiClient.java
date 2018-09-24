@@ -62,7 +62,7 @@ import java.util.regex.Pattern;
 
 public class ApiClient {
 
-    private String basePath = "https://api.aspose.cloud/v1.1";
+    private String basePath = "https://api.aspose.cloud/v2.0";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -149,7 +149,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api.aspose.cloud/v1.1
+     * @param basePath Base path of the URL (e.g https://api.aspose.cloud/v2.0
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
@@ -1019,7 +1019,7 @@ public class ApiClient {
                     .addEncoded("client_secret", getAppKey())
                     .build();
 
-            String url = basePath.replace("/v1.1", "") + "/oauth2/token";
+            String url = basePath.replace("/v2.0", "") + "/oauth2/token";
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)
@@ -1048,7 +1048,7 @@ public class ApiClient {
                     .addEncoded("refresh_token", this.refreshToken)
                     .build();
 
-            String url = basePath.replace("/v1.1", "") + "/oauth2/token";
+            String url = basePath.replace("/v2.0", "") + "/oauth2/token";
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)

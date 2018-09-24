@@ -38,17 +38,21 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(FontStyles.Adapter.class)
 public enum FontStyles {
   
-  REGULAR(0),
-  BOLD(1),
-  ITALIC(2);
+  REGULAR("Regular"),
+  
+  BOLD("Bold"),
+  
+  ITALIC("Italic"),
+  
+  BOLDITALIC("BoldItalic");
 
-  private Integer value;
+  private String value;
 
-  FontStyles(Integer value) {
+  FontStyles(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -74,7 +78,7 @@ public enum FontStyles {
 
     @Override
     public FontStyles read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return FontStyles.fromValue(String.valueOf(value));
     }
   }

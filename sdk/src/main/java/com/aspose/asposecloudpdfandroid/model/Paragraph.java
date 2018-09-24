@@ -24,7 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.LineSpacing;
-import com.aspose.asposecloudpdfandroid.model.Rectangle;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.aspose.asposecloudpdfandroid.model.TextHorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.TextLine;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
@@ -68,7 +68,7 @@ public class Paragraph {
   private Double bottomMargin = null;
 
   @SerializedName("Rectangle")
-  private Rectangle rectangle = null;
+  private RectanglePdf rectangle = null;
 
   @SerializedName("Rotation")
   private Double rotation = null;
@@ -208,7 +208,7 @@ public class Paragraph {
     this.bottomMargin = bottomMargin;
   }
 
-  public Paragraph rectangle(Rectangle rectangle) {
+  public Paragraph rectangle(RectanglePdf rectangle) {
     this.rectangle = rectangle;
     return this;
   }
@@ -218,11 +218,11 @@ public class Paragraph {
    * @return rectangle
   **/
   @ApiModelProperty(value = "")
-  public Rectangle getRectangle() {
+  public RectanglePdf getRectangle() {
     return rectangle;
   }
 
-  public void setRectangle(Rectangle rectangle) {
+  public void setRectangle(RectanglePdf rectangle) {
     this.rectangle = rectangle;
   }
 

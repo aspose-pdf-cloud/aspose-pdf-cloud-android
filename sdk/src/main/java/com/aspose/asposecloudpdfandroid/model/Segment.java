@@ -53,7 +53,7 @@ public class Segment {
    * Get value
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getValue() {
     return value;
   }

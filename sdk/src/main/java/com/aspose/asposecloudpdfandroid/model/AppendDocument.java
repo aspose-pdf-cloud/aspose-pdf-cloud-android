@@ -56,7 +56,7 @@ public class AppendDocument {
    * Document to append (server path).
    * @return document
   **/
-  @ApiModelProperty(value = "Document to append (server path).")
+  @ApiModelProperty(required = true, value = "Document to append (server path).")
   public String getDocument() {
     return document;
   }

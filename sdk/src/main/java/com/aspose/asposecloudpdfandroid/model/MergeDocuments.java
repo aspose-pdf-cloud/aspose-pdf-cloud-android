@@ -41,7 +41,7 @@ import java.util.List;
 
 public class MergeDocuments {
   @SerializedName("List")
-  private List<String> list = null;
+  private List<String> list = new ArrayList<String>();
 
   public MergeDocuments list(List<String> list) {
     this.list = list;
@@ -49,9 +49,6 @@ public class MergeDocuments {
   }
 
   public MergeDocuments addListItem(String listItem) {
-    if (this.list == null) {
-      this.list = new ArrayList<String>();
-    }
     this.list.add(listItem);
     return this;
   }
@@ -60,7 +57,7 @@ public class MergeDocuments {
    * List of documents for merging.
    * @return list
   **/
-  @ApiModelProperty(value = "List of documents for merging.")
+  @ApiModelProperty(required = true, value = "List of documents for merging.")
   public List<String> getList() {
     return list;
   }

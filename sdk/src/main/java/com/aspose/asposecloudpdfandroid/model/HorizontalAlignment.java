@@ -38,18 +38,21 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(HorizontalAlignment.Adapter.class)
 public enum HorizontalAlignment {
   
-  NONE(0),
-  LEFT(1),
-  CENTER(2),
-  RIGHT(3);
+  NONE("None"),
+  
+  LEFT("Left"),
+  
+  CENTER("Center"),
+  
+  RIGHT("Right");
 
-  private Integer value;
+  private String value;
 
-  HorizontalAlignment(Integer value) {
+  HorizontalAlignment(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -75,7 +78,7 @@ public enum HorizontalAlignment {
 
     @Override
     public HorizontalAlignment read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return HorizontalAlignment.fromValue(String.valueOf(value));
     }
   }

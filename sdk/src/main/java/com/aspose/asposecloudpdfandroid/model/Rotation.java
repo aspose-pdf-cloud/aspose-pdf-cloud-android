@@ -38,18 +38,21 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(Rotation.Adapter.class)
 public enum Rotation {
   
-  NONE(0),
-  ON_90(1),
-  ON_180(2),
-  ON_270(3);
+  NONE("None"),
+  
+  ON90("on90"),
+  
+  ON180("on180"),
+  
+  ON270("on270");
 
-  private Integer value;
+  private String value;
 
-  Rotation(Integer value) {
+  Rotation(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -75,7 +78,7 @@ public enum Rotation {
 
     @Override
     public Rotation read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return Rotation.fromValue(String.valueOf(value));
     }
   }

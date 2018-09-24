@@ -38,18 +38,21 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(StampType.Adapter.class)
 public enum StampType {
   
-  TEXT(0),
-  IMAGE(1),
-  PAGE(2),
-  PAGE_NUMBER(3);
+  TEXT("Text"),
+  
+  IMAGE("Image"),
+  
+  PAGE("Page"),
+  
+  PAGENUMBER("PageNumber");
 
-  private Integer value;
+  private String value;
 
-  StampType(Integer value) {
+  StampType(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -75,7 +78,7 @@ public enum StampType {
 
     @Override
     public StampType read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return StampType.fromValue(String.valueOf(value));
     }
   }

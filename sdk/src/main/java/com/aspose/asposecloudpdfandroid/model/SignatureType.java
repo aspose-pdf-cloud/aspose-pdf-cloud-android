@@ -38,17 +38,19 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(SignatureType.Adapter.class)
 public enum SignatureType {
   
-  PKCS_1(0),
-  PKCS_7(1),
-  PKCS_7_DETACHED(2);
+  PKCS1("PKCS1"),
+  
+  PKCS7("PKCS7"),
+  
+  PKCS7DETACHED("PKCS7Detached");
 
-  private Integer value;
+  private String value;
 
-  SignatureType(Integer value) {
+  SignatureType(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -74,7 +76,7 @@ public enum SignatureType {
 
     @Override
     public SignatureType read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return SignatureType.fromValue(String.valueOf(value));
     }
   }

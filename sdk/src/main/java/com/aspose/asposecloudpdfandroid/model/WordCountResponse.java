@@ -23,8 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.HttpStatusCode;
-import com.aspose.asposecloudpdfandroid.model.SaaSposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.WordCount;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -40,7 +39,7 @@ import java.io.IOException;
  */
 @ApiModel(description = "Number of words per document pages.")
 
-public class WordCountResponse extends SaaSposeResponse {
+public class WordCountResponse extends AsposeResponse {
   @SerializedName("WordsPerPage")
   private WordCount wordsPerPage = null;
 

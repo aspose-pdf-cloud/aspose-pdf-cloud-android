@@ -25,6 +25,7 @@ package com.aspose.asposecloudpdfandroid.model;
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,6 +47,15 @@ public class Image extends LinkElement {
 
   @SerializedName("Height")
   private Integer height = null;
+
+  @SerializedName("Id")
+  private String id = null;
+
+  @SerializedName("Rectangle")
+  private RectanglePdf rectangle = null;
+
+  @SerializedName("PageNumber")
+  private Integer pageNumber = null;
 
   public Image width(Integer width) {
     this.width = width;
@@ -83,6 +93,60 @@ public class Image extends LinkElement {
     this.height = height;
   }
 
+  public Image id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Gets ID of the image.
+   * @return id
+  **/
+  @ApiModelProperty(value = "Gets ID of the image.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public Image rectangle(RectanglePdf rectangle) {
+    this.rectangle = rectangle;
+    return this;
+  }
+
+   /**
+   * Gets rectangle of the image.
+   * @return rectangle
+  **/
+  @ApiModelProperty(value = "Gets rectangle of the image.")
+  public RectanglePdf getRectangle() {
+    return rectangle;
+  }
+
+  public void setRectangle(RectanglePdf rectangle) {
+    this.rectangle = rectangle;
+  }
+
+  public Image pageNumber(Integer pageNumber) {
+    this.pageNumber = pageNumber;
+    return this;
+  }
+
+   /**
+   * Gets page number.
+   * @return pageNumber
+  **/
+  @ApiModelProperty(value = "Gets page number.")
+  public Integer getPageNumber() {
+    return pageNumber;
+  }
+
+  public void setPageNumber(Integer pageNumber) {
+    this.pageNumber = pageNumber;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -95,12 +159,15 @@ public class Image extends LinkElement {
     Image image = (Image) o;
     return Objects.equals(this.width, image.width) &&
         Objects.equals(this.height, image.height) &&
+        Objects.equals(this.id, image.id) &&
+        Objects.equals(this.rectangle, image.rectangle) &&
+        Objects.equals(this.pageNumber, image.pageNumber) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, super.hashCode());
+    return Objects.hash(width, height, id, rectangle, pageNumber, super.hashCode());
   }
 
 
@@ -111,6 +178,9 @@ public class Image extends LinkElement {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    rectangle: ").append(toIndentedString(rectangle)).append("\n");
+    sb.append("    pageNumber: ").append(toIndentedString(pageNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }

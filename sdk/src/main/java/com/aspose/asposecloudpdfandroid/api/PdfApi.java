@@ -36,8 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.aspose.asposecloudpdfandroid.model.AnnotationResponse;
-import com.aspose.asposecloudpdfandroid.model.AnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.AnnotationsInfoResponse;
 import com.aspose.asposecloudpdfandroid.model.AppendDocument;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
@@ -53,6 +52,9 @@ import com.aspose.asposecloudpdfandroid.model.FieldResponse;
 import com.aspose.asposecloudpdfandroid.model.Fields;
 import com.aspose.asposecloudpdfandroid.model.FieldsResponse;
 import java.io.File;
+import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotation;
+import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.ImageResponse;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
 import com.aspose.asposecloudpdfandroid.model.ImagesResponse;
@@ -66,6 +68,9 @@ import com.aspose.asposecloudpdfandroid.model.Signature;
 import com.aspose.asposecloudpdfandroid.model.SignatureVerifyResponse;
 import com.aspose.asposecloudpdfandroid.model.SplitResultResponse;
 import com.aspose.asposecloudpdfandroid.model.Stamp;
+import com.aspose.asposecloudpdfandroid.model.TextAnnotation;
+import com.aspose.asposecloudpdfandroid.model.TextAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.TextAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextRectsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceListRequest;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceResponse;
@@ -98,6 +103,312 @@ public class PdfApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for deleteAnnotation
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteAnnotationCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/{annotationId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteAnnotationValidateBeforeCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotationId' is set
+        if (annotationId == null) {
+            throw new ApiException("Missing the required parameter 'annotationId' when calling deleteAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deleteAnnotationCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Delete document annotation by ID
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse deleteAnnotation(String name, String annotationId, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = deleteAnnotationWithHttpInfo(name, annotationId, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = deleteAnnotationWithHttpInfo(name, annotationId, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Delete document annotation by ID
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> deleteAnnotationWithHttpInfo(String name, String annotationId, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = deleteAnnotationValidateBeforeCall(name, annotationId, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Delete document annotation by ID (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteAnnotationAsync(String name, String annotationId, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteAnnotationValidateBeforeCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteDocumentAnnotations
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteDocumentAnnotationsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteDocumentAnnotationsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteDocumentAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deleteDocumentAnnotationsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Delete all annotations from the document
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse deleteDocumentAnnotations(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = deleteDocumentAnnotationsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = deleteDocumentAnnotationsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Delete all annotations from the document
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> deleteDocumentAnnotationsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = deleteDocumentAnnotationsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Delete all annotations from the document (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteDocumentAnnotationsAsync(String name, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteDocumentAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for deleteDocumentLinkAnnotations
      * @param name The document name. (required)
@@ -879,6 +1190,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for deletePageAnnotations
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deletePageAnnotationsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deletePageAnnotationsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deletePageAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling deletePageAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deletePageAnnotationsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Delete all annotations from the page
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse deletePageAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = deletePageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = deletePageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Delete all annotations from the page
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> deletePageAnnotationsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = deletePageAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Delete all annotations from the page (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deletePageAnnotationsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deletePageAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for deletePageLinkAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -1491,6 +1960,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getDocumentAnnotations
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentAnnotationsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentAnnotationsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentAnnotationsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AnnotationsInfoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AnnotationsInfoResponse getDocumentAnnotations(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AnnotationsInfoResponse> resp = getDocumentAnnotationsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AnnotationsInfoResponse> resp = getDocumentAnnotationsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AnnotationsInfoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AnnotationsInfoResponse> getDocumentAnnotationsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentAnnotationsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AnnotationsInfoResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentAnnotationsAsync(String name, String storage, String folder, final ApiCallback<AnnotationsInfoResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AnnotationsInfoResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDocumentAttachmentByIndex
      * @param name The document name. (required)
      * @param attachmentIndex The attachment index. (required)
@@ -1951,6 +2568,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getDocumentFreeTextAnnotations
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentFreeTextAnnotationsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/freetext"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentFreeTextAnnotationsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentFreeTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentFreeTextAnnotationsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return FreeTextAnnotationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FreeTextAnnotationsResponse getDocumentFreeTextAnnotations(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<FreeTextAnnotationsResponse> resp = getDocumentFreeTextAnnotationsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FreeTextAnnotationsResponse> resp = getDocumentFreeTextAnnotationsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;FreeTextAnnotationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FreeTextAnnotationsResponse> getDocumentFreeTextAnnotationsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentFreeTextAnnotationsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document free text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentFreeTextAnnotationsAsync(String name, String storage, String folder, final ApiCallback<FreeTextAnnotationsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentFreeTextAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDocumentProperties
      * @param name  (required)
      * @param storage  (optional)
@@ -2253,6 +3018,154 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getDocumentPropertyValidateBeforeCall(name, propertyName, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getDocumentTextAnnotations
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentTextAnnotationsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentTextAnnotationsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentTextAnnotationsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return TextAnnotationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextAnnotationsResponse getDocumentTextAnnotations(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<TextAnnotationsResponse> resp = getDocumentTextAnnotationsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextAnnotationsResponse> resp = getDocumentTextAnnotationsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;TextAnnotationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextAnnotationsResponse> getDocumentTextAnnotationsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentTextAnnotationsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<TextAnnotationsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentTextAnnotationsAsync(String name, String storage, String folder, final ApiCallback<TextAnnotationsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentTextAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<TextAnnotationsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -3009,6 +3922,164 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getFieldsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<FieldsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getFreeTextAnnotation
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getFreeTextAnnotationCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/freetext/{annotationId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getFreeTextAnnotationValidateBeforeCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getFreeTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotationId' is set
+        if (annotationId == null) {
+            throw new ApiException("Missing the required parameter 'annotationId' when calling getFreeTextAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getFreeTextAnnotationCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page free text annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return FreeTextAnnotationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FreeTextAnnotationResponse getFreeTextAnnotation(String name, String annotationId, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<FreeTextAnnotationResponse> resp = getFreeTextAnnotationWithHttpInfo(name, annotationId, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FreeTextAnnotationResponse> resp = getFreeTextAnnotationWithHttpInfo(name, annotationId, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page free text annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;FreeTextAnnotationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FreeTextAnnotationResponse> getFreeTextAnnotationWithHttpInfo(String name, String annotationId, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getFreeTextAnnotationValidateBeforeCall(name, annotationId, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page free text annotation by ID. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getFreeTextAnnotationAsync(String name, String annotationId, String storage, String folder, final ApiCallback<FreeTextAnnotationResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getFreeTextAnnotationValidateBeforeCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4348,6 +5419,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getLinkAnnotation
+     * @param name The document name. (required)
+     * @param linkId The link ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getLinkAnnotationCall(String name, String linkId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/links/{linkId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapeString(linkId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getLinkAnnotationValidateBeforeCall(String name, String linkId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getLinkAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'linkId' is set
+        if (linkId == null) {
+            throw new ApiException("Missing the required parameter 'linkId' when calling getLinkAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getLinkAnnotationCall(name, linkId, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document link annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param linkId The link ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return LinkAnnotationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LinkAnnotationResponse getLinkAnnotation(String name, String linkId, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<LinkAnnotationResponse> resp = getLinkAnnotationWithHttpInfo(name, linkId, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<LinkAnnotationResponse> resp = getLinkAnnotationWithHttpInfo(name, linkId, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document link annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param linkId The link ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;LinkAnnotationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LinkAnnotationResponse> getLinkAnnotationWithHttpInfo(String name, String linkId, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getLinkAnnotationValidateBeforeCall(name, linkId, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<LinkAnnotationResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document link annotation by ID. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param linkId The link ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getLinkAnnotationAsync(String name, String linkId, String storage, String folder, final ApiCallback<LinkAnnotationResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getLinkAnnotationValidateBeforeCall(name, linkId, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LinkAnnotationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getMhtInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
      * @param storage The document storage. (optional)
@@ -4649,174 +5878,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for getPageAnnotation
-     * @param name The document name. (required)
-     * @param pageNumber The page number. (required)
-     * @param annotationNumber The annotation number. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getPageAnnotationCall(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/{annotationNumber}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()))
-            .replaceAll("\\{" + "annotationNumber" + "\\}", apiClient.escapeString(annotationNumber.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageAnnotationValidateBeforeCall(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getPageAnnotation(Async)");
-        }
-        
-        // verify the required parameter 'pageNumber' is set
-        if (pageNumber == null) {
-            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageAnnotation(Async)");
-        }
-        
-        // verify the required parameter 'annotationNumber' is set
-        if (annotationNumber == null) {
-            throw new ApiException("Missing the required parameter 'annotationNumber' when calling getPageAnnotation(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getPageAnnotationCall(name, pageNumber, annotationNumber, storage, folder, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Read document page annotation by its number.
-     * 
-     * @param name The document name. (required)
-     * @param pageNumber The page number. (required)
-     * @param annotationNumber The annotation number. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return AnnotationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public AnnotationResponse getPageAnnotation(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder) throws ApiException {
-        try
-        {
-            ApiResponse<AnnotationResponse> resp = getPageAnnotationWithHttpInfo(name, pageNumber, annotationNumber, storage, folder);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.refreshToken();
-                ApiResponse<AnnotationResponse> resp = getPageAnnotationWithHttpInfo(name, pageNumber, annotationNumber, storage, folder);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Read document page annotation by its number.
-     * 
-     * @param name The document name. (required)
-     * @param pageNumber The page number. (required)
-     * @param annotationNumber The annotation number. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return ApiResponse&lt;AnnotationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<AnnotationResponse> getPageAnnotationWithHttpInfo(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getPageAnnotationValidateBeforeCall(name, pageNumber, annotationNumber, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<AnnotationResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Read document page annotation by its number. (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param pageNumber The page number. (required)
-     * @param annotationNumber The annotation number. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getPageAnnotationAsync(String name, Integer pageNumber, Integer annotationNumber, String storage, String folder, final ApiCallback<AnnotationResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getPageAnnotationValidateBeforeCall(name, pageNumber, annotationNumber, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AnnotationResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getPageAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -4894,19 +5955,19 @@ public class PdfApi {
     }
 
     /**
-     * Read documant page annotations.
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
-     * @return AnnotationsResponse
+     * @return AnnotationsInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnnotationsResponse getPageAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+    public AnnotationsInfoResponse getPageAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
         try
         {
-            ApiResponse<AnnotationsResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            ApiResponse<AnnotationsInfoResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -4914,7 +5975,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.refreshToken();
-                ApiResponse<AnnotationsResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                ApiResponse<AnnotationsInfoResponse> resp = getPageAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
                 return resp.getData();
             }
             throw ex;
@@ -4922,23 +5983,23 @@ public class PdfApi {
     }
 
     /**
-     * Read documant page annotations.
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
-     * @return ApiResponse&lt;AnnotationsResponse&gt;
+     * @return ApiResponse&lt;AnnotationsInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnnotationsResponse> getPageAnnotationsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+    public ApiResponse<AnnotationsInfoResponse> getPageAnnotationsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
         com.squareup.okhttp.Call call = getPageAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<AnnotationsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AnnotationsInfoResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Read documant page annotations. (asynchronously)
+     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases. (asynchronously)
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -4948,7 +6009,7 @@ public class PdfApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageAnnotationsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<AnnotationsResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageAnnotationsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<AnnotationsInfoResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4970,7 +6031,7 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = getPageAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AnnotationsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AnnotationsInfoResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -5995,6 +7056,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPageFreeTextAnnotations
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageFreeTextAnnotationsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/freetext"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageFreeTextAnnotationsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageFreeTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageFreeTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageFreeTextAnnotationsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return FreeTextAnnotationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FreeTextAnnotationsResponse getPageFreeTextAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<FreeTextAnnotationsResponse> resp = getPageFreeTextAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FreeTextAnnotationsResponse> resp = getPageFreeTextAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;FreeTextAnnotationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FreeTextAnnotationsResponse> getPageFreeTextAnnotationsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageFreeTextAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page free text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageFreeTextAnnotationsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<FreeTextAnnotationsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageFreeTextAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPageLinkAnnotation
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -6005,7 +7224,9 @@ public class PdfApi {
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getPageLinkAnnotationCall(String name, Integer pageNumber, String linkId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
@@ -6054,6 +7275,7 @@ public class PdfApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getPageLinkAnnotationValidateBeforeCall(String name, Integer pageNumber, String linkId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -6088,7 +7310,9 @@ public class PdfApi {
      * @param folder The document folder. (optional)
      * @return LinkAnnotationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public LinkAnnotationResponse getPageLinkAnnotation(String name, Integer pageNumber, String linkId, String storage, String folder) throws ApiException {
         try
         {
@@ -6117,7 +7341,9 @@ public class PdfApi {
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;LinkAnnotationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<LinkAnnotationResponse> getPageLinkAnnotationWithHttpInfo(String name, Integer pageNumber, String linkId, String storage, String folder) throws ApiException {
         com.squareup.okhttp.Call call = getPageLinkAnnotationValidateBeforeCall(name, pageNumber, linkId, storage, folder, null, null);
         Type localVarReturnType = new TypeToken<LinkAnnotationResponse>(){}.getType();
@@ -6135,7 +7361,9 @@ public class PdfApi {
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getPageLinkAnnotationAsync(String name, Integer pageNumber, String linkId, String storage, String folder, final ApiCallback<LinkAnnotationResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -6537,6 +7765,164 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getPageTextValidateBeforeCall(name, pageNumber, LLX, LLY, URX, URY, format, regex, splitRects, folder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<TextRectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageTextAnnotations
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageTextAnnotationsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageTextAnnotationsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageTextAnnotationsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return TextAnnotationsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextAnnotationsResponse getPageTextAnnotations(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<TextAnnotationsResponse> resp = getPageTextAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextAnnotationsResponse> resp = getPageTextAnnotationsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;TextAnnotationsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextAnnotationsResponse> getPageTextAnnotationsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageTextAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<TextAnnotationsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageTextAnnotationsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<TextAnnotationsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageTextAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<TextAnnotationsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9523,6 +10909,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getTextAnnotation
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getTextAnnotationCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/text/{annotationId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getTextAnnotationValidateBeforeCall(String name, String annotationId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotationId' is set
+        if (annotationId == null) {
+            throw new ApiException("Missing the required parameter 'annotationId' when calling getTextAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getTextAnnotationCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page text annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return TextAnnotationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextAnnotationResponse getTextAnnotation(String name, String annotationId, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<TextAnnotationResponse> resp = getTextAnnotationWithHttpInfo(name, annotationId, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextAnnotationResponse> resp = getTextAnnotationWithHttpInfo(name, annotationId, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page text annotation by ID.
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;TextAnnotationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextAnnotationResponse> getTextAnnotationWithHttpInfo(String name, String annotationId, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getTextAnnotationValidateBeforeCall(name, annotationId, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<TextAnnotationResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page text annotation by ID. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getTextAnnotationAsync(String name, String annotationId, String storage, String folder, final ApiCallback<TextAnnotationResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getTextAnnotationValidateBeforeCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<TextAnnotationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getVerifySignature
      * @param name The document name. (required)
      * @param signName Sign name. (required)
@@ -11621,6 +13165,173 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postPageFreeTextAnnotations
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postPageFreeTextAnnotationsCall(String name, Integer pageNumber, List<FreeTextAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = annotations;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/freetext"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postPageFreeTextAnnotationsValidateBeforeCall(String name, Integer pageNumber, List<FreeTextAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postPageFreeTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling postPageFreeTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'annotations' is set
+        if (annotations == null) {
+            throw new ApiException("Missing the required parameter 'annotations' when calling postPageFreeTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postPageFreeTextAnnotationsCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document page free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postPageFreeTextAnnotations(String name, Integer pageNumber, List<FreeTextAnnotation> annotations, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postPageFreeTextAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postPageFreeTextAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document page free text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postPageFreeTextAnnotationsWithHttpInfo(String name, Integer pageNumber, List<FreeTextAnnotation> annotations, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postPageFreeTextAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document page free text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postPageFreeTextAnnotationsAsync(String name, Integer pageNumber, List<FreeTextAnnotation> annotations, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postPageFreeTextAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postPageLinkAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -11783,6 +13494,173 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postPageLinkAnnotationsValidateBeforeCall(name, pageNumber, links, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postPageTextAnnotations
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postPageTextAnnotationsCall(String name, Integer pageNumber, List<TextAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = annotations;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postPageTextAnnotationsValidateBeforeCall(String name, Integer pageNumber, List<TextAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postPageTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling postPageTextAnnotations(Async)");
+        }
+        
+        // verify the required parameter 'annotations' is set
+        if (annotations == null) {
+            throw new ApiException("Missing the required parameter 'annotations' when calling postPageTextAnnotations(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postPageTextAnnotationsCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document page text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postPageTextAnnotations(String name, Integer pageNumber, List<TextAnnotation> annotations, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postPageTextAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postPageTextAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document page text annotations.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postPageTextAnnotationsWithHttpInfo(String name, Integer pageNumber, List<TextAnnotation> annotations, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postPageTextAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document page text annotations. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param annotations The array of annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postPageTextAnnotationsAsync(String name, Integer pageNumber, List<TextAnnotation> annotations, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postPageTextAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -13354,6 +15232,173 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putFieldsFlattenValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putFreeTextAnnotation
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putFreeTextAnnotationCall(String name, String annotationId, FreeTextAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = annotation;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/freetext/{annotationId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putFreeTextAnnotationValidateBeforeCall(String name, String annotationId, FreeTextAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putFreeTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotationId' is set
+        if (annotationId == null) {
+            throw new ApiException("Missing the required parameter 'annotationId' when calling putFreeTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotation' is set
+        if (annotation == null) {
+            throw new ApiException("Missing the required parameter 'annotation' when calling putFreeTextAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putFreeTextAnnotationCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document free text annotation
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return FreeTextAnnotationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FreeTextAnnotationResponse putFreeTextAnnotation(String name, String annotationId, FreeTextAnnotation annotation, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<FreeTextAnnotationResponse> resp = putFreeTextAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FreeTextAnnotationResponse> resp = putFreeTextAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document free text annotation
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;FreeTextAnnotationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FreeTextAnnotationResponse> putFreeTextAnnotationWithHttpInfo(String name, String annotationId, FreeTextAnnotation annotation, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putFreeTextAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document free text annotation (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putFreeTextAnnotationAsync(String name, String annotationId, FreeTextAnnotation annotation, String storage, String folder, final ApiCallback<FreeTextAnnotationResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putFreeTextAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FreeTextAnnotationResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -15538,13 +17583,13 @@ public class PdfApi {
      * @param mergeDocuments with a list of documents. (optional)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
-     * @return DocumentResponse
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DocumentResponse putMergeDocuments(String name, MergeDocuments mergeDocuments, String storage, String folder) throws ApiException {
+    public File putMergeDocuments(String name, MergeDocuments mergeDocuments, String storage, String folder) throws ApiException {
         try
         {
-            ApiResponse<DocumentResponse> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
+            ApiResponse<File> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -15552,7 +17597,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.refreshToken();
-                ApiResponse<DocumentResponse> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
+                ApiResponse<File> resp = putMergeDocumentsWithHttpInfo(name, mergeDocuments, storage, folder);
                 return resp.getData();
             }
             throw ex;
@@ -15566,12 +17611,12 @@ public class PdfApi {
      * @param mergeDocuments with a list of documents. (optional)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
-     * @return ApiResponse&lt;DocumentResponse&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DocumentResponse> putMergeDocumentsWithHttpInfo(String name, MergeDocuments mergeDocuments, String storage, String folder) throws ApiException {
+    public ApiResponse<File> putMergeDocumentsWithHttpInfo(String name, MergeDocuments mergeDocuments, String storage, String folder) throws ApiException {
         com.squareup.okhttp.Call call = putMergeDocumentsValidateBeforeCall(name, mergeDocuments, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -15586,7 +17631,7 @@ public class PdfApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putMergeDocumentsAsync(String name, MergeDocuments mergeDocuments, String storage, String folder, final ApiCallback<DocumentResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putMergeDocumentsAsync(String name, MergeDocuments mergeDocuments, String storage, String folder, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -15608,7 +17653,7 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putMergeDocumentsValidateBeforeCall(name, mergeDocuments, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -22591,6 +24636,173 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putSvgInStorageToPdfValidateBeforeCall(name, srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putTextAnnotation
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putTextAnnotationCall(String name, String annotationId, TextAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = annotation;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/annotations/text/{annotationId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putTextAnnotationValidateBeforeCall(String name, String annotationId, TextAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotationId' is set
+        if (annotationId == null) {
+            throw new ApiException("Missing the required parameter 'annotationId' when calling putTextAnnotation(Async)");
+        }
+        
+        // verify the required parameter 'annotation' is set
+        if (annotation == null) {
+            throw new ApiException("Missing the required parameter 'annotation' when calling putTextAnnotation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putTextAnnotationCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document text annotation
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return TextAnnotationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextAnnotationResponse putTextAnnotation(String name, String annotationId, TextAnnotation annotation, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<TextAnnotationResponse> resp = putTextAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<TextAnnotationResponse> resp = putTextAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document text annotation
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;TextAnnotationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextAnnotationResponse> putTextAnnotationWithHttpInfo(String name, String annotationId, TextAnnotation annotation, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putTextAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<TextAnnotationResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document text annotation (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param annotationId The annotation ID. (required)
+     * @param annotation Annotation. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putTextAnnotationAsync(String name, String annotationId, TextAnnotation annotation, String storage, String folder, final ApiCallback<TextAnnotationResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putTextAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<TextAnnotationResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

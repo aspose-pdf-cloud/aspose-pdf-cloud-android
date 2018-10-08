@@ -23,8 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Annotation;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.TextAnnotations;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,29 +35,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AnnotationResponse
+ * TextAnnotationsResponse
  */
 
-public class AnnotationResponse extends AsposeResponse {
-  @SerializedName("Annotation")
-  private Annotation annotation = null;
+public class TextAnnotationsResponse extends AsposeResponse {
+  @SerializedName("Annotations")
+  private TextAnnotations annotations = null;
 
-  public AnnotationResponse annotation(Annotation annotation) {
-    this.annotation = annotation;
+  public TextAnnotationsResponse annotations(TextAnnotations annotations) {
+    this.annotations = annotations;
     return this;
   }
 
    /**
-   * Get annotation
-   * @return annotation
+   * Get annotations
+   * @return annotations
   **/
   @ApiModelProperty(value = "")
-  public Annotation getAnnotation() {
-    return annotation;
+  public TextAnnotations getAnnotations() {
+    return annotations;
   }
 
-  public void setAnnotation(Annotation annotation) {
-    this.annotation = annotation;
+  public void setAnnotations(TextAnnotations annotations) {
+    this.annotations = annotations;
   }
 
 
@@ -69,23 +69,23 @@ public class AnnotationResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AnnotationResponse annotationResponse = (AnnotationResponse) o;
-    return Objects.equals(this.annotation, annotationResponse.annotation) &&
+    TextAnnotationsResponse textAnnotationsResponse = (TextAnnotationsResponse) o;
+    return Objects.equals(this.annotations, textAnnotationsResponse.annotations) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(annotation, super.hashCode());
+    return Objects.hash(annotations, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AnnotationResponse {\n");
+    sb.append("class TextAnnotationsResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    annotation: ").append(toIndentedString(annotation)).append("\n");
+    sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

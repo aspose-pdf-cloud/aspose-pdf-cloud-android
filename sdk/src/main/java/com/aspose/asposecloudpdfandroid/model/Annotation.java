@@ -23,9 +23,12 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Color;
+import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
+import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -34,6 +37,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,9 +46,6 @@ import java.util.List;
 @ApiModel(description = "Provides annotation.")
 
 public class Annotation extends LinkElement {
-  @SerializedName("Color")
-  private Color color = null;
-
   @SerializedName("Contents")
   private String contents = null;
 
@@ -60,23 +61,29 @@ public class Annotation extends LinkElement {
   @SerializedName("Modified")
   private String modified = null;
 
-  public Annotation color(Color color) {
-    this.color = color;
-    return this;
-  }
+  @SerializedName("Id")
+  private String id = null;
 
-   /**
-   * Get the annotation color.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Get the annotation color.")
-  public Color getColor() {
-    return color;
-  }
+  @SerializedName("Flags")
+  private List<AnnotationFlags> flags = null;
 
-  public void setColor(Color color) {
-    this.color = color;
-  }
+  @SerializedName("Name")
+  private String name = null;
+
+  @SerializedName("Rect")
+  private RectanglePdf rect = null;
+
+  @SerializedName("PageIndex")
+  private Integer pageIndex = null;
+
+  @SerializedName("ZIndex")
+  private Integer zindex = null;
+
+  @SerializedName("HorizontalAlignment")
+  private HorizontalAlignment horizontalAlignment = null;
+
+  @SerializedName("VerticalAlignment")
+  private VerticalAlignment verticalAlignment = null;
 
   public Annotation contents(String contents) {
     this.contents = contents;
@@ -168,6 +175,158 @@ public class Annotation extends LinkElement {
     this.modified = modified;
   }
 
+  public Annotation id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Gets ID of the annotation.
+   * @return id
+  **/
+  @ApiModelProperty(value = "Gets ID of the annotation.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public Annotation flags(List<AnnotationFlags> flags) {
+    this.flags = flags;
+    return this;
+  }
+
+  public Annotation addFlagsItem(AnnotationFlags flagsItem) {
+    if (this.flags == null) {
+      this.flags = new ArrayList<AnnotationFlags>();
+    }
+    this.flags.add(flagsItem);
+    return this;
+  }
+
+   /**
+   * Gets Flags of the annotation.
+   * @return flags
+  **/
+  @ApiModelProperty(value = "Gets Flags of the annotation.")
+  public List<AnnotationFlags> getFlags() {
+    return flags;
+  }
+
+  public void setFlags(List<AnnotationFlags> flags) {
+    this.flags = flags;
+  }
+
+  public Annotation name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Gets Name of the annotation.
+   * @return name
+  **/
+  @ApiModelProperty(value = "Gets Name of the annotation.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Annotation rect(RectanglePdf rect) {
+    this.rect = rect;
+    return this;
+  }
+
+   /**
+   * Gets Rect of the annotation.
+   * @return rect
+  **/
+  @ApiModelProperty(value = "Gets Rect of the annotation.")
+  public RectanglePdf getRect() {
+    return rect;
+  }
+
+  public void setRect(RectanglePdf rect) {
+    this.rect = rect;
+  }
+
+  public Annotation pageIndex(Integer pageIndex) {
+    this.pageIndex = pageIndex;
+    return this;
+  }
+
+   /**
+   * Gets PageIndex of the annotation.
+   * @return pageIndex
+  **/
+  @ApiModelProperty(value = "Gets PageIndex of the annotation.")
+  public Integer getPageIndex() {
+    return pageIndex;
+  }
+
+  public void setPageIndex(Integer pageIndex) {
+    this.pageIndex = pageIndex;
+  }
+
+  public Annotation zindex(Integer zindex) {
+    this.zindex = zindex;
+    return this;
+  }
+
+   /**
+   * Gets ZIndex of the annotation.
+   * @return zindex
+  **/
+  @ApiModelProperty(value = "Gets ZIndex of the annotation.")
+  public Integer getZindex() {
+    return zindex;
+  }
+
+  public void setZindex(Integer zindex) {
+    this.zindex = zindex;
+  }
+
+  public Annotation horizontalAlignment(HorizontalAlignment horizontalAlignment) {
+    this.horizontalAlignment = horizontalAlignment;
+    return this;
+  }
+
+   /**
+   * Gets HorizontalAlignment of the annotation.
+   * @return horizontalAlignment
+  **/
+  @ApiModelProperty(value = "Gets HorizontalAlignment of the annotation.")
+  public HorizontalAlignment getHorizontalAlignment() {
+    return horizontalAlignment;
+  }
+
+  public void setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+    this.horizontalAlignment = horizontalAlignment;
+  }
+
+  public Annotation verticalAlignment(VerticalAlignment verticalAlignment) {
+    this.verticalAlignment = verticalAlignment;
+    return this;
+  }
+
+   /**
+   * Gets VerticalAlignment of the annotation.
+   * @return verticalAlignment
+  **/
+  @ApiModelProperty(value = "Gets VerticalAlignment of the annotation.")
+  public VerticalAlignment getVerticalAlignment() {
+    return verticalAlignment;
+  }
+
+  public void setVerticalAlignment(VerticalAlignment verticalAlignment) {
+    this.verticalAlignment = verticalAlignment;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -178,18 +337,25 @@ public class Annotation extends LinkElement {
       return false;
     }
     Annotation annotation = (Annotation) o;
-    return Objects.equals(this.color, annotation.color) &&
-        Objects.equals(this.contents, annotation.contents) &&
+    return Objects.equals(this.contents, annotation.contents) &&
         Objects.equals(this.creationDate, annotation.creationDate) &&
         Objects.equals(this.subject, annotation.subject) &&
         Objects.equals(this.title, annotation.title) &&
         Objects.equals(this.modified, annotation.modified) &&
+        Objects.equals(this.id, annotation.id) &&
+        Objects.equals(this.flags, annotation.flags) &&
+        Objects.equals(this.name, annotation.name) &&
+        Objects.equals(this.rect, annotation.rect) &&
+        Objects.equals(this.pageIndex, annotation.pageIndex) &&
+        Objects.equals(this.zindex, annotation.zindex) &&
+        Objects.equals(this.horizontalAlignment, annotation.horizontalAlignment) &&
+        Objects.equals(this.verticalAlignment, annotation.verticalAlignment) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, contents, creationDate, subject, title, modified, super.hashCode());
+    return Objects.hash(contents, creationDate, subject, title, modified, id, flags, name, rect, pageIndex, zindex, horizontalAlignment, verticalAlignment, super.hashCode());
   }
 
 
@@ -198,12 +364,19 @@ public class Annotation extends LinkElement {
     StringBuilder sb = new StringBuilder();
     sb.append("class Annotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    rect: ").append(toIndentedString(rect)).append("\n");
+    sb.append("    pageIndex: ").append(toIndentedString(pageIndex)).append("\n");
+    sb.append("    zindex: ").append(toIndentedString(zindex)).append("\n");
+    sb.append("    horizontalAlignment: ").append(toIndentedString(horizontalAlignment)).append("\n");
+    sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

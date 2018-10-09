@@ -47,17 +47,17 @@ public class Field extends LinkElement {
   @SerializedName("Name")
   private String name = null;
 
-  @SerializedName("Type")
-  private FieldType type = null;
-
-  @SerializedName("Values")
-  private List<String> values = null;
-
   @SerializedName("SelectedItems")
   private List<Integer> selectedItems = null;
 
+  @SerializedName("Type")
+  private FieldType type = null;
+
   @SerializedName("Rect")
   private RectanglePdf rect = null;
+
+  @SerializedName("Values")
+  private List<String> values = null;
 
   public Field name(String name) {
     this.name = name;
@@ -75,50 +75,6 @@ public class Field extends LinkElement {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Field type(FieldType type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Field type.
-   * @return type
-  **/
-  @ApiModelProperty(value = "Field type.")
-  public FieldType getType() {
-    return type;
-  }
-
-  public void setType(FieldType type) {
-    this.type = type;
-  }
-
-  public Field values(List<String> values) {
-    this.values = values;
-    return this;
-  }
-
-  public Field addValuesItem(String valuesItem) {
-    if (this.values == null) {
-      this.values = new ArrayList<String>();
-    }
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * Field values.
-   * @return values
-  **/
-  @ApiModelProperty(value = "Field values.")
-  public List<String> getValues() {
-    return values;
-  }
-
-  public void setValues(List<String> values) {
-    this.values = values;
   }
 
   public Field selectedItems(List<Integer> selectedItems) {
@@ -147,6 +103,24 @@ public class Field extends LinkElement {
     this.selectedItems = selectedItems;
   }
 
+  public Field type(FieldType type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Field type.
+   * @return type
+  **/
+  @ApiModelProperty(value = "Field type.")
+  public FieldType getType() {
+    return type;
+  }
+
+  public void setType(FieldType type) {
+    this.type = type;
+  }
+
   public Field rect(RectanglePdf rect) {
     this.rect = rect;
     return this;
@@ -165,6 +139,32 @@ public class Field extends LinkElement {
     this.rect = rect;
   }
 
+  public Field values(List<String> values) {
+    this.values = values;
+    return this;
+  }
+
+  public Field addValuesItem(String valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<String>();
+    }
+    this.values.add(valuesItem);
+    return this;
+  }
+
+   /**
+   * Field values.
+   * @return values
+  **/
+  @ApiModelProperty(value = "Field values.")
+  public List<String> getValues() {
+    return values;
+  }
+
+  public void setValues(List<String> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -176,16 +176,16 @@ public class Field extends LinkElement {
     }
     Field field = (Field) o;
     return Objects.equals(this.name, field.name) &&
-        Objects.equals(this.type, field.type) &&
-        Objects.equals(this.values, field.values) &&
         Objects.equals(this.selectedItems, field.selectedItems) &&
+        Objects.equals(this.type, field.type) &&
         Objects.equals(this.rect, field.rect) &&
+        Objects.equals(this.values, field.values) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, values, selectedItems, rect, super.hashCode());
+    return Objects.hash(name, selectedItems, type, rect, values, super.hashCode());
   }
 
 
@@ -195,10 +195,10 @@ public class Field extends LinkElement {
     sb.append("class Field {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    selectedItems: ").append(toIndentedString(selectedItems)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    rect: ").append(toIndentedString(rect)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

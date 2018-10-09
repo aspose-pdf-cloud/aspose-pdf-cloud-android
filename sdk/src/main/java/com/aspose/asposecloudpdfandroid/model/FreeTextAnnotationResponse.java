@@ -23,8 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Link;
-import com.aspose.asposecloudpdfandroid.model.LinkElement;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,42 +33,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * List of annotations.
+ * FreeTextAnnotationResponse
  */
-@ApiModel(description = "List of annotations.")
 
-public class Annotations extends LinkElement {
-  @SerializedName("List")
-  private List<LinkElement> list = null;
+public class FreeTextAnnotationResponse extends AsposeResponse {
+  @SerializedName("Annotation")
+  private FreeTextAnnotation annotation = null;
 
-  public Annotations list(List<LinkElement> list) {
-    this.list = list;
-    return this;
-  }
-
-  public Annotations addListItem(LinkElement listItem) {
-    if (this.list == null) {
-      this.list = new ArrayList<LinkElement>();
-    }
-    this.list.add(listItem);
+  public FreeTextAnnotationResponse annotation(FreeTextAnnotation annotation) {
+    this.annotation = annotation;
     return this;
   }
 
    /**
-   * Get list
-   * @return list
+   * Get annotation
+   * @return annotation
   **/
   @ApiModelProperty(value = "")
-  public List<LinkElement> getList() {
-    return list;
+  public FreeTextAnnotation getAnnotation() {
+    return annotation;
   }
 
-  public void setList(List<LinkElement> list) {
-    this.list = list;
+  public void setAnnotation(FreeTextAnnotation annotation) {
+    this.annotation = annotation;
   }
 
 
@@ -80,23 +69,23 @@ public class Annotations extends LinkElement {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Annotations annotations = (Annotations) o;
-    return Objects.equals(this.list, annotations.list) &&
+    FreeTextAnnotationResponse freeTextAnnotationResponse = (FreeTextAnnotationResponse) o;
+    return Objects.equals(this.annotation, freeTextAnnotationResponse.annotation) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(list, super.hashCode());
+    return Objects.hash(annotation, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Annotations {\n");
+    sb.append("class FreeTextAnnotationResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    list: ").append(toIndentedString(list)).append("\n");
+    sb.append("    annotation: ").append(toIndentedString(annotation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

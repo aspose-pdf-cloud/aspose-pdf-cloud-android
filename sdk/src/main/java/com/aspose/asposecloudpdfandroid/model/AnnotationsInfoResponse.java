@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Annotations;
+import com.aspose.asposecloudpdfandroid.model.AnnotationsInfo;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -35,14 +35,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AnnotationsResponse
+ * AnnotationsInfoResponse
  */
 
-public class AnnotationsResponse extends AsposeResponse {
+public class AnnotationsInfoResponse extends AsposeResponse {
   @SerializedName("Annotations")
-  private Annotations annotations = null;
+  private AnnotationsInfo annotations = null;
 
-  public AnnotationsResponse annotations(Annotations annotations) {
+  public AnnotationsInfoResponse annotations(AnnotationsInfo annotations) {
     this.annotations = annotations;
     return this;
   }
@@ -52,11 +52,11 @@ public class AnnotationsResponse extends AsposeResponse {
    * @return annotations
   **/
   @ApiModelProperty(value = "")
-  public Annotations getAnnotations() {
+  public AnnotationsInfo getAnnotations() {
     return annotations;
   }
 
-  public void setAnnotations(Annotations annotations) {
+  public void setAnnotations(AnnotationsInfo annotations) {
     this.annotations = annotations;
   }
 
@@ -69,8 +69,8 @@ public class AnnotationsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AnnotationsResponse annotationsResponse = (AnnotationsResponse) o;
-    return Objects.equals(this.annotations, annotationsResponse.annotations) &&
+    AnnotationsInfoResponse annotationsInfoResponse = (AnnotationsInfoResponse) o;
+    return Objects.equals(this.annotations, annotationsInfoResponse.annotations) &&
         super.equals(o);
   }
 
@@ -83,7 +83,7 @@ public class AnnotationsResponse extends AsposeResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AnnotationsResponse {\n");
+    sb.append("class AnnotationsInfoResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
     sb.append("}");

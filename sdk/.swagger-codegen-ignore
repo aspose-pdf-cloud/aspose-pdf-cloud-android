@@ -21,7 +21,7 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
-docs/*.*
+#docs/*.*
 src/main/java/com/aspose/asposecloudpdfandroid/auth/*.*
 .gitignore
 git_push.sh

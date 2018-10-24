@@ -3,16 +3,12 @@
 Represents enumeration of the stamp types.
 
 ## Enum
-
-
-* `TEXT` (value: `"Text"`)
-
-* `IMAGE` (value: `"Image"`)
-
-* `PAGE` (value: `"Page"`)
-
-* `PAGENUMBER` (value: `"PageNumber"`)
-
+| Name |
+| ----------- |
+| **TEXT** |
+| **IMAGE** |
+| **PAGE** |
+| **PAGENUMBER** |
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

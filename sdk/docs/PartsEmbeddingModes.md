@@ -6,14 +6,11 @@ will be embedded into main HTML file or will be generated as apart binary entiti
             
 
 ## Enum
-
-
-* `EMBEDALLINTOHTML` (value: `"EmbedAllIntoHtml"`)
-
-* `EMBEDCSSONLY` (value: `"EmbedCssOnly"`)
-
-* `NOEMBEDDING` (value: `"NoEmbedding"`)
-
+| Name |
+| ----------- |
+| **EMBEDALLINTOHTML** |
+| **EMBEDCSSONLY** |
+| **NOEMBEDDING** |
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

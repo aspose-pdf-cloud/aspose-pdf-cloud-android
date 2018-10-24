@@ -6,14 +6,11 @@ during conversion of PDF to HTML
             
 
 ## Enum
-
-
-* `ASPNGIMAGESEMBEDDEDINTOSVG` (value: `"AsPngImagesEmbeddedIntoSvg"`)
-
-* `ASEXTERNALPNGFILESREFERENCEDVIASVG` (value: `"AsExternalPngFilesReferencedViaSvg"`)
-
-* `ASEMBEDDEDPARTSOFPNGPAGEBACKGROUND` (value: `"AsEmbeddedPartsOfPngPageBackground"`)
-
+| Name |
+| ----------- |
+| **ASPNGIMAGESEMBEDDEDINTOSVG** |
+| **ASEXTERNALPNGFILESREFERENCEDVIASVG** |
+| **ASEMBEDDEDPARTSOFPNGPAGEBACKGROUND** |
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

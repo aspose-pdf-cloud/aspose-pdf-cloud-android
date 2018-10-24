@@ -1,5 +1,6 @@
 
 # Annotation
+Provides annotation.
 
 ## Properties
 Name | Type | Description | Notes
@@ -18,5 +19,7 @@ Name | Type | Description | Notes
 **horizontalAlignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. |  [optional]
 **verticalAlignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets VerticalAlignment of the annotation. |  [optional]
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

@@ -1,5 +1,6 @@
 
 # Stamp
+Represents Pdf stamps.
 
 ## Properties
 Name | Type | Description | Notes
@@ -27,5 +28,7 @@ Name | Type | Description | Notes
 **pageIndex** | **Integer** | Gets or sets the index of the page. |  [optional]
 **startingNumber** | **Integer** | Gets or sets value of the number of starting page. Other pages will be numbered starting from this value. |  [optional]
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

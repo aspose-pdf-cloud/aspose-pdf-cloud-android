@@ -1,5 +1,6 @@
 
 # TextAnnotation
+Provides TextAnnotation.
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,5 +10,7 @@ Name | Type | Description | Notes
 **color** | [**Color**](Color.md) | Color of the annotation. |  [optional]
 **icon** | [**TextIcon**](TextIcon.md) | Gets or sets an icon to be used in displaying the annotation. |  [optional]
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

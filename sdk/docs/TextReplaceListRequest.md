@@ -1,5 +1,6 @@
 
 # TextReplaceListRequest
+Multiple text replacements request.
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,5 +10,7 @@ Name | Type | Description | Notes
 **startIndex** | **Integer** |  |  [optional]
 **countReplace** | **Integer** |  |  [optional]
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

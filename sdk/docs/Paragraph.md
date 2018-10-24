@@ -1,5 +1,6 @@
 
 # Paragraph
+Paragraph DTO for add text functionality.
 
 ## Properties
 Name | Type | Description | Notes
@@ -17,5 +18,7 @@ Name | Type | Description | Notes
 **verticalAlignment** | [**VerticalAlignment**](VerticalAlignment.md) |  |  [optional]
 **lines** | [**List&lt;TextLine&gt;**](TextLine.md) |  | 
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

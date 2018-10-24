@@ -1,5 +1,6 @@
 
 # Page
+Provides link to page.
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,5 +9,7 @@ Name | Type | Description | Notes
 **images** | [**Images**](Images.md) |  |  [optional]
 **rectangle** | [**RectanglePdf**](RectanglePdf.md) |  |  [optional]
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

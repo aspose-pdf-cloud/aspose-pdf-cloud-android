@@ -1,5 +1,6 @@
 
 # OptimizeOptions
+Represents Pdf optimize options.
 
 ## Properties
 Name | Type | Description | Notes
@@ -12,5 +13,7 @@ Name | Type | Description | Notes
 **removeUnusedStreams** | **Boolean** | If this flag set to true, every resource is checked on it&#39;s usage. If resource is never used, then resources is removed. This may decrease document size for example when pages were extracted from document.  | 
 **unembedFonts** | **Boolean** | Make fonts not embedded if set to true.  | 
 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

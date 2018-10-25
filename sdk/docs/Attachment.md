@@ -11,9 +11,7 @@ Name | Type | Description | Notes
 **creationDate** | **String** | The date and time when the embedded file was created. | [optional]
 **modificationDate** | **String** | The date and time when the embedded file was last modified. | [optional]
 **size** | **Integer** | The size of the uncompressed embedded file, in bytes. | 
-**checkSum** | **String** | A 16-byte string that is the checksum of the bytes of the uncompressed embedded file. 
-The checksum is calculated by applying the standard MD5 message-digest algorithm 
-to the bytes of the embedded file stream. | [optional]
+**checkSum** | **String** | A 16-byte string that is the checksum of the bytes of the uncompressed embedded file. The checksum is calculated by applying the standard MD5 message-digest algorithm to the bytes of the embedded file stream. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

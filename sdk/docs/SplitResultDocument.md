@@ -12,11 +12,6 @@ Name | Type | Description | Notes
 **title** | **String** | The "title" attribute conveys human-readable information about the link. The content of the "title" attribute is Language-Sensitive. | [optional]
 
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **Integer** | Gets or sets the page number. |  [optional]
-
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 

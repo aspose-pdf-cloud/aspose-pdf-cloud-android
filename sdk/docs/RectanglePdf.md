@@ -5,10 +5,10 @@ Represents rectangle DTO.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lLX** | **Number** |  | 
-**lLY** | **Number** |  | 
-**uRX** | **Number** |  | 
-**uRY** | **Number** |  | 
+**lLX** | **Double** |  | 
+**lLY** | **Double** |  | 
+**uRX** | **Double** |  | 
+**uRY** | **Double** |  | 
 
 
 ## Properties

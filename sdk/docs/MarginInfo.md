@@ -5,10 +5,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**left** | **Number** |  | 
-**right** | **Number** |  | 
-**top** | **Number** |  | 
-**bottom** | **Number** |  | 
+**left** | **Double** |  | 
+**right** | **Double** |  | 
+**top** | **Double** |  | 
+**bottom** | **Double** |  | 
 
 
 ## Properties

@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **imagePath** | **String** | A path for image. | 
 **imageSrcType** | [**ImageSrcType**](ImageSrcType.md) | Image type. | 
-**leftMargin** | **Number** |  | [optional]
-**rightMargin** | **Number** |  | [optional]
-**topMargin** | **Number** |  | [optional]
-**bottomMargin** | **Number** |  | [optional]
-**pageWidth** | **Number** |  | [optional]
-**pageHeight** | **Number** |  | [optional]
+**leftMargin** | **Double** |  | [optional]
+**rightMargin** | **Double** |  | [optional]
+**topMargin** | **Double** |  | [optional]
+**bottomMargin** | **Double** |  | [optional]
+**pageWidth** | **Double** |  | [optional]
+**pageHeight** | **Double** |  | [optional]
 **marginInfo** | [**MarginInfo**](MarginInfo.md) |  | [optional]
 
 

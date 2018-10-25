@@ -2397,7 +2397,7 @@ Upload a specific file
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext |
- **file** | [****](.md)| File to upload |
+ **file** | **File**| File to upload |
  **versionId** | **String**| Source file&#39;s version | [optional]
  **storage** | **String**| User&#39;s storage name | [optional]
 
@@ -3105,7 +3105,7 @@ Name | Type | Description  | Notes
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3129,7 +3129,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) |
  **contentRecognitionMode** | **String**| ?roperty tunes conversion for this or that desirable method of recognition of content. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3180,7 +3180,7 @@ Name | Type | Description  | Notes
  **specialFolderForSvgImages** | **String**| The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. | [optional]
  **trySaveTextUnderliningAndStrikeoutingInCss** | **Boolean**| PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3204,7 +3204,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.tex) |
  **pagesCount** | **Integer**| Pages count. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3227,7 +3227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.mobixml) |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3251,7 +3251,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
  **type** | **String**| Type of PdfA format. |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3276,7 +3276,7 @@ Name | Type | Description  | Notes
  **separateImages** | **Boolean**| Separate images. | [optional]
  **slidesAsImages** | **Boolean**| Slides as images. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3299,7 +3299,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.svg) |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3337,7 +3337,7 @@ Name | Type | Description  | Notes
  **pageIndex** | **Integer**| Start page to export. | [optional]
  **pageCount** | **Integer**| Number of pages to export. | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3364,7 +3364,7 @@ Name | Type | Description  | Notes
  **scaleFactor** | **Double**| Scale factor | [optional]
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3387,7 +3387,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.xml) |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -3410,7 +3410,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.xps) |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 
@@ -4041,7 +4041,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
  **storage** | **String**| The document storage. | [optional]
- **file** | [****](.md)| A file to be converted. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
 

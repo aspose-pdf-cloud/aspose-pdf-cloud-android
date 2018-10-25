@@ -6,8 +6,14 @@ Base class for all responses.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** | Response status code. | 
-**status** | **String** | Response status. |  [optional]
+**status** | **String** | Response status. | [optional]
 
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**code** | **Integer** | Response status code. | 
+**status** | **String** | Response status. |  [optional]
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

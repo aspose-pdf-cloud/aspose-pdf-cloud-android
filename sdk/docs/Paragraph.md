@@ -5,6 +5,23 @@ Paragraph DTO for add text functionality.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**lineSpacing** | [**LineSpacing**](LineSpacing.md) |  | [optional]
+**wrapMode** | [**WrapMode**](WrapMode.md) |  | [optional]
+**horizontalAlignment** | [**TextHorizontalAlignment**](TextHorizontalAlignment.md) |  | [optional]
+**leftMargin** | **Number** |  | [optional]
+**rightMargin** | **Number** |  | [optional]
+**topMargin** | **Number** |  | [optional]
+**bottomMargin** | **Number** |  | [optional]
+**rectangle** | [**RectanglePdf**](RectanglePdf.md) |  | [optional]
+**rotation** | **Number** |  | [optional]
+**subsequentLinesIndent** | **Number** |  | [optional]
+**verticalAlignment** | [**VerticalAlignment**](VerticalAlignment.md) |  | [optional]
+**lines** | [**List&lt;TextLine&gt;**](TextLine.md) |  | 
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
 **lineSpacing** | [**LineSpacing**](LineSpacing.md) |  |  [optional]
 **wrapMode** | [**WrapMode**](WrapMode.md) |  |  [optional]
 **horizontalAlignment** | [**TextHorizontalAlignment**](TextHorizontalAlignment.md) |  |  [optional]
@@ -17,7 +34,6 @@ Name | Type | Description | Notes
 **subsequentLinesIndent** | **Double** |  |  [optional]
 **verticalAlignment** | [**VerticalAlignment**](VerticalAlignment.md) |  |  [optional]
 **lines** | [**List&lt;TextLine&gt;**](TextLine.md) |  | 
-
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

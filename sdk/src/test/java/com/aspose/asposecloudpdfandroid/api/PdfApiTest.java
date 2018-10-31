@@ -30,6 +30,9 @@ import com.aspose.asposecloudpdfandroid.model.AnnotationsInfoResponse;
 import com.aspose.asposecloudpdfandroid.model.AppendDocument;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentsResponse;
+import com.aspose.asposecloudpdfandroid.model.CircleAnnotation;
+import com.aspose.asposecloudpdfandroid.model.CircleAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.CircleAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.ColorDepth;
 import com.aspose.asposecloudpdfandroid.model.CompressionType;
@@ -53,15 +56,28 @@ import com.aspose.asposecloudpdfandroid.model.ImageSrcType;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplate;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
 import com.aspose.asposecloudpdfandroid.model.Justification;
+import com.aspose.asposecloudpdfandroid.model.LineAnnotation;
+import com.aspose.asposecloudpdfandroid.model.LineAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.LineAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkActionType;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotation;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotations;
 import com.aspose.asposecloudpdfandroid.model.PdfAType;
+import com.aspose.asposecloudpdfandroid.model.Point;
+import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotation;
+import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.PolygonAnnotation;
+import com.aspose.asposecloudpdfandroid.model.PolygonAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.PolygonAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
 import com.aspose.asposecloudpdfandroid.model.Field;
 import com.aspose.asposecloudpdfandroid.model.FieldResponse;
 import com.aspose.asposecloudpdfandroid.model.FieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.Segment;
+import com.aspose.asposecloudpdfandroid.model.SquareAnnotation;
+import com.aspose.asposecloudpdfandroid.model.SquareAnnotationResponse;
+import com.aspose.asposecloudpdfandroid.model.SquareAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotation;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotationsResponse;
@@ -233,6 +249,698 @@ public class PdfApiTest
 
         AsposeResponse response = pdfApi.deleteAnnotation(name, annotationId, null, tempFolder);
         assertEquals(200, (int)response.getCode());
+    }
+
+    // Line Annotations
+
+    /**
+     * GetDocumentLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        LineAnnotationsResponse response = pdfApi.getDocumentLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        LineAnnotationsResponse response = pdfApi.getPageLineAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetLineAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLineAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        LineAnnotationsResponse responseAnnotations = pdfApi.getDocumentLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        LineAnnotationResponse response = pdfApi.getLineAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        LineAnnotation annotation = new LineAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setStarting(new Point().X(10.).Y(10.));
+        annotation.setEnding(new Point().X(100.).Y(100.));
+
+        List<LineAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageLineAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutLineAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putLineAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        LineAnnotation annotation = new LineAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+        annotation.setStarting(new Point().X(10.).Y(10.));
+        annotation.setEnding(new Point().X(100.).Y(100.));
+
+        LineAnnotationsResponse responseAnnotations = pdfApi.getDocumentLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putLineAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Square Annotations
+
+    /**
+     * GetDocumentSquareAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentSquareAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SquareAnnotationsResponse response = pdfApi.getDocumentSquareAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageSquareAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageSquareAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        SquareAnnotationsResponse response = pdfApi.getPageSquareAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetSquareAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSquareAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SquareAnnotationsResponse responseAnnotations = pdfApi.getDocumentSquareAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        SquareAnnotationResponse response = pdfApi.getSquareAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageSquareAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageSquareAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        SquareAnnotation annotation = new SquareAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+
+        List<SquareAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageSquareAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutSquareAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSquareAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        SquareAnnotation annotation = new SquareAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+
+        SquareAnnotationsResponse responseAnnotations = pdfApi.getDocumentSquareAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putSquareAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Circle Annotations
+
+    /**
+     * GetDocumentCircleAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentCircleAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        CircleAnnotationsResponse response = pdfApi.getDocumentCircleAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageCircleAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageCircleAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        CircleAnnotationsResponse response = pdfApi.getPageCircleAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetCircleAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCircleAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        CircleAnnotationsResponse responseAnnotations = pdfApi.getDocumentCircleAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        CircleAnnotationResponse response = pdfApi.getCircleAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageCircleAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageCircleAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        CircleAnnotation annotation = new CircleAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+
+        List<CircleAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageCircleAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutCircleAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putCircleAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        CircleAnnotation annotation = new CircleAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+
+        CircleAnnotationsResponse responseAnnotations = pdfApi.getDocumentCircleAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putCircleAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Polygon Annotations
+
+    /**
+     * GetDocumentPolygonAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentPolygonAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        PolygonAnnotationsResponse response = pdfApi.getDocumentPolygonAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPagePolygonAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPagePolygonAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        PolygonAnnotationsResponse response = pdfApi.getPagePolygonAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPolygonAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPolygonAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        PolygonAnnotationsResponse responseAnnotations = pdfApi.getDocumentPolygonAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        PolygonAnnotationResponse response = pdfApi.getPolygonAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPagePolygonAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPagePolygonAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<Point> vertices = new ArrayList();
+        vertices.add(new Point().X(10.).Y(10.));
+        vertices.add(new Point().X(20.).Y(10.));
+        vertices.add(new Point().X(10.).Y(20.));
+        vertices.add(new Point().X(10.).Y(10.));
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        PolygonAnnotation annotation = new PolygonAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setVertices(vertices);
+
+        List<PolygonAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPagePolygonAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutPolygonAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPolygonAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<Point> vertices = new ArrayList();
+        vertices.add(new Point().X(10.).Y(10.));
+        vertices.add(new Point().X(20.).Y(10.));
+        vertices.add(new Point().X(10.).Y(20.));
+        vertices.add(new Point().X(10.).Y(10.));
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        PolygonAnnotation annotation = new PolygonAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+        annotation.setVertices(vertices);
+
+        PolygonAnnotationsResponse responseAnnotations = pdfApi.getDocumentPolygonAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putPolygonAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // PolyLine Annotations
+
+    /**
+     * GetDocumentPolyLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentPolyLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        PolyLineAnnotationsResponse response = pdfApi.getDocumentPolyLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPagePolyLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPagePolyLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        PolyLineAnnotationsResponse response = pdfApi.getPagePolyLineAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetPolyLineAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPolyLineAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        PolyLineAnnotationsResponse responseAnnotations = pdfApi.getDocumentPolyLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        PolyLineAnnotationResponse response = pdfApi.getPolyLineAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPagePolyLineAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPagePolyLineAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<Point> vertices = new ArrayList();
+        vertices.add(new Point().X(10.).Y(10.));
+        vertices.add(new Point().X(20.).Y(10.));
+        vertices.add(new Point().X(10.).Y(20.));
+        vertices.add(new Point().X(10.).Y(10.));
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        PolyLineAnnotation annotation = new PolyLineAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setVertices(vertices);
+
+        List<PolyLineAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPagePolyLineAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    /**
+     * PutPolyLineAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putPolyLineAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RectanglePdf rect = new RectanglePdf()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<Point> vertices = new ArrayList();
+        vertices.add(new Point().X(10.).Y(10.));
+        vertices.add(new Point().X(20.).Y(10.));
+        vertices.add(new Point().X(10.).Y(20.));
+        vertices.add(new Point().X(10.).Y(10.));
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        PolyLineAnnotation annotation = new PolyLineAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+        annotation.setVertices(vertices);
+
+        PolyLineAnnotationsResponse responseAnnotations = pdfApi.getDocumentPolyLineAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putPolyLineAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
     }
 
     // Free Text Annotations

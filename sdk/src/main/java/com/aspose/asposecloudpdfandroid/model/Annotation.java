@@ -49,15 +49,6 @@ public class Annotation extends LinkElement {
   @SerializedName("Contents")
   private String contents = null;
 
-  @SerializedName("CreationDate")
-  private String creationDate = null;
-
-  @SerializedName("Subject")
-  private String subject = null;
-
-  @SerializedName("Title")
-  private String title = null;
-
   @SerializedName("Modified")
   private String modified = null;
 
@@ -101,60 +92,6 @@ public class Annotation extends LinkElement {
 
   public void setContents(String contents) {
     this.contents = contents;
-  }
-
-  public Annotation creationDate(String creationDate) {
-    this.creationDate = creationDate;
-    return this;
-  }
-
-   /**
-   * The date and time when the annotation was created.
-   * @return creationDate
-  **/
-  @ApiModelProperty(value = "The date and time when the annotation was created.")
-  public String getCreationDate() {
-    return creationDate;
-  }
-
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  public Annotation subject(String subject) {
-    this.subject = subject;
-    return this;
-  }
-
-   /**
-   * Get the annotation subject.
-   * @return subject
-  **/
-  @ApiModelProperty(value = "Get the annotation subject.")
-  public String getSubject() {
-    return subject;
-  }
-
-  public void setSubject(String subject) {
-    this.subject = subject;
-  }
-
-  public Annotation title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get the annotation title.
-   * @return title
-  **/
-  @ApiModelProperty(value = "Get the annotation title.")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
   }
 
   public Annotation modified(String modified) {
@@ -338,9 +275,6 @@ public class Annotation extends LinkElement {
     }
     Annotation annotation = (Annotation) o;
     return Objects.equals(this.contents, annotation.contents) &&
-        Objects.equals(this.creationDate, annotation.creationDate) &&
-        Objects.equals(this.subject, annotation.subject) &&
-        Objects.equals(this.title, annotation.title) &&
         Objects.equals(this.modified, annotation.modified) &&
         Objects.equals(this.id, annotation.id) &&
         Objects.equals(this.flags, annotation.flags) &&
@@ -355,7 +289,7 @@ public class Annotation extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contents, creationDate, subject, title, modified, id, flags, name, rect, pageIndex, zindex, horizontalAlignment, verticalAlignment, super.hashCode());
+    return Objects.hash(contents, modified, id, flags, name, rect, pageIndex, zindex, horizontalAlignment, verticalAlignment, super.hashCode());
   }
 
 
@@ -365,9 +299,6 @@ public class Annotation extends LinkElement {
     sb.append("class Annotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    flags: ").append(toIndentedString(flags)).append("\n");

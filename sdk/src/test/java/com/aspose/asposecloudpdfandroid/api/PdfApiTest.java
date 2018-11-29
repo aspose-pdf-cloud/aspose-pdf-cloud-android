@@ -46,6 +46,7 @@ import com.aspose.asposecloudpdfandroid.model.DocumentPropertyResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentResponse;
 import com.aspose.asposecloudpdfandroid.model.FieldType;
 import com.aspose.asposecloudpdfandroid.model.Fields;
+import com.aspose.asposecloudpdfandroid.model.FilesResponse;
 import com.aspose.asposecloudpdfandroid.model.FontStyles;
 import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotation;
 import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotationResponse;
@@ -4434,7 +4435,7 @@ public class PdfApiTest
     }
 
 
-    // Upload/Download Tests
+    // Storage Tests
 
     /**
      * UploadFile Test
@@ -4468,5 +4469,18 @@ public class PdfApiTest
 
         File response = this.pdfApi.getDownload(path, null, null);
         assertNotNull(response);
+    }
+
+    /**
+     * GetListFiles Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getListFilesTest() throws ApiException
+    {
+        FilesResponse response = this.pdfApi.getListFiles(this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
     }
 }

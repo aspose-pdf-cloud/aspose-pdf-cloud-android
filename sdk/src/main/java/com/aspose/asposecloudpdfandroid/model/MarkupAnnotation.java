@@ -45,8 +45,71 @@ import java.util.List;
 @ApiModel(description = "Provides MarkupAnnotation.")
 
 public class MarkupAnnotation extends Annotation {
+  @SerializedName("CreationDate")
+  private String creationDate = null;
+
+  @SerializedName("Subject")
+  private String subject = null;
+
+  @SerializedName("Title")
+  private String title = null;
+
   @SerializedName("RichText")
   private String richText = null;
+
+  public MarkupAnnotation creationDate(String creationDate) {
+    this.creationDate = creationDate;
+    return this;
+  }
+
+   /**
+   * The date and time when the annotation was created.
+   * @return creationDate
+  **/
+  @ApiModelProperty(value = "The date and time when the annotation was created.")
+  public String getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(String creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public MarkupAnnotation subject(String subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get the annotation subject.
+   * @return subject
+  **/
+  @ApiModelProperty(value = "Get the annotation subject.")
+  public String getSubject() {
+    return subject;
+  }
+
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
+
+  public MarkupAnnotation title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get the annotation title.
+   * @return title
+  **/
+  @ApiModelProperty(value = "Get the annotation title.")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
   public MarkupAnnotation richText(String richText) {
     this.richText = richText;
@@ -76,13 +139,16 @@ public class MarkupAnnotation extends Annotation {
       return false;
     }
     MarkupAnnotation markupAnnotation = (MarkupAnnotation) o;
-    return Objects.equals(this.richText, markupAnnotation.richText) &&
+    return Objects.equals(this.creationDate, markupAnnotation.creationDate) &&
+        Objects.equals(this.subject, markupAnnotation.subject) &&
+        Objects.equals(this.title, markupAnnotation.title) &&
+        Objects.equals(this.richText, markupAnnotation.richText) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(richText, super.hashCode());
+    return Objects.hash(creationDate, subject, title, richText, super.hashCode());
   }
 
 
@@ -91,6 +157,9 @@ public class MarkupAnnotation extends Annotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class MarkupAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    richText: ").append(toIndentedString(richText)).append("\n");
     sb.append("}");
     return sb.toString();

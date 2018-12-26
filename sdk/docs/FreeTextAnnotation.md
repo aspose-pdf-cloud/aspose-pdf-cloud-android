@@ -1,4 +1,4 @@
-
+﻿
 # FreeTextAnnotation
 Provides FreeTextAnnotation.
 

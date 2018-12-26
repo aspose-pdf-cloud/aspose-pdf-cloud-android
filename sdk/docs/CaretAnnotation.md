@@ -1,4 +1,4 @@
-
+﻿
 # CaretAnnotation
 Provides CaretAnnotation.
 

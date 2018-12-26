@@ -1,4 +1,4 @@
-
+﻿
 # FreeTextAnnotations
 List of annotations.
 

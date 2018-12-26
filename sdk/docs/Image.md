@@ -1,4 +1,4 @@
-
+﻿
 # Image
 Represents image DTO.
 

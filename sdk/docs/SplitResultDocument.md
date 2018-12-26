@@ -1,4 +1,4 @@
-
+﻿
 # SplitResultDocument
 Represents split result document,
 

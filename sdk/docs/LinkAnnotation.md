@@ -1,4 +1,4 @@
-
+﻿
 # LinkAnnotation
 Provides link to linkAnnotation.
 

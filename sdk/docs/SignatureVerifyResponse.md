@@ -1,4 +1,4 @@
-
+﻿
 # SignatureVerifyResponse
 Returns also a message.
 

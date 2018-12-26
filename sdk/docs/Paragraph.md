@@ -1,4 +1,4 @@
-
+﻿
 # Paragraph
 Paragraph DTO for add text functionality.
 

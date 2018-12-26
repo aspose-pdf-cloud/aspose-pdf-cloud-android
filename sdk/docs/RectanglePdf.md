@@ -1,4 +1,4 @@
-
+﻿
 # RectanglePdf
 Represents rectangle DTO.
 

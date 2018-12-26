@@ -1,4 +1,4 @@
-
+﻿
 # OptimizeOptions
 Represents Pdf optimize options.
 

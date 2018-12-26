@@ -1,4 +1,4 @@
-
+﻿
 # HighlightAnnotation
 Provides HighlightAnnotation.
 

@@ -1,4 +1,4 @@
-
+﻿
 # LinkElement
 Represents base DTO object.
 

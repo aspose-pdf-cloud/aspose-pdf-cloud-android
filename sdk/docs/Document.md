@@ -1,4 +1,4 @@
-
+﻿
 # Document
 Represents document DTO.
 

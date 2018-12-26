@@ -1,4 +1,4 @@
-
+﻿
 # AsposeResponse
 Base class for all responses.
 

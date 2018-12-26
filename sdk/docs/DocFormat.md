@@ -1,12 +1,13 @@
-
+﻿
 # DocFormat
 Allows to specify .doc or .docx file format.
 
 ## Enum
-| Name |
-| ----------- |
-| **DOC** |
-| **DOCX** |
+ Name | Description
+------------ | ------------
+**Doc** | [MS-DOC]: Word (.doc) Binary File Format
+**DocX** | Office Open XML (.docx) File Format
+
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

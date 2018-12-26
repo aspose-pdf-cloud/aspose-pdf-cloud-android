@@ -1,4 +1,4 @@
-
+﻿
 # LineAnnotation
 Provides LineAnnotation.
 

@@ -1,4 +1,4 @@
-
+﻿
 # TextAnnotations
 List of annotations.
 

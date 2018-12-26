@@ -1,4 +1,4 @@
-
+﻿
 # TextReplace
 Single text replacement setting.
 

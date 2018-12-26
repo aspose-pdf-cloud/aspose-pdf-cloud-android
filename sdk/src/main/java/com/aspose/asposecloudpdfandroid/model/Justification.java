@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Enumerates the forms of quadding (justification) to be used in displaying the annotation?s text.
+ * Enumerates the forms of quadding (justification) to be used in displaying the annotation’s text.
  */
 @JsonAdapter(Justification.Adapter.class)
 public enum Justification {

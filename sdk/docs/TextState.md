@@ -1,4 +1,4 @@
-
+﻿
 # TextState
 Represents a text state of a text
 

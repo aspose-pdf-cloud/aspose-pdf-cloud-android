@@ -1,4 +1,4 @@
-
+﻿
 # Stamp
 Represents Pdf stamps.
 

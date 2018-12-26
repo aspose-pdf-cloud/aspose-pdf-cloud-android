@@ -1,4 +1,4 @@
-
+﻿
 # File
 Represents file DTO.
 

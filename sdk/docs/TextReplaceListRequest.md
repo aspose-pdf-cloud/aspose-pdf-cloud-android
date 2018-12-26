@@ -1,4 +1,4 @@
-
+﻿
 # TextReplaceListRequest
 Multiple text replacements request.
 

@@ -1,4 +1,4 @@
-
+﻿
 # ImageTemplate
 Template of image.
 

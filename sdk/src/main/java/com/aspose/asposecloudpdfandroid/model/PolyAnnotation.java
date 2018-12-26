@@ -71,10 +71,10 @@ public class PolyAnnotation extends MarkupAnnotation {
   }
 
    /**
-   * Gets or sets the interior color with which to fill the annotation?s line endings.
+   * Gets or sets the interior color with which to fill the annotation’s line endings.
    * @return interiorColor
   **/
-  @ApiModelProperty(value = "Gets or sets the interior color with which to fill the annotation?s line endings.")
+  @ApiModelProperty(value = "Gets or sets the interior color with which to fill the annotation’s line endings.")
   public Color getInteriorColor() {
     return interiorColor;
   }

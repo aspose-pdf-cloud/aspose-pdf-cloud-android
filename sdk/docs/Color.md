@@ -1,4 +1,4 @@
-
+﻿
 # Color
 Represents color DTO.
 

@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Enumeration of the annotation?s caption positioning.
+ * Enumeration of the annotation’s caption positioning.
  */
 @JsonAdapter(CaptionPosition.Adapter.class)
 public enum CaptionPosition {

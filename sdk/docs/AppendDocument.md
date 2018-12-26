@@ -1,4 +1,4 @@
-
+﻿
 # AppendDocument
 Class for appendDocument service request building.
 

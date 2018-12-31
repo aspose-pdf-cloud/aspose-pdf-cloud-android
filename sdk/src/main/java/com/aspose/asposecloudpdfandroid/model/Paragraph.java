@@ -24,7 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.LineSpacing;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.TextHorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.TextLine;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
@@ -41,9 +41,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Paragraph DTO for add text functionality.
+ * Represents text paragraphs as multiline text object.
  */
-@ApiModel(description = "Paragraph DTO for add text functionality.")
+@ApiModel(description = "Represents text paragraphs as multiline text object.")
 
 public class Paragraph {
   @SerializedName("LineSpacing")
@@ -68,7 +68,7 @@ public class Paragraph {
   private Double bottomMargin = null;
 
   @SerializedName("Rectangle")
-  private RectanglePdf rectangle = null;
+  private Rectangle rectangle = null;
 
   @SerializedName("Rotation")
   private Double rotation = null;
@@ -88,10 +88,10 @@ public class Paragraph {
   }
 
    /**
-   * Get lineSpacing
+   * Line spacing mode.
    * @return lineSpacing
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Line spacing mode.")
   public LineSpacing getLineSpacing() {
     return lineSpacing;
   }
@@ -106,10 +106,10 @@ public class Paragraph {
   }
 
    /**
-   * Get wrapMode
+   * Word wrap mode.
    * @return wrapMode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Word wrap mode.")
   public WrapMode getWrapMode() {
     return wrapMode;
   }
@@ -124,10 +124,10 @@ public class Paragraph {
   }
 
    /**
-   * Get horizontalAlignment
+   * Horizontal alignment for the text inside paragrph&#39;s rectangle.
    * @return horizontalAlignment
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Horizontal alignment for the text inside paragrph's rectangle.")
   public TextHorizontalAlignment getHorizontalAlignment() {
     return horizontalAlignment;
   }
@@ -142,10 +142,10 @@ public class Paragraph {
   }
 
    /**
-   * Get leftMargin
+   * Left margin.
    * @return leftMargin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Left margin.")
   public Double getLeftMargin() {
     return leftMargin;
   }
@@ -160,10 +160,10 @@ public class Paragraph {
   }
 
    /**
-   * Get rightMargin
+   * Right margin.
    * @return rightMargin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Right margin.")
   public Double getRightMargin() {
     return rightMargin;
   }
@@ -178,10 +178,10 @@ public class Paragraph {
   }
 
    /**
-   * Get topMargin
+   * Top margin.
    * @return topMargin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Top margin.")
   public Double getTopMargin() {
     return topMargin;
   }
@@ -196,10 +196,10 @@ public class Paragraph {
   }
 
    /**
-   * Get bottomMargin
+   * Bottom margin.
    * @return bottomMargin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Bottom margin.")
   public Double getBottomMargin() {
     return bottomMargin;
   }
@@ -208,21 +208,21 @@ public class Paragraph {
     this.bottomMargin = bottomMargin;
   }
 
-  public Paragraph rectangle(RectanglePdf rectangle) {
+  public Paragraph rectangle(Rectangle rectangle) {
     this.rectangle = rectangle;
     return this;
   }
 
    /**
-   * Get rectangle
+   * Rectangle of the paragraph.
    * @return rectangle
   **/
-  @ApiModelProperty(value = "")
-  public RectanglePdf getRectangle() {
+  @ApiModelProperty(value = "Rectangle of the paragraph.")
+  public Rectangle getRectangle() {
     return rectangle;
   }
 
-  public void setRectangle(RectanglePdf rectangle) {
+  public void setRectangle(Rectangle rectangle) {
     this.rectangle = rectangle;
   }
 
@@ -232,10 +232,10 @@ public class Paragraph {
   }
 
    /**
-   * Get rotation
+   * Rotation angle in degrees.
    * @return rotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Rotation angle in degrees.")
   public Double getRotation() {
     return rotation;
   }
@@ -250,10 +250,10 @@ public class Paragraph {
   }
 
    /**
-   * Get subsequentLinesIndent
+   * Subsequent lines indent value.
    * @return subsequentLinesIndent
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Subsequent lines indent value.")
   public Double getSubsequentLinesIndent() {
     return subsequentLinesIndent;
   }
@@ -268,10 +268,10 @@ public class Paragraph {
   }
 
    /**
-   * Get verticalAlignment
+   * Vertical alignment for the text inside paragrph&#39;s rectangle
    * @return verticalAlignment
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Vertical alignment for the text inside paragrph's rectangle")
   public VerticalAlignment getVerticalAlignment() {
     return verticalAlignment;
   }
@@ -291,10 +291,10 @@ public class Paragraph {
   }
 
    /**
-   * Get lines
+   * An array of text lines.
    * @return lines
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "An array of text lines.")
   public List<TextLine> getLines() {
     return lines;
   }

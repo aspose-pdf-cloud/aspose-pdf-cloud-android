@@ -37,8 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DocumentResponse
+ * Represents response containing document info
  */
+@ApiModel(description = "Represents response containing document info")
 
 public class DocumentResponse extends AsposeResponse {
   @SerializedName("Document")
@@ -53,10 +54,10 @@ public class DocumentResponse extends AsposeResponse {
   }
 
    /**
-   * Get document
+   * Document object
    * @return document
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Document object")
   public Document getDocument() {
     return document;
   }
@@ -79,10 +80,10 @@ public class DocumentResponse extends AsposeResponse {
   }
 
    /**
-   * Get messages
+   * A list of messages obtained while producing the responce
    * @return messages
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of messages obtained while producing the responce")
   public List<String> getMessages() {
     return messages;
   }

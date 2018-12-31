@@ -56,10 +56,10 @@ public class Color {
   }
 
    /**
-   * Get A
+   * Alpha component.
    * @return A
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Alpha component.")
   public Integer getA() {
     return A;
   }
@@ -74,10 +74,10 @@ public class Color {
   }
 
    /**
-   * Get R
+   * Red component.
    * @return R
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Red component.")
   public Integer getR() {
     return R;
   }
@@ -92,10 +92,10 @@ public class Color {
   }
 
    /**
-   * Get G
+   * Green component.
    * @return G
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Green component.")
   public Integer getG() {
     return G;
   }
@@ -110,10 +110,10 @@ public class Color {
   }
 
    /**
-   * Get B
+   * Blue component.
    * @return B
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Blue component.")
   public Integer getB() {
     return B;
   }

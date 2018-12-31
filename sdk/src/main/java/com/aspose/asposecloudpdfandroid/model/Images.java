@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of page images.
+ * Represents list of images.
  */
-@ApiModel(description = "List of page images.")
+@ApiModel(description = "Represents list of images.")
 
 public class Images extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class Images extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of images.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of images.")
   public List<Image> getList() {
     return list;
   }

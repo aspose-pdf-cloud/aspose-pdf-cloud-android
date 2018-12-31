@@ -100,10 +100,10 @@ public class TextReplaceListRequest {
   }
 
    /**
-   * Get startIndex
+   * The index of first match to be replaced.
    * @return startIndex
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The index of first match to be replaced.")
   public Integer getStartIndex() {
     return startIndex;
   }
@@ -118,10 +118,10 @@ public class TextReplaceListRequest {
   }
 
    /**
-   * Get countReplace
+   * The number of matches to be replaced.
    * @return countReplace
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The number of matches to be replaced.")
   public Integer getCountReplace() {
     return countReplace;
   }

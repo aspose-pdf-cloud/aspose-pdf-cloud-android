@@ -1,4 +1,4 @@
-﻿/**
+/**
  *
  *   Copyright (c) 2018 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,6 +47,7 @@ import com.aspose.asposecloudpdfandroid.model.CaretAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotation;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.DiscUsageResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPageResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPagesResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPrivilege;
@@ -58,6 +59,8 @@ import com.aspose.asposecloudpdfandroid.model.FieldResponse;
 import com.aspose.asposecloudpdfandroid.model.Fields;
 import com.aspose.asposecloudpdfandroid.model.FieldsResponse;
 import java.io.File;
+import com.aspose.asposecloudpdfandroid.model.FileExistResponse;
+import com.aspose.asposecloudpdfandroid.model.FileVersionsResponse;
 import com.aspose.asposecloudpdfandroid.model.FilesResponse;
 import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotation;
 import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotationResponse;
@@ -99,6 +102,7 @@ import com.aspose.asposecloudpdfandroid.model.SquigglyAnnotation;
 import com.aspose.asposecloudpdfandroid.model.SquigglyAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.SquigglyAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.Stamp;
+import com.aspose.asposecloudpdfandroid.model.StorageExistResponse;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotation;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotationsResponse;
@@ -748,6 +752,304 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = deleteFieldValidateBeforeCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteFile
+     * @param path Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteFileCall(String path, String versionId, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/file";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (versionId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("versionId", versionId));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteFileValidateBeforeCall(String path, String versionId, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path' is set
+        if (path == null) {
+            throw new ApiException("Missing the required parameter 'path' when calling deleteFile(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deleteFileCall(path, versionId, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Remove a specific file 
+     * 
+     * @param path Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse deleteFile(String path, String versionId, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = deleteFileWithHttpInfo(path, versionId, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = deleteFileWithHttpInfo(path, versionId, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Remove a specific file 
+     * 
+     * @param path Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> deleteFileWithHttpInfo(String path, String versionId, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteFileValidateBeforeCall(path, versionId, storage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Remove a specific file  (asynchronously)
+     * 
+     * @param path Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteFileAsync(String path, String versionId, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteFileValidateBeforeCall(path, versionId, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteFolder
+     * @param path Folder path e.g. /Folder1 (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (optional, default to false)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteFolderCall(String path, String storage, Boolean recursive, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/folder";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (recursive != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("recursive", recursive));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteFolderValidateBeforeCall(String path, String storage, Boolean recursive, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path' is set
+        if (path == null) {
+            throw new ApiException("Missing the required parameter 'path' when calling deleteFolder(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deleteFolderCall(path, storage, recursive, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Remove a specific folder 
+     * 
+     * @param path Folder path e.g. /Folder1 (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (optional, default to false)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse deleteFolder(String path, String storage, Boolean recursive) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = deleteFolderWithHttpInfo(path, storage, recursive);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = deleteFolderWithHttpInfo(path, storage, recursive);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Remove a specific folder 
+     * 
+     * @param path Folder path e.g. /Folder1 (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (optional, default to false)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> deleteFolderWithHttpInfo(String path, String storage, Boolean recursive) throws ApiException {
+        com.squareup.okhttp.Call call = deleteFolderValidateBeforeCall(path, storage, recursive, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Remove a specific folder  (asynchronously)
+     * 
+     * @param path Folder path e.g. /Folder1 (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (optional, default to false)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteFolderAsync(String path, String storage, Boolean recursive, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteFolderValidateBeforeCall(path, storage, recursive, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2161,6 +2463,138 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getCircleAnnotationValidateBeforeCall(name, annotationId, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CircleAnnotationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getDiscUsage
+     * @param storage User&#39;s storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDiscUsageCall(String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/disc";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDiscUsageValidateBeforeCall(String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getDiscUsageCall(storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Check the disk usage of the current account 
+     * 
+     * @param storage User&#39;s storage name (optional)
+     * @return DiscUsageResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DiscUsageResponse getDiscUsage(String storage) throws ApiException {
+        try
+        {
+            ApiResponse<DiscUsageResponse> resp = getDiscUsageWithHttpInfo(storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<DiscUsageResponse> resp = getDiscUsageWithHttpInfo(storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Check the disk usage of the current account 
+     * 
+     * @param storage User&#39;s storage name (optional)
+     * @return ApiResponse&lt;DiscUsageResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DiscUsageResponse> getDiscUsageWithHttpInfo(String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getDiscUsageValidateBeforeCall(storage, null, null);
+        Type localVarReturnType = new TypeToken<DiscUsageResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Check the disk usage of the current account  (asynchronously)
+     * 
+     * @param storage User&#39;s storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDiscUsageAsync(String storage, final ApiCallback<DiscUsageResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDiscUsageValidateBeforeCall(storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DiscUsageResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7874,6 +8308,291 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getIsExist
+     * @param path File or folder path e.g. /file.ext or /Folder1 (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getIsExistCall(String path, String versionId, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/exist";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (versionId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("versionId", versionId));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getIsExistValidateBeforeCall(String path, String versionId, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path' is set
+        if (path == null) {
+            throw new ApiException("Missing the required parameter 'path' when calling getIsExist(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getIsExistCall(path, versionId, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Check if a specific file or folder exists
+     * 
+     * @param path File or folder path e.g. /file.ext or /Folder1 (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @return FileExistResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FileExistResponse getIsExist(String path, String versionId, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<FileExistResponse> resp = getIsExistWithHttpInfo(path, versionId, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FileExistResponse> resp = getIsExistWithHttpInfo(path, versionId, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Check if a specific file or folder exists
+     * 
+     * @param path File or folder path e.g. /file.ext or /Folder1 (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @return ApiResponse&lt;FileExistResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FileExistResponse> getIsExistWithHttpInfo(String path, String versionId, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getIsExistValidateBeforeCall(path, versionId, storage, null, null);
+        Type localVarReturnType = new TypeToken<FileExistResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Check if a specific file or folder exists (asynchronously)
+     * 
+     * @param path File or folder path e.g. /file.ext or /Folder1 (required)
+     * @param versionId File&#39;s version (optional)
+     * @param storage User&#39;s storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getIsExistAsync(String path, String versionId, String storage, final ApiCallback<FileExistResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getIsExistValidateBeforeCall(path, versionId, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FileExistResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getIsStorageExist
+     * @param name Storage name (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getIsStorageExistCall(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/{name}/exist"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getIsStorageExistValidateBeforeCall(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIsStorageExist(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getIsStorageExistCall(name, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Check if storage exists 
+     * 
+     * @param name Storage name (required)
+     * @return StorageExistResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public StorageExistResponse getIsStorageExist(String name) throws ApiException {
+        try
+        {
+            ApiResponse<StorageExistResponse> resp = getIsStorageExistWithHttpInfo(name);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<StorageExistResponse> resp = getIsStorageExistWithHttpInfo(name);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Check if storage exists 
+     * 
+     * @param name Storage name (required)
+     * @return ApiResponse&lt;StorageExistResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<StorageExistResponse> getIsStorageExistWithHttpInfo(String name) throws ApiException {
+        com.squareup.okhttp.Call call = getIsStorageExistValidateBeforeCall(name, null, null);
+        Type localVarReturnType = new TypeToken<StorageExistResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Check if storage exists  (asynchronously)
+     * 
+     * @param name Storage name (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getIsStorageExistAsync(String name, final ApiCallback<StorageExistResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getIsStorageExistValidateBeforeCall(name, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<StorageExistResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getLaTeXInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
      * @param storage The document storage. (optional)
@@ -8329,6 +9048,149 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getLinkAnnotationValidateBeforeCall(name, linkId, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LinkAnnotationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getListFileVersions
+     * @param path File path e.g. /file.ext or /Folder1/file.ext (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getListFileVersionsCall(String path, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/version";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getListFileVersionsValidateBeforeCall(String path, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path' is set
+        if (path == null) {
+            throw new ApiException("Missing the required parameter 'path' when calling getListFileVersions(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getListFileVersionsCall(path, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get the file&#39;s versions list 
+     * 
+     * @param path File path e.g. /file.ext or /Folder1/file.ext (required)
+     * @param storage User&#39;s storage name (optional)
+     * @return FileVersionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public FileVersionsResponse getListFileVersions(String path, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<FileVersionsResponse> resp = getListFileVersionsWithHttpInfo(path, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<FileVersionsResponse> resp = getListFileVersionsWithHttpInfo(path, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Get the file&#39;s versions list 
+     * 
+     * @param path File path e.g. /file.ext or /Folder1/file.ext (required)
+     * @param storage User&#39;s storage name (optional)
+     * @return ApiResponse&lt;FileVersionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<FileVersionsResponse> getListFileVersionsWithHttpInfo(String path, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getListFileVersionsValidateBeforeCall(path, storage, null, null);
+        Type localVarReturnType = new TypeToken<FileVersionsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get the file&#39;s versions list  (asynchronously)
+     * 
+     * @param path File path e.g. /file.ext or /Folder1/file.ext (required)
+     * @param storage User&#39;s storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getListFileVersionsAsync(String path, String storage, final ApiCallback<FileVersionsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getListFileVersionsValidateBeforeCall(path, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<FileVersionsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -12184,10 +13046,10 @@ public class PdfApi {
      * Build call for getPageText
      * @param name The document name. (required)
      * @param pageNumber Number of page (starting from 1). (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -12303,10 +13165,10 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber Number of page (starting from 1). (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -12338,10 +13200,10 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber Number of page (starting from 1). (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -12361,10 +13223,10 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber Number of page (starting from 1). (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -13206,7 +14068,7 @@ public class PdfApi {
     /**
      * Build call for getPdfInStorageToEpub
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -13280,7 +14142,7 @@ public class PdfApi {
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return File
@@ -13308,7 +14170,7 @@ public class PdfApi {
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;File&gt;
@@ -13324,7 +14186,7 @@ public class PdfApi {
      * Converts PDF document (located on storage) to EPUB format and returns resulting file in response content (asynchronously)
      * 
      * @param name The document name. (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -16439,10 +17301,10 @@ public class PdfApi {
     /**
      * Build call for getText
      * @param name The document name. (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -16551,10 +17413,10 @@ public class PdfApi {
      * Read document text.
      * 
      * @param name The document name. (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -16585,10 +17447,10 @@ public class PdfApi {
      * Read document text.
      * 
      * @param name The document name. (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -16607,10 +17469,10 @@ public class PdfApi {
      * Read document text. (asynchronously)
      * 
      * @param name The document name. (required)
-     * @param LLX  (required)
-     * @param LLY  (required)
-     * @param URX  (required)
-     * @param URY  (required)
+     * @param LLX X-coordinate of lower - left corner. (required)
+     * @param LLY Y - coordinate of lower-left corner. (required)
+     * @param URX X - coordinate of upper-right corner. (required)
+     * @param URY Y - coordinate of upper-right corner. (required)
      * @param format List of formats for search. (optional)
      * @param regex Formats are specified as a regular expression. (optional)
      * @param splitRects Split result fragments (default is true). (optional)
@@ -18528,6 +19390,172 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postFlattenDocument
+     * @param name The document name. (required)
+     * @param updateAppearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. (optional)
+     * @param callEvents If set, formatting and other JavaScript events will be called. (optional)
+     * @param hideButtons If set, buttons will be removed from flattened document. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postFlattenDocumentCall(String name, Boolean updateAppearances, Boolean callEvents, Boolean hideButtons, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/flatten"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (updateAppearances != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("updateAppearances", updateAppearances));
+        if (callEvents != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("callEvents", callEvents));
+        if (hideButtons != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("hideButtons", hideButtons));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postFlattenDocumentValidateBeforeCall(String name, Boolean updateAppearances, Boolean callEvents, Boolean hideButtons, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postFlattenDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postFlattenDocumentCall(name, updateAppearances, callEvents, hideButtons, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Removes all fields from the document and place their values instead.
+     * 
+     * @param name The document name. (required)
+     * @param updateAppearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. (optional)
+     * @param callEvents If set, formatting and other JavaScript events will be called. (optional)
+     * @param hideButtons If set, buttons will be removed from flattened document. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postFlattenDocument(String name, Boolean updateAppearances, Boolean callEvents, Boolean hideButtons, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postFlattenDocumentWithHttpInfo(name, updateAppearances, callEvents, hideButtons, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postFlattenDocumentWithHttpInfo(name, updateAppearances, callEvents, hideButtons, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Removes all fields from the document and place their values instead.
+     * 
+     * @param name The document name. (required)
+     * @param updateAppearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. (optional)
+     * @param callEvents If set, formatting and other JavaScript events will be called. (optional)
+     * @param hideButtons If set, buttons will be removed from flattened document. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postFlattenDocumentWithHttpInfo(String name, Boolean updateAppearances, Boolean callEvents, Boolean hideButtons, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postFlattenDocumentValidateBeforeCall(name, updateAppearances, callEvents, hideButtons, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Removes all fields from the document and place their values instead. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param updateAppearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. (optional)
+     * @param callEvents If set, formatting and other JavaScript events will be called. (optional)
+     * @param hideButtons If set, buttons will be removed from flattened document. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postFlattenDocumentAsync(String name, Boolean updateAppearances, Boolean callEvents, Boolean hideButtons, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postFlattenDocumentValidateBeforeCall(name, updateAppearances, callEvents, hideButtons, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postInsertImage
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -18735,6 +19763,332 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postInsertImageValidateBeforeCall(name, pageNumber, llx, lly, urx, ury, imageFilePath, storage, folder, image, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postMoveFile
+     * @param src Source file path e.g. /fileSource.ext (required)
+     * @param dest Destination file path e.g. /fileDestination.ext (required)
+     * @param versionId Source file&#39;s version, (optional)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postMoveFileCall(String src, String dest, String versionId, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/file";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (src != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("src", src));
+        if (dest != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dest", dest));
+        if (versionId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("versionId", versionId));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (destStorage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destStorage", destStorage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postMoveFileValidateBeforeCall(String src, String dest, String versionId, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'src' is set
+        if (src == null) {
+            throw new ApiException("Missing the required parameter 'src' when calling postMoveFile(Async)");
+        }
+        
+        // verify the required parameter 'dest' is set
+        if (dest == null) {
+            throw new ApiException("Missing the required parameter 'dest' when calling postMoveFile(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postMoveFileCall(src, dest, versionId, storage, destStorage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Move a specific file
+     * 
+     * @param src Source file path e.g. /fileSource.ext (required)
+     * @param dest Destination file path e.g. /fileDestination.ext (required)
+     * @param versionId Source file&#39;s version, (optional)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postMoveFile(String src, String dest, String versionId, String storage, String destStorage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postMoveFileWithHttpInfo(src, dest, versionId, storage, destStorage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postMoveFileWithHttpInfo(src, dest, versionId, storage, destStorage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Move a specific file
+     * 
+     * @param src Source file path e.g. /fileSource.ext (required)
+     * @param dest Destination file path e.g. /fileDestination.ext (required)
+     * @param versionId Source file&#39;s version, (optional)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postMoveFileWithHttpInfo(String src, String dest, String versionId, String storage, String destStorage) throws ApiException {
+        com.squareup.okhttp.Call call = postMoveFileValidateBeforeCall(src, dest, versionId, storage, destStorage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Move a specific file (asynchronously)
+     * 
+     * @param src Source file path e.g. /fileSource.ext (required)
+     * @param dest Destination file path e.g. /fileDestination.ext (required)
+     * @param versionId Source file&#39;s version, (optional)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postMoveFileAsync(String src, String dest, String versionId, String storage, String destStorage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postMoveFileValidateBeforeCall(src, dest, versionId, storage, destStorage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postMoveFolder
+     * @param src Source folder path e.g. /Folder1 (required)
+     * @param dest Destination folder path e.g. /Folder2 (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postMoveFolderCall(String src, String dest, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/folder";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (src != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("src", src));
+        if (dest != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dest", dest));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (destStorage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destStorage", destStorage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postMoveFolderValidateBeforeCall(String src, String dest, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'src' is set
+        if (src == null) {
+            throw new ApiException("Missing the required parameter 'src' when calling postMoveFolder(Async)");
+        }
+        
+        // verify the required parameter 'dest' is set
+        if (dest == null) {
+            throw new ApiException("Missing the required parameter 'dest' when calling postMoveFolder(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postMoveFolderCall(src, dest, storage, destStorage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Move a specific folder 
+     * 
+     * @param src Source folder path e.g. /Folder1 (required)
+     * @param dest Destination folder path e.g. /Folder2 (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postMoveFolder(String src, String dest, String storage, String destStorage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postMoveFolderWithHttpInfo(src, dest, storage, destStorage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postMoveFolderWithHttpInfo(src, dest, storage, destStorage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Move a specific folder 
+     * 
+     * @param src Source folder path e.g. /Folder1 (required)
+     * @param dest Destination folder path e.g. /Folder2 (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postMoveFolderWithHttpInfo(String src, String dest, String storage, String destStorage) throws ApiException {
+        com.squareup.okhttp.Call call = postMoveFolderValidateBeforeCall(src, dest, storage, destStorage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Move a specific folder  (asynchronously)
+     * 
+     * @param src Source folder path e.g. /Folder1 (required)
+     * @param dest Destination folder path e.g. /Folder2 (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postMoveFolderAsync(String src, String dest, String storage, String destStorage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postMoveFolderValidateBeforeCall(src, dest, storage, destStorage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -23159,6 +24513,155 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putCreateDocumentValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putCreateFolder
+     * @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putCreateFolderCall(String path, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/storage/folder";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (destStorage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("destStorage", destStorage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putCreateFolderValidateBeforeCall(String path, String storage, String destStorage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path' is set
+        if (path == null) {
+            throw new ApiException("Missing the required parameter 'path' when calling putCreateFolder(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putCreateFolderCall(path, storage, destStorage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Create the folder 
+     * 
+     * @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putCreateFolder(String path, String storage, String destStorage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putCreateFolderWithHttpInfo(path, storage, destStorage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putCreateFolderWithHttpInfo(path, storage, destStorage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Create the folder 
+     * 
+     * @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putCreateFolderWithHttpInfo(String path, String storage, String destStorage) throws ApiException {
+        com.squareup.okhttp.Call call = putCreateFolderValidateBeforeCall(path, storage, destStorage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Create the folder  (asynchronously)
+     * 
+     * @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+     * @param storage User&#39;s source storage name (optional)
+     * @param destStorage User&#39;s destination storage name (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putCreateFolderAsync(String path, String storage, String destStorage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putCreateFolderValidateBeforeCall(path, storage, destStorage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -28156,7 +29659,7 @@ public class PdfApi {
     /**
      * Build call for putPdfInRequestToEpub
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
@@ -28229,7 +29732,7 @@ public class PdfApi {
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
@@ -28257,7 +29760,7 @@ public class PdfApi {
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
@@ -28273,7 +29776,7 @@ public class PdfApi {
      * Converts PDF document (in request content) to EPUB format and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -30298,7 +31801,7 @@ public class PdfApi {
      * Build call for putPdfInStorageToEpub
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -30380,7 +31883,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return AsposeResponse
@@ -30409,7 +31912,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
@@ -30426,7 +31929,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-     * @param contentRecognitionMode Рroperty tunes conversion for this or that desirable method of recognition of content. (optional)
+     * @param contentRecognitionMode Property tunes conversion for this or that desirable method of recognition of content. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes

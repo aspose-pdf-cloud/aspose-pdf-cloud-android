@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * CircleAnnotationsResponse
+ * Represents response containing multiple circle annotation objects
  */
+@ApiModel(description = "Represents response containing multiple circle annotation objects")
 
 public class CircleAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class CircleAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Circle annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Circle annotations object")
   public CircleAnnotations getAnnotations() {
     return annotations;
   }

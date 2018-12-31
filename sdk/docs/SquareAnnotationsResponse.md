@@ -1,11 +1,11 @@
 ﻿
 # SquareAnnotationsResponse
-
+Represents response containing multiple square annotation objects
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**SquareAnnotations**](SquareAnnotations.md) |  | [optional]
+**annotations** | [**SquareAnnotations**](SquareAnnotations.md) | Square annotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

@@ -31,16 +31,9 @@ import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.Point;
 import com.aspose.asposecloudpdfandroid.model.PolyAnnotation;
 import com.aspose.asposecloudpdfandroid.model.PolyIntent;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -49,27 +42,6 @@ import java.util.List;
 @ApiModel(description = "Provides PolygonAnnotation.")
 
 public class PolygonAnnotation extends PolyAnnotation {
-  @SerializedName("Color")
-  private Color color = null;
-
-  public PolygonAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -79,14 +51,12 @@ public class PolygonAnnotation extends PolyAnnotation {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PolygonAnnotation polygonAnnotation = (PolygonAnnotation) o;
-    return Objects.equals(this.color, polygonAnnotation.color) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
 
@@ -95,7 +65,6 @@ public class PolygonAnnotation extends PolyAnnotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class PolygonAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("}");
     return sb.toString();
   }

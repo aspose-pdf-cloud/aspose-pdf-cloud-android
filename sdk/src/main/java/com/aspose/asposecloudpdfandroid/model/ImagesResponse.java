@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ImagesResponse
+ * Represents response containing multiple images info
  */
+@ApiModel(description = "Represents response containing multiple images info")
 
 public class ImagesResponse extends AsposeResponse {
   @SerializedName("Images")
@@ -48,10 +49,10 @@ public class ImagesResponse extends AsposeResponse {
   }
 
    /**
-   * Get images
+   * Images object
    * @return images
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Images object")
   public Images getImages() {
     return images;
   }

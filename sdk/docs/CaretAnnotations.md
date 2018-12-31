@@ -1,11 +1,11 @@
 ﻿
 # CaretAnnotations
-List of annotations.
+Object representing a list of caret annotations.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;CaretAnnotation&gt;**](CaretAnnotation.md) |  | [optional]
+**list** | [**List&lt;CaretAnnotation&gt;**](CaretAnnotation.md) | List of caret annotations. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

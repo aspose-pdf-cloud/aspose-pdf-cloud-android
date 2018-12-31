@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of popup annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of popup annotations.")
 
 public class PopupAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class PopupAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of popup annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of popup annotations.")
   public List<PopupAnnotationWithParent> getList() {
     return list;
   }

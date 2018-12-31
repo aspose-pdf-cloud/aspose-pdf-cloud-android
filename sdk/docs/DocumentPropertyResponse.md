@@ -1,11 +1,11 @@
 ﻿
 # DocumentPropertyResponse
-
+Represents response containing single document property info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**documentProperty** | [**DocumentProperty**](DocumentProperty.md) |  | [optional]
+**documentProperty** | [**DocumentProperty**](DocumentProperty.md) | DocumentProperty object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

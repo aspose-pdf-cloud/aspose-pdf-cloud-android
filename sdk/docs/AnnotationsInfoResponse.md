@@ -1,11 +1,11 @@
 ﻿
 # AnnotationsInfoResponse
-
+Represents multiple annotations info reponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**AnnotationsInfo**](AnnotationsInfo.md) |  | [optional]
+**annotations** | [**AnnotationsInfo**](AnnotationsInfo.md) | Annotations info | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

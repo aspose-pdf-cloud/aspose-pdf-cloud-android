@@ -56,10 +56,10 @@ public class DocumentProperty extends LinkElement {
   }
 
    /**
-   * Get name
+   * Pame of the property.
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Pame of the property.")
   public String getName() {
     return name;
   }
@@ -74,10 +74,10 @@ public class DocumentProperty extends LinkElement {
   }
 
    /**
-   * Get value
+   * Property value.
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Property value.")
   public String getValue() {
     return value;
   }
@@ -92,10 +92,10 @@ public class DocumentProperty extends LinkElement {
   }
 
    /**
-   * Get builtIn
+   * Value indicating whether it is a built-in property.
    * @return builtIn
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Value indicating whether it is a built-in property.")
   public Boolean isBuiltIn() {
     return builtIn;
   }

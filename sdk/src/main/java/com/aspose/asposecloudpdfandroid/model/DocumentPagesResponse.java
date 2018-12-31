@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * DocumentPagesResponse
+ * Represents response containing multiple pages info
  */
+@ApiModel(description = "Represents response containing multiple pages info")
 
 public class DocumentPagesResponse extends AsposeResponse {
   @SerializedName("Pages")
@@ -48,10 +49,10 @@ public class DocumentPagesResponse extends AsposeResponse {
   }
 
    /**
-   * Get pages
+   * Page object
    * @return pages
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Page object")
   public Pages getPages() {
     return pages;
   }

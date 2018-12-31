@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AttachmentsResponse
+ * Represents response containing multiple attachments info
  */
+@ApiModel(description = "Represents response containing multiple attachments info")
 
 public class AttachmentsResponse extends AsposeResponse {
   @SerializedName("Attachments")
@@ -48,10 +49,10 @@ public class AttachmentsResponse extends AsposeResponse {
   }
 
    /**
-   * Get attachments
+   * Attachments object
    * @return attachments
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Attachments object")
   public Attachments getAttachments() {
     return attachments;
   }

@@ -1,11 +1,11 @@
 ﻿
 # TextAnnotationResponse
-
+Represents response containing single text annotation object
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotation** | [**TextAnnotation**](TextAnnotation.md) |  | [optional]
+**annotation** | [**TextAnnotation**](TextAnnotation.md) | Text annotation object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

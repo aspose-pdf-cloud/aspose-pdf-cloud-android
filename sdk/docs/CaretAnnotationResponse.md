@@ -1,11 +1,11 @@
 ﻿
 # CaretAnnotationResponse
-
+Represents response containing single caret annotation object
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotation** | [**CaretAnnotation**](CaretAnnotation.md) |  | [optional]
+**annotation** | [**CaretAnnotation**](CaretAnnotation.md) | Caret annotation object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

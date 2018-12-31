@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AttachmentResponse
+ * Represents response containing single attachment info
  */
+@ApiModel(description = "Represents response containing single attachment info")
 
 public class AttachmentResponse extends AsposeResponse {
   @SerializedName("Attachment")
@@ -48,10 +49,10 @@ public class AttachmentResponse extends AsposeResponse {
   }
 
    /**
-   * Get attachment
+   * Attachment object
    * @return attachment
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Attachment object")
   public Attachment getAttachment() {
     return attachment;
   }

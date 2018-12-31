@@ -34,8 +34,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * TextReplaceResponse
+ * Represents response containing the result of text replacement
  */
+@ApiModel(description = "Represents response containing the result of text replacement")
 
 public class TextReplaceResponse extends AsposeResponse {
   @SerializedName("Matches")
@@ -47,10 +48,10 @@ public class TextReplaceResponse extends AsposeResponse {
   }
 
    /**
-   * Get matches
+   * Number of matches
    * @return matches
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of matches")
   public Integer getMatches() {
     return matches;
   }

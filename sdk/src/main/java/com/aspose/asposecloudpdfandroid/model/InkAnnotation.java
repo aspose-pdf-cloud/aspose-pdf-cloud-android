@@ -30,7 +30,7 @@ import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.MarkupAnnotation;
 import com.aspose.asposecloudpdfandroid.model.Point;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,32 +49,11 @@ import java.util.List;
 @ApiModel(description = "Provides InkAnnotation.")
 
 public class InkAnnotation extends MarkupAnnotation {
-  @SerializedName("Color")
-  private Color color = null;
-
   @SerializedName("InkList")
   private List<List<Point>> inkList = null;
 
   @SerializedName("CapStyle")
   private CapStyle capStyle = null;
-
-  public InkAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
 
   public InkAnnotation inkList(List<List<Point>> inkList) {
     this.inkList = inkList;
@@ -130,15 +109,14 @@ public class InkAnnotation extends MarkupAnnotation {
       return false;
     }
     InkAnnotation inkAnnotation = (InkAnnotation) o;
-    return Objects.equals(this.color, inkAnnotation.color) &&
-        Objects.equals(this.inkList, inkAnnotation.inkList) &&
+    return Objects.equals(this.inkList, inkAnnotation.inkList) &&
         Objects.equals(this.capStyle, inkAnnotation.capStyle) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, inkList, capStyle, super.hashCode());
+    return Objects.hash(inkList, capStyle, super.hashCode());
   }
 
 
@@ -147,7 +125,6 @@ public class InkAnnotation extends MarkupAnnotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class InkAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    inkList: ").append(toIndentedString(inkList)).append("\n");
     sb.append("    capStyle: ").append(toIndentedString(capStyle)).append("\n");
     sb.append("}");

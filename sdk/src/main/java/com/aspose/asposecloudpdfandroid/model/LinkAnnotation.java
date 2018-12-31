@@ -28,7 +28,7 @@ import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkActionType;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.aspose.asposecloudpdfandroid.model.LinkHighlightingMode;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,7 +58,7 @@ public class LinkAnnotation extends LinkElement {
   private Color color = null;
 
   @SerializedName("Rect")
-  private RectanglePdf rect = null;
+  private Rectangle rect = null;
 
   @SerializedName("Id")
   private String id = null;
@@ -135,7 +135,7 @@ public class LinkAnnotation extends LinkElement {
     this.color = color;
   }
 
-  public LinkAnnotation rect(RectanglePdf rect) {
+  public LinkAnnotation rect(Rectangle rect) {
     this.rect = rect;
     return this;
   }
@@ -145,11 +145,11 @@ public class LinkAnnotation extends LinkElement {
    * @return rect
   **/
   @ApiModelProperty(value = "")
-  public RectanglePdf getRect() {
+  public Rectangle getRect() {
     return rect;
   }
 
-  public void setRect(RectanglePdf rect) {
+  public void setRect(Rectangle rect) {
     this.rect = rect;
   }
 

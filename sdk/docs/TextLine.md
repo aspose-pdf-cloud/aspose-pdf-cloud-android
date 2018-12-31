@@ -1,6 +1,6 @@
 ﻿
 # TextLine
-A line of text to be inserted into .
+A line of text to be inserted into paragraph.
 
 ## Properties
 Name | Type | Description | Notes

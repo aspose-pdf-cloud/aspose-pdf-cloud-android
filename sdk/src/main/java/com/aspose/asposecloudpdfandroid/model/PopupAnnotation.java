@@ -28,7 +28,7 @@ import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -46,29 +46,8 @@ import java.util.List;
 @ApiModel(description = "Provides PopupAnnotation.")
 
 public class PopupAnnotation extends Annotation {
-  @SerializedName("Color")
-  private Color color = null;
-
   @SerializedName("Open")
   private Boolean open = null;
-
-  public PopupAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
 
   public PopupAnnotation open(Boolean open) {
     this.open = open;
@@ -98,14 +77,13 @@ public class PopupAnnotation extends Annotation {
       return false;
     }
     PopupAnnotation popupAnnotation = (PopupAnnotation) o;
-    return Objects.equals(this.color, popupAnnotation.color) &&
-        Objects.equals(this.open, popupAnnotation.open) &&
+    return Objects.equals(this.open, popupAnnotation.open) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, open, super.hashCode());
+    return Objects.hash(open, super.hashCode());
   }
 
 
@@ -114,7 +92,6 @@ public class PopupAnnotation extends Annotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class PopupAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    open: ").append(toIndentedString(open)).append("\n");
     sb.append("}");
     return sb.toString();

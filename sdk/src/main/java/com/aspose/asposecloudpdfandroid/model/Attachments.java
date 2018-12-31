@@ -37,9 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of attachment.
+ * Represents list of attachment.
  */
-@ApiModel(description = "List of attachment.")
+@ApiModel(description = "Represents list of attachment.")
 
 public class Attachments extends LinkElement {
   @SerializedName("List")
@@ -59,10 +59,10 @@ public class Attachments extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of annotations.")
   public List<LinkElement> getList() {
     return list;
   }

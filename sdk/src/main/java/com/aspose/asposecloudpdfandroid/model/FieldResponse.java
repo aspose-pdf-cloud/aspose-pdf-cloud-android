@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * FieldResponse
+ * Represents response containing single field info
  */
+@ApiModel(description = "Represents response containing single field info")
 
 public class FieldResponse extends AsposeResponse {
   @SerializedName("Field")
@@ -48,10 +49,10 @@ public class FieldResponse extends AsposeResponse {
   }
 
    /**
-   * Get field
+   * Field object
    * @return field
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Field object")
   public Field getField() {
     return field;
   }

@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of ink annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of ink annotations.")
 
 public class InkAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class InkAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of ink annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of ink annotations.")
   public List<InkAnnotation> getList() {
     return list;
   }

@@ -32,7 +32,7 @@ import com.aspose.asposecloudpdfandroid.model.LineIntent;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.MarkupAnnotation;
 import com.aspose.asposecloudpdfandroid.model.Point;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -82,9 +82,6 @@ public class LineAnnotation extends MarkupAnnotation {
 
   @SerializedName("CaptionPosition")
   private CaptionPosition captionPosition = null;
-
-  @SerializedName("Color")
-  private Color color = null;
 
   @SerializedName("Intent")
   private LineIntent intent = null;
@@ -287,24 +284,6 @@ public class LineAnnotation extends MarkupAnnotation {
     this.captionPosition = captionPosition;
   }
 
-  public LineAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
-
   public LineAnnotation intent(LineIntent intent) {
     this.intent = intent;
     return this;
@@ -344,14 +323,13 @@ public class LineAnnotation extends MarkupAnnotation {
         Objects.equals(this.showCaption, lineAnnotation.showCaption) &&
         Objects.equals(this.captionOffset, lineAnnotation.captionOffset) &&
         Objects.equals(this.captionPosition, lineAnnotation.captionPosition) &&
-        Objects.equals(this.color, lineAnnotation.color) &&
         Objects.equals(this.intent, lineAnnotation.intent) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(starting, startingStyle, ending, endingStyle, interiorColor, leaderLine, leaderLineExtension, leaderLineOffset, showCaption, captionOffset, captionPosition, color, intent, super.hashCode());
+    return Objects.hash(starting, startingStyle, ending, endingStyle, interiorColor, leaderLine, leaderLineExtension, leaderLineOffset, showCaption, captionOffset, captionPosition, intent, super.hashCode());
   }
 
 
@@ -371,7 +349,6 @@ public class LineAnnotation extends MarkupAnnotation {
     sb.append("    showCaption: ").append(toIndentedString(showCaption)).append("\n");
     sb.append("    captionOffset: ").append(toIndentedString(captionOffset)).append("\n");
     sb.append("    captionPosition: ").append(toIndentedString(captionPosition)).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    intent: ").append(toIndentedString(intent)).append("\n");
     sb.append("}");
     return sb.toString();

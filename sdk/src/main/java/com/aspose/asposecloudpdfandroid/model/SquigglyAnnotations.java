@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of squiggly-underline annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of squiggly-underline annotations.")
 
 public class SquigglyAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class SquigglyAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of squiggly-underline annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of squiggly-underline annotations.")
   public List<SquigglyAnnotation> getList() {
     return list;
   }

@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * DocumentPageResponse
+ * Represents response containing single page info
  */
+@ApiModel(description = "Represents response containing single page info")
 
 public class DocumentPageResponse extends AsposeResponse {
   @SerializedName("Page")
@@ -48,10 +49,10 @@ public class DocumentPageResponse extends AsposeResponse {
   }
 
    /**
-   * Get page
+   * Page object
    * @return page
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Page object")
   public Page getPage() {
     return page;
   }

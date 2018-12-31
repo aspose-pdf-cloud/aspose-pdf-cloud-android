@@ -1,11 +1,11 @@
 ﻿
 # TextRectsResponse
-
+Represents response containing multiple text occurrences info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**textOccurences** | [**TextRects**](TextRects.md) |  | [optional]
+**textOccurrences** | [**TextRects**](TextRects.md) | TextRects object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SquareAnnotationsResponse
+ * Represents response containing multiple square annotation objects
  */
+@ApiModel(description = "Represents response containing multiple square annotation objects")
 
 public class SquareAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class SquareAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Square annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Square annotations object")
   public SquareAnnotations getAnnotations() {
     return annotations;
   }

@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of strikeout annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of strikeout annotations.")
 
 public class StrikeOutAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class StrikeOutAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of strikeout annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of strikeout annotations.")
   public List<StrikeOutAnnotation> getList() {
     return list;
   }

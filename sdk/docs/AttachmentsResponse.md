@@ -1,11 +1,11 @@
 ﻿
 # AttachmentsResponse
-
+Represents response containing multiple attachments info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attachments** | [**Attachments**](Attachments.md) |  | [optional]
+**attachments** | [**Attachments**](Attachments.md) | Attachments object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

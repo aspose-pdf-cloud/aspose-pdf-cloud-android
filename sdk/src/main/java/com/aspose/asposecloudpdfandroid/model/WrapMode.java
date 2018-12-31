@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * 
+ * Defines word wrapping strategies
  */
 @JsonAdapter(WrapMode.Adapter.class)
 public enum WrapMode {

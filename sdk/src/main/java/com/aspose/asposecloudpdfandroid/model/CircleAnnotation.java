@@ -28,16 +28,9 @@ import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.CommonFigureAnnotation;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -46,27 +39,6 @@ import java.util.List;
 @ApiModel(description = "Provides CircleAnnotation.")
 
 public class CircleAnnotation extends CommonFigureAnnotation {
-  @SerializedName("Color")
-  private Color color = null;
-
-  public CircleAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -76,14 +48,12 @@ public class CircleAnnotation extends CommonFigureAnnotation {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CircleAnnotation circleAnnotation = (CircleAnnotation) o;
-    return Objects.equals(this.color, circleAnnotation.color) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
 
@@ -92,7 +62,6 @@ public class CircleAnnotation extends CommonFigureAnnotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class CircleAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("}");
     return sb.toString();
   }

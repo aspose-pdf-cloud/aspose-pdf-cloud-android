@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * 
+ * Describes horizontal alignment.
  */
 @JsonAdapter(HorizontalAlignment.Adapter.class)
 public enum HorizontalAlignment {

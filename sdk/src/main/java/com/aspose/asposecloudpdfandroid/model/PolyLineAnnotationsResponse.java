@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PolyLineAnnotationsResponse
+ * Represents response containing multiple polyline annotation objects
  */
+@ApiModel(description = "Represents response containing multiple polyline annotation objects")
 
 public class PolyLineAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class PolyLineAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Polyline annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Polyline annotations object")
   public PolyLineAnnotations getAnnotations() {
     return annotations;
   }

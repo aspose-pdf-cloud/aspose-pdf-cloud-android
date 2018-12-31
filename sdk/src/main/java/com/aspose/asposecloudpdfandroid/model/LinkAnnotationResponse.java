@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LinkAnnotationResponse
+ * Represents response containing single link info
  */
+@ApiModel(description = "Represents response containing single link info")
 
 public class LinkAnnotationResponse extends AsposeResponse {
   @SerializedName("Link")
@@ -48,10 +49,10 @@ public class LinkAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get link
+   * LinkAnnotation object
    * @return link
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "LinkAnnotation object")
   public LinkAnnotation getLink() {
     return link;
   }

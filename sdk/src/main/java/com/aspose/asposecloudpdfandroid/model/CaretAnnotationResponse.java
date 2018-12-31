@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * CaretAnnotationResponse
+ * Represents response containing single caret annotation object
  */
+@ApiModel(description = "Represents response containing single caret annotation object")
 
 public class CaretAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class CaretAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Caret annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Caret annotation object")
   public CaretAnnotation getAnnotation() {
     return annotation;
   }

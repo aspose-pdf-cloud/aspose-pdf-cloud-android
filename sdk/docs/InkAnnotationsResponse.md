@@ -1,11 +1,11 @@
 ﻿
 # InkAnnotationsResponse
-
+Represents response containing multiple ink annotation objects
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**InkAnnotations**](InkAnnotations.md) |  | [optional]
+**annotations** | [**InkAnnotations**](InkAnnotations.md) | Ink annotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

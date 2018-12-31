@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of circle annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of circle annotations.")
 
 public class CircleAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class CircleAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of circle annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of circle annotations.")
   public List<CircleAnnotation> getList() {
     return list;
   }

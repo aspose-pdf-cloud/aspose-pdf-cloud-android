@@ -1,11 +1,11 @@
 ﻿
 # SquareAnnotations
-List of annotations.
+Object representing a list of square annotations.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;SquareAnnotation&gt;**](SquareAnnotation.md) |  | [optional]
+**list** | [**List&lt;SquareAnnotation&gt;**](SquareAnnotation.md) | List of square annotations. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

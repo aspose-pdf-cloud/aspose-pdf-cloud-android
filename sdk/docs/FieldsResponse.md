@@ -1,11 +1,11 @@
 ﻿
 # FieldsResponse
-
+Represents response containing multiple fields info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fields** | [**Fields**](Fields.md) |  | [optional]
+**fields** | [**Fields**](Fields.md) | Fields object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

@@ -28,7 +28,7 @@ import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.MarkupAnnotation;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -50,7 +50,7 @@ public class CommonFigureAnnotation extends MarkupAnnotation {
   private Color interiorColor = null;
 
   @SerializedName("Frame")
-  private RectanglePdf frame = null;
+  private Rectangle frame = null;
 
   public CommonFigureAnnotation interiorColor(Color interiorColor) {
     this.interiorColor = interiorColor;
@@ -70,7 +70,7 @@ public class CommonFigureAnnotation extends MarkupAnnotation {
     this.interiorColor = interiorColor;
   }
 
-  public CommonFigureAnnotation frame(RectanglePdf frame) {
+  public CommonFigureAnnotation frame(Rectangle frame) {
     this.frame = frame;
     return this;
   }
@@ -80,11 +80,11 @@ public class CommonFigureAnnotation extends MarkupAnnotation {
    * @return frame
   **/
   @ApiModelProperty(value = "Get or set the annotation Rectangle of frame.")
-  public RectanglePdf getFrame() {
+  public Rectangle getFrame() {
     return frame;
   }
 
-  public void setFrame(RectanglePdf frame) {
+  public void setFrame(Rectangle frame) {
     this.frame = frame;
   }
 

@@ -1,11 +1,11 @@
 ﻿
 # Fields
-List of form fields.
+Represents list of form fields.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;Field&gt;**](Field.md) |  | 
+**list** | [**List&lt;Field&gt;**](Field.md) | List of form fields. | 
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**deleteDocumentAnnotations**](PdfApi.md#deleteDocumentAnnotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 [**deleteDocumentLinkAnnotations**](PdfApi.md#deleteDocumentLinkAnnotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**deleteField**](PdfApi.md#deleteField) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
+[**deleteFile**](PdfApi.md#deleteFile) | **DELETE** /storage/file | Remove a specific file 
+[**deleteFolder**](PdfApi.md#deleteFolder) | **DELETE** /storage/folder | Remove a specific folder 
 [**deleteImage**](PdfApi.md#deleteImage) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 [**deleteLinkAnnotation**](PdfApi.md#deleteLinkAnnotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 [**deletePage**](PdfApi.md#deletePage) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -17,6 +19,7 @@ Method | HTTP request | Description
 [**deleteProperty**](PdfApi.md#deleteProperty) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 [**getCaretAnnotation**](PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 [**getCircleAnnotation**](PdfApi.md#getCircleAnnotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
+[**getDiscUsage**](PdfApi.md#getDiscUsage) | **GET** /storage/disc | Check the disk usage of the current account 
 [**getDocument**](PdfApi.md#getDocument) | **GET** /pdf/\{name} | Read common document info.
 [**getDocumentAnnotations**](PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**getDocumentAttachmentByIndex**](PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
@@ -54,9 +57,12 @@ Method | HTTP request | Description
 [**getImageExtractAsTiff**](PdfApi.md#getImageExtractAsTiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**getImages**](PdfApi.md#getImages) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
 [**getInkAnnotation**](PdfApi.md#getInkAnnotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
+[**getIsExist**](PdfApi.md#getIsExist) | **GET** /storage/exist | Check if a specific file or folder exists
+[**getIsStorageExist**](PdfApi.md#getIsStorageExist) | **GET** /storage/\{name}/exist | Check if storage exists 
 [**getLaTeXInStorageToPdf**](PdfApi.md#getLaTeXInStorageToPdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**getLineAnnotation**](PdfApi.md#getLineAnnotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**getLinkAnnotation**](PdfApi.md#getLinkAnnotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+[**getListFileVersions**](PdfApi.md#getListFileVersions) | **GET** /storage/version | Get the file&#39;s versions list 
 [**getListFiles**](PdfApi.md#getListFiles) | **GET** /storage/folder | Get the file listing of a specific folder 
 [**getMhtInStorageToPdf**](PdfApi.md#getMhtInStorageToPdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**getPage**](PdfApi.md#getPage) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -119,7 +125,10 @@ Method | HTTP request | Description
 [**postAppendDocument**](PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 [**postCreateField**](PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
 [**postDocumentTextReplace**](PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**postFlattenDocument**](PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Removes all fields from the document and place their values instead.
 [**postInsertImage**](PdfApi.md#postInsertImage) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
+[**postMoveFile**](PdfApi.md#postMoveFile) | **POST** /storage/file | Move a specific file
+[**postMoveFolder**](PdfApi.md#postMoveFolder) | **POST** /storage/folder | Move a specific folder 
 [**postMovePage**](PdfApi.md#postMovePage) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**postOptimizeDocument**](PdfApi.md#postOptimizeDocument) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**postPageCaretAnnotations**](PdfApi.md#postPageCaretAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -147,6 +156,7 @@ Method | HTTP request | Description
 [**putCircleAnnotation**](PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**putCreate**](PdfApi.md#putCreate) | **PUT** /storage/file | Upload a specific file 
 [**putCreateDocument**](PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
+[**putCreateFolder**](PdfApi.md#putCreateFolder) | **PUT** /storage/folder | Create the folder 
 [**putEpubInStorageToPdf**](PdfApi.md#putEpubInStorageToPdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 [**putFieldsFlatten**](PdfApi.md#putFieldsFlatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**putFreeTextAnnotation**](PdfApi.md#putFreeTextAnnotation) | **PUT** /pdf/\{name}/annotations/freetext/\{annotationId} | Replace document free text annotation
@@ -307,6 +317,52 @@ Name | Type | Description  | Notes
  **fieldName** | **String**| The field name/ |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="deleteFile"></a>
+# **deleteFile**
+> AsposeResponse deleteFile(path, versionId, storage)
+
+Remove a specific file 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Path of the file including file name and extension e.g. /Folder1/file.ext |
+ **versionId** | **String**| File&#39;s version | [optional]
+ **storage** | **String**| User&#39;s storage name | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="deleteFolder"></a>
+# **deleteFolder**
+> AsposeResponse deleteFolder(path, storage, recursive)
+
+Remove a specific folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Folder path e.g. /Folder1 |
+ **storage** | **String**| User&#39;s storage name | [optional]
+ **recursive** | **Boolean**| Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. | [optional] [default to false]
 
 ### Return type
 
@@ -526,6 +582,27 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CircleAnnotationResponse**](CircleAnnotationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getDiscUsage"></a>
+# **getDiscUsage**
+> DiscUsageResponse getDiscUsage(storage)
+
+Check the disk usage of the current account 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storage** | **String**| User&#39;s storage name | [optional]
+
+### Return type
+
+[**DiscUsageResponse**](DiscUsageResponse.md)
 
 ### HTTP request headers
 
@@ -1412,6 +1489,50 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getIsExist"></a>
+# **getIsExist**
+> FileExistResponse getIsExist(path, versionId, storage)
+
+Check if a specific file or folder exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File or folder path e.g. /file.ext or /Folder1 |
+ **versionId** | **String**| File&#39;s version | [optional]
+ **storage** | **String**| User&#39;s storage name | [optional]
+
+### Return type
+
+[**FileExistResponse**](FileExistResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getIsStorageExist"></a>
+# **getIsStorageExist**
+> StorageExistResponse getIsStorageExist(name)
+
+Check if storage exists 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Storage name |
+
+### Return type
+
+[**StorageExistResponse**](StorageExistResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getLaTeXInStorageToPdf"></a>
 # **getLaTeXInStorageToPdf**
 > File getLaTeXInStorageToPdf(srcPath, storage)
@@ -1476,6 +1597,28 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getListFileVersions"></a>
+# **getListFileVersions**
+> FileVersionsResponse getListFileVersions(path, storage)
+
+Get the file&#39;s versions list 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File path e.g. /file.ext or /Folder1/file.ext |
+ **storage** | **String**| User&#39;s storage name | [optional]
+
+### Return type
+
+[**FileVersionsResponse**](FileVersionsResponse.md)
 
 ### HTTP request headers
 
@@ -2079,10 +2222,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| Number of page (starting from 1). |
- **LLX** | **Double**|  |
- **LLY** | **Double**|  |
- **URX** | **Double**|  |
- **URY** | **Double**|  |
+ **LLX** | **Double**| X-coordinate of lower - left corner. |
+ **LLY** | **Double**| Y - coordinate of lower-left corner. |
+ **URX** | **Double**| X - coordinate of upper-right corner. |
+ **URY** | **Double**| Y - coordinate of upper-right corner. |
  **format** | **List&lt;String&gt;**| List of formats for search. | [optional]
  **regex** | **String**| Formats are specified as a regular expression. | [optional]
  **splitRects** | **Boolean**| Split result fragments (default is true). | [optional]
@@ -2233,7 +2376,7 @@ Converts PDF document (located on storage) to EPUB format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **contentRecognitionMode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2735,10 +2878,10 @@ Read document text.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **LLX** | **Double**|  |
- **LLY** | **Double**|  |
- **URX** | **Double**|  |
- **URY** | **Double**|  |
+ **LLX** | **Double**| X-coordinate of lower - left corner. |
+ **LLY** | **Double**| Y - coordinate of lower-left corner. |
+ **URX** | **Double**| X - coordinate of upper-right corner. |
+ **URY** | **Double**| Y - coordinate of upper-right corner. |
  **format** | **List&lt;String&gt;**| List of formats for search. | [optional]
  **regex** | **String**| Formats are specified as a regular expression. | [optional]
  **splitRects** | **Boolean**| Split result fragments (default is true). | [optional]
@@ -3044,6 +3187,32 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="postFlattenDocument"></a>
+# **postFlattenDocument**
+> AsposeResponse postFlattenDocument(name, updateAppearances, callEvents, hideButtons, storage, folder)
+
+Removes all fields from the document and place their values instead.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **updateAppearances** | **Boolean**| If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. | [optional]
+ **callEvents** | **Boolean**| If set, formatting and other JavaScript events will be called. | [optional]
+ **hideButtons** | **Boolean**| If set, buttons will be removed from flattened document. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postInsertImage"></a>
 # **postInsertImage**
 > AsposeResponse postInsertImage(name, pageNumber, llx, lly, urx, ury, imageFilePath, storage, folder, image)
@@ -3064,6 +3233,55 @@ Name | Type | Description  | Notes
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **image** | [****](.md)| Image file. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postMoveFile"></a>
+# **postMoveFile**
+> AsposeResponse postMoveFile(src, dest, versionId, storage, destStorage)
+
+Move a specific file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src** | **String**| Source file path e.g. /fileSource.ext |
+ **dest** | **String**| Destination file path e.g. /fileDestination.ext |
+ **versionId** | **String**| Source file&#39;s version, | [optional]
+ **storage** | **String**| User&#39;s source storage name | [optional]
+ **destStorage** | **String**| User&#39;s destination storage name | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postMoveFolder"></a>
+# **postMoveFolder**
+> AsposeResponse postMoveFolder(src, dest, storage, destStorage)
+
+Move a specific folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src** | **String**| Source folder path e.g. /Folder1 |
+ **dest** | **String**| Destination folder path e.g. /Folder2 |
+ **storage** | **String**| User&#39;s source storage name | [optional]
+ **destStorage** | **String**| User&#39;s destination storage name | [optional]
 
 ### Return type
 
@@ -3737,6 +3955,29 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putCreateFolder"></a>
+# **putCreateFolder**
+> AsposeResponse putCreateFolder(path, storage, destStorage)
+
+Create the folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively |
+ **storage** | **String**| User&#39;s source storage name | [optional]
+ **destStorage** | **String**| User&#39;s destination storage name | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -4512,7 +4753,7 @@ Converts PDF document (in request content) to EPUB format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) |
- **contentRecognitionMode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
@@ -4850,7 +5091,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) |
- **contentRecognitionMode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 

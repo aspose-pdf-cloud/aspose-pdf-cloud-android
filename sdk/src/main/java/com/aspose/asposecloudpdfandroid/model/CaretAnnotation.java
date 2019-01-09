@@ -29,7 +29,7 @@ import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.MarkupAnnotation;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -47,34 +47,13 @@ import java.util.List;
 @ApiModel(description = "Provides CaretAnnotation.")
 
 public class CaretAnnotation extends MarkupAnnotation {
-  @SerializedName("Color")
-  private Color color = null;
-
   @SerializedName("Frame")
-  private RectanglePdf frame = null;
+  private Rectangle frame = null;
 
   @SerializedName("Symbol")
   private CaretSymbol symbol = null;
 
-  public CaretAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
-
-  public CaretAnnotation frame(RectanglePdf frame) {
+  public CaretAnnotation frame(Rectangle frame) {
     this.frame = frame;
     return this;
   }
@@ -84,11 +63,11 @@ public class CaretAnnotation extends MarkupAnnotation {
    * @return frame
   **/
   @ApiModelProperty(value = "Gets or sets caret rectangle.")
-  public RectanglePdf getFrame() {
+  public Rectangle getFrame() {
     return frame;
   }
 
-  public void setFrame(RectanglePdf frame) {
+  public void setFrame(Rectangle frame) {
     this.frame = frame;
   }
 
@@ -120,15 +99,14 @@ public class CaretAnnotation extends MarkupAnnotation {
       return false;
     }
     CaretAnnotation caretAnnotation = (CaretAnnotation) o;
-    return Objects.equals(this.color, caretAnnotation.color) &&
-        Objects.equals(this.frame, caretAnnotation.frame) &&
+    return Objects.equals(this.frame, caretAnnotation.frame) &&
         Objects.equals(this.symbol, caretAnnotation.symbol) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, frame, symbol, super.hashCode());
+    return Objects.hash(frame, symbol, super.hashCode());
   }
 
 
@@ -137,7 +115,6 @@ public class CaretAnnotation extends MarkupAnnotation {
     StringBuilder sb = new StringBuilder();
     sb.append("class CaretAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    frame: ").append(toIndentedString(frame)).append("\n");
     sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
     sb.append("}");

@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of pages.
+ * Represents list of pages.
  */
-@ApiModel(description = "List of pages.")
+@ApiModel(description = "Represents list of pages.")
 
 public class Pages extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class Pages extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of pages.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of pages.")
   public List<Page> getList() {
     return list;
   }

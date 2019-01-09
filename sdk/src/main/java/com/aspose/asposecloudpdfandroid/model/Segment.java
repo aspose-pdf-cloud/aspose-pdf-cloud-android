@@ -34,8 +34,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Segment
+ * Represents segment of Pdf text.
  */
+@ApiModel(description = "Represents segment of Pdf text.")
 
 public class Segment {
   @SerializedName("Value")
@@ -50,10 +51,10 @@ public class Segment {
   }
 
    /**
-   * Get value
+   * Text that the Segment object represents.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Text that the Segment object represents.")
   public String getValue() {
     return value;
   }
@@ -68,10 +69,10 @@ public class Segment {
   }
 
    /**
-   * Get textState
+   * Text state for the text that Segment object represents.
    * @return textState
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Text state for the text that Segment object represents.")
   public TextState getTextState() {
     return textState;
   }

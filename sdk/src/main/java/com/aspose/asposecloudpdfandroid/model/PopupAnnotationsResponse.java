@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PopupAnnotationsResponse
+ * Represents response containing multiple popup annotation objects
  */
+@ApiModel(description = "Represents response containing multiple popup annotation objects")
 
 public class PopupAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class PopupAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Popup annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Popup annotations object")
   public PopupAnnotations getAnnotations() {
     return annotations;
   }

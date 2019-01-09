@@ -35,9 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents split result object.
+ * Represents responce containing split result.
  */
-@ApiModel(description = "Represents split result object.")
+@ApiModel(description = "Represents responce containing split result.")
 
 public class SplitResultResponse extends AsposeResponse {
   @SerializedName("Result")
@@ -49,10 +49,10 @@ public class SplitResultResponse extends AsposeResponse {
   }
 
    /**
-   * Gets or sets the splitting result.
+   * SplitResult object.
    * @return result
   **/
-  @ApiModelProperty(value = "Gets or sets the splitting result.")
+  @ApiModelProperty(value = "SplitResult object.")
   public SplitResult getResult() {
     return result;
   }

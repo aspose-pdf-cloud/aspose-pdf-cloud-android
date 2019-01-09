@@ -1,11 +1,11 @@
 ﻿
 # Images
-List of page images.
+Represents list of images.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;Image&gt;**](Image.md) |  | [optional]
+**list** | [**List&lt;Image&gt;**](Image.md) | List of images. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

@@ -1,6 +1,6 @@
 ﻿
 # SignatureType
-
+The type of signature.
 
 ## Enum
  Name | Description

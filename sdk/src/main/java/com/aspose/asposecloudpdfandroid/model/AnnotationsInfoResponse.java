@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AnnotationsInfoResponse
+ * Represents multiple annotations info reponse
  */
+@ApiModel(description = "Represents multiple annotations info reponse")
 
 public class AnnotationsInfoResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class AnnotationsInfoResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Annotations info
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Annotations info")
   public AnnotationsInfo getAnnotations() {
     return annotations;
   }

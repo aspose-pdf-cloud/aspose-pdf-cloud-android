@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LineAnnotationResponse
+ * Represents response containing single line annotation object
  */
+@ApiModel(description = "Represents response containing single line annotation object")
 
 public class LineAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class LineAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Line annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Line annotation object")
   public LineAnnotation getAnnotation() {
     return annotation;
   }

@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * 
+ * Defines line spacing specifics
  */
 @JsonAdapter(LineSpacing.Adapter.class)
 public enum LineSpacing {

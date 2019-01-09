@@ -6,8 +6,8 @@ Provides link to page.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Page's id. | 
-**images** | [**Images**](Images.md) |  | [optional]
-**rectangle** | [**RectanglePdf**](RectanglePdf.md) |  | [optional]
+**images** | [**Images**](Images.md) | Page's images | [optional]
+**rectangle** | [**Rectangle**](Rectangle.md) | Page's rectangle | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of free text annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of free text annotations.")
 
 public class FreeTextAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class FreeTextAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of free text annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of free text annotations.")
   public List<FreeTextAnnotation> getList() {
     return list;
   }

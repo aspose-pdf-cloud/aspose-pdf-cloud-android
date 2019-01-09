@@ -234,7 +234,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -274,7 +274,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -370,7 +370,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -408,7 +408,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -502,7 +502,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -540,7 +540,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -634,7 +634,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -679,7 +679,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -780,7 +780,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -825,7 +825,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -944,7 +944,7 @@ public class PdfApiTest
         textStyle.setForegroundColor(foregroundColor);
         textStyle.setBackgroundColor(backgroundColor);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1004,7 +1004,7 @@ public class PdfApiTest
         textStyle.setForegroundColor(foregroundColor);
         textStyle.setBackgroundColor(backgroundColor);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1102,7 +1102,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1141,7 +1141,7 @@ public class PdfApiTest
         uploadFile(name);
 
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1236,7 +1236,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1282,7 +1282,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1384,7 +1384,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1430,7 +1430,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1532,7 +1532,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1578,7 +1578,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1680,7 +1680,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1726,7 +1726,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1828,7 +1828,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1868,7 +1868,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -1966,7 +1966,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -2021,7 +2021,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -2149,7 +2149,7 @@ public class PdfApiTest
 
         String parentId = "GI5TCMR3GE2TQLBSGM3CYMJYGUWDENRV";
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -2183,7 +2183,7 @@ public class PdfApiTest
         String name = "PdfWithAnnotations.pdf";
         uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(100.)
                 .LLY(100.)
                 .URX(200.)
@@ -3742,7 +3742,7 @@ public class PdfApiTest
         String name = "Hello world.pdf";
         this.uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
                 .LLX(50.)
                 .LLY(200.)
                 .URX(200.)
@@ -3853,6 +3853,27 @@ public class PdfApiTest
         AsposeResponse response = this.pdfApi.putFieldsFlatten(name, null, folder);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * PostFlattenDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postFlattenDocumentTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        this.uploadFile(name);
+
+        boolean updateAppearances = true;
+        boolean hideButtons = true;
+        String folder = this.tempFolder;
+
+        AsposeResponse response = this.pdfApi.postFlattenDocument(name, updateAppearances, null, hideButtons, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
 
 
     // Images Tests
@@ -4354,7 +4375,7 @@ public class PdfApiTest
         LinkAnnotation link = new LinkAnnotation()
                 .actionType(LinkActionType.GOTOURIACTION)
                 .action("https://products.aspose.cloud/pdf")
-                .rect(new RectanglePdf().LLX(100.).LLY(100.).URX(500.).URY(500.));
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(500.));
 
         ArrayList<LinkAnnotation> links = new ArrayList<>();
         links.add(link);
@@ -4382,7 +4403,7 @@ public class PdfApiTest
         LinkAnnotation link = new LinkAnnotation()
                 .actionType(LinkActionType.GOTOURIACTION)
                 .action("https://products.aspose.cloud/pdf")
-                .rect(new RectanglePdf().LLX(100.).LLY(100.).URX(500.).URY(500.));
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(500.));
 
         LinkAnnotationsResponse linksResponse = this.pdfApi.getPageLinkAnnotations(name, pageNumber, null, folder);
         assertEquals(200, (int)linksResponse.getCode());
@@ -5086,7 +5107,7 @@ public class PdfApiTest
         String signatureFileName = "test1234.pfx";
         this.uploadFile(signatureFileName);
 
-        RectanglePdf rectangle = new RectanglePdf()
+        Rectangle rectangle = new Rectangle()
             .LLX(100.)
             .LLY(100.)
             .URX(500.)
@@ -5128,7 +5149,7 @@ public class PdfApiTest
 
         int pageNumber = 1;
 
-        RectanglePdf rectangle = new RectanglePdf()
+        Rectangle rectangle = new Rectangle()
             .LLX(100.)
             .LLY(100.)
             .URX(500.)
@@ -5168,7 +5189,7 @@ public class PdfApiTest
         String signatureFileName = "test1234.pfx";
         this.uploadFile(signatureFileName);
 
-        RectanglePdf rectangle = new RectanglePdf()
+        Rectangle rectangle = new Rectangle()
             .LLX(100.)
             .LLY(100.)
             .URX(500.)
@@ -5210,7 +5231,7 @@ public class PdfApiTest
         String name = "marketing.pdf";
         this.uploadFile(name);
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
             .LLX(100.)
             .LLY(100.)
             .URX(300.)
@@ -5247,7 +5268,7 @@ public class PdfApiTest
         this.uploadFile(name);
         int pageNumber = 1;
 
-        RectanglePdf rect = new RectanglePdf()
+        Rectangle rect = new Rectangle()
             .LLX(100.)
             .LLY(700.)
             .URX(400.)
@@ -5337,7 +5358,7 @@ public class PdfApiTest
         int pageNumber = 1;
         String folder = this.tempFolder;
 
-        RectanglePdf rectangle = new RectanglePdf();
+        Rectangle rectangle = new Rectangle();
         rectangle.setLLX(100.);
         rectangle.setLLY(100.);
         rectangle.setURX(200.);
@@ -5436,6 +5457,160 @@ public class PdfApiTest
     public void getListFilesTest() throws ApiException
     {
         FilesResponse response = this.pdfApi.getListFiles(this.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostMoveFile Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postMoveFileTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String src = this.tempFolder + '/' + name;
+        String dest = this.tempFolder + "/4pages_renamed.pdf";
+
+        AsposeResponse response = this.pdfApi.postMoveFile(src, dest, null, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeleteFile Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deleteFileTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String path = this.tempFolder + '/' + name;
+
+        AsposeResponse response = this.pdfApi.deleteFile(path, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutCreateFolder Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putCreateFolderTest() throws ApiException
+    {
+        String path = this.tempFolder + "/testFolder";
+
+        AsposeResponse response = this.pdfApi.putCreateFolder(path, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostMoveFolder Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postMoveFolderTest() throws ApiException
+    {
+        String src = this.tempFolder + "/testFolder";
+
+        AsposeResponse responseCreateFolder = this.pdfApi.putCreateFolder(src, null, null);
+        assertEquals(200, (int)responseCreateFolder.getCode());
+
+        String dest = this.tempFolder + "/testFolderRenamed";
+
+        AsposeResponse response = this.pdfApi.postMoveFolder(src, dest, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeleteFolder Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void deleteFolderTest() throws ApiException
+    {
+        String path = this.tempFolder + "/testFolder";
+
+        AsposeResponse responseCreateFolder = this.pdfApi.putCreateFolder(path, null, null);
+        assertEquals(200, (int)responseCreateFolder.getCode());
+
+        AsposeResponse response = this.pdfApi.deleteFolder(path,null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetIsStorageExist Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getIsStorageExistTest() throws ApiException
+    {
+        String name = "PDF-CI";
+
+        AsposeResponse response = this.pdfApi.getIsStorageExist(name);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetIsExist Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getIsExistTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String path = this.tempFolder + '/' + name;
+
+        AsposeResponse response = this.pdfApi.getIsExist(path, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetDiscUsage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDiscUsageTest() throws ApiException
+    {
+        DiscUsageResponse response = this.pdfApi.getDiscUsage(null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetListFileVersions Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getListFileVersionsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String path = this.tempFolder + '/' + name;
+
+        FileVersionsResponse response = this.pdfApi.getListFileVersions(path, null);
         assertEquals(200, (int)response.getCode());
     }
 }

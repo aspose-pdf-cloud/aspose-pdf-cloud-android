@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * InkAnnotationsResponse
+ * Represents response containing multiple ink annotation objects
  */
+@ApiModel(description = "Represents response containing multiple ink annotation objects")
 
 public class InkAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class InkAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Ink annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ink annotations object")
   public InkAnnotations getAnnotations() {
     return annotations;
   }

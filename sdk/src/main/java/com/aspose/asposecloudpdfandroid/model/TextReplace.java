@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.TextState;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -53,7 +53,7 @@ public class TextReplace {
   private TextState textState = null;
 
   @SerializedName("Rect")
-  private RectanglePdf rect = null;
+  private Rectangle rect = null;
 
   public TextReplace oldValue(String oldValue) {
     this.oldValue = oldValue;
@@ -127,7 +127,7 @@ public class TextReplace {
     this.textState = textState;
   }
 
-  public TextReplace rect(RectanglePdf rect) {
+  public TextReplace rect(Rectangle rect) {
     this.rect = rect;
     return this;
   }
@@ -137,11 +137,11 @@ public class TextReplace {
    * @return rect
   **/
   @ApiModelProperty(value = "Rectangle area where searched original text.")
-  public RectanglePdf getRect() {
+  public Rectangle getRect() {
     return rect;
   }
 
-  public void setRect(RectanglePdf rect) {
+  public void setRect(Rectangle rect) {
     this.rect = rect;
   }
 

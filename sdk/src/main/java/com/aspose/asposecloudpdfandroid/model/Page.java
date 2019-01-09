@@ -26,7 +26,7 @@ import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.Images;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,7 +50,7 @@ public class Page extends LinkElement {
   private Images images = null;
 
   @SerializedName("Rectangle")
-  private RectanglePdf rectangle = null;
+  private Rectangle rectangle = null;
 
   public Page id(Integer id) {
     this.id = id;
@@ -76,10 +76,10 @@ public class Page extends LinkElement {
   }
 
    /**
-   * Get images
+   * Page&#39;s images
    * @return images
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Page's images")
   public Images getImages() {
     return images;
   }
@@ -88,21 +88,21 @@ public class Page extends LinkElement {
     this.images = images;
   }
 
-  public Page rectangle(RectanglePdf rectangle) {
+  public Page rectangle(Rectangle rectangle) {
     this.rectangle = rectangle;
     return this;
   }
 
    /**
-   * Get rectangle
+   * Page&#39;s rectangle
    * @return rectangle
   **/
-  @ApiModelProperty(value = "")
-  public RectanglePdf getRectangle() {
+  @ApiModelProperty(value = "Page's rectangle")
+  public Rectangle getRectangle() {
     return rectangle;
   }
 
-  public void setRectangle(RectanglePdf rectangle) {
+  public void setRectangle(Rectangle rectangle) {
     this.rectangle = rectangle;
   }
 

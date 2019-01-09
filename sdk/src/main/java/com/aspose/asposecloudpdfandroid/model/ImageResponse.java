@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ImageResponse
+ * Represents response containing single image info
  */
+@ApiModel(description = "Represents response containing single image info")
 
 public class ImageResponse extends AsposeResponse {
   @SerializedName("Image")
@@ -48,10 +49,10 @@ public class ImageResponse extends AsposeResponse {
   }
 
    /**
-   * Get image
+   * Image object
    * @return image
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Image object")
   public Image getImage() {
     return image;
   }

@@ -36,9 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents text items DTO.
+ * Represents multiple text occurrences DTO.
  */
-@ApiModel(description = "Represents text items DTO.")
+@ApiModel(description = "Represents multiple text occurrences DTO.")
 
 public class TextRects {
   @SerializedName("List")
@@ -58,10 +58,10 @@ public class TextRects {
   }
 
    /**
-   * Get list
+   * The list of text occurrences.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The list of text occurrences.")
   public List<TextRect> getList() {
     return list;
   }

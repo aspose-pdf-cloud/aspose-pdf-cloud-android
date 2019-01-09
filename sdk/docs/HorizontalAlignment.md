@@ -1,6 +1,6 @@
 ﻿
 # HorizontalAlignment
-
+Describes horizontal alignment.
 
 ## Enum
  Name | Description

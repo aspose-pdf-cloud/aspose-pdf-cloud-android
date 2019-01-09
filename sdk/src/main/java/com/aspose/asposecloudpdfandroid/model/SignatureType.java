@@ -33,7 +33,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * 
+ * The type of signature.
  */
 @JsonAdapter(SignatureType.Adapter.class)
 public enum SignatureType {

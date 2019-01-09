@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of LinkAnnotations.
+ * Object representing a list of link annotations.
  */
-@ApiModel(description = "List of LinkAnnotations.")
+@ApiModel(description = "Object representing a list of link annotations.")
 
 public class LinkAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class LinkAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of link annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of link annotations.")
   public List<LinkAnnotation> getList() {
     return list;
   }

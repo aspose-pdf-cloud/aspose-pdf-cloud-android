@@ -34,9 +34,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Returns also a message.
+ * Represent responce containing signature verification result
  */
-@ApiModel(description = "Returns also a message.")
+@ApiModel(description = "Represent responce containing signature verification result")
 
 public class SignatureVerifyResponse extends AsposeResponse {
   @SerializedName("Valid")
@@ -48,10 +48,10 @@ public class SignatureVerifyResponse extends AsposeResponse {
   }
 
    /**
-   * Valid sign.
+   * True if signature is valid and false if not
    * @return valid
   **/
-  @ApiModelProperty(value = "Valid sign.")
+  @ApiModelProperty(value = "True if signature is valid and false if not")
   public Boolean isValid() {
     return valid;
   }

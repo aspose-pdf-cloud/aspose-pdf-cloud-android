@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Pdf document properties.
+ * Represents list of PDF document properties.
  */
-@ApiModel(description = "Pdf document properties.")
+@ApiModel(description = "Represents list of PDF document properties.")
 
 public class DocumentProperties extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class DocumentProperties extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of PDF document properties.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of PDF document properties.")
   public List<DocumentProperty> getList() {
     return list;
   }

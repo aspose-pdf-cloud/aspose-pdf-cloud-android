@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -34,9 +34,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents text DTO.
+ * Represents text occurrence.
  */
-@ApiModel(description = "Represents text DTO.")
+@ApiModel(description = "Represents text occurrence.")
 
 public class TextRect {
   @SerializedName("Text")
@@ -46,7 +46,7 @@ public class TextRect {
   private Integer page = null;
 
   @SerializedName("Rect")
-  private RectanglePdf rect = null;
+  private Rectangle rect = null;
 
   public TextRect text(String text) {
     this.text = text;
@@ -54,10 +54,10 @@ public class TextRect {
   }
 
    /**
-   * Get text
+   * Text of the occurrence.
    * @return text
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Text of the occurrence.")
   public String getText() {
     return text;
   }
@@ -72,10 +72,10 @@ public class TextRect {
   }
 
    /**
-   * Get page
+   * Page on which the occurrence is found.
    * @return page
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Page on which the occurrence is found.")
   public Integer getPage() {
     return page;
   }
@@ -84,21 +84,21 @@ public class TextRect {
     this.page = page;
   }
 
-  public TextRect rect(RectanglePdf rect) {
+  public TextRect rect(Rectangle rect) {
     this.rect = rect;
     return this;
   }
 
    /**
-   * Get rect
+   * Rectangle of the occurrence.
    * @return rect
   **/
-  @ApiModelProperty(value = "")
-  public RectanglePdf getRect() {
+  @ApiModelProperty(value = "Rectangle of the occurrence.")
+  public Rectangle getRect() {
     return rect;
   }
 
-  public void setRect(RectanglePdf rect) {
+  public void setRect(Rectangle rect) {
     this.rect = rect;
   }
 

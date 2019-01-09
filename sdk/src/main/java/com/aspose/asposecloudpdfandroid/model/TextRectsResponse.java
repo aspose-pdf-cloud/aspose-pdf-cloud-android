@@ -35,29 +35,30 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * TextRectsResponse
+ * Represents response containing multiple text occurrences info
  */
+@ApiModel(description = "Represents response containing multiple text occurrences info")
 
 public class TextRectsResponse extends AsposeResponse {
-  @SerializedName("TextOccurences")
-  private TextRects textOccurences = null;
+  @SerializedName("TextOccurrences")
+  private TextRects textOccurrences = null;
 
-  public TextRectsResponse textOccurences(TextRects textOccurences) {
-    this.textOccurences = textOccurences;
+  public TextRectsResponse textOccurrences(TextRects textOccurrences) {
+    this.textOccurrences = textOccurrences;
     return this;
   }
 
    /**
-   * Get textOccurences
-   * @return textOccurences
+   * TextRects object
+   * @return textOccurrences
   **/
-  @ApiModelProperty(value = "")
-  public TextRects getTextOccurences() {
-    return textOccurences;
+  @ApiModelProperty(value = "TextRects object")
+  public TextRects getTextOccurrences() {
+    return textOccurrences;
   }
 
-  public void setTextOccurences(TextRects textOccurences) {
-    this.textOccurences = textOccurences;
+  public void setTextOccurrences(TextRects textOccurrences) {
+    this.textOccurrences = textOccurrences;
   }
 
 
@@ -70,13 +71,13 @@ public class TextRectsResponse extends AsposeResponse {
       return false;
     }
     TextRectsResponse textRectsResponse = (TextRectsResponse) o;
-    return Objects.equals(this.textOccurences, textRectsResponse.textOccurences) &&
+    return Objects.equals(this.textOccurrences, textRectsResponse.textOccurrences) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(textOccurences, super.hashCode());
+    return Objects.hash(textOccurrences, super.hashCode());
   }
 
 
@@ -85,7 +86,7 @@ public class TextRectsResponse extends AsposeResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class TextRectsResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    textOccurences: ").append(toIndentedString(textOccurences)).append("\n");
+    sb.append("    textOccurrences: ").append(toIndentedString(textOccurrences)).append("\n");
     sb.append("}");
     return sb.toString();
   }

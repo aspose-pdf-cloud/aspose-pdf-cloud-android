@@ -37,9 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A line of text to be inserted into .
+ * A line of text to be inserted into paragraph.
  */
-@ApiModel(description = "A line of text to be inserted into .")
+@ApiModel(description = "A line of text to be inserted into paragraph.")
 
 public class TextLine {
   @SerializedName("HorizontalAlignment")

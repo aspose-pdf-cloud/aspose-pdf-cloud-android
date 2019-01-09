@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of form fields.
+ * Represents list of form fields.
  */
-@ApiModel(description = "List of form fields.")
+@ApiModel(description = "Represents list of form fields.")
 
 public class Fields extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class Fields extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of form fields.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of form fields.")
   public List<Field> getList() {
     return list;
   }

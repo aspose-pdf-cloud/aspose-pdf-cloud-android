@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | [**AnnotationState**](AnnotationState.md) | Gets or sets the state to which the original annotation should be set. | [optional]
 **open** | **Boolean** | Gets or sets is the annotation open. | [optional]
-**color** | [**Color**](Color.md) | Color of the annotation. | [optional]
 **icon** | [**TextIcon**](TextIcon.md) | Gets or sets an icon to be used in displaying the annotation. | [optional]
 **creationDate** | **String** | The date and time when the annotation was created. | [optional]
 **subject** | **String** | Get the annotation subject. | [optional]
 **title** | **String** | Get the annotation title. | [optional]
 **richText** | **String** | Get the annotation RichText. | [optional]
+**color** | [**Color**](Color.md) | Color of the annotation. | [optional]
 **contents** | **String** | Get the annotation content. | [optional]
 **modified** | **String** | The date and time when the annotation was last modified. | [optional]
 **id** | **String** | Gets ID of the annotation. | [optional]
 **flags** | [**List&lt;AnnotationFlags&gt;**](AnnotationFlags.md) | Gets Flags of the annotation. | [optional]
 **name** | **String** | Gets Name of the annotation. | [optional]
-**rect** | [**RectanglePdf**](RectanglePdf.md) | Gets Rect of the annotation. | 
+**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | 
 **pageIndex** | **Integer** | Gets PageIndex of the annotation. | [optional]
 **zIndex** | **Integer** | Gets ZIndex of the annotation. | [optional]
 **horizontalAlignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. | [optional]

@@ -1,11 +1,11 @@
 ﻿
 # PolyLineAnnotationsResponse
-
+Represents response containing multiple polyline annotation objects
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**PolyLineAnnotations**](PolyLineAnnotations.md) |  | [optional]
+**annotations** | [**PolyLineAnnotations**](PolyLineAnnotations.md) | Polyline annotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

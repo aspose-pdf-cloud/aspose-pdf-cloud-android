@@ -1,11 +1,11 @@
 ﻿
 # SquigglyAnnotationResponse
-
+Represents response containing single squiggly-underline annotation object
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotation** | [**SquigglyAnnotation**](SquigglyAnnotation.md) |  | [optional]
+**annotation** | [**SquigglyAnnotation**](SquigglyAnnotation.md) | Squiggly-underline annotation object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

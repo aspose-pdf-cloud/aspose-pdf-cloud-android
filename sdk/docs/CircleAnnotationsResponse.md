@@ -1,11 +1,11 @@
 ﻿
 # CircleAnnotationsResponse
-
+Represents response containing multiple circle annotation objects
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**CircleAnnotations**](CircleAnnotations.md) |  | [optional]
+**annotations** | [**CircleAnnotations**](CircleAnnotations.md) | Circle annotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

@@ -1,11 +1,11 @@
 ﻿
 # Pages
-List of pages.
+Represents list of pages.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;Page&gt;**](Page.md) |  | [optional]
+**list** | [**List&lt;Page&gt;**](Page.md) | List of pages. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

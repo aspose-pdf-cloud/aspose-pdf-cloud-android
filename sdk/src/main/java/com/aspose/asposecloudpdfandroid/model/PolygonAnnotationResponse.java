@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PolygonAnnotationResponse
+ * Represents response containing single polygon annotation object
  */
+@ApiModel(description = "Represents response containing single polygon annotation object")
 
 public class PolygonAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class PolygonAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Polygon annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Polygon annotation object")
   public PolygonAnnotation getAnnotation() {
     return annotation;
   }

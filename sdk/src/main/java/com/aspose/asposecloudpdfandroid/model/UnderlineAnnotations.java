@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of underline annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of underline annotations.")
 
 public class UnderlineAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class UnderlineAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of underline annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of underline annotations.")
   public List<UnderlineAnnotation> getList() {
     return list;
   }

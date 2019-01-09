@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SquigglyAnnotationResponse
+ * Represents response containing single squiggly-underline annotation object
  */
+@ApiModel(description = "Represents response containing single squiggly-underline annotation object")
 
 public class SquigglyAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class SquigglyAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Squiggly-underline annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Squiggly-underline annotation object")
   public SquigglyAnnotation getAnnotation() {
     return annotation;
   }

@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of annotations.
+ * Object representing a list of caret annotations.
  */
-@ApiModel(description = "List of annotations.")
+@ApiModel(description = "Object representing a list of caret annotations.")
 
 public class CaretAnnotations extends LinkElement {
   @SerializedName("List")
@@ -60,10 +60,10 @@ public class CaretAnnotations extends LinkElement {
   }
 
    /**
-   * Get list
+   * List of caret annotations.
    * @return list
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of caret annotations.")
   public List<CaretAnnotation> getList() {
     return list;
   }

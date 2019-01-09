@@ -1,11 +1,11 @@
 ﻿
 # LinkAnnotationsResponse
-
+Represents response containing multiple links info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**links** | [**LinkAnnotations**](LinkAnnotations.md) |  | [optional]
+**links** | [**LinkAnnotations**](LinkAnnotations.md) | LinkAnnotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

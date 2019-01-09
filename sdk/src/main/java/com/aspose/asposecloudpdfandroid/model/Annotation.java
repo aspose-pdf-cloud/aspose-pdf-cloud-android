@@ -24,10 +24,11 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -46,6 +47,9 @@ import java.util.List;
 @ApiModel(description = "Provides annotation.")
 
 public class Annotation extends LinkElement {
+  @SerializedName("Color")
+  private Color color = null;
+
   @SerializedName("Contents")
   private String contents = null;
 
@@ -62,7 +66,7 @@ public class Annotation extends LinkElement {
   private String name = null;
 
   @SerializedName("Rect")
-  private RectanglePdf rect = null;
+  private Rectangle rect = null;
 
   @SerializedName("PageIndex")
   private Integer pageIndex = null;
@@ -75,6 +79,24 @@ public class Annotation extends LinkElement {
 
   @SerializedName("VerticalAlignment")
   private VerticalAlignment verticalAlignment = null;
+
+  public Annotation color(Color color) {
+    this.color = color;
+    return this;
+  }
+
+   /**
+   * Color of the annotation.
+   * @return color
+  **/
+  @ApiModelProperty(value = "Color of the annotation.")
+  public Color getColor() {
+    return color;
+  }
+
+  public void setColor(Color color) {
+    this.color = color;
+  }
 
   public Annotation contents(String contents) {
     this.contents = contents;
@@ -174,7 +196,7 @@ public class Annotation extends LinkElement {
     this.name = name;
   }
 
-  public Annotation rect(RectanglePdf rect) {
+  public Annotation rect(Rectangle rect) {
     this.rect = rect;
     return this;
   }
@@ -184,11 +206,11 @@ public class Annotation extends LinkElement {
    * @return rect
   **/
   @ApiModelProperty(value = "Gets Rect of the annotation.")
-  public RectanglePdf getRect() {
+  public Rectangle getRect() {
     return rect;
   }
 
-  public void setRect(RectanglePdf rect) {
+  public void setRect(Rectangle rect) {
     this.rect = rect;
   }
 
@@ -274,7 +296,8 @@ public class Annotation extends LinkElement {
       return false;
     }
     Annotation annotation = (Annotation) o;
-    return Objects.equals(this.contents, annotation.contents) &&
+    return Objects.equals(this.color, annotation.color) &&
+        Objects.equals(this.contents, annotation.contents) &&
         Objects.equals(this.modified, annotation.modified) &&
         Objects.equals(this.id, annotation.id) &&
         Objects.equals(this.flags, annotation.flags) &&
@@ -289,7 +312,7 @@ public class Annotation extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contents, modified, id, flags, name, rect, pageIndex, zindex, horizontalAlignment, verticalAlignment, super.hashCode());
+    return Objects.hash(color, contents, modified, id, flags, name, rect, pageIndex, zindex, horizontalAlignment, verticalAlignment, super.hashCode());
   }
 
 
@@ -298,6 +321,7 @@ public class Annotation extends LinkElement {
     StringBuilder sb = new StringBuilder();
     sb.append("class Annotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

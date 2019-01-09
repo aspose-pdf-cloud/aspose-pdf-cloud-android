@@ -1,11 +1,11 @@
 ﻿
 # PolygonAnnotationResponse
-
+Represents response containing single polygon annotation object
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotation** | [**PolygonAnnotation**](PolygonAnnotation.md) |  | [optional]
+**annotation** | [**PolygonAnnotation**](PolygonAnnotation.md) | Polygon annotation object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

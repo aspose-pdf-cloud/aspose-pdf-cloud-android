@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * StrikeOutAnnotationsResponse
+ * Represents response containing multiple strikeout annotation objects
  */
+@ApiModel(description = "Represents response containing multiple strikeout annotation objects")
 
 public class StrikeOutAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class StrikeOutAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Strikeout annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Strikeout annotations object")
   public StrikeOutAnnotations getAnnotations() {
     return annotations;
   }

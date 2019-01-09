@@ -29,7 +29,7 @@ import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.MarkupAnnotation;
-import com.aspose.asposecloudpdfandroid.model.RectanglePdf;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.TextIcon;
 import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
@@ -53,9 +53,6 @@ public class TextAnnotation extends MarkupAnnotation {
 
   @SerializedName("Open")
   private Boolean open = null;
-
-  @SerializedName("Color")
-  private Color color = null;
 
   @SerializedName("Icon")
   private TextIcon icon = null;
@@ -96,24 +93,6 @@ public class TextAnnotation extends MarkupAnnotation {
     this.open = open;
   }
 
-  public TextAnnotation color(Color color) {
-    this.color = color;
-    return this;
-  }
-
-   /**
-   * Color of the annotation.
-   * @return color
-  **/
-  @ApiModelProperty(value = "Color of the annotation.")
-  public Color getColor() {
-    return color;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
-  }
-
   public TextAnnotation icon(TextIcon icon) {
     this.icon = icon;
     return this;
@@ -144,14 +123,13 @@ public class TextAnnotation extends MarkupAnnotation {
     TextAnnotation textAnnotation = (TextAnnotation) o;
     return Objects.equals(this.state, textAnnotation.state) &&
         Objects.equals(this.open, textAnnotation.open) &&
-        Objects.equals(this.color, textAnnotation.color) &&
         Objects.equals(this.icon, textAnnotation.icon) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, open, color, icon, super.hashCode());
+    return Objects.hash(state, open, icon, super.hashCode());
   }
 
 
@@ -162,7 +140,6 @@ public class TextAnnotation extends MarkupAnnotation {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    open: ").append(toIndentedString(open)).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
     sb.append("}");
     return sb.toString();

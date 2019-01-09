@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * UnderlineAnnotationsResponse
+ * Represents response containing multiple underline annotation objects
  */
+@ApiModel(description = "Represents response containing multiple underline annotation objects")
 
 public class UnderlineAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
@@ -48,10 +49,10 @@ public class UnderlineAnnotationsResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotations
+   * Underline annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Underline annotations object")
   public UnderlineAnnotations getAnnotations() {
     return annotations;
   }

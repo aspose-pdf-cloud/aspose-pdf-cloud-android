@@ -1,11 +1,11 @@
 ﻿
 # PolyLineAnnotations
-List of annotations.
+Object representing a list of polyline annotations.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**List&lt;PolyLineAnnotation&gt;**](PolyLineAnnotation.md) |  | [optional]
+**list** | [**List&lt;PolyLineAnnotation&gt;**](PolyLineAnnotation.md) | List of polyline annotations. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

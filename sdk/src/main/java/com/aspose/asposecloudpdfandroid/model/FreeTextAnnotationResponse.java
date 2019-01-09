@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * FreeTextAnnotationResponse
+ * Represents response containing single free text annotation object
  */
+@ApiModel(description = "Represents response containing single free text annotation object")
 
 public class FreeTextAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class FreeTextAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Free text annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Free text annotation object")
   public FreeTextAnnotation getAnnotation() {
     return annotation;
   }

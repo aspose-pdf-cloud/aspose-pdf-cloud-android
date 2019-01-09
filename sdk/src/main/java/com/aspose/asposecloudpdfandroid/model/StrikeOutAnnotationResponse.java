@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * StrikeOutAnnotationResponse
+ * Represents response containing single strikeout annotation object
  */
+@ApiModel(description = "Represents response containing single strikeout annotation object")
 
 public class StrikeOutAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class StrikeOutAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Strikeout annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Strikeout annotation object")
   public StrikeOutAnnotation getAnnotation() {
     return annotation;
   }

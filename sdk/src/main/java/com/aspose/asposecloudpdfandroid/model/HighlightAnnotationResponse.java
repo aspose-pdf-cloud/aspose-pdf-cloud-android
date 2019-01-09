@@ -35,8 +35,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * HighlightAnnotationResponse
+ * Represents response containing single highlight annotation object
  */
+@ApiModel(description = "Represents response containing single highlight annotation object")
 
 public class HighlightAnnotationResponse extends AsposeResponse {
   @SerializedName("Annotation")
@@ -48,10 +49,10 @@ public class HighlightAnnotationResponse extends AsposeResponse {
   }
 
    /**
-   * Get annotation
+   * Highlight annotation object
    * @return annotation
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Highlight annotation object")
   public HighlightAnnotation getAnnotation() {
     return annotation;
   }

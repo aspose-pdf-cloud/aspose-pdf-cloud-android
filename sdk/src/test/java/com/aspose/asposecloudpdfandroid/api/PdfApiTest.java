@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2018 Aspose.PDF Cloud
+ *   Copyright (c) 2019 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -30,15 +30,12 @@ import java.io.File;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.parsers.SAXParser;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -166,6 +163,629 @@ public class PdfApiTest
         AsposeResponse response = pdfApi.deleteAnnotation(name, annotationId, null, tempFolder);
         assertEquals(200, (int)response.getCode());
     }
+
+    // File Attachment Annotations
+
+    /**
+     * GetDocumentFileAttachmentAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentFileAttachmentAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        FileAttachmentAnnotationsResponse response = pdfApi.getDocumentFileAttachmentAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageFileAttachmentAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageFileAttachmentAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        FileAttachmentAnnotationsResponse response = pdfApi.getPageFileAttachmentAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageFileAttachmentAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageFileAttachmentAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        String attachmentFile = "4pages.pdf";
+        uploadFile(attachmentFile);
+
+        int pageNumber = 1;
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        FileAttachmentAnnotation annotation = new FileAttachmentAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setModified("01/01/2018 12:00:00.000 AM");
+        annotation.setFilePath(tempFolder + '/' + attachmentFile);
+        annotation.setFileName(attachmentFile);
+
+        List<FileAttachmentAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageFileAttachmentAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetFileAttachmentAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFileAttachmentAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        FileAttachmentAnnotationsResponse responseAnnotations = pdfApi.getDocumentFileAttachmentAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        FileAttachmentAnnotationResponse response = pdfApi.getFileAttachmentAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutFileAttachmentAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putFileAttachmentAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        String attachmentFile = "4pages.pdf";
+        uploadFile(attachmentFile);
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        FileAttachmentAnnotation annotation = new FileAttachmentAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setModified("01/01/2018 12:00:00.000 AM");
+        annotation.setFilePath(tempFolder + '/' + attachmentFile);
+        annotation.setFileName(attachmentFile);
+
+        FileAttachmentAnnotationsResponse responseAnnotations = pdfApi.getDocumentFileAttachmentAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putFileAttachmentAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetFileAttachmentAnnotationDataTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFileAttachmentAnnotationDataTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        FileAttachmentAnnotationsResponse responseAnnotations = pdfApi.getDocumentFileAttachmentAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        File response = pdfApi.getFileAttachmentAnnotationData(name, annotationId, null, tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutFileAttachmentAnnotationDataExtractTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putFileAttachmentAnnotationDataExtractTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        FileAttachmentAnnotationsResponse responseAnnotations = pdfApi.getDocumentFileAttachmentAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putFileAttachmentAnnotationDataExtract(name, annotationId,  null, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
+    // Sound Annotations
+
+    /**
+     * GetDocumentSoundAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentSoundAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SoundAnnotationsResponse response = pdfApi.getDocumentSoundAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageSoundAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageSoundAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        SoundAnnotationsResponse response = pdfApi.getPageSoundAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageSoundAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageSoundAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        String attachmentFile = "4pages.pdf";
+        uploadFile(attachmentFile);
+
+        int pageNumber = 1;
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        SoundAnnotation annotation = new SoundAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text");
+        annotation.setSubject("Subj");
+        annotation.setZindex(1);
+        annotation.setTitle("Title");
+        annotation.setModified("01/01/2018 12:00:00.000 AM");
+        annotation.setFilePath(tempFolder + '/' + attachmentFile);
+
+        List<SoundAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageSoundAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetSoundAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSoundAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SoundAnnotationsResponse responseAnnotations = pdfApi.getDocumentSoundAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        SoundAnnotationResponse response = pdfApi.getSoundAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutSoundAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSoundAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        String attachmentFile = "4pages.pdf";
+        uploadFile(attachmentFile);
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        SoundAnnotation annotation = new SoundAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setRichText("Rich Text Updated");
+        annotation.setSubject("Subj Updated");
+        annotation.setZindex(1);
+        annotation.setTitle("Title Updated");
+        annotation.setModified("01/01/2018 12:01:02.000 AM");
+        annotation.setFilePath(tempFolder + '/' + attachmentFile);
+
+        SoundAnnotationsResponse responseAnnotations = pdfApi.getDocumentSoundAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putSoundAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetSoundAnnotationDataTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSoundAnnotationDataTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SoundAnnotationsResponse responseAnnotations = pdfApi.getDocumentSoundAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        File response = pdfApi.getSoundAnnotationData(name, annotationId, null, tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutSoundAnnotationDataExtractTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSoundAnnotationDataExtractTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        SoundAnnotationsResponse responseAnnotations = pdfApi.getDocumentSoundAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putSoundAnnotationDataExtract(name, annotationId,  "outFile.dat", null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Redaction Annotations
+
+    /**
+     * GetDocumentRedactionAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentRedactionAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RedactionAnnotationsResponse response = pdfApi.getDocumentRedactionAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageRedactionAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageRedactionAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        RedactionAnnotationsResponse response = pdfApi.getPageRedactionAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageRedactionAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageRedactionAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        List<Point> points = new ArrayList<>();
+        points.add(new Point().X(10.).Y(40.));
+        points.add(new Point().X(30.).Y(40.));
+
+        RedactionAnnotation annotation = new RedactionAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setZindex(1);
+        annotation.setModified("01/01/2018 12:00:00.000 AM");
+        annotation.setQuadPoint(points);
+
+        List<RedactionAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageRedactionAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetRedactionAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRedactionAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        RedactionAnnotationsResponse responseAnnotations = pdfApi.getDocumentRedactionAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        RedactionAnnotationResponse response = pdfApi.getRedactionAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutRedactionAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putRedactionAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations.pdf";
+        uploadFile(name);
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        List<Point> points = new ArrayList<>();
+        points.add(new Point().X(10.).Y(40.));
+        points.add(new Point().X(30.).Y(40.));
+
+        RedactionAnnotation annotation = new RedactionAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setZindex(1);
+        annotation.setModified("01/01/2018 12:02:03.000 AM");
+        annotation.setQuadPoint(points);
+
+        RedactionAnnotationsResponse responseAnnotations = pdfApi.getDocumentRedactionAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putRedactionAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Movie Annotations
+
+    /**
+     * GetDocumentMovieAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentMovieAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations1.pdf";
+        uploadFile(name);
+
+        MovieAnnotationsResponse response = pdfApi.getDocumentMovieAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageMovieAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageMovieAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations1.pdf";
+        uploadFile(name);
+
+        int pageNumber = 2;
+
+        MovieAnnotationsResponse response = pdfApi.getPageMovieAnnotations(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageMovieAnnotationsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageMovieAnnotationsTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations1.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        MovieAnnotation annotation = new MovieAnnotation();
+        annotation.setName("Name");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setZindex(1);
+        annotation.setModified("01/01/2018 12:00:00.000 AM");
+
+        List<MovieAnnotation> annotations = new ArrayList<>();
+        annotations.add(annotation);
+
+        AsposeResponse response = pdfApi.postPageMovieAnnotations(name, pageNumber, annotations, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetMovieAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getMovieAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations1.pdf";
+        uploadFile(name);
+
+        MovieAnnotationsResponse responseAnnotations = pdfApi.getDocumentMovieAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        MovieAnnotationResponse response = pdfApi.getMovieAnnotation(name, annotationId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutMovieAnnotationTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putMovieAnnotationTest()throws ApiException
+    {
+        String name = "PdfWithAnnotations1.pdf";
+        uploadFile(name);
+
+        Rectangle rect = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(200.)
+                .URY(200.);
+
+        List<AnnotationFlags> flags = new ArrayList<>();
+        flags.add(AnnotationFlags.DEFAULT);
+
+        MovieAnnotation annotation = new MovieAnnotation();
+        annotation.setName("Name Updated");
+        annotation.setRect(rect);
+        annotation.setFlags(flags);
+        annotation.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        annotation.setZindex(1);
+        annotation.setModified("01/01/2018 12:02:03.000 AM");
+
+        MovieAnnotationsResponse responseAnnotations = pdfApi.getDocumentMovieAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putMovieAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+
 
     // Line Annotations
 

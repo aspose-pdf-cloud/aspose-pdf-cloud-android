@@ -24,7 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.RedactionAnnotations;
+import com.aspose.asposecloudpdfandroid.model.ScreenAnnotations;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,29 +35,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents response containing multiple redaction annotation objects
+ * Represents response containing multiple screen annotation objects
  */
-@ApiModel(description = "Represents response containing multiple redaction annotation objects")
+@ApiModel(description = "Represents response containing multiple screen annotation objects")
 
-public class RedactionAnnotationsResponse extends AsposeResponse {
+public class ScreenAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
-  private RedactionAnnotations annotations = null;
+  private ScreenAnnotations annotations = null;
 
-  public RedactionAnnotationsResponse annotations(RedactionAnnotations annotations) {
+  public ScreenAnnotationsResponse annotations(ScreenAnnotations annotations) {
     this.annotations = annotations;
     return this;
   }
 
    /**
-   * Redaction annotations object
+   * Screen annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "Redaction annotations object")
-  public RedactionAnnotations getAnnotations() {
+  @ApiModelProperty(value = "Screen annotations object")
+  public ScreenAnnotations getAnnotations() {
     return annotations;
   }
 
-  public void setAnnotations(RedactionAnnotations annotations) {
+  public void setAnnotations(ScreenAnnotations annotations) {
     this.annotations = annotations;
   }
 
@@ -70,8 +70,8 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedactionAnnotationsResponse redactionAnnotationsResponse = (RedactionAnnotationsResponse) o;
-    return Objects.equals(this.annotations, redactionAnnotationsResponse.annotations) &&
+    ScreenAnnotationsResponse screenAnnotationsResponse = (ScreenAnnotationsResponse) o;
+    return Objects.equals(this.annotations, screenAnnotationsResponse.annotations) &&
         super.equals(o);
   }
 
@@ -84,7 +84,7 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedactionAnnotationsResponse {\n");
+    sb.append("class ScreenAnnotationsResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
     sb.append("}");

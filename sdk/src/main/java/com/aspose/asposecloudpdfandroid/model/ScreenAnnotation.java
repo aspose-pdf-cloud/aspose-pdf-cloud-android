@@ -23,8 +23,13 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.RedactionAnnotations;
+import com.aspose.asposecloudpdfandroid.model.Annotation;
+import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.Color;
+import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
+import com.aspose.asposecloudpdfandroid.model.Link;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
+import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,32 +38,54 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.List;
 
 /**
- * Represents response containing multiple redaction annotation objects
+ * Provides ScreenAnnotation.
  */
-@ApiModel(description = "Represents response containing multiple redaction annotation objects")
+@ApiModel(description = "Provides ScreenAnnotation.")
 
-public class RedactionAnnotationsResponse extends AsposeResponse {
-  @SerializedName("Annotations")
-  private RedactionAnnotations annotations = null;
+public class ScreenAnnotation extends Annotation {
+  @SerializedName("Title")
+  private String title = null;
 
-  public RedactionAnnotationsResponse annotations(RedactionAnnotations annotations) {
-    this.annotations = annotations;
+  @SerializedName("FilePath")
+  private String filePath = null;
+
+  public ScreenAnnotation title(String title) {
+    this.title = title;
     return this;
   }
 
    /**
-   * Redaction annotations object
-   * @return annotations
+   * Get the annotation title.
+   * @return title
   **/
-  @ApiModelProperty(value = "Redaction annotations object")
-  public RedactionAnnotations getAnnotations() {
-    return annotations;
+  @ApiModelProperty(value = "Get the annotation title.")
+  public String getTitle() {
+    return title;
   }
 
-  public void setAnnotations(RedactionAnnotations annotations) {
-    this.annotations = annotations;
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public ScreenAnnotation filePath(String filePath) {
+    this.filePath = filePath;
+    return this;
+  }
+
+   /**
+   * Sets content file path. 
+   * @return filePath
+  **/
+  @ApiModelProperty(value = "Sets content file path. ")
+  public String getFilePath() {
+    return filePath;
+  }
+
+  public void setFilePath(String filePath) {
+    this.filePath = filePath;
   }
 
 
@@ -70,23 +97,25 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedactionAnnotationsResponse redactionAnnotationsResponse = (RedactionAnnotationsResponse) o;
-    return Objects.equals(this.annotations, redactionAnnotationsResponse.annotations) &&
+    ScreenAnnotation screenAnnotation = (ScreenAnnotation) o;
+    return Objects.equals(this.title, screenAnnotation.title) &&
+        Objects.equals(this.filePath, screenAnnotation.filePath) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(annotations, super.hashCode());
+    return Objects.hash(title, filePath, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedactionAnnotationsResponse {\n");
+    sb.append("class ScreenAnnotation {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    filePath: ").append(toIndentedString(filePath)).append("\n");
     sb.append("}");
     return sb.toString();
   }

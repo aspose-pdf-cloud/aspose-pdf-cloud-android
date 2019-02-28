@@ -24,7 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.RedactionAnnotations;
+import com.aspose.asposecloudpdfandroid.model.StampAnnotations;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,29 +35,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents response containing multiple redaction annotation objects
+ * Represents response containing multiple stamp annotation objects
  */
-@ApiModel(description = "Represents response containing multiple redaction annotation objects")
+@ApiModel(description = "Represents response containing multiple stamp annotation objects")
 
-public class RedactionAnnotationsResponse extends AsposeResponse {
+public class StampAnnotationsResponse extends AsposeResponse {
   @SerializedName("Annotations")
-  private RedactionAnnotations annotations = null;
+  private StampAnnotations annotations = null;
 
-  public RedactionAnnotationsResponse annotations(RedactionAnnotations annotations) {
+  public StampAnnotationsResponse annotations(StampAnnotations annotations) {
     this.annotations = annotations;
     return this;
   }
 
    /**
-   * Redaction annotations object
+   * Stamp annotations object
    * @return annotations
   **/
-  @ApiModelProperty(value = "Redaction annotations object")
-  public RedactionAnnotations getAnnotations() {
+  @ApiModelProperty(value = "Stamp annotations object")
+  public StampAnnotations getAnnotations() {
     return annotations;
   }
 
-  public void setAnnotations(RedactionAnnotations annotations) {
+  public void setAnnotations(StampAnnotations annotations) {
     this.annotations = annotations;
   }
 
@@ -70,8 +70,8 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedactionAnnotationsResponse redactionAnnotationsResponse = (RedactionAnnotationsResponse) o;
-    return Objects.equals(this.annotations, redactionAnnotationsResponse.annotations) &&
+    StampAnnotationsResponse stampAnnotationsResponse = (StampAnnotationsResponse) o;
+    return Objects.equals(this.annotations, stampAnnotationsResponse.annotations) &&
         super.equals(o);
   }
 
@@ -84,7 +84,7 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedactionAnnotationsResponse {\n");
+    sb.append("class StampAnnotationsResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
     sb.append("}");

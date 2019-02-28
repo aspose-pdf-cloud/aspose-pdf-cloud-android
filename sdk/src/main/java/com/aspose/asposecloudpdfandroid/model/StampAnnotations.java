@@ -23,8 +23,9 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.RedactionAnnotations;
+import com.aspose.asposecloudpdfandroid.model.Link;
+import com.aspose.asposecloudpdfandroid.model.LinkElement;
+import com.aspose.asposecloudpdfandroid.model.StampAnnotation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,32 +34,42 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Represents response containing multiple redaction annotation objects
+ * Object representing a list of stamp annotations.
  */
-@ApiModel(description = "Represents response containing multiple redaction annotation objects")
+@ApiModel(description = "Object representing a list of stamp annotations.")
 
-public class RedactionAnnotationsResponse extends AsposeResponse {
-  @SerializedName("Annotations")
-  private RedactionAnnotations annotations = null;
+public class StampAnnotations extends LinkElement {
+  @SerializedName("List")
+  private List<StampAnnotation> list = null;
 
-  public RedactionAnnotationsResponse annotations(RedactionAnnotations annotations) {
-    this.annotations = annotations;
+  public StampAnnotations list(List<StampAnnotation> list) {
+    this.list = list;
+    return this;
+  }
+
+  public StampAnnotations addListItem(StampAnnotation listItem) {
+    if (this.list == null) {
+      this.list = new ArrayList<StampAnnotation>();
+    }
+    this.list.add(listItem);
     return this;
   }
 
    /**
-   * Redaction annotations object
-   * @return annotations
+   * List of stamp annotations.
+   * @return list
   **/
-  @ApiModelProperty(value = "Redaction annotations object")
-  public RedactionAnnotations getAnnotations() {
-    return annotations;
+  @ApiModelProperty(value = "List of stamp annotations.")
+  public List<StampAnnotation> getList() {
+    return list;
   }
 
-  public void setAnnotations(RedactionAnnotations annotations) {
-    this.annotations = annotations;
+  public void setList(List<StampAnnotation> list) {
+    this.list = list;
   }
 
 
@@ -70,23 +81,23 @@ public class RedactionAnnotationsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedactionAnnotationsResponse redactionAnnotationsResponse = (RedactionAnnotationsResponse) o;
-    return Objects.equals(this.annotations, redactionAnnotationsResponse.annotations) &&
+    StampAnnotations stampAnnotations = (StampAnnotations) o;
+    return Objects.equals(this.list, stampAnnotations.list) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(annotations, super.hashCode());
+    return Objects.hash(list, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedactionAnnotationsResponse {\n");
+    sb.append("class StampAnnotations {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    annotations: ").append(toIndentedString(annotations)).append("\n");
+    sb.append("    list: ").append(toIndentedString(list)).append("\n");
     sb.append("}");
     return sb.toString();
   }

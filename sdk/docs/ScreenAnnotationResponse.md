@@ -1,11 +1,11 @@
 ﻿
-# RedactionAnnotationsResponse
-Represents response containing multiple redaction annotation objects
+# ScreenAnnotationResponse
+Represents response containing single screen annotation object
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**RedactionAnnotations**](RedactionAnnotations.md) | Redaction annotations object | [optional]
+**annotation** | [**ScreenAnnotation**](ScreenAnnotation.md) | Screen annotation object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

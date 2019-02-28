@@ -1,11 +1,11 @@
 ﻿
-# RedactionAnnotationsResponse
-Represents response containing multiple redaction annotation objects
+# StampAnnotationsResponse
+Represents response containing multiple stamp annotation objects
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**annotations** | [**RedactionAnnotations**](RedactionAnnotations.md) | Redaction annotations object | [optional]
+**annotations** | [**StampAnnotations**](StampAnnotations.md) | Stamp annotations object | [optional]
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

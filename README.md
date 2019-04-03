@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 2.0
-- Package version: 19.2.0
+- Package version: 19.3.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>19.2.0</version>
+    <version>19.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:19.2.0"
+compile "com.aspose:aspose-cloud-pdf-android:19.3.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-19.2.0.jar
+* target/aspose-cloud-pdf-android-19.3.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -118,6 +118,8 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**deleteAnnotation**](sdk/docs/PdfApi.md#deleteAnnotation) | **DELETE** /pdf/\{name}/annotations/\{annotationId} | Delete document annotation by ID
 *PdfApi* | [**deleteDocumentAnnotations**](sdk/docs/PdfApi.md#deleteDocumentAnnotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 *PdfApi* | [**deleteDocumentLinkAnnotations**](sdk/docs/PdfApi.md#deleteDocumentLinkAnnotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
+*PdfApi* | [**deleteDocumentStamps**](sdk/docs/PdfApi.md#deleteDocumentStamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
+*PdfApi* | [**deleteDocumentTables**](sdk/docs/PdfApi.md#deleteDocumentTables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
 *PdfApi* | [**deleteField**](sdk/docs/PdfApi.md#deleteField) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
 *PdfApi* | [**deleteFile**](sdk/docs/PdfApi.md#deleteFile) | **DELETE** /storage/file | Remove a specific file 
 *PdfApi* | [**deleteFolder**](sdk/docs/PdfApi.md#deleteFolder) | **DELETE** /storage/folder | Remove a specific folder 
@@ -126,8 +128,12 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**deletePage**](sdk/docs/PdfApi.md#deletePage) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
 *PdfApi* | [**deletePageAnnotations**](sdk/docs/PdfApi.md#deletePageAnnotations) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/annotations | Delete all annotations from the page
 *PdfApi* | [**deletePageLinkAnnotations**](sdk/docs/PdfApi.md#deletePageLinkAnnotations) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/links | Delete all link annotations from the page
+*PdfApi* | [**deletePageStamps**](sdk/docs/PdfApi.md#deletePageStamps) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/stamps | Delete all stamps from the page
+*PdfApi* | [**deletePageTables**](sdk/docs/PdfApi.md#deletePageTables) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/tables | Delete all tables from the page
 *PdfApi* | [**deleteProperties**](sdk/docs/PdfApi.md#deleteProperties) | **DELETE** /pdf/\{name}/documentproperties | Delete custom document properties.
 *PdfApi* | [**deleteProperty**](sdk/docs/PdfApi.md#deleteProperty) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
+*PdfApi* | [**deleteStamp**](sdk/docs/PdfApi.md#deleteStamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
+*PdfApi* | [**deleteTable**](sdk/docs/PdfApi.md#deleteTable) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
 *PdfApi* | [**getCaretAnnotation**](sdk/docs/PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 *PdfApi* | [**getCircleAnnotation**](sdk/docs/PdfApi.md#getCircleAnnotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
 *PdfApi* | [**getDiscUsage**](sdk/docs/PdfApi.md#getDiscUsage) | **GET** /storage/disc | Check the disk usage of the current account 
@@ -156,7 +162,9 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getDocumentSquareAnnotations**](sdk/docs/PdfApi.md#getDocumentSquareAnnotations) | **GET** /pdf/\{name}/annotations/square | Read document square annotations.
 *PdfApi* | [**getDocumentSquigglyAnnotations**](sdk/docs/PdfApi.md#getDocumentSquigglyAnnotations) | **GET** /pdf/\{name}/annotations/squiggly | Read document squiggly annotations.
 *PdfApi* | [**getDocumentStampAnnotations**](sdk/docs/PdfApi.md#getDocumentStampAnnotations) | **GET** /pdf/\{name}/annotations/stamp | Read document stamp annotations.
+*PdfApi* | [**getDocumentStamps**](sdk/docs/PdfApi.md#getDocumentStamps) | **GET** /pdf/\{name}/stamps | Read document stamps.
 *PdfApi* | [**getDocumentStrikeOutAnnotations**](sdk/docs/PdfApi.md#getDocumentStrikeOutAnnotations) | **GET** /pdf/\{name}/annotations/strikeout | Read document StrikeOut annotations.
+*PdfApi* | [**getDocumentTables**](sdk/docs/PdfApi.md#getDocumentTables) | **GET** /pdf/\{name}/tables | Read document tables.
 *PdfApi* | [**getDocumentTextAnnotations**](sdk/docs/PdfApi.md#getDocumentTextAnnotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 *PdfApi* | [**getDocumentUnderlineAnnotations**](sdk/docs/PdfApi.md#getDocumentUnderlineAnnotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
 *PdfApi* | [**getDownload**](sdk/docs/PdfApi.md#getDownload) | **GET** /storage/file | Download a specific file 
@@ -186,7 +194,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getMhtInStorageToPdf**](sdk/docs/PdfApi.md#getMhtInStorageToPdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getMovieAnnotation**](sdk/docs/PdfApi.md#getMovieAnnotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 *PdfApi* | [**getPage**](sdk/docs/PdfApi.md#getPage) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
-*PdfApi* | [**getPageAnnotations**](sdk/docs/PdfApi.md#getPageAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+*PdfApi* | [**getPageAnnotations**](sdk/docs/PdfApi.md#getPageAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *PdfApi* | [**getPageCaretAnnotations**](sdk/docs/PdfApi.md#getPageCaretAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Read document page caret annotations.
 *PdfApi* | [**getPageCircleAnnotations**](sdk/docs/PdfApi.md#getPageCircleAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/circle | Read document page circle annotations.
 *PdfApi* | [**getPageConvertToBmp**](sdk/docs/PdfApi.md#getPageConvertToBmp) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/bmp | Convert document page to Bmp image and return resulting file in response.
@@ -212,7 +220,9 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getPageSquareAnnotations**](sdk/docs/PdfApi.md#getPageSquareAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/square | Read document page square annotations.
 *PdfApi* | [**getPageSquigglyAnnotations**](sdk/docs/PdfApi.md#getPageSquigglyAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Read document page squiggly annotations.
 *PdfApi* | [**getPageStampAnnotations**](sdk/docs/PdfApi.md#getPageStampAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Read document page stamp annotations.
+*PdfApi* | [**getPageStamps**](sdk/docs/PdfApi.md#getPageStamps) | **GET** /pdf/\{name}/pages/\{pageNumber}/stamps | Read page document stamps.
 *PdfApi* | [**getPageStrikeOutAnnotations**](sdk/docs/PdfApi.md#getPageStrikeOutAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Read document page StrikeOut annotations.
+*PdfApi* | [**getPageTables**](sdk/docs/PdfApi.md#getPageTables) | **GET** /pdf/\{name}/pages/\{pageNumber}/tables | Read document page tables.
 *PdfApi* | [**getPageText**](sdk/docs/PdfApi.md#getPageText) | **GET** /pdf/\{name}/pages/\{pageNumber}/text | Read page text items.
 *PdfApi* | [**getPageTextAnnotations**](sdk/docs/PdfApi.md#getPageTextAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Read document page text annotations.
 *PdfApi* | [**getPageUnderlineAnnotations**](sdk/docs/PdfApi.md#getPageUnderlineAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
@@ -236,6 +246,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getPsInStorageToPdf**](sdk/docs/PdfApi.md#getPsInStorageToPdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getRedactionAnnotation**](sdk/docs/PdfApi.md#getRedactionAnnotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
 *PdfApi* | [**getScreenAnnotation**](sdk/docs/PdfApi.md#getScreenAnnotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
+*PdfApi* | [**getScreenAnnotationData**](sdk/docs/PdfApi.md#getScreenAnnotationData) | **GET** /pdf/\{name}/annotations/screen/\{annotationId}/data | Read document page screen annotation by ID.
 *PdfApi* | [**getSoundAnnotation**](sdk/docs/PdfApi.md#getSoundAnnotation) | **GET** /pdf/\{name}/annotations/sound/\{annotationId} | Read document page sound annotation by ID.
 *PdfApi* | [**getSoundAnnotationData**](sdk/docs/PdfApi.md#getSoundAnnotationData) | **GET** /pdf/\{name}/annotations/sound/\{annotationId}/data | Read document page sound annotation by ID.
 *PdfApi* | [**getSquareAnnotation**](sdk/docs/PdfApi.md#getSquareAnnotation) | **GET** /pdf/\{name}/annotations/square/\{annotationId} | Read document page square annotation by ID.
@@ -244,6 +255,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getStampAnnotationData**](sdk/docs/PdfApi.md#getStampAnnotationData) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId}/data | Read document page stamp annotation by ID.
 *PdfApi* | [**getStrikeOutAnnotation**](sdk/docs/PdfApi.md#getStrikeOutAnnotation) | **GET** /pdf/\{name}/annotations/strikeout/\{annotationId} | Read document page StrikeOut annotation by ID.
 *PdfApi* | [**getSvgInStorageToPdf**](sdk/docs/PdfApi.md#getSvgInStorageToPdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response. 
+*PdfApi* | [**getTable**](sdk/docs/PdfApi.md#getTable) | **GET** /pdf/\{name}/tables/\{tableId} | Read document page table by ID.
 *PdfApi* | [**getText**](sdk/docs/PdfApi.md#getText) | **GET** /pdf/\{name}/text | Read document text.
 *PdfApi* | [**getTextAnnotation**](sdk/docs/PdfApi.md#getTextAnnotation) | **GET** /pdf/\{name}/annotations/text/\{annotationId} | Read document page text annotation by ID.
 *PdfApi* | [**getUnderlineAnnotation**](sdk/docs/PdfApi.md#getUnderlineAnnotation) | **GET** /pdf/\{name}/annotations/underline/\{annotationId} | Read document page underline annotation by ID.
@@ -268,10 +280,12 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postPageFileAttachmentAnnotations**](sdk/docs/PdfApi.md#postPageFileAttachmentAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/fileattachment | Add document page FileAttachment annotations.
 *PdfApi* | [**postPageFreeTextAnnotations**](sdk/docs/PdfApi.md#postPageFreeTextAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/freetext | Add document page free text annotations.
 *PdfApi* | [**postPageHighlightAnnotations**](sdk/docs/PdfApi.md#postPageHighlightAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/highlight | Add document page highlight annotations.
+*PdfApi* | [**postPageImageStamps**](sdk/docs/PdfApi.md#postPageImageStamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/image | Add document page image stamps.
 *PdfApi* | [**postPageInkAnnotations**](sdk/docs/PdfApi.md#postPageInkAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/ink | Add document page ink annotations.
 *PdfApi* | [**postPageLineAnnotations**](sdk/docs/PdfApi.md#postPageLineAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/line | Add document page line annotations.
 *PdfApi* | [**postPageLinkAnnotations**](sdk/docs/PdfApi.md#postPageLinkAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/links | Add document page link annotations.
 *PdfApi* | [**postPageMovieAnnotations**](sdk/docs/PdfApi.md#postPageMovieAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/movie | Add document page movie annotations.
+*PdfApi* | [**postPagePdfPageStamps**](sdk/docs/PdfApi.md#postPagePdfPageStamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/pdfpage | Add document pdf page stamps.
 *PdfApi* | [**postPagePolyLineAnnotations**](sdk/docs/PdfApi.md#postPagePolyLineAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Add document page polyline annotations.
 *PdfApi* | [**postPagePolygonAnnotations**](sdk/docs/PdfApi.md#postPagePolygonAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Add document page polygon annotations.
 *PdfApi* | [**postPageRedactionAnnotations**](sdk/docs/PdfApi.md#postPageRedactionAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Add document page redaction annotations.
@@ -283,6 +297,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postPageStrikeOutAnnotations**](sdk/docs/PdfApi.md#postPageStrikeOutAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
 *PdfApi* | [**postPageTextAnnotations**](sdk/docs/PdfApi.md#postPageTextAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 *PdfApi* | [**postPageTextReplace**](sdk/docs/PdfApi.md#postPageTextReplace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page&#39;s replace text method.
+*PdfApi* | [**postPageTextStamps**](sdk/docs/PdfApi.md#postPageTextStamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
 *PdfApi* | [**postPageUnderlineAnnotations**](sdk/docs/PdfApi.md#postPageUnderlineAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Add document page underline annotations.
 *PdfApi* | [**postPopupAnnotation**](sdk/docs/PdfApi.md#postPopupAnnotation) | **POST** /pdf/\{name}/annotations/\{annotationId}/popup | Add document popup annotations.
 *PdfApi* | [**postSignDocument**](sdk/docs/PdfApi.md#postSignDocument) | **POST** /pdf/\{name}/sign | Sign document.
@@ -359,6 +374,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putRedactionAnnotation**](sdk/docs/PdfApi.md#putRedactionAnnotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 *PdfApi* | [**putReplaceImage**](sdk/docs/PdfApi.md#putReplaceImage) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
 *PdfApi* | [**putScreenAnnotation**](sdk/docs/PdfApi.md#putScreenAnnotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
+*PdfApi* | [**putScreenAnnotationDataExtract**](sdk/docs/PdfApi.md#putScreenAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 *PdfApi* | [**putSearchableDocument**](sdk/docs/PdfApi.md#putSearchableDocument) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
 *PdfApi* | [**putSetProperty**](sdk/docs/PdfApi.md#putSetProperty) | **PUT** /pdf/\{name}/documentproperties/\{propertyName} | Add/update document property.
 *PdfApi* | [**putSoundAnnotation**](sdk/docs/PdfApi.md#putSoundAnnotation) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId} | Replace document sound annotation
@@ -392,6 +408,7 @@ Class | Method | HTTP request | Description
  - [CapStyle](sdk/docs/CapStyle.md)
  - [CaptionPosition](sdk/docs/CaptionPosition.md)
  - [CaretSymbol](sdk/docs/CaretSymbol.md)
+ - [CellRecognized](sdk/docs/CellRecognized.md)
  - [Color](sdk/docs/Color.md)
  - [ColorDepth](sdk/docs/ColorDepth.md)
  - [CompressionType](sdk/docs/CompressionType.md)
@@ -431,9 +448,11 @@ Class | Method | HTTP request | Description
  - [PdfAType](sdk/docs/PdfAType.md)
  - [Point](sdk/docs/Point.md)
  - [PolyIntent](sdk/docs/PolyIntent.md)
+ - [Position](sdk/docs/Position.md)
  - [RasterImagesSavingModes](sdk/docs/RasterImagesSavingModes.md)
  - [Rectangle](sdk/docs/Rectangle.md)
  - [Rotation](sdk/docs/Rotation.md)
+ - [RowRecognized](sdk/docs/RowRecognized.md)
  - [Segment](sdk/docs/Segment.md)
  - [ShapeType](sdk/docs/ShapeType.md)
  - [Signature](sdk/docs/Signature.md)
@@ -544,10 +563,18 @@ Class | Method | HTTP request | Description
  - [StampAnnotationResponse](sdk/docs/StampAnnotationResponse.md)
  - [StampAnnotations](sdk/docs/StampAnnotations.md)
  - [StampAnnotationsResponse](sdk/docs/StampAnnotationsResponse.md)
+ - [StampBase](sdk/docs/StampBase.md)
+ - [StampInfo](sdk/docs/StampInfo.md)
+ - [StampsInfo](sdk/docs/StampsInfo.md)
+ - [StampsInfoResponse](sdk/docs/StampsInfoResponse.md)
  - [StorageExistResponse](sdk/docs/StorageExistResponse.md)
  - [StrikeOutAnnotationResponse](sdk/docs/StrikeOutAnnotationResponse.md)
  - [StrikeOutAnnotations](sdk/docs/StrikeOutAnnotations.md)
  - [StrikeOutAnnotationsResponse](sdk/docs/StrikeOutAnnotationsResponse.md)
+ - [TableRecognized](sdk/docs/TableRecognized.md)
+ - [TableRecognizedResponse](sdk/docs/TableRecognizedResponse.md)
+ - [TablesRecognized](sdk/docs/TablesRecognized.md)
+ - [TablesRecognizedResponse](sdk/docs/TablesRecognizedResponse.md)
  - [TextAnnotationResponse](sdk/docs/TextAnnotationResponse.md)
  - [TextAnnotations](sdk/docs/TextAnnotations.md)
  - [TextAnnotationsResponse](sdk/docs/TextAnnotationsResponse.md)
@@ -558,11 +585,14 @@ Class | Method | HTTP request | Description
  - [UnderlineAnnotationsResponse](sdk/docs/UnderlineAnnotationsResponse.md)
  - [WordCountResponse](sdk/docs/WordCountResponse.md)
  - [AnnotationInfo](sdk/docs/AnnotationInfo.md)
+ - [ImageStamp](sdk/docs/ImageStamp.md)
  - [MarkupAnnotation](sdk/docs/MarkupAnnotation.md)
  - [MovieAnnotation](sdk/docs/MovieAnnotation.md)
+ - [PdfPageStamp](sdk/docs/PdfPageStamp.md)
  - [PopupAnnotation](sdk/docs/PopupAnnotation.md)
  - [RedactionAnnotation](sdk/docs/RedactionAnnotation.md)
  - [ScreenAnnotation](sdk/docs/ScreenAnnotation.md)
+ - [TextStamp](sdk/docs/TextStamp.md)
  - [CaretAnnotation](sdk/docs/CaretAnnotation.md)
  - [CommonFigureAnnotation](sdk/docs/CommonFigureAnnotation.md)
  - [FileAttachmentAnnotation](sdk/docs/FileAttachmentAnnotation.md)

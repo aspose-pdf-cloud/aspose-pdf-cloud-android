@@ -22,6 +22,8 @@
 
 package com.aspose.asposecloudpdfandroid.api;
 
+import android.view.textservice.TextInfo;
+
 import com.aspose.asposecloudpdfandroid.ApiException;
 import com.aspose.asposecloudpdfandroid.model.*;
 
@@ -362,6 +364,302 @@ public class PdfApiTest
         assertEquals(201, (int)response.getCode());
     }
 
+    // Stamp Tests
+
+    /**
+     * GetDocumentStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+
+        StampsInfoResponse response = pdfApi.getDocumentStamps(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeleteDocumentStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteDocumentStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+
+        AsposeResponse response = pdfApi.deleteDocumentStamps(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+        int pageNumber = 1;
+        StampsInfoResponse response = pdfApi.getPageStamps(name, pageNumber,null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeletePageStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deletePageStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+        int pageNumber = 1;
+        AsposeResponse response = pdfApi.deletePageStamps(name, pageNumber,null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageTextStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageTextStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+        int pageNumber = 1;
+
+        TextState textState = new TextState().fontSize(14.);
+
+        TextStamp stamp = new TextStamp()
+            .textAlignment(HorizontalAlignment.CENTER)
+            .value("Text Stamp")
+            .textState(textState);
+            stamp.background(true)
+            .leftMargin(1.)
+            .rightMargin(2.)
+            .topMargin(3.)
+            .bottomMargin(4.)
+            .horizontalAlignment(HorizontalAlignment.CENTER)
+            .verticalAlignment(VerticalAlignment.CENTER)
+            .opacity(1.)
+            .rotate(Rotation.NONE)
+            .rotateAngle(0.)
+            .xindent(0.)
+            .yindent(0.)
+            .zoom(1.);
+
+        List<TextStamp> stamps = new ArrayList<>();
+        stamps.add(stamp);
+
+        AsposeResponse response = pdfApi.postPageTextStamps(name, pageNumber, stamps,null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PostPageImageStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageImageStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+
+        String image = "Koala.jpg";
+        uploadFile(image);
+        int pageNumber = 1;
+
+        ImageStamp stamp = new ImageStamp().fileName(tempFolder + '/' + image);
+        stamp.background(true)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .verticalAlignment(VerticalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        List<ImageStamp> stamps = new ArrayList<>();
+        stamps.add(stamp);
+
+        AsposeResponse response = pdfApi.postPageImageStamps(name, pageNumber, stamps,null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PostPagePdfPageStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPagePdfPageStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+
+        String pdf = "4pages.pdf";
+        uploadFile(pdf);
+        int pageNumber = 1;
+
+        PdfPageStamp stamp = new PdfPageStamp().fileName(tempFolder + '/' + pdf).pageIndex(2);
+        stamp.background(true)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .verticalAlignment(VerticalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        List<PdfPageStamp> stamps = new ArrayList<>();
+        stamps.add(stamp);
+
+        AsposeResponse response = pdfApi.postPagePdfPageStamps(name, pageNumber, stamps,null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * DeleteStampTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteStampTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        uploadFile(name);
+
+        StampsInfoResponse stampsResponse = pdfApi.getDocumentStamps(name, null, tempFolder);
+        assertEquals(200, (int)stampsResponse.getCode());
+        String stampId = stampsResponse.getStamps().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.deleteStamp(name, stampId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    // Table Tests
+
+    /**
+     * GetDocumentTablesTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocumentTablesTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+
+        TablesRecognizedResponse response = pdfApi.getDocumentTables(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeleteDocumentTablesTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteDocumentTablesTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+
+        AsposeResponse response = pdfApi.deleteDocumentTables(name, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageTablesTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPageTablesTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+        int pageNumber = 1;
+
+        TablesRecognizedResponse response = pdfApi.getPageTables(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeletePageTablesTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deletePageTablesTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+        int pageNumber = 1;
+
+        AsposeResponse response = pdfApi.deletePageTables(name, pageNumber, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetTableTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getTableTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+
+        TablesRecognizedResponse tablesResponse = pdfApi.getDocumentTables(name, null, tempFolder);
+        assertEquals(200, (int)tablesResponse.getCode());
+        String tableId = tablesResponse.getTables().getList().get(0).getId();
+
+        TableRecognizedResponse response = pdfApi.getTable(name, tableId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * DeleteTableTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteTableTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+
+        TablesRecognizedResponse tablesResponse = pdfApi.getDocumentTables(name, null, tempFolder);
+        assertEquals(200, (int)tablesResponse.getCode());
+        String tableId = tablesResponse.getTables().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.deleteTable(name, tableId, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
     // Stamp Annotations
 
     /**
@@ -675,6 +973,44 @@ public class PdfApiTest
         String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
 
         AsposeResponse response = pdfApi.putScreenAnnotation(name, annotationId, annotation, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetScreenAnnotationDataTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getScreenAnnotationDataTest()throws ApiException
+    {
+        String name = "PdfWithScreenAnnotations.pdf";
+        uploadFile(name);
+
+        ScreenAnnotationsResponse responseAnnotations = pdfApi.getDocumentScreenAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        File response = pdfApi.getScreenAnnotationData(name, annotationId, null, tempFolder);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutScreenAnnotationDataExtractTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putScreenAnnotationDataExtractTest()throws ApiException
+    {
+        String name = "PdfWithScreenAnnotations.pdf";
+        uploadFile(name);
+
+        ScreenAnnotationsResponse responseAnnotations = pdfApi.getDocumentScreenAnnotations(name, null, tempFolder);
+        assertEquals(200, (int)responseAnnotations.getCode());
+        String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putScreenAnnotationDataExtract(name, annotationId,  "outFile.dat", null, tempFolder);
         assertEquals(201, (int)response.getCode());
     }
 

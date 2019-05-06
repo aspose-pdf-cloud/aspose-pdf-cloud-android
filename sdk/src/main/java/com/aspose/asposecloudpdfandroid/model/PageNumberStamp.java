@@ -43,15 +43,12 @@ import java.util.List;
  */
 @ApiModel(description = "Represents Pdf stamps.")
 
-public class ImageStamp extends StampBase {
-  @SerializedName("FileName")
-  private String fileName = null;
+public class PageNumberStamp extends StampBase {
+  @SerializedName("Value")
+  private String value = null;
 
-  @SerializedName("Width")
-  private Double width = null;
-
-  @SerializedName("Height")
-  private Double height = null;
+  @SerializedName("StartingNumber")
+  private Integer startingNumber = null;
 
   @SerializedName("VerticalAlignment")
   private VerticalAlignment verticalAlignment = null;
@@ -68,61 +65,43 @@ public class ImageStamp extends StampBase {
   @SerializedName("RightMargin")
   private Double rightMargin = null;
 
-  public ImageStamp fileName(String fileName) {
-    this.fileName = fileName;
+  public PageNumberStamp value(String value) {
+    this.value = value;
     return this;
   }
 
    /**
-   * Gets or sets the file name.
-   * @return fileName
+   * Gets or sets string value which is used as stamp on the page.
+   * @return value
   **/
-  @ApiModelProperty(value = "Gets or sets the file name.")
-  public String getFileName() {
-    return fileName;
+  @ApiModelProperty(value = "Gets or sets string value which is used as stamp on the page.")
+  public String getValue() {
+    return value;
   }
 
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
+  public void setValue(String value) {
+    this.value = value;
   }
 
-  public ImageStamp width(Double width) {
-    this.width = width;
+  public PageNumberStamp startingNumber(Integer startingNumber) {
+    this.startingNumber = startingNumber;
     return this;
   }
 
    /**
-   * Gets or sets image width. Setting this property allos to scal image horizontally.
-   * @return width
+   * Gets or sets value of the number of starting page. Other pages will be numbered starting from this value.
+   * @return startingNumber
   **/
-  @ApiModelProperty(value = "Gets or sets image width. Setting this property allos to scal image horizontally.")
-  public Double getWidth() {
-    return width;
+  @ApiModelProperty(value = "Gets or sets value of the number of starting page. Other pages will be numbered starting from this value.")
+  public Integer getStartingNumber() {
+    return startingNumber;
   }
 
-  public void setWidth(Double width) {
-    this.width = width;
+  public void setStartingNumber(Integer startingNumber) {
+    this.startingNumber = startingNumber;
   }
 
-  public ImageStamp height(Double height) {
-    this.height = height;
-    return this;
-  }
-
-   /**
-   * Gets or sets image height. Setting this image allows to scale image vertically.
-   * @return height
-  **/
-  @ApiModelProperty(value = "Gets or sets image height. Setting this image allows to scale image vertically.")
-  public Double getHeight() {
-    return height;
-  }
-
-  public void setHeight(Double height) {
-    this.height = height;
-  }
-
-  public ImageStamp verticalAlignment(VerticalAlignment verticalAlignment) {
+  public PageNumberStamp verticalAlignment(VerticalAlignment verticalAlignment) {
     this.verticalAlignment = verticalAlignment;
     return this;
   }
@@ -140,7 +119,7 @@ public class ImageStamp extends StampBase {
     this.verticalAlignment = verticalAlignment;
   }
 
-  public ImageStamp bottomMargin(Double bottomMargin) {
+  public PageNumberStamp bottomMargin(Double bottomMargin) {
     this.bottomMargin = bottomMargin;
     return this;
   }
@@ -158,7 +137,7 @@ public class ImageStamp extends StampBase {
     this.bottomMargin = bottomMargin;
   }
 
-  public ImageStamp leftMargin(Double leftMargin) {
+  public PageNumberStamp leftMargin(Double leftMargin) {
     this.leftMargin = leftMargin;
     return this;
   }
@@ -176,7 +155,7 @@ public class ImageStamp extends StampBase {
     this.leftMargin = leftMargin;
   }
 
-  public ImageStamp topMargin(Double topMargin) {
+  public PageNumberStamp topMargin(Double topMargin) {
     this.topMargin = topMargin;
     return this;
   }
@@ -194,7 +173,7 @@ public class ImageStamp extends StampBase {
     this.topMargin = topMargin;
   }
 
-  public ImageStamp rightMargin(Double rightMargin) {
+  public PageNumberStamp rightMargin(Double rightMargin) {
     this.rightMargin = rightMargin;
     return this;
   }
@@ -221,32 +200,30 @@ public class ImageStamp extends StampBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ImageStamp imageStamp = (ImageStamp) o;
-    return Objects.equals(this.fileName, imageStamp.fileName) &&
-        Objects.equals(this.width, imageStamp.width) &&
-        Objects.equals(this.height, imageStamp.height) &&
-        Objects.equals(this.verticalAlignment, imageStamp.verticalAlignment) &&
-        Objects.equals(this.bottomMargin, imageStamp.bottomMargin) &&
-        Objects.equals(this.leftMargin, imageStamp.leftMargin) &&
-        Objects.equals(this.topMargin, imageStamp.topMargin) &&
-        Objects.equals(this.rightMargin, imageStamp.rightMargin) &&
+    PageNumberStamp pageNumberStamp = (PageNumberStamp) o;
+    return Objects.equals(this.value, pageNumberStamp.value) &&
+        Objects.equals(this.startingNumber, pageNumberStamp.startingNumber) &&
+        Objects.equals(this.verticalAlignment, pageNumberStamp.verticalAlignment) &&
+        Objects.equals(this.bottomMargin, pageNumberStamp.bottomMargin) &&
+        Objects.equals(this.leftMargin, pageNumberStamp.leftMargin) &&
+        Objects.equals(this.topMargin, pageNumberStamp.topMargin) &&
+        Objects.equals(this.rightMargin, pageNumberStamp.rightMargin) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileName, width, height, verticalAlignment, bottomMargin, leftMargin, topMargin, rightMargin, super.hashCode());
+    return Objects.hash(value, startingNumber, verticalAlignment, bottomMargin, leftMargin, topMargin, rightMargin, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ImageStamp {\n");
+    sb.append("class PageNumberStamp {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    startingNumber: ").append(toIndentedString(startingNumber)).append("\n");
     sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
     sb.append("    bottomMargin: ").append(toIndentedString(bottomMargin)).append("\n");
     sb.append("    leftMargin: ").append(toIndentedString(leftMargin)).append("\n");

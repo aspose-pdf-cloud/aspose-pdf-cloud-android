@@ -1,10 +1,16 @@
 ﻿
-# StampBase
-Represents Pdf stamps.
+# ImageFooter
+Represents Pdf image footer.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**fileName** | **String** | Gets or sets the file name. | [optional]
+**width** | **Double** | Gets or sets image width. Setting this property allos to scal image horizontally. | [optional]
+**height** | **Double** | Gets or sets image height. Setting this image allows to scale image vertically. | [optional]
+**bottomMargin** | **Double** | Gets or sets bottom margin of stamp. | [optional]
+**leftMargin** | **Double** | Gets or sets left margin of stamp. | [optional]
+**rightMargin** | **Double** | Gets or sets right margin of stamp. | [optional]
 **background** | **Boolean** | Sets or gets a bool value that indicates the content is stamped as background. If the value is true, the stamp content is layed at the bottom. By defalt, the value is false, the stamp content is layed at the top. | [optional]
 **horizontalAlignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets or sets Horizontal alignment of stamp on the page.  | [optional]
 **opacity** | **Double** | Gets or sets a value to indicate the stamp opacity. The value is from 0.0 to 1.0. By default the value is 1.0. | [optional]

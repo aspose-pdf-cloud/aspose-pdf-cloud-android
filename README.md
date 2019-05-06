@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 2.0
-- Package version: 19.3.0
+- Package version: 19.4.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>19.3.0</version>
+    <version>19.4.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:19.3.0"
+compile "com.aspose:aspose-cloud-pdf-android:19.4.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-19.3.0.jar
+* target/aspose-cloud-pdf-android-19.4.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -141,7 +141,6 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getDocumentAnnotations**](sdk/docs/PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *PdfApi* | [**getDocumentAttachmentByIndex**](sdk/docs/PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 *PdfApi* | [**getDocumentAttachments**](sdk/docs/PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
-*PdfApi* | [**getDocumentBookmarks**](sdk/docs/PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks | Read document bookmark/bookmarks (including children).
 *PdfApi* | [**getDocumentCaretAnnotations**](sdk/docs/PdfApi.md#getDocumentCaretAnnotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 *PdfApi* | [**getDocumentCircleAnnotations**](sdk/docs/PdfApi.md#getDocumentCircleAnnotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 *PdfApi* | [**getDocumentFileAttachmentAnnotations**](sdk/docs/PdfApi.md#getDocumentFileAttachmentAnnotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -238,6 +237,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getPdfInStorageToSvg**](sdk/docs/PdfApi.md#getPdfInStorageToSvg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToTiff**](sdk/docs/PdfApi.md#getPdfInStorageToTiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToXls**](sdk/docs/PdfApi.md#getPdfInStorageToXls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+*PdfApi* | [**getPdfInStorageToXlsx**](sdk/docs/PdfApi.md#getPdfInStorageToXlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToXml**](sdk/docs/PdfApi.md#getPdfInStorageToXml) | **GET** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToXps**](sdk/docs/PdfApi.md#getPdfInStorageToXps) | **GET** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and returns resulting file in response content
 *PdfApi* | [**getPolyLineAnnotation**](sdk/docs/PdfApi.md#getPolyLineAnnotation) | **GET** /pdf/\{name}/annotations/polyline/\{annotationId} | Read document page polyline annotation by ID.
@@ -267,8 +267,16 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getXpsInStorageToPdf**](sdk/docs/PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getXslFoInStorageToPdf**](sdk/docs/PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**postAppendDocument**](sdk/docs/PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+*PdfApi* | [**postChangePasswordDocumentInStorage**](sdk/docs/PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 *PdfApi* | [**postCreateField**](sdk/docs/PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
+*PdfApi* | [**postDecryptDocumentInStorage**](sdk/docs/PdfApi.md#postDecryptDocumentInStorage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
+*PdfApi* | [**postDocumentImageFooter**](sdk/docs/PdfApi.md#postDocumentImageFooter) | **POST** /pdf/\{name}/footer/image | Add document image footer.
+*PdfApi* | [**postDocumentImageHeader**](sdk/docs/PdfApi.md#postDocumentImageHeader) | **POST** /pdf/\{name}/header/image | Add document image header.
+*PdfApi* | [**postDocumentPageNumberStamps**](sdk/docs/PdfApi.md#postDocumentPageNumberStamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+*PdfApi* | [**postDocumentTextFooter**](sdk/docs/PdfApi.md#postDocumentTextFooter) | **POST** /pdf/\{name}/footer/text | Add document text footer.
+*PdfApi* | [**postDocumentTextHeader**](sdk/docs/PdfApi.md#postDocumentTextHeader) | **POST** /pdf/\{name}/header/text | Add document text header.
 *PdfApi* | [**postDocumentTextReplace**](sdk/docs/PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+*PdfApi* | [**postEncryptDocumentInStorage**](sdk/docs/PdfApi.md#postEncryptDocumentInStorage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 *PdfApi* | [**postFlattenDocument**](sdk/docs/PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Flatten the document.
 *PdfApi* | [**postInsertImage**](sdk/docs/PdfApi.md#postInsertImage) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
 *PdfApi* | [**postMoveFile**](sdk/docs/PdfApi.md#postMoveFile) | **POST** /storage/file | Move a specific file
@@ -295,6 +303,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postPageSquigglyAnnotations**](sdk/docs/PdfApi.md#postPageSquigglyAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Add document page squiggly annotations.
 *PdfApi* | [**postPageStampAnnotations**](sdk/docs/PdfApi.md#postPageStampAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Add document page stamp annotations.
 *PdfApi* | [**postPageStrikeOutAnnotations**](sdk/docs/PdfApi.md#postPageStrikeOutAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
+*PdfApi* | [**postPageTables**](sdk/docs/PdfApi.md#postPageTables) | **POST** /pdf/\{name}/pages/\{pageNumber}/tables | Add document page tables.
 *PdfApi* | [**postPageTextAnnotations**](sdk/docs/PdfApi.md#postPageTextAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 *PdfApi* | [**postPageTextReplace**](sdk/docs/PdfApi.md#postPageTextReplace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page&#39;s replace text method.
 *PdfApi* | [**postPageTextStamps**](sdk/docs/PdfApi.md#postPageTextStamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
@@ -307,10 +316,13 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putAddText**](sdk/docs/PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 *PdfApi* | [**putAnnotationsFlatten**](sdk/docs/PdfApi.md#putAnnotationsFlatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
 *PdfApi* | [**putCaretAnnotation**](sdk/docs/PdfApi.md#putCaretAnnotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
+*PdfApi* | [**putChangePasswordDocument**](sdk/docs/PdfApi.md#putChangePasswordDocument) | **PUT** /pdf/changepassword | Change document password from content.
 *PdfApi* | [**putCircleAnnotation**](sdk/docs/PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 *PdfApi* | [**putCreate**](sdk/docs/PdfApi.md#putCreate) | **PUT** /storage/file | Upload a specific file 
 *PdfApi* | [**putCreateDocument**](sdk/docs/PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
 *PdfApi* | [**putCreateFolder**](sdk/docs/PdfApi.md#putCreateFolder) | **PUT** /storage/folder | Create the folder 
+*PdfApi* | [**putDecryptDocument**](sdk/docs/PdfApi.md#putDecryptDocument) | **PUT** /pdf/decrypt | Decrypt document from content.
+*PdfApi* | [**putEncryptDocument**](sdk/docs/PdfApi.md#putEncryptDocument) | **PUT** /pdf/encrypt | Encrypt document from content.
 *PdfApi* | [**putEpubInStorageToPdf**](sdk/docs/PdfApi.md#putEpubInStorageToPdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putFieldsFlatten**](sdk/docs/PdfApi.md#putFieldsFlatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 *PdfApi* | [**putFileAttachmentAnnotation**](sdk/docs/PdfApi.md#putFileAttachmentAnnotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
@@ -352,6 +364,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putPdfInRequestToSvg**](sdk/docs/PdfApi.md#putPdfInRequestToSvg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToTiff**](sdk/docs/PdfApi.md#putPdfInRequestToTiff) | **PUT** /pdf/convert/tiff | Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToXls**](sdk/docs/PdfApi.md#putPdfInRequestToXls) | **PUT** /pdf/convert/xls | Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+*PdfApi* | [**putPdfInRequestToXlsx**](sdk/docs/PdfApi.md#putPdfInRequestToXlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToXml**](sdk/docs/PdfApi.md#putPdfInRequestToXml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToXps**](sdk/docs/PdfApi.md#putPdfInRequestToXps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInStorageToDoc**](sdk/docs/PdfApi.md#putPdfInStorageToDoc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
@@ -364,6 +377,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putPdfInStorageToSvg**](sdk/docs/PdfApi.md#putPdfInStorageToSvg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToTiff**](sdk/docs/PdfApi.md#putPdfInStorageToTiff) | **PUT** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToXls**](sdk/docs/PdfApi.md#putPdfInStorageToXls) | **PUT** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+*PdfApi* | [**putPdfInStorageToXlsx**](sdk/docs/PdfApi.md#putPdfInStorageToXlsx) | **PUT** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToXml**](sdk/docs/PdfApi.md#putPdfInStorageToXml) | **PUT** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToXps**](sdk/docs/PdfApi.md#putPdfInStorageToXps) | **PUT** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
 *PdfApi* | [**putPolyLineAnnotation**](sdk/docs/PdfApi.md#putPolyLineAnnotation) | **PUT** /pdf/\{name}/annotations/polyline/\{annotationId} | Replace document polyline annotation
@@ -385,6 +399,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putStampAnnotationDataExtract**](sdk/docs/PdfApi.md#putStampAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 *PdfApi* | [**putStrikeOutAnnotation**](sdk/docs/PdfApi.md#putStrikeOutAnnotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 *PdfApi* | [**putSvgInStorageToPdf**](sdk/docs/PdfApi.md#putSvgInStorageToPdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+*PdfApi* | [**putTable**](sdk/docs/PdfApi.md#putTable) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
 *PdfApi* | [**putTextAnnotation**](sdk/docs/PdfApi.md#putTextAnnotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 *PdfApi* | [**putUnderlineAnnotation**](sdk/docs/PdfApi.md#putUnderlineAnnotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 *PdfApi* | [**putUpdateField**](sdk/docs/PdfApi.md#putUpdateField) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
@@ -405,13 +420,18 @@ Class | Method | HTTP request | Description
  - [AntialiasingProcessingType](sdk/docs/AntialiasingProcessingType.md)
  - [AppendDocument](sdk/docs/AppendDocument.md)
  - [AsposeResponse](sdk/docs/AsposeResponse.md)
+ - [BorderCornerStyle](sdk/docs/BorderCornerStyle.md)
+ - [BorderInfo](sdk/docs/BorderInfo.md)
  - [CapStyle](sdk/docs/CapStyle.md)
  - [CaptionPosition](sdk/docs/CaptionPosition.md)
  - [CaretSymbol](sdk/docs/CaretSymbol.md)
+ - [Cell](sdk/docs/Cell.md)
  - [CellRecognized](sdk/docs/CellRecognized.md)
  - [Color](sdk/docs/Color.md)
  - [ColorDepth](sdk/docs/ColorDepth.md)
+ - [ColumnAdjustment](sdk/docs/ColumnAdjustment.md)
  - [CompressionType](sdk/docs/CompressionType.md)
+ - [CryptoAlgorithm](sdk/docs/CryptoAlgorithm.md)
  - [DiscUsage](sdk/docs/DiscUsage.md)
  - [DocFormat](sdk/docs/DocFormat.md)
  - [DocRecognitionMode](sdk/docs/DocRecognitionMode.md)
@@ -424,6 +444,7 @@ Class | Method | HTTP request | Description
  - [FontSavingModes](sdk/docs/FontSavingModes.md)
  - [FontStyles](sdk/docs/FontStyles.md)
  - [FreeTextIntent](sdk/docs/FreeTextIntent.md)
+ - [GraphInfo](sdk/docs/GraphInfo.md)
  - [HorizontalAlignment](sdk/docs/HorizontalAlignment.md)
  - [HtmlDocumentType](sdk/docs/HtmlDocumentType.md)
  - [HtmlMarkupGenerationModes](sdk/docs/HtmlMarkupGenerationModes.md)
@@ -446,12 +467,14 @@ Class | Method | HTTP request | Description
  - [Paragraph](sdk/docs/Paragraph.md)
  - [PartsEmbeddingModes](sdk/docs/PartsEmbeddingModes.md)
  - [PdfAType](sdk/docs/PdfAType.md)
+ - [PermissionsFlags](sdk/docs/PermissionsFlags.md)
  - [Point](sdk/docs/Point.md)
  - [PolyIntent](sdk/docs/PolyIntent.md)
  - [Position](sdk/docs/Position.md)
  - [RasterImagesSavingModes](sdk/docs/RasterImagesSavingModes.md)
  - [Rectangle](sdk/docs/Rectangle.md)
  - [Rotation](sdk/docs/Rotation.md)
+ - [Row](sdk/docs/Row.md)
  - [RowRecognized](sdk/docs/RowRecognized.md)
  - [Segment](sdk/docs/Segment.md)
  - [ShapeType](sdk/docs/ShapeType.md)
@@ -463,6 +486,7 @@ Class | Method | HTTP request | Description
  - [Stamp](sdk/docs/Stamp.md)
  - [StampIcon](sdk/docs/StampIcon.md)
  - [StampType](sdk/docs/StampType.md)
+ - [TableBroken](sdk/docs/TableBroken.md)
  - [TextHorizontalAlignment](sdk/docs/TextHorizontalAlignment.md)
  - [TextIcon](sdk/docs/TextIcon.md)
  - [TextLine](sdk/docs/TextLine.md)
@@ -571,6 +595,7 @@ Class | Method | HTTP request | Description
  - [StrikeOutAnnotationResponse](sdk/docs/StrikeOutAnnotationResponse.md)
  - [StrikeOutAnnotations](sdk/docs/StrikeOutAnnotations.md)
  - [StrikeOutAnnotationsResponse](sdk/docs/StrikeOutAnnotationsResponse.md)
+ - [Table](sdk/docs/Table.md)
  - [TableRecognized](sdk/docs/TableRecognized.md)
  - [TableRecognizedResponse](sdk/docs/TableRecognizedResponse.md)
  - [TablesRecognized](sdk/docs/TablesRecognized.md)
@@ -585,13 +610,18 @@ Class | Method | HTTP request | Description
  - [UnderlineAnnotationsResponse](sdk/docs/UnderlineAnnotationsResponse.md)
  - [WordCountResponse](sdk/docs/WordCountResponse.md)
  - [AnnotationInfo](sdk/docs/AnnotationInfo.md)
+ - [ImageFooter](sdk/docs/ImageFooter.md)
+ - [ImageHeader](sdk/docs/ImageHeader.md)
  - [ImageStamp](sdk/docs/ImageStamp.md)
  - [MarkupAnnotation](sdk/docs/MarkupAnnotation.md)
  - [MovieAnnotation](sdk/docs/MovieAnnotation.md)
+ - [PageNumberStamp](sdk/docs/PageNumberStamp.md)
  - [PdfPageStamp](sdk/docs/PdfPageStamp.md)
  - [PopupAnnotation](sdk/docs/PopupAnnotation.md)
  - [RedactionAnnotation](sdk/docs/RedactionAnnotation.md)
  - [ScreenAnnotation](sdk/docs/ScreenAnnotation.md)
+ - [TextFooter](sdk/docs/TextFooter.md)
+ - [TextHeader](sdk/docs/TextHeader.md)
  - [TextStamp](sdk/docs/TextStamp.md)
  - [CaretAnnotation](sdk/docs/CaretAnnotation.md)
  - [CommonFigureAnnotation](sdk/docs/CommonFigureAnnotation.md)

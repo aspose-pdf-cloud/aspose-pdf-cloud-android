@@ -23,6 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.GraphInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,93 +34,114 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * This class represents a margin for different objects.
+ * This class represents border for graphics elements.
  */
-@ApiModel(description = "This class represents a margin for different objects.")
+@ApiModel(description = "This class represents border for graphics elements.")
 
-public class MarginInfo {
+public class BorderInfo {
   @SerializedName("Left")
-  private Double left = null;
+  private GraphInfo left = null;
 
   @SerializedName("Right")
-  private Double right = null;
+  private GraphInfo right = null;
 
   @SerializedName("Top")
-  private Double top = null;
+  private GraphInfo top = null;
 
   @SerializedName("Bottom")
-  private Double bottom = null;
+  private GraphInfo bottom = null;
 
-  public MarginInfo left(Double left) {
+  @SerializedName("RoundedBorderRadius")
+  private Double roundedBorderRadius = null;
+
+  public BorderInfo left(GraphInfo left) {
     this.left = left;
     return this;
   }
 
    /**
-   * Gets or sets a float value that indicates the left margin.
+   * Gets or sets a object that indicates left of the border.
    * @return left
   **/
-  @ApiModelProperty(value = "Gets or sets a float value that indicates the left margin.")
-  public Double getLeft() {
+  @ApiModelProperty(value = "Gets or sets a object that indicates left of the border.")
+  public GraphInfo getLeft() {
     return left;
   }
 
-  public void setLeft(Double left) {
+  public void setLeft(GraphInfo left) {
     this.left = left;
   }
 
-  public MarginInfo right(Double right) {
+  public BorderInfo right(GraphInfo right) {
     this.right = right;
     return this;
   }
 
    /**
-   * Gets or sets a float value that indicates the right margin.
+   * Gets or sets a object that indicates right of the border.
    * @return right
   **/
-  @ApiModelProperty(value = "Gets or sets a float value that indicates the right margin.")
-  public Double getRight() {
+  @ApiModelProperty(value = "Gets or sets a object that indicates right of the border.")
+  public GraphInfo getRight() {
     return right;
   }
 
-  public void setRight(Double right) {
+  public void setRight(GraphInfo right) {
     this.right = right;
   }
 
-  public MarginInfo top(Double top) {
+  public BorderInfo top(GraphInfo top) {
     this.top = top;
     return this;
   }
 
    /**
-   * Gets or sets a float value that indicates the top margin.
+   * Gets or sets a object that indicates the top border.
    * @return top
   **/
-  @ApiModelProperty(value = "Gets or sets a float value that indicates the top margin.")
-  public Double getTop() {
+  @ApiModelProperty(value = "Gets or sets a object that indicates the top border.")
+  public GraphInfo getTop() {
     return top;
   }
 
-  public void setTop(Double top) {
+  public void setTop(GraphInfo top) {
     this.top = top;
   }
 
-  public MarginInfo bottom(Double bottom) {
+  public BorderInfo bottom(GraphInfo bottom) {
     this.bottom = bottom;
     return this;
   }
 
    /**
-   * Gets or sets a float value that indicates the bottom margin.
+   * Gets or sets a object that indicates bottom of the border.
    * @return bottom
   **/
-  @ApiModelProperty(value = "Gets or sets a float value that indicates the bottom margin.")
-  public Double getBottom() {
+  @ApiModelProperty(value = "Gets or sets a object that indicates bottom of the border.")
+  public GraphInfo getBottom() {
     return bottom;
   }
 
-  public void setBottom(Double bottom) {
+  public void setBottom(GraphInfo bottom) {
     this.bottom = bottom;
+  }
+
+  public BorderInfo roundedBorderRadius(Double roundedBorderRadius) {
+    this.roundedBorderRadius = roundedBorderRadius;
+    return this;
+  }
+
+   /**
+   * Gets or sets a rouded border radius
+   * @return roundedBorderRadius
+  **/
+  @ApiModelProperty(value = "Gets or sets a rouded border radius")
+  public Double getRoundedBorderRadius() {
+    return roundedBorderRadius;
+  }
+
+  public void setRoundedBorderRadius(Double roundedBorderRadius) {
+    this.roundedBorderRadius = roundedBorderRadius;
   }
 
 
@@ -131,28 +153,30 @@ public class MarginInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MarginInfo marginInfo = (MarginInfo) o;
-    return Objects.equals(this.left, marginInfo.left) &&
-        Objects.equals(this.right, marginInfo.right) &&
-        Objects.equals(this.top, marginInfo.top) &&
-        Objects.equals(this.bottom, marginInfo.bottom);
+    BorderInfo borderInfo = (BorderInfo) o;
+    return Objects.equals(this.left, borderInfo.left) &&
+        Objects.equals(this.right, borderInfo.right) &&
+        Objects.equals(this.top, borderInfo.top) &&
+        Objects.equals(this.bottom, borderInfo.bottom) &&
+        Objects.equals(this.roundedBorderRadius, borderInfo.roundedBorderRadius);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(left, right, top, bottom);
+    return Objects.hash(left, right, top, bottom, roundedBorderRadius);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MarginInfo {\n");
+    sb.append("class BorderInfo {\n");
     
     sb.append("    left: ").append(toIndentedString(left)).append("\n");
     sb.append("    right: ").append(toIndentedString(right)).append("\n");
     sb.append("    top: ").append(toIndentedString(top)).append("\n");
     sb.append("    bottom: ").append(toIndentedString(bottom)).append("\n");
+    sb.append("    roundedBorderRadius: ").append(toIndentedString(roundedBorderRadius)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,7 +27,6 @@ import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.aspose.asposecloudpdfandroid.model.Rotation;
-import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,32 +46,17 @@ public class StampBase extends LinkElement {
   @SerializedName("Background")
   private Boolean background = null;
 
-  @SerializedName("BottomMargin")
-  private Double bottomMargin = null;
-
   @SerializedName("HorizontalAlignment")
   private HorizontalAlignment horizontalAlignment = null;
 
-  @SerializedName("LeftMargin")
-  private Double leftMargin = null;
-
   @SerializedName("Opacity")
   private Double opacity = null;
-
-  @SerializedName("RightMargin")
-  private Double rightMargin = null;
 
   @SerializedName("Rotate")
   private Rotation rotate = null;
 
   @SerializedName("RotateAngle")
   private Double rotateAngle = null;
-
-  @SerializedName("TopMargin")
-  private Double topMargin = null;
-
-  @SerializedName("VerticalAlignment")
-  private VerticalAlignment verticalAlignment = null;
 
   @SerializedName("XIndent")
   private Double xindent = null;
@@ -101,24 +85,6 @@ public class StampBase extends LinkElement {
     this.background = background;
   }
 
-  public StampBase bottomMargin(Double bottomMargin) {
-    this.bottomMargin = bottomMargin;
-    return this;
-  }
-
-   /**
-   * Gets or sets bottom margin of stamp.
-   * @return bottomMargin
-  **/
-  @ApiModelProperty(value = "Gets or sets bottom margin of stamp.")
-  public Double getBottomMargin() {
-    return bottomMargin;
-  }
-
-  public void setBottomMargin(Double bottomMargin) {
-    this.bottomMargin = bottomMargin;
-  }
-
   public StampBase horizontalAlignment(HorizontalAlignment horizontalAlignment) {
     this.horizontalAlignment = horizontalAlignment;
     return this;
@@ -137,24 +103,6 @@ public class StampBase extends LinkElement {
     this.horizontalAlignment = horizontalAlignment;
   }
 
-  public StampBase leftMargin(Double leftMargin) {
-    this.leftMargin = leftMargin;
-    return this;
-  }
-
-   /**
-   * Gets or sets left margin of stamp.
-   * @return leftMargin
-  **/
-  @ApiModelProperty(value = "Gets or sets left margin of stamp.")
-  public Double getLeftMargin() {
-    return leftMargin;
-  }
-
-  public void setLeftMargin(Double leftMargin) {
-    this.leftMargin = leftMargin;
-  }
-
   public StampBase opacity(Double opacity) {
     this.opacity = opacity;
     return this;
@@ -171,24 +119,6 @@ public class StampBase extends LinkElement {
 
   public void setOpacity(Double opacity) {
     this.opacity = opacity;
-  }
-
-  public StampBase rightMargin(Double rightMargin) {
-    this.rightMargin = rightMargin;
-    return this;
-  }
-
-   /**
-   * Gets or sets right margin of stamp.
-   * @return rightMargin
-  **/
-  @ApiModelProperty(value = "Gets or sets right margin of stamp.")
-  public Double getRightMargin() {
-    return rightMargin;
-  }
-
-  public void setRightMargin(Double rightMargin) {
-    this.rightMargin = rightMargin;
   }
 
   public StampBase rotate(Rotation rotate) {
@@ -225,42 +155,6 @@ public class StampBase extends LinkElement {
 
   public void setRotateAngle(Double rotateAngle) {
     this.rotateAngle = rotateAngle;
-  }
-
-  public StampBase topMargin(Double topMargin) {
-    this.topMargin = topMargin;
-    return this;
-  }
-
-   /**
-   * Gets or sets top margin of stamp.
-   * @return topMargin
-  **/
-  @ApiModelProperty(value = "Gets or sets top margin of stamp.")
-  public Double getTopMargin() {
-    return topMargin;
-  }
-
-  public void setTopMargin(Double topMargin) {
-    this.topMargin = topMargin;
-  }
-
-  public StampBase verticalAlignment(VerticalAlignment verticalAlignment) {
-    this.verticalAlignment = verticalAlignment;
-    return this;
-  }
-
-   /**
-   * Gets or sets vertical alignment of stamp on page.
-   * @return verticalAlignment
-  **/
-  @ApiModelProperty(value = "Gets or sets vertical alignment of stamp on page.")
-  public VerticalAlignment getVerticalAlignment() {
-    return verticalAlignment;
-  }
-
-  public void setVerticalAlignment(VerticalAlignment verticalAlignment) {
-    this.verticalAlignment = verticalAlignment;
   }
 
   public StampBase xindent(Double xindent) {
@@ -328,15 +222,10 @@ public class StampBase extends LinkElement {
     }
     StampBase stampBase = (StampBase) o;
     return Objects.equals(this.background, stampBase.background) &&
-        Objects.equals(this.bottomMargin, stampBase.bottomMargin) &&
         Objects.equals(this.horizontalAlignment, stampBase.horizontalAlignment) &&
-        Objects.equals(this.leftMargin, stampBase.leftMargin) &&
         Objects.equals(this.opacity, stampBase.opacity) &&
-        Objects.equals(this.rightMargin, stampBase.rightMargin) &&
         Objects.equals(this.rotate, stampBase.rotate) &&
         Objects.equals(this.rotateAngle, stampBase.rotateAngle) &&
-        Objects.equals(this.topMargin, stampBase.topMargin) &&
-        Objects.equals(this.verticalAlignment, stampBase.verticalAlignment) &&
         Objects.equals(this.xindent, stampBase.xindent) &&
         Objects.equals(this.yindent, stampBase.yindent) &&
         Objects.equals(this.zoom, stampBase.zoom) &&
@@ -345,7 +234,7 @@ public class StampBase extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(background, bottomMargin, horizontalAlignment, leftMargin, opacity, rightMargin, rotate, rotateAngle, topMargin, verticalAlignment, xindent, yindent, zoom, super.hashCode());
+    return Objects.hash(background, horizontalAlignment, opacity, rotate, rotateAngle, xindent, yindent, zoom, super.hashCode());
   }
 
 
@@ -355,15 +244,10 @@ public class StampBase extends LinkElement {
     sb.append("class StampBase {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    background: ").append(toIndentedString(background)).append("\n");
-    sb.append("    bottomMargin: ").append(toIndentedString(bottomMargin)).append("\n");
     sb.append("    horizontalAlignment: ").append(toIndentedString(horizontalAlignment)).append("\n");
-    sb.append("    leftMargin: ").append(toIndentedString(leftMargin)).append("\n");
     sb.append("    opacity: ").append(toIndentedString(opacity)).append("\n");
-    sb.append("    rightMargin: ").append(toIndentedString(rightMargin)).append("\n");
     sb.append("    rotate: ").append(toIndentedString(rotate)).append("\n");
     sb.append("    rotateAngle: ").append(toIndentedString(rotateAngle)).append("\n");
-    sb.append("    topMargin: ").append(toIndentedString(topMargin)).append("\n");
-    sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
     sb.append("    xindent: ").append(toIndentedString(xindent)).append("\n");
     sb.append("    yindent: ").append(toIndentedString(yindent)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");

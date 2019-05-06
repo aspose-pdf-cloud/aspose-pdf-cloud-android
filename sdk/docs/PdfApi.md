@@ -30,7 +30,6 @@ Method | HTTP request | Description
 [**getDocumentAnnotations**](PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**getDocumentAttachmentByIndex**](PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 [**getDocumentAttachments**](PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
-[**getDocumentBookmarks**](PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks | Read document bookmark/bookmarks (including children).
 [**getDocumentCaretAnnotations**](PdfApi.md#getDocumentCaretAnnotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 [**getDocumentCircleAnnotations**](PdfApi.md#getDocumentCircleAnnotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 [**getDocumentFileAttachmentAnnotations**](PdfApi.md#getDocumentFileAttachmentAnnotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -127,6 +126,7 @@ Method | HTTP request | Description
 [**getPdfInStorageToSvg**](PdfApi.md#getPdfInStorageToSvg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 [**getPdfInStorageToTiff**](PdfApi.md#getPdfInStorageToTiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 [**getPdfInStorageToXls**](PdfApi.md#getPdfInStorageToXls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+[**getPdfInStorageToXlsx**](PdfApi.md#getPdfInStorageToXlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 [**getPdfInStorageToXml**](PdfApi.md#getPdfInStorageToXml) | **GET** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and returns resulting file in response content
 [**getPdfInStorageToXps**](PdfApi.md#getPdfInStorageToXps) | **GET** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and returns resulting file in response content
 [**getPolyLineAnnotation**](PdfApi.md#getPolyLineAnnotation) | **GET** /pdf/\{name}/annotations/polyline/\{annotationId} | Read document page polyline annotation by ID.
@@ -156,8 +156,16 @@ Method | HTTP request | Description
 [**getXpsInStorageToPdf**](PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**getXslFoInStorageToPdf**](PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 [**postAppendDocument**](PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+[**postChangePasswordDocumentInStorage**](PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**postCreateField**](PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
+[**postDecryptDocumentInStorage**](PdfApi.md#postDecryptDocumentInStorage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
+[**postDocumentImageFooter**](PdfApi.md#postDocumentImageFooter) | **POST** /pdf/\{name}/footer/image | Add document image footer.
+[**postDocumentImageHeader**](PdfApi.md#postDocumentImageHeader) | **POST** /pdf/\{name}/header/image | Add document image header.
+[**postDocumentPageNumberStamps**](PdfApi.md#postDocumentPageNumberStamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**postDocumentTextFooter**](PdfApi.md#postDocumentTextFooter) | **POST** /pdf/\{name}/footer/text | Add document text footer.
+[**postDocumentTextHeader**](PdfApi.md#postDocumentTextHeader) | **POST** /pdf/\{name}/header/text | Add document text header.
 [**postDocumentTextReplace**](PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**postEncryptDocumentInStorage**](PdfApi.md#postEncryptDocumentInStorage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**postFlattenDocument**](PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Flatten the document.
 [**postInsertImage**](PdfApi.md#postInsertImage) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
 [**postMoveFile**](PdfApi.md#postMoveFile) | **POST** /storage/file | Move a specific file
@@ -184,6 +192,7 @@ Method | HTTP request | Description
 [**postPageSquigglyAnnotations**](PdfApi.md#postPageSquigglyAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Add document page squiggly annotations.
 [**postPageStampAnnotations**](PdfApi.md#postPageStampAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Add document page stamp annotations.
 [**postPageStrikeOutAnnotations**](PdfApi.md#postPageStrikeOutAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
+[**postPageTables**](PdfApi.md#postPageTables) | **POST** /pdf/\{name}/pages/\{pageNumber}/tables | Add document page tables.
 [**postPageTextAnnotations**](PdfApi.md#postPageTextAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 [**postPageTextReplace**](PdfApi.md#postPageTextReplace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page&#39;s replace text method.
 [**postPageTextStamps**](PdfApi.md#postPageTextStamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
@@ -196,10 +205,13 @@ Method | HTTP request | Description
 [**putAddText**](PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 [**putAnnotationsFlatten**](PdfApi.md#putAnnotationsFlatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
 [**putCaretAnnotation**](PdfApi.md#putCaretAnnotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
+[**putChangePasswordDocument**](PdfApi.md#putChangePasswordDocument) | **PUT** /pdf/changepassword | Change document password from content.
 [**putCircleAnnotation**](PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**putCreate**](PdfApi.md#putCreate) | **PUT** /storage/file | Upload a specific file 
 [**putCreateDocument**](PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
 [**putCreateFolder**](PdfApi.md#putCreateFolder) | **PUT** /storage/folder | Create the folder 
+[**putDecryptDocument**](PdfApi.md#putDecryptDocument) | **PUT** /pdf/decrypt | Decrypt document from content.
+[**putEncryptDocument**](PdfApi.md#putEncryptDocument) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**putEpubInStorageToPdf**](PdfApi.md#putEpubInStorageToPdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 [**putFieldsFlatten**](PdfApi.md#putFieldsFlatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**putFileAttachmentAnnotation**](PdfApi.md#putFileAttachmentAnnotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
@@ -241,6 +253,7 @@ Method | HTTP request | Description
 [**putPdfInRequestToSvg**](PdfApi.md#putPdfInRequestToSvg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 [**putPdfInRequestToTiff**](PdfApi.md#putPdfInRequestToTiff) | **PUT** /pdf/convert/tiff | Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
 [**putPdfInRequestToXls**](PdfApi.md#putPdfInRequestToXls) | **PUT** /pdf/convert/xls | Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+[**putPdfInRequestToXlsx**](PdfApi.md#putPdfInRequestToXlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 [**putPdfInRequestToXml**](PdfApi.md#putPdfInRequestToXml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 [**putPdfInRequestToXps**](PdfApi.md#putPdfInRequestToXps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
 [**putPdfInStorageToDoc**](PdfApi.md#putPdfInStorageToDoc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
@@ -253,6 +266,7 @@ Method | HTTP request | Description
 [**putPdfInStorageToSvg**](PdfApi.md#putPdfInStorageToSvg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 [**putPdfInStorageToTiff**](PdfApi.md#putPdfInStorageToTiff) | **PUT** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
 [**putPdfInStorageToXls**](PdfApi.md#putPdfInStorageToXls) | **PUT** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+[**putPdfInStorageToXlsx**](PdfApi.md#putPdfInStorageToXlsx) | **PUT** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 [**putPdfInStorageToXml**](PdfApi.md#putPdfInStorageToXml) | **PUT** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and uploads resulting file to storage
 [**putPdfInStorageToXps**](PdfApi.md#putPdfInStorageToXps) | **PUT** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
 [**putPolyLineAnnotation**](PdfApi.md#putPolyLineAnnotation) | **PUT** /pdf/\{name}/annotations/polyline/\{annotationId} | Replace document polyline annotation
@@ -274,6 +288,7 @@ Method | HTTP request | Description
 [**putStampAnnotationDataExtract**](PdfApi.md#putStampAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 [**putStrikeOutAnnotation**](PdfApi.md#putStrikeOutAnnotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 [**putSvgInStorageToPdf**](PdfApi.md#putSvgInStorageToPdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+[**putTable**](PdfApi.md#putTable) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
 [**putTextAnnotation**](PdfApi.md#putTextAnnotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 [**putUnderlineAnnotation**](PdfApi.md#putUnderlineAnnotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 [**putUpdateField**](PdfApi.md#putUpdateField) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
@@ -825,7 +840,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getDocumentAnnotations"></a>
 # **getDocumentAnnotations**
@@ -896,30 +911,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
-<a name="getDocumentBookmarks"></a>
-# **getDocumentBookmarks**
-> File getDocumentBookmarks(name, bookmarkPath, storage, folder)
-
-Read document bookmark/bookmarks (including children).
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. |
- **bookmarkPath** | **String**| The bookmark path. Leave it empty if you want to get all the bookmarks in the document. | [optional]
- **storage** | **String**| The document storage. | [optional]
- **folder** | **String**| The document folder. | [optional]
-
-### Return type
-
-**File**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: multipart/form-data
 
 <a name="getDocumentCaretAnnotations"></a>
 # **getDocumentCaretAnnotations**
@@ -3268,6 +3259,33 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
 
+<a name="getPdfInStorageToXlsx"></a>
+# **getPdfInStorageToXlsx**
+> File getPdfInStorageToXlsx(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+
+Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **insertBlankColumnAtFirst** | **Boolean**| Insert blank column at first | [optional]
+ **minimizeTheNumberOfWorksheets** | **Boolean**| Minimize the number of worksheets | [optional]
+ **scaleFactor** | **Double**| Scale factor | [optional]
+ **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
 <a name="getPdfInStorageToXml"></a>
 # **getPdfInStorageToXml**
 > File getPdfInStorageToXml(name, folder, storage)
@@ -3973,6 +3991,32 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="postChangePasswordDocumentInStorage"></a>
+# **postChangePasswordDocumentInStorage**
+> AsposeResponse postChangePasswordDocumentInStorage(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder)
+
+Change document password in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Document name. |
+ **ownerPassword** | **String**| Owner password (encrypted Base64). |
+ **newUserPassword** | **String**| New user password (encrypted Base64). |
+ **newOwnerPassword** | **String**| New owner password (encrypted Base64). |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postCreateField"></a>
 # **postCreateField**
 > AsposeResponse postCreateField(name, page, field, storage, folder)
@@ -3986,6 +4030,160 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **page** | **Integer**| Document page number. |
  **field** | [**Field**](Field.md)| with the field data. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDecryptDocumentInStorage"></a>
+# **postDecryptDocumentInStorage**
+> AsposeResponse postDecryptDocumentInStorage(name, password, storage, folder)
+
+Decrypt document in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Document name. |
+ **password** | **String**| The password (encrypted Base64). |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentImageFooter"></a>
+# **postDocumentImageFooter**
+> AsposeResponse postDocumentImageFooter(name, imageFooter, startPageNumber, endPageNumber, storage, folder)
+
+Add document image footer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **imageFooter** | [**ImageFooter**](ImageFooter.md)| The image footer. |
+ **startPageNumber** | **Integer**| The start page number. | [optional]
+ **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentImageHeader"></a>
+# **postDocumentImageHeader**
+> AsposeResponse postDocumentImageHeader(name, imageHeader, startPageNumber, endPageNumber, storage, folder)
+
+Add document image header.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **imageHeader** | [**ImageHeader**](ImageHeader.md)| The image header. |
+ **startPageNumber** | **Integer**| The start page number. | [optional]
+ **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentPageNumberStamps"></a>
+# **postDocumentPageNumberStamps**
+> AsposeResponse postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, storage, folder)
+
+Add document page number stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. |
+ **startPageNumber** | **Integer**| The start page number. | [optional]
+ **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentTextFooter"></a>
+# **postDocumentTextFooter**
+> AsposeResponse postDocumentTextFooter(name, textFooter, startPageNumber, endPageNumber, storage, folder)
+
+Add document text footer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **textFooter** | [**TextFooter**](TextFooter.md)| The text footer. |
+ **startPageNumber** | **Integer**| The start page number. | [optional]
+ **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentTextHeader"></a>
+# **postDocumentTextHeader**
+> AsposeResponse postDocumentTextHeader(name, textHeader, startPageNumber, endPageNumber, storage, folder)
+
+Add document text header.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **textHeader** | [**TextHeader**](TextHeader.md)| The text header. |
+ **startPageNumber** | **Integer**| The start page number. | [optional]
+ **endPageNumber** | **Integer**| The end page number. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -4016,6 +4214,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postEncryptDocumentInStorage"></a>
+# **postEncryptDocumentInStorage**
+> AsposeResponse postEncryptDocumentInStorage(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder)
+
+Encrypt document in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Document name. |
+ **userPassword** | **String**| User password (encrypted Base64). |
+ **ownerPassword** | **String**| Owner password (encrypted Base64). |
+ **cryptoAlgorithm** | **String**| Cryptographic algorithm, see  for details. |
+ **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional]
+ **usePdf20** | **Boolean**| Support for revision 6 (Extension 8). | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -4676,6 +4902,31 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="postPageTables"></a>
+# **postPageTables**
+> AsposeResponse postPageTables(name, pageNumber, tables, storage, folder)
+
+Add document page tables.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| The page number. |
+ **tables** | [**List&lt;Table&gt;**](Table.md)| The array of table. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postPageTextAnnotations"></a>
 # **postPageTextAnnotations**
 > AsposeResponse postPageTextAnnotations(name, pageNumber, annotations, storage, folder)
@@ -4975,6 +5226,32 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="putChangePasswordDocument"></a>
+# **putChangePasswordDocument**
+> AsposeResponse putChangePasswordDocument(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file)
+
+Change document password from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
+ **ownerPassword** | **String**| Owner password (encrypted Base64). |
+ **newUserPassword** | **String**| New user password (encrypted Base64). |
+ **newOwnerPassword** | **String**| New owner password (encrypted Base64). |
+ **storage** | **String**| The document storage. | [optional]
+ **file** | **File**| A file to be changed password. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="putCircleAnnotation"></a>
 # **putCircleAnnotation**
 > CircleAnnotationResponse putCircleAnnotation(name, annotationId, annotation, storage, folder)
@@ -5060,6 +5337,58 @@ Name | Type | Description  | Notes
  **path** | **String**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively |
  **storage** | **String**| User&#39;s source storage name | [optional]
  **destStorage** | **String**| User&#39;s destination storage name | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putDecryptDocument"></a>
+# **putDecryptDocument**
+> AsposeResponse putDecryptDocument(outPath, password, storage, file)
+
+Decrypt document from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
+ **password** | **String**| The password (encrypted Base64). |
+ **storage** | **String**| The document storage. | [optional]
+ **file** | **File**| A file to be derypted. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putEncryptDocument"></a>
+# **putEncryptDocument**
+> AsposeResponse putEncryptDocument(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file)
+
+Encrypt document from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
+ **userPassword** | **String**| User password (encrypted Base64). |
+ **ownerPassword** | **String**| Owner password (encrypted Base64). |
+ **cryptoAlgorithm** | **String**| Cryptographic algorithm, see  for details. |
+ **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional]
+ **usePdf20** | **Boolean**| Support for revision 6 (Extension 8). | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **file** | **File**| A file to be encrypted. | [optional]
 
 ### Return type
 
@@ -6162,6 +6491,33 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="putPdfInRequestToXlsx"></a>
+# **putPdfInRequestToXlsx**
+> AsposeResponse putPdfInRequestToXlsx(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file)
+
+Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.xlsx) |
+ **insertBlankColumnAtFirst** | **Boolean**| Insert blank column at first | [optional]
+ **minimizeTheNumberOfWorksheets** | **Boolean**| Minimize the number of worksheets | [optional]
+ **scaleFactor** | **Double**| Scale factor | [optional]
+ **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **file** | **File**| A file to be converted. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="putPdfInRequestToXml"></a>
 # **putPdfInRequestToXml**
 > AsposeResponse putPdfInRequestToXml(outPath, storage, file)
@@ -6492,6 +6848,34 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.xls) |
+ **insertBlankColumnAtFirst** | **Boolean**| Insert blank column at first | [optional]
+ **minimizeTheNumberOfWorksheets** | **Boolean**| Minimize the number of worksheets | [optional]
+ **scaleFactor** | **Double**| Scale factor | [optional]
+ **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putPdfInStorageToXlsx"></a>
+# **putPdfInStorageToXlsx**
+> AsposeResponse putPdfInStorageToXlsx(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+
+Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.xlsx) |
  **insertBlankColumnAtFirst** | **Boolean**| Insert blank column at first | [optional]
  **minimizeTheNumberOfWorksheets** | **Boolean**| Minimize the number of worksheets | [optional]
  **scaleFactor** | **Double**| Scale factor | [optional]
@@ -7026,6 +7410,31 @@ Name | Type | Description  | Notes
  **marginTop** | **Double**| Page margin top | [optional]
  **dstFolder** | **String**| The destination document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putTable"></a>
+# **putTable**
+> AsposeResponse putTable(name, tableId, table, storage, folder)
+
+Replace document page table.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **tableId** | **String**| The table ID. |
+ **table** | [**Table**](Table.md)| The table. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
 
 ### Return type
 

@@ -22,6 +22,7 @@
 
 package com.aspose.asposecloudpdfandroid.api;
 
+import android.util.Base64;
 import android.view.textservice.TextInfo;
 
 import com.aspose.asposecloudpdfandroid.ApiException;
@@ -36,6 +37,7 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -431,6 +433,7 @@ public class PdfApiTest
      * @throws ApiException
      *          if the Api call fails
      */
+
     @Test
     public void postPageTextStampsTest()throws ApiException
     {
@@ -443,14 +446,15 @@ public class PdfApiTest
         TextStamp stamp = new TextStamp()
             .textAlignment(HorizontalAlignment.CENTER)
             .value("Text Stamp")
-            .textState(textState);
-            stamp.background(true)
+            .textState(textState)
             .leftMargin(1.)
             .rightMargin(2.)
             .topMargin(3.)
             .bottomMargin(4.)
+            .verticalAlignment(VerticalAlignment.CENTER);
+
+        stamp.background(true)
             .horizontalAlignment(HorizontalAlignment.CENTER)
-            .verticalAlignment(VerticalAlignment.CENTER)
             .opacity(1.)
             .rotate(Rotation.NONE)
             .rotateAngle(0.)
@@ -480,14 +484,15 @@ public class PdfApiTest
         uploadFile(image);
         int pageNumber = 1;
 
-        ImageStamp stamp = new ImageStamp().fileName(tempFolder + '/' + image);
-        stamp.background(true)
+        ImageStamp stamp = new ImageStamp()
+                .fileName(tempFolder + '/' + image)
                 .leftMargin(1.)
                 .rightMargin(2.)
                 .topMargin(3.)
                 .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER);
+        stamp.background(true)
                 .horizontalAlignment(HorizontalAlignment.CENTER)
-                .verticalAlignment(VerticalAlignment.CENTER)
                 .opacity(1.)
                 .rotate(Rotation.NONE)
                 .rotateAngle(0.)
@@ -517,14 +522,16 @@ public class PdfApiTest
         uploadFile(pdf);
         int pageNumber = 1;
 
-        PdfPageStamp stamp = new PdfPageStamp().fileName(tempFolder + '/' + pdf).pageIndex(2);
-        stamp.background(true)
+        PdfPageStamp stamp = new PdfPageStamp()
+                .fileName(tempFolder + '/' + pdf)
+                .pageIndex(2)
                 .leftMargin(1.)
                 .rightMargin(2.)
                 .topMargin(3.)
                 .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER);
+        stamp.background(true)
                 .horizontalAlignment(HorizontalAlignment.CENTER)
-                .verticalAlignment(VerticalAlignment.CENTER)
                 .opacity(1.)
                 .rotate(Rotation.NONE)
                 .rotateAngle(0.)
@@ -556,6 +563,221 @@ public class PdfApiTest
 
         AsposeResponse response = pdfApi.deleteStamp(name, stampId, null, tempFolder);
         assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentPageNumberStamps Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentPageNumberStampsTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        PageNumberStamp stamp = new PageNumberStamp()
+                .value("Page #")
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.BOTTOM)
+                .startingNumber(3);
+
+        stamp.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        int startPageNumber = 2;
+        int endPageNumber = 3;
+
+        AsposeResponse response = pdfApi.postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    // Header Footer Tests
+
+    /**
+     * PostDocumentTextHeaderTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentTextHeaderTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        int startPage = 2;
+        int endPage = 3;
+
+        Color foregroundColor = new Color();
+        foregroundColor.setA(0x00);
+        foregroundColor.setR(0x00);
+        foregroundColor.setG(0xFF);
+        foregroundColor.setB(0x00);
+
+        Color backgroundColor = new Color();
+        backgroundColor.setA(0x00);
+        backgroundColor.setR(0xFF);
+        backgroundColor.setG(0x00);
+        backgroundColor.setB(0x00);
+
+        TextState textState = new TextState()
+                .fontSize(14.)
+                .foregroundColor(foregroundColor)
+                .backgroundColor(backgroundColor);
+
+        TextHeader header = new TextHeader()
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .textAlignment(HorizontalAlignment.CENTER)
+                .value("Header")
+                .textState(textState);
+        header.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+
+        AsposeResponse response = pdfApi.postDocumentTextHeader(name, header, startPage, endPage, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentTextFooterTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentTextFooterTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        int startPage = 2;
+        int endPage = 3;
+
+        Color foregroundColor = new Color();
+        foregroundColor.setA(0x00);
+        foregroundColor.setR(0x00);
+        foregroundColor.setG(0xFF);
+        foregroundColor.setB(0x00);
+
+        Color backgroundColor = new Color();
+        backgroundColor.setA(0x00);
+        backgroundColor.setR(0xFF);
+        backgroundColor.setG(0x00);
+        backgroundColor.setB(0x00);
+
+        TextState textState = new TextState()
+                .fontSize(14.)
+                .foregroundColor(foregroundColor)
+                .backgroundColor(backgroundColor);
+
+        TextFooter footer = new TextFooter()
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .bottomMargin(3.)
+                .textAlignment(HorizontalAlignment.CENTER)
+                .value("Header")
+                .textState(textState);
+        footer.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+
+        AsposeResponse response = pdfApi.postDocumentTextFooter(name, footer, startPage, endPage, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentImageHeaderTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentImageHeaderTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        String image = "Koala.jpg";
+        uploadFile(image);
+
+        int startPage = 2;
+        int endPage = 3;
+
+        ImageHeader header = new ImageHeader()
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .fileName(tempFolder + '/' + image);
+        header.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(.1);
+
+
+        AsposeResponse response = pdfApi.postDocumentImageHeader(name, header, startPage, endPage, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentImageFooterTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentImageFooterTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        String image = "Koala.jpg";
+        uploadFile(image);
+
+        int startPage = 2;
+        int endPage = 3;
+
+        ImageFooter footer = new ImageFooter()
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .bottomMargin(3.)
+                .fileName(tempFolder + '/' + image);
+        footer.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+
+        AsposeResponse response = pdfApi.postDocumentImageFooter(name, footer, startPage, endPage, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
     }
 
     // Table Tests
@@ -658,6 +880,133 @@ public class PdfApiTest
 
         AsposeResponse response = pdfApi.deleteTable(name, tableId, null, tempFolder);
         assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostPageTablesTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPageTablesTest()throws ApiException
+    {
+        String name = "4pages.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        List<Table> tables = new ArrayList<>();
+        tables.add(drawTable());
+
+        AsposeResponse response = pdfApi.postPageTables(name, pageNumber, tables, null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutTableTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putTableTest()throws ApiException
+    {
+        String name = "PdfWithTable.pdf";
+        uploadFile(name);
+
+        int pageNumber = 1;
+
+        TablesRecognizedResponse tablesResponse = pdfApi.getDocumentTables(name, null, tempFolder);
+        assertEquals(200, (int)tablesResponse.getCode());
+        String tableId = tablesResponse.getTables().getList().get(0).getId();
+
+        AsposeResponse response = pdfApi.putTable(name, tableId, drawTable(), null, tempFolder);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    private Table drawTable()
+    {
+        TextState textState = new TextState()
+                .fontSize(10.)
+                .backgroundColor(new Color().A(255).R(255));
+
+        int numOfCols = 5;
+        int numOfRows = 5;
+
+        Table table = new Table();
+        table.setRows(new ArrayList<Row>());
+
+        String colWidths = "";
+        for (int c = 0; c < numOfCols; c++)
+        {
+            colWidths += " 30";
+        }
+        table.columnWidths(colWidths);
+
+        table.defaultCellTextState(textState);
+
+        GraphInfo borderTableBorder = new GraphInfo();
+        borderTableBorder.setColor(new Color().A(255).G(255));
+        borderTableBorder.setLineWidth(1.);
+
+        table.setDefaultCellBorder(new BorderInfo()
+                        .top(borderTableBorder)
+                        .right(borderTableBorder)
+                        .bottom(borderTableBorder)
+                        .left(borderTableBorder)
+        );
+
+        table.setTop(100.);
+
+        for (int r = 0; r < numOfRows; r++)
+        {
+
+            Row row = new Row().cells(new ArrayList<Cell>());
+
+            for (int c = 0; c < numOfCols; c++)
+            {
+
+                Cell cell = new Cell();
+                cell.setBackgroundColor(new Color().A(255).G(128));
+                cell.setDefaultCellTextState(textState);
+                cell.setParagraphs(new ArrayList<TextRect>());
+                cell.getParagraphs().add(new TextRect().text("value"));
+
+                // change properties on cell
+                if (c == 1)
+                {
+                    cell.getDefaultCellTextState().setForegroundColor(new Color().A(255).B(255));
+                }
+
+                // change properties on cell AFTER first clearing and re-adding paragraphs
+                else if (c == 2)
+                {
+                    cell.getParagraphs().clear();
+                    cell.getParagraphs().add(new TextRect().text("y"));
+                    cell.getDefaultCellTextState().setForegroundColor(new Color().A(255).B(255));
+                }
+
+                // change properties on paragraph
+                else if (c == 3)
+                {
+                    cell.getParagraphs().get(0).setTextState(textState);
+                    cell.getParagraphs().get(0).getTextState().setForegroundColor(new Color().A(255).G(255));
+                }
+
+                // change properties on paragraph AFTER first clearing and re-adding paragraphs
+                else if (c == 4)
+                {
+                    cell.getParagraphs().clear();
+                    cell.getParagraphs().add(new TextRect().text("y"));
+                    cell.getParagraphs().get(0).setTextState(textState);
+                    cell.getParagraphs().get(0).getTextState().setForegroundColor(new Color().A(255).B(255));
+                }
+                row.getCells().add(cell);
+
+            }
+            table.getRows().add(row);
+        }
+
+        return table;
     }
 
     // Stamp Annotations
@@ -3601,24 +3950,6 @@ public class PdfApiTest
         assertNotNull(response);
     }
 
-    // Bookmarks Tests
-
-    /**
-     * GetDocumentBookmarks Test
-     * @throws ApiException
-     *          if the Api call fails
-     */
-
-    @Test
-    public void getDocumentBookmarksTest() throws ApiException
-    {
-        String name = "PdfWithBookmarks.pdf";
-        this.uploadFile(name);
-
-        File response = this.pdfApi.getDocumentBookmarks(name, null, null, this.tempFolder);
-        assertNotNull(response);
-    }
-
     // Convert Tests
 
     /**
@@ -3948,6 +4279,61 @@ public class PdfApiTest
         String resFileName = "result.xls";
 
         AsposeResponse response = this.pdfApi.putPdfInRequestToXls(this.tempFolder + '/' + resFileName, null, null, null, null, null , file);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToXlsx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPdfInStorageToXlsxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+
+
+        File response = this.pdfApi.getPdfInStorageToXlsx(name, null, null, null, null, folder, null);
+        assertNotNull(response);
+    }
+
+    /**
+     * PutPdfInStorageToXlsx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToXlsxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String folder = this.tempFolder;
+        String resFileName = "result.xlsx";
+
+        AsposeResponse response = this.pdfApi.putPdfInStorageToXlsx(name, this.tempFolder + '/' + resFileName, null, null, null, null, folder, null);
+        assertEquals(201, (int)response.getCode());
+    }
+
+    /**
+     * PutPdfInRequestToXlsx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToXlsxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+        String resFileName = "result.xlsx";
+
+        AsposeResponse response = this.pdfApi.putPdfInRequestToXlsx(this.tempFolder + '/' + resFileName, null, null, null, null, null , file);
         assertEquals(201, (int)response.getCode());
     }
 
@@ -6505,6 +6891,128 @@ public class PdfApiTest
         assertEquals(200, (int)response.getCode());
     }
 
+    // Encrypt Decrypt Tests
+
+    /**
+     * PutEncryptDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putEncryptDocumentTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(testDataFolder + "/" + name);
+
+        String outPath = tempFolder + '/' + name;
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+        String ownerPasswordBase64encoded = "b3duZXJcLy8/ICQxMl5QYXNzd29yZCEm"; //owner\//? $12^Password!&
+
+        AsposeResponse response  = this.pdfApi.putEncryptDocument(outPath, userPasswordBase64encoded, ownerPasswordBase64encoded,
+                CryptoAlgorithm.AESX128.getValue(), null, null, null, file);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostEncryptDocumentInStorage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postEncryptDocumentInStorageTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.uploadFile(name);
+
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+        String ownerPasswordBase64encoded = "b3duZXJcLy8/ICQxMl5QYXNzd29yZCEm"; //owner\//? $12^Password!&
+
+        AsposeResponse response  = this.pdfApi.postEncryptDocumentInStorage(name, userPasswordBase64encoded, ownerPasswordBase64encoded,
+                CryptoAlgorithm.AESX128.getValue(), null, null, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutDecryptDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putDecryptDocumentTest() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        File file = new File(testDataFolder + "/" + name);
+
+        String outPath = tempFolder + '/' + name;
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+
+        AsposeResponse response  = this.pdfApi.putDecryptDocument(outPath, userPasswordBase64encoded, null, file);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostDencryptDocumentInStorage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void posttDencryptDocumentInStorageTest() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        this.uploadFile(name);
+
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+
+        AsposeResponse response  = this.pdfApi.postDecryptDocumentInStorage(name, userPasswordBase64encoded, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutChangePasswordDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putChangePasswordDocumentTest() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        File file = new File(testDataFolder + "/" + name);
+
+        String outPath = tempFolder + '/' + name;
+        String ownerPasswordBase64Encoded = "b3duZXJcLy8/ICQxMl5QYXNzd29yZCEm"; //owner\//? $12^Password!&
+        String newUserPasswordBase64Encoded = "dXNlciBuZXcvLz8gJDEyXlBhc3N3b3JkISY="; //user new\//? $12^Password!&
+        String newOwnerPasswordBase64Encoded = "b3duZXIgbmV3Ly8/ICQxMl5QYXNzd29yZCEm"; //owner new\//? $12^Password!&
+
+        AsposeResponse response  = this.pdfApi.putChangePasswordDocument(outPath, ownerPasswordBase64Encoded,
+                newUserPasswordBase64Encoded, newOwnerPasswordBase64Encoded, null, file);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostChangePasswordDocumentInStorage Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postChangePasswordDocumentInStorageTest() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        this.uploadFile(name);
+
+        String ownerPasswordBase64Encoded = "b3duZXJcLy8/ICQxMl5QYXNzd29yZCEm"; //owner\//? $12^Password!&
+        String newUserPasswordBase64Encoded = "dXNlciBuZXcvLz8gJDEyXlBhc3N3b3JkISY="; //user new\//? $12^Password!&
+        String newOwnerPasswordBase64Encoded = "b3duZXIgbmV3Ly8/ICQxMl5QYXNzd29yZCEm"; //owner new\//? $12^Password!&
+
+        AsposeResponse response  = this.pdfApi.postChangePasswordDocumentInStorage(name, ownerPasswordBase64Encoded,
+                newUserPasswordBase64Encoded, newOwnerPasswordBase64Encoded, null, tempFolder);
+        assertEquals(200, (int)response.getCode());
+    }
 
     // Text Replace Tests
 

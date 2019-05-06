@@ -27,7 +27,6 @@ import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.Rotation;
 import com.aspose.asposecloudpdfandroid.model.StampBase;
-import com.aspose.asposecloudpdfandroid.model.VerticalAlignment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,11 +38,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Represents Pdf stamps.
+ * Represents Pdf image footer.
  */
-@ApiModel(description = "Represents Pdf stamps.")
+@ApiModel(description = "Represents Pdf image footer.")
 
-public class ImageStamp extends StampBase {
+public class ImageFooter extends StampBase {
   @SerializedName("FileName")
   private String fileName = null;
 
@@ -53,22 +52,16 @@ public class ImageStamp extends StampBase {
   @SerializedName("Height")
   private Double height = null;
 
-  @SerializedName("VerticalAlignment")
-  private VerticalAlignment verticalAlignment = null;
-
   @SerializedName("BottomMargin")
   private Double bottomMargin = null;
 
   @SerializedName("LeftMargin")
   private Double leftMargin = null;
 
-  @SerializedName("TopMargin")
-  private Double topMargin = null;
-
   @SerializedName("RightMargin")
   private Double rightMargin = null;
 
-  public ImageStamp fileName(String fileName) {
+  public ImageFooter fileName(String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -86,7 +79,7 @@ public class ImageStamp extends StampBase {
     this.fileName = fileName;
   }
 
-  public ImageStamp width(Double width) {
+  public ImageFooter width(Double width) {
     this.width = width;
     return this;
   }
@@ -104,7 +97,7 @@ public class ImageStamp extends StampBase {
     this.width = width;
   }
 
-  public ImageStamp height(Double height) {
+  public ImageFooter height(Double height) {
     this.height = height;
     return this;
   }
@@ -122,25 +115,7 @@ public class ImageStamp extends StampBase {
     this.height = height;
   }
 
-  public ImageStamp verticalAlignment(VerticalAlignment verticalAlignment) {
-    this.verticalAlignment = verticalAlignment;
-    return this;
-  }
-
-   /**
-   * Gets or sets vertical alignment of stamp on page.
-   * @return verticalAlignment
-  **/
-  @ApiModelProperty(value = "Gets or sets vertical alignment of stamp on page.")
-  public VerticalAlignment getVerticalAlignment() {
-    return verticalAlignment;
-  }
-
-  public void setVerticalAlignment(VerticalAlignment verticalAlignment) {
-    this.verticalAlignment = verticalAlignment;
-  }
-
-  public ImageStamp bottomMargin(Double bottomMargin) {
+  public ImageFooter bottomMargin(Double bottomMargin) {
     this.bottomMargin = bottomMargin;
     return this;
   }
@@ -158,7 +133,7 @@ public class ImageStamp extends StampBase {
     this.bottomMargin = bottomMargin;
   }
 
-  public ImageStamp leftMargin(Double leftMargin) {
+  public ImageFooter leftMargin(Double leftMargin) {
     this.leftMargin = leftMargin;
     return this;
   }
@@ -176,25 +151,7 @@ public class ImageStamp extends StampBase {
     this.leftMargin = leftMargin;
   }
 
-  public ImageStamp topMargin(Double topMargin) {
-    this.topMargin = topMargin;
-    return this;
-  }
-
-   /**
-   * Gets or sets top margin of stamp.
-   * @return topMargin
-  **/
-  @ApiModelProperty(value = "Gets or sets top margin of stamp.")
-  public Double getTopMargin() {
-    return topMargin;
-  }
-
-  public void setTopMargin(Double topMargin) {
-    this.topMargin = topMargin;
-  }
-
-  public ImageStamp rightMargin(Double rightMargin) {
+  public ImageFooter rightMargin(Double rightMargin) {
     this.rightMargin = rightMargin;
     return this;
   }
@@ -221,36 +178,32 @@ public class ImageStamp extends StampBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ImageStamp imageStamp = (ImageStamp) o;
-    return Objects.equals(this.fileName, imageStamp.fileName) &&
-        Objects.equals(this.width, imageStamp.width) &&
-        Objects.equals(this.height, imageStamp.height) &&
-        Objects.equals(this.verticalAlignment, imageStamp.verticalAlignment) &&
-        Objects.equals(this.bottomMargin, imageStamp.bottomMargin) &&
-        Objects.equals(this.leftMargin, imageStamp.leftMargin) &&
-        Objects.equals(this.topMargin, imageStamp.topMargin) &&
-        Objects.equals(this.rightMargin, imageStamp.rightMargin) &&
+    ImageFooter imageFooter = (ImageFooter) o;
+    return Objects.equals(this.fileName, imageFooter.fileName) &&
+        Objects.equals(this.width, imageFooter.width) &&
+        Objects.equals(this.height, imageFooter.height) &&
+        Objects.equals(this.bottomMargin, imageFooter.bottomMargin) &&
+        Objects.equals(this.leftMargin, imageFooter.leftMargin) &&
+        Objects.equals(this.rightMargin, imageFooter.rightMargin) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileName, width, height, verticalAlignment, bottomMargin, leftMargin, topMargin, rightMargin, super.hashCode());
+    return Objects.hash(fileName, width, height, bottomMargin, leftMargin, rightMargin, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ImageStamp {\n");
+    sb.append("class ImageFooter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
     sb.append("    bottomMargin: ").append(toIndentedString(bottomMargin)).append("\n");
     sb.append("    leftMargin: ").append(toIndentedString(leftMargin)).append("\n");
-    sb.append("    topMargin: ").append(toIndentedString(topMargin)).append("\n");
     sb.append("    rightMargin: ").append(toIndentedString(rightMargin)).append("\n");
     sb.append("}");
     return sb.toString();

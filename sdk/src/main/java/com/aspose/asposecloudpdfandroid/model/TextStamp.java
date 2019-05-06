@@ -54,6 +54,21 @@ public class TextStamp extends StampBase {
   @SerializedName("TextState")
   private TextState textState = null;
 
+  @SerializedName("VerticalAlignment")
+  private VerticalAlignment verticalAlignment = null;
+
+  @SerializedName("BottomMargin")
+  private Double bottomMargin = null;
+
+  @SerializedName("LeftMargin")
+  private Double leftMargin = null;
+
+  @SerializedName("TopMargin")
+  private Double topMargin = null;
+
+  @SerializedName("RightMargin")
+  private Double rightMargin = null;
+
   public TextStamp textAlignment(HorizontalAlignment textAlignment) {
     this.textAlignment = textAlignment;
     return this;
@@ -108,6 +123,96 @@ public class TextStamp extends StampBase {
     this.textState = textState;
   }
 
+  public TextStamp verticalAlignment(VerticalAlignment verticalAlignment) {
+    this.verticalAlignment = verticalAlignment;
+    return this;
+  }
+
+   /**
+   * Gets or sets vertical alignment of stamp on page.
+   * @return verticalAlignment
+  **/
+  @ApiModelProperty(value = "Gets or sets vertical alignment of stamp on page.")
+  public VerticalAlignment getVerticalAlignment() {
+    return verticalAlignment;
+  }
+
+  public void setVerticalAlignment(VerticalAlignment verticalAlignment) {
+    this.verticalAlignment = verticalAlignment;
+  }
+
+  public TextStamp bottomMargin(Double bottomMargin) {
+    this.bottomMargin = bottomMargin;
+    return this;
+  }
+
+   /**
+   * Gets or sets bottom margin of stamp.
+   * @return bottomMargin
+  **/
+  @ApiModelProperty(value = "Gets or sets bottom margin of stamp.")
+  public Double getBottomMargin() {
+    return bottomMargin;
+  }
+
+  public void setBottomMargin(Double bottomMargin) {
+    this.bottomMargin = bottomMargin;
+  }
+
+  public TextStamp leftMargin(Double leftMargin) {
+    this.leftMargin = leftMargin;
+    return this;
+  }
+
+   /**
+   * Gets or sets left margin of stamp.
+   * @return leftMargin
+  **/
+  @ApiModelProperty(value = "Gets or sets left margin of stamp.")
+  public Double getLeftMargin() {
+    return leftMargin;
+  }
+
+  public void setLeftMargin(Double leftMargin) {
+    this.leftMargin = leftMargin;
+  }
+
+  public TextStamp topMargin(Double topMargin) {
+    this.topMargin = topMargin;
+    return this;
+  }
+
+   /**
+   * Gets or sets top margin of stamp.
+   * @return topMargin
+  **/
+  @ApiModelProperty(value = "Gets or sets top margin of stamp.")
+  public Double getTopMargin() {
+    return topMargin;
+  }
+
+  public void setTopMargin(Double topMargin) {
+    this.topMargin = topMargin;
+  }
+
+  public TextStamp rightMargin(Double rightMargin) {
+    this.rightMargin = rightMargin;
+    return this;
+  }
+
+   /**
+   * Gets or sets right margin of stamp.
+   * @return rightMargin
+  **/
+  @ApiModelProperty(value = "Gets or sets right margin of stamp.")
+  public Double getRightMargin() {
+    return rightMargin;
+  }
+
+  public void setRightMargin(Double rightMargin) {
+    this.rightMargin = rightMargin;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -121,12 +226,17 @@ public class TextStamp extends StampBase {
     return Objects.equals(this.textAlignment, textStamp.textAlignment) &&
         Objects.equals(this.value, textStamp.value) &&
         Objects.equals(this.textState, textStamp.textState) &&
+        Objects.equals(this.verticalAlignment, textStamp.verticalAlignment) &&
+        Objects.equals(this.bottomMargin, textStamp.bottomMargin) &&
+        Objects.equals(this.leftMargin, textStamp.leftMargin) &&
+        Objects.equals(this.topMargin, textStamp.topMargin) &&
+        Objects.equals(this.rightMargin, textStamp.rightMargin) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(textAlignment, value, textState, super.hashCode());
+    return Objects.hash(textAlignment, value, textState, verticalAlignment, bottomMargin, leftMargin, topMargin, rightMargin, super.hashCode());
   }
 
 
@@ -138,6 +248,11 @@ public class TextStamp extends StampBase {
     sb.append("    textAlignment: ").append(toIndentedString(textAlignment)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    textState: ").append(toIndentedString(textState)).append("\n");
+    sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
+    sb.append("    bottomMargin: ").append(toIndentedString(bottomMargin)).append("\n");
+    sb.append("    leftMargin: ").append(toIndentedString(leftMargin)).append("\n");
+    sb.append("    topMargin: ").append(toIndentedString(topMargin)).append("\n");
+    sb.append("    rightMargin: ").append(toIndentedString(rightMargin)).append("\n");
     sb.append("}");
     return sb.toString();
   }

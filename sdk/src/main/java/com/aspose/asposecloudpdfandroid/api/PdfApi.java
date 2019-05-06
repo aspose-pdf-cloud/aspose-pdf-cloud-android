@@ -72,6 +72,8 @@ import com.aspose.asposecloudpdfandroid.model.FreeTextAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.HighlightAnnotation;
 import com.aspose.asposecloudpdfandroid.model.HighlightAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.HighlightAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.ImageFooter;
+import com.aspose.asposecloudpdfandroid.model.ImageHeader;
 import com.aspose.asposecloudpdfandroid.model.ImageResponse;
 import com.aspose.asposecloudpdfandroid.model.ImageStamp;
 import com.aspose.asposecloudpdfandroid.model.ImageTemplatesRequest;
@@ -90,8 +92,10 @@ import com.aspose.asposecloudpdfandroid.model.MovieAnnotation;
 import com.aspose.asposecloudpdfandroid.model.MovieAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.MovieAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.OptimizeOptions;
+import com.aspose.asposecloudpdfandroid.model.PageNumberStamp;
 import com.aspose.asposecloudpdfandroid.model.Paragraph;
 import com.aspose.asposecloudpdfandroid.model.PdfPageStamp;
+import com.aspose.asposecloudpdfandroid.model.PermissionsFlags;
 import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotation;
 import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.PolyLineAnnotationsResponse;
@@ -128,11 +132,14 @@ import com.aspose.asposecloudpdfandroid.model.StorageExistResponse;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotation;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.StrikeOutAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.Table;
 import com.aspose.asposecloudpdfandroid.model.TableRecognizedResponse;
 import com.aspose.asposecloudpdfandroid.model.TablesRecognizedResponse;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotation;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.TextAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.TextFooter;
+import com.aspose.asposecloudpdfandroid.model.TextHeader;
 import com.aspose.asposecloudpdfandroid.model.TextRectsResponse;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceListRequest;
 import com.aspose.asposecloudpdfandroid.model.TextReplaceResponse;
@@ -3580,7 +3587,7 @@ public class PdfApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "multipart/form-data"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -4150,160 +4157,6 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getDocumentAttachmentsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AttachmentsResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getDocumentBookmarks
-     * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. Leave it empty if you want to get all the bookmarks in the document. (optional)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getDocumentBookmarksCall(String name, String bookmarkPath, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/{name}/bookmarks"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (bookmarkPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("bookmarkPath", bookmarkPath));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDocumentBookmarksValidateBeforeCall(String name, String bookmarkPath, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getDocumentBookmarks(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getDocumentBookmarksCall(name, bookmarkPath, storage, folder, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Read document bookmark/bookmarks (including children).
-     * 
-     * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. Leave it empty if you want to get all the bookmarks in the document. (optional)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public File getDocumentBookmarks(String name, String bookmarkPath, String storage, String folder) throws ApiException {
-        try
-        {
-            ApiResponse<File> resp = getDocumentBookmarksWithHttpInfo(name, bookmarkPath, storage, folder);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.refreshToken();
-                ApiResponse<File> resp = getDocumentBookmarksWithHttpInfo(name, bookmarkPath, storage, folder);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Read document bookmark/bookmarks (including children).
-     * 
-     * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. Leave it empty if you want to get all the bookmarks in the document. (optional)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<File> getDocumentBookmarksWithHttpInfo(String name, String bookmarkPath, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, bookmarkPath, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Read document bookmark/bookmarks (including children). (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. Leave it empty if you want to get all the bookmarks in the document. (optional)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getDocumentBookmarksAsync(String name, String bookmarkPath, String storage, String folder, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, bookmarkPath, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -19596,6 +19449,178 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPdfInStorageToXlsx
+     * @param name The document name. (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPdfInStorageToXlsxCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/convert/xlsx"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (insertBlankColumnAtFirst != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("insertBlankColumnAtFirst", insertBlankColumnAtFirst));
+        if (minimizeTheNumberOfWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimizeTheNumberOfWorksheets", minimizeTheNumberOfWorksheets));
+        if (scaleFactor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("scaleFactor", scaleFactor));
+        if (uniformWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPdfInStorageToXlsxValidateBeforeCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPdfInStorageToXlsx(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+     * 
+     * @param name The document name. (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPdfInStorageToXlsx(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+     * 
+     * @param name The document name. (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPdfInStorageToXlsxWithHttpInfo(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and returns resulting file in response content (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPdfInStorageToXlsxAsync(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPdfInStorageToXml
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -24209,6 +24234,187 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postChangePasswordDocumentInStorage
+     * @param name Document name. (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postChangePasswordDocumentInStorageCall(String name, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/changepassword"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ownerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ownerPassword", ownerPassword));
+        if (newUserPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("newUserPassword", newUserPassword));
+        if (newOwnerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("newOwnerPassword", newOwnerPassword));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postChangePasswordDocumentInStorageValidateBeforeCall(String name, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postChangePasswordDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'ownerPassword' is set
+        if (ownerPassword == null) {
+            throw new ApiException("Missing the required parameter 'ownerPassword' when calling postChangePasswordDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'newUserPassword' is set
+        if (newUserPassword == null) {
+            throw new ApiException("Missing the required parameter 'newUserPassword' when calling postChangePasswordDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'newOwnerPassword' is set
+        if (newOwnerPassword == null) {
+            throw new ApiException("Missing the required parameter 'newOwnerPassword' when calling postChangePasswordDocumentInStorage(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postChangePasswordDocumentInStorageCall(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Change document password in storage.
+     * 
+     * @param name Document name. (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postChangePasswordDocumentInStorage(String name, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postChangePasswordDocumentInStorageWithHttpInfo(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postChangePasswordDocumentInStorageWithHttpInfo(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Change document password in storage.
+     * 
+     * @param name Document name. (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postChangePasswordDocumentInStorageWithHttpInfo(String name, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postChangePasswordDocumentInStorageValidateBeforeCall(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Change document password in storage. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postChangePasswordDocumentInStorageAsync(String name, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postChangePasswordDocumentInStorageValidateBeforeCall(name, ownerPassword, newUserPassword, newOwnerPassword, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postCreateField
      * @param name The document name. (required)
      * @param page Document page number. (required)
@@ -24372,6 +24578,1010 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postDecryptDocumentInStorage
+     * @param name Document name. (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDecryptDocumentInStorageCall(String name, String password, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/decrypt"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDecryptDocumentInStorageValidateBeforeCall(String name, String password, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDecryptDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'password' is set
+        if (password == null) {
+            throw new ApiException("Missing the required parameter 'password' when calling postDecryptDocumentInStorage(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDecryptDocumentInStorageCall(name, password, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Decrypt document in storage.
+     * 
+     * @param name Document name. (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDecryptDocumentInStorage(String name, String password, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDecryptDocumentInStorageWithHttpInfo(name, password, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDecryptDocumentInStorageWithHttpInfo(name, password, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Decrypt document in storage.
+     * 
+     * @param name Document name. (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDecryptDocumentInStorageWithHttpInfo(String name, String password, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDecryptDocumentInStorageValidateBeforeCall(name, password, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Decrypt document in storage. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDecryptDocumentInStorageAsync(String name, String password, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDecryptDocumentInStorageValidateBeforeCall(name, password, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentImageFooter
+     * @param name The document name. (required)
+     * @param imageFooter The image footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentImageFooterCall(String name, ImageFooter imageFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = imageFooter;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/footer/image"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startPageNumber", startPageNumber));
+        if (endPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endPageNumber", endPageNumber));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentImageFooterValidateBeforeCall(String name, ImageFooter imageFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentImageFooter(Async)");
+        }
+        
+        // verify the required parameter 'imageFooter' is set
+        if (imageFooter == null) {
+            throw new ApiException("Missing the required parameter 'imageFooter' when calling postDocumentImageFooter(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentImageFooterCall(name, imageFooter, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document image footer.
+     * 
+     * @param name The document name. (required)
+     * @param imageFooter The image footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentImageFooter(String name, ImageFooter imageFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentImageFooterWithHttpInfo(name, imageFooter, startPageNumber, endPageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDocumentImageFooterWithHttpInfo(name, imageFooter, startPageNumber, endPageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document image footer.
+     * 
+     * @param name The document name. (required)
+     * @param imageFooter The image footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentImageFooterWithHttpInfo(String name, ImageFooter imageFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentImageFooterValidateBeforeCall(name, imageFooter, startPageNumber, endPageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document image footer. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param imageFooter The image footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentImageFooterAsync(String name, ImageFooter imageFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentImageFooterValidateBeforeCall(name, imageFooter, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentImageHeader
+     * @param name The document name. (required)
+     * @param imageHeader The image header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentImageHeaderCall(String name, ImageHeader imageHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = imageHeader;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/header/image"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startPageNumber", startPageNumber));
+        if (endPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endPageNumber", endPageNumber));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentImageHeaderValidateBeforeCall(String name, ImageHeader imageHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentImageHeader(Async)");
+        }
+        
+        // verify the required parameter 'imageHeader' is set
+        if (imageHeader == null) {
+            throw new ApiException("Missing the required parameter 'imageHeader' when calling postDocumentImageHeader(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentImageHeaderCall(name, imageHeader, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document image header.
+     * 
+     * @param name The document name. (required)
+     * @param imageHeader The image header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentImageHeader(String name, ImageHeader imageHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentImageHeaderWithHttpInfo(name, imageHeader, startPageNumber, endPageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDocumentImageHeaderWithHttpInfo(name, imageHeader, startPageNumber, endPageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document image header.
+     * 
+     * @param name The document name. (required)
+     * @param imageHeader The image header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentImageHeaderWithHttpInfo(String name, ImageHeader imageHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentImageHeaderValidateBeforeCall(name, imageHeader, startPageNumber, endPageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document image header. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param imageHeader The image header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentImageHeaderAsync(String name, ImageHeader imageHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentImageHeaderValidateBeforeCall(name, imageHeader, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentPageNumberStamps
+     * @param name The document name. (required)
+     * @param stamp The stamp. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPageNumberStampsCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = stamp;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/stamps/pagenumber"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startPageNumber", startPageNumber));
+        if (endPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endPageNumber", endPageNumber));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentPageNumberStampsValidateBeforeCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentPageNumberStamps(Async)");
+        }
+        
+        // verify the required parameter 'stamp' is set
+        if (stamp == null) {
+            throw new ApiException("Missing the required parameter 'stamp' when calling postDocumentPageNumberStamps(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsCall(name, stamp, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document page number stamps.
+     * 
+     * @param name The document name. (required)
+     * @param stamp The stamp. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentPageNumberStamps(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document page number stamps.
+     * 
+     * @param name The document name. (required)
+     * @param stamp The stamp. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentPageNumberStampsWithHttpInfo(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document page number stamps. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param stamp The stamp. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPageNumberStampsAsync(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentTextFooter
+     * @param name The document name. (required)
+     * @param textFooter The text footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentTextFooterCall(String name, TextFooter textFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = textFooter;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/footer/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startPageNumber", startPageNumber));
+        if (endPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endPageNumber", endPageNumber));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentTextFooterValidateBeforeCall(String name, TextFooter textFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentTextFooter(Async)");
+        }
+        
+        // verify the required parameter 'textFooter' is set
+        if (textFooter == null) {
+            throw new ApiException("Missing the required parameter 'textFooter' when calling postDocumentTextFooter(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentTextFooterCall(name, textFooter, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document text footer.
+     * 
+     * @param name The document name. (required)
+     * @param textFooter The text footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentTextFooter(String name, TextFooter textFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentTextFooterWithHttpInfo(name, textFooter, startPageNumber, endPageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDocumentTextFooterWithHttpInfo(name, textFooter, startPageNumber, endPageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document text footer.
+     * 
+     * @param name The document name. (required)
+     * @param textFooter The text footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentTextFooterWithHttpInfo(String name, TextFooter textFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentTextFooterValidateBeforeCall(name, textFooter, startPageNumber, endPageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document text footer. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param textFooter The text footer. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentTextFooterAsync(String name, TextFooter textFooter, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentTextFooterValidateBeforeCall(name, textFooter, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentTextHeader
+     * @param name The document name. (required)
+     * @param textHeader The text header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentTextHeaderCall(String name, TextHeader textHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = textHeader;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/header/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startPageNumber", startPageNumber));
+        if (endPageNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endPageNumber", endPageNumber));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentTextHeaderValidateBeforeCall(String name, TextHeader textHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentTextHeader(Async)");
+        }
+        
+        // verify the required parameter 'textHeader' is set
+        if (textHeader == null) {
+            throw new ApiException("Missing the required parameter 'textHeader' when calling postDocumentTextHeader(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentTextHeaderCall(name, textHeader, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document text header.
+     * 
+     * @param name The document name. (required)
+     * @param textHeader The text header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentTextHeader(String name, TextHeader textHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentTextHeaderWithHttpInfo(name, textHeader, startPageNumber, endPageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postDocumentTextHeaderWithHttpInfo(name, textHeader, startPageNumber, endPageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document text header.
+     * 
+     * @param name The document name. (required)
+     * @param textHeader The text header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentTextHeaderWithHttpInfo(String name, TextHeader textHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentTextHeaderValidateBeforeCall(name, textHeader, startPageNumber, endPageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document text header. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param textHeader The text header. (required)
+     * @param startPageNumber The start page number. (optional)
+     * @param endPageNumber The end page number. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentTextHeaderAsync(String name, TextHeader textHeader, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentTextHeaderValidateBeforeCall(name, textHeader, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postDocumentTextReplace
      * @param name  (required)
      * @param textReplace  (required)
@@ -24525,6 +25735,199 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = postDocumentTextReplaceValidateBeforeCall(name, textReplace, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<TextReplaceResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postEncryptDocumentInStorage
+     * @param name Document name. (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postEncryptDocumentInStorageCall(String name, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/encrypt"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (userPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("userPassword", userPassword));
+        if (ownerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ownerPassword", ownerPassword));
+        if (cryptoAlgorithm != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("cryptoAlgorithm", cryptoAlgorithm));
+        if (permissionsFlags != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "permissionsFlags", permissionsFlags));
+        if (usePdf20 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("usePdf20", usePdf20));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postEncryptDocumentInStorageValidateBeforeCall(String name, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postEncryptDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'userPassword' is set
+        if (userPassword == null) {
+            throw new ApiException("Missing the required parameter 'userPassword' when calling postEncryptDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'ownerPassword' is set
+        if (ownerPassword == null) {
+            throw new ApiException("Missing the required parameter 'ownerPassword' when calling postEncryptDocumentInStorage(Async)");
+        }
+        
+        // verify the required parameter 'cryptoAlgorithm' is set
+        if (cryptoAlgorithm == null) {
+            throw new ApiException("Missing the required parameter 'cryptoAlgorithm' when calling postEncryptDocumentInStorage(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postEncryptDocumentInStorageCall(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Encrypt document in storage.
+     * 
+     * @param name Document name. (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postEncryptDocumentInStorage(String name, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postEncryptDocumentInStorageWithHttpInfo(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postEncryptDocumentInStorageWithHttpInfo(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Encrypt document in storage.
+     * 
+     * @param name Document name. (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postEncryptDocumentInStorageWithHttpInfo(String name, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postEncryptDocumentInStorageValidateBeforeCall(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Encrypt document in storage. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postEncryptDocumentInStorageAsync(String name, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postEncryptDocumentInStorageValidateBeforeCall(name, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -28894,6 +30297,173 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postPageTables
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param tables The array of table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postPageTablesCall(String name, Integer pageNumber, List<Table> tables, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = tables;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/pages/{pageNumber}/tables"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postPageTablesValidateBeforeCall(String name, Integer pageNumber, List<Table> tables, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postPageTables(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling postPageTables(Async)");
+        }
+        
+        // verify the required parameter 'tables' is set
+        if (tables == null) {
+            throw new ApiException("Missing the required parameter 'tables' when calling postPageTables(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postPageTablesCall(name, pageNumber, tables, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document page tables.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param tables The array of table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postPageTables(String name, Integer pageNumber, List<Table> tables, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postPageTablesWithHttpInfo(name, pageNumber, tables, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = postPageTablesWithHttpInfo(name, pageNumber, tables, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document page tables.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param tables The array of table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postPageTablesWithHttpInfo(String name, Integer pageNumber, List<Table> tables, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postPageTablesValidateBeforeCall(name, pageNumber, tables, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document page tables. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param tables The array of table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postPageTablesAsync(String name, Integer pageNumber, List<Table> tables, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postPageTablesValidateBeforeCall(name, pageNumber, tables, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postPageTextAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -30852,6 +32422,186 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putChangePasswordDocument
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be changed password. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putChangePasswordDocumentCall(String outPath, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = file;
+
+        // create path and map variables
+        String localVarPath = "/pdf/changepassword";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (ownerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ownerPassword", ownerPassword));
+        if (newUserPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("newUserPassword", newUserPassword));
+        if (newOwnerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("newOwnerPassword", newOwnerPassword));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putChangePasswordDocumentValidateBeforeCall(String outPath, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putChangePasswordDocument(Async)");
+        }
+        
+        // verify the required parameter 'ownerPassword' is set
+        if (ownerPassword == null) {
+            throw new ApiException("Missing the required parameter 'ownerPassword' when calling putChangePasswordDocument(Async)");
+        }
+        
+        // verify the required parameter 'newUserPassword' is set
+        if (newUserPassword == null) {
+            throw new ApiException("Missing the required parameter 'newUserPassword' when calling putChangePasswordDocument(Async)");
+        }
+        
+        // verify the required parameter 'newOwnerPassword' is set
+        if (newOwnerPassword == null) {
+            throw new ApiException("Missing the required parameter 'newOwnerPassword' when calling putChangePasswordDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putChangePasswordDocumentCall(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Change document password from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be changed password. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putChangePasswordDocument(String outPath, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, File file) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putChangePasswordDocumentWithHttpInfo(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putChangePasswordDocumentWithHttpInfo(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Change document password from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be changed password. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putChangePasswordDocumentWithHttpInfo(String outPath, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putChangePasswordDocumentValidateBeforeCall(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Change document password from content. (asynchronously)
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param newUserPassword New user password (encrypted Base64). (required)
+     * @param newOwnerPassword New owner password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be changed password. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putChangePasswordDocumentAsync(String outPath, String ownerPassword, String newUserPassword, String newOwnerPassword, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putChangePasswordDocumentValidateBeforeCall(outPath, ownerPassword, newUserPassword, newOwnerPassword, storage, file, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putCircleAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -31469,6 +33219,356 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putCreateFolderValidateBeforeCall(path, storage, destStorage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putDecryptDocument
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be derypted. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putDecryptDocumentCall(String outPath, String password, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = file;
+
+        // create path and map variables
+        String localVarPath = "/pdf/decrypt";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putDecryptDocumentValidateBeforeCall(String outPath, String password, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putDecryptDocument(Async)");
+        }
+        
+        // verify the required parameter 'password' is set
+        if (password == null) {
+            throw new ApiException("Missing the required parameter 'password' when calling putDecryptDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putDecryptDocumentCall(outPath, password, storage, file, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Decrypt document from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be derypted. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putDecryptDocument(String outPath, String password, String storage, File file) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putDecryptDocumentWithHttpInfo(outPath, password, storage, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putDecryptDocumentWithHttpInfo(outPath, password, storage, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Decrypt document from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be derypted. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putDecryptDocumentWithHttpInfo(String outPath, String password, String storage, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putDecryptDocumentValidateBeforeCall(outPath, password, storage, file, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Decrypt document from content. (asynchronously)
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param password The password (encrypted Base64). (required)
+     * @param storage The document storage. (optional)
+     * @param file A file to be derypted. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putDecryptDocumentAsync(String outPath, String password, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putDecryptDocumentValidateBeforeCall(outPath, password, storage, file, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putEncryptDocument
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be encrypted. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putEncryptDocumentCall(String outPath, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = file;
+
+        // create path and map variables
+        String localVarPath = "/pdf/encrypt";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (userPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("userPassword", userPassword));
+        if (ownerPassword != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ownerPassword", ownerPassword));
+        if (cryptoAlgorithm != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("cryptoAlgorithm", cryptoAlgorithm));
+        if (permissionsFlags != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "permissionsFlags", permissionsFlags));
+        if (usePdf20 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("usePdf20", usePdf20));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putEncryptDocumentValidateBeforeCall(String outPath, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putEncryptDocument(Async)");
+        }
+        
+        // verify the required parameter 'userPassword' is set
+        if (userPassword == null) {
+            throw new ApiException("Missing the required parameter 'userPassword' when calling putEncryptDocument(Async)");
+        }
+        
+        // verify the required parameter 'ownerPassword' is set
+        if (ownerPassword == null) {
+            throw new ApiException("Missing the required parameter 'ownerPassword' when calling putEncryptDocument(Async)");
+        }
+        
+        // verify the required parameter 'cryptoAlgorithm' is set
+        if (cryptoAlgorithm == null) {
+            throw new ApiException("Missing the required parameter 'cryptoAlgorithm' when calling putEncryptDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putEncryptDocumentCall(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Encrypt document from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be encrypted. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putEncryptDocument(String outPath, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, File file) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putEncryptDocumentWithHttpInfo(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putEncryptDocumentWithHttpInfo(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Encrypt document from content.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be encrypted. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putEncryptDocumentWithHttpInfo(String outPath, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putEncryptDocumentValidateBeforeCall(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Encrypt document from content. (asynchronously)
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
+     * @param userPassword User password (encrypted Base64). (required)
+     * @param ownerPassword Owner password (encrypted Base64). (required)
+     * @param cryptoAlgorithm Cryptographic algorithm, see  for details. (required)
+     * @param permissionsFlags Array of document permissions, see  for details. (optional)
+     * @param usePdf20 Support for revision 6 (Extension 8). (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be encrypted. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putEncryptDocumentAsync(String outPath, String userPassword, String ownerPassword, String cryptoAlgorithm, List<PermissionsFlags> permissionsFlags, Boolean usePdf20, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putEncryptDocumentValidateBeforeCall(outPath, userPassword, ownerPassword, cryptoAlgorithm, permissionsFlags, usePdf20, storage, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -38603,6 +40703,177 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putPdfInRequestToXlsx
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be converted. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPdfInRequestToXlsxCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = file;
+
+        // create path and map variables
+        String localVarPath = "/pdf/convert/xlsx";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (insertBlankColumnAtFirst != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("insertBlankColumnAtFirst", insertBlankColumnAtFirst));
+        if (minimizeTheNumberOfWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimizeTheNumberOfWorksheets", minimizeTheNumberOfWorksheets));
+        if (scaleFactor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("scaleFactor", scaleFactor));
+        if (uniformWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPdfInRequestToXlsxValidateBeforeCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPdfInRequestToXlsx(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be converted. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putPdfInRequestToXlsx(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be converted. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putPdfInRequestToXlsxWithHttpInfo(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads resulting file to storage. (asynchronously)
+     * 
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param storage The document storage. (optional)
+     * @param file A file to be converted. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPdfInRequestToXlsxAsync(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putPdfInRequestToXml
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xml) (required)
      * @param storage The document storage. (optional)
@@ -40847,6 +43118,189 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putPdfInStorageToXlsValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPdfInStorageToXlsx
+     * @param name The document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPdfInStorageToXlsxCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/convert/xlsx"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (insertBlankColumnAtFirst != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("insertBlankColumnAtFirst", insertBlankColumnAtFirst));
+        if (minimizeTheNumberOfWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimizeTheNumberOfWorksheets", minimizeTheNumberOfWorksheets));
+        if (scaleFactor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("scaleFactor", scaleFactor));
+        if (uniformWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPdfInStorageToXlsxValidateBeforeCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPdfInStorageToXlsx(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling putPdfInStorageToXlsx(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+     * 
+     * @param name The document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putPdfInStorageToXlsx(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+     * 
+     * @param name The document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putPdfInStorageToXlsxWithHttpInfo(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param scaleFactor Scale factor (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPdfInStorageToXlsxAsync(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -44351,6 +46805,173 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putSvgInStorageToPdfValidateBeforeCall(name, srcPath, adjustPageSize, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putTable
+     * @param name The document name. (required)
+     * @param tableId The table ID. (required)
+     * @param table The table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putTableCall(String name, String tableId, Table table, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = table;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/tables/{tableId}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
+            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapeString(tableId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putTableValidateBeforeCall(String name, String tableId, Table table, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putTable(Async)");
+        }
+        
+        // verify the required parameter 'tableId' is set
+        if (tableId == null) {
+            throw new ApiException("Missing the required parameter 'tableId' when calling putTable(Async)");
+        }
+        
+        // verify the required parameter 'table' is set
+        if (table == null) {
+            throw new ApiException("Missing the required parameter 'table' when calling putTable(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putTableCall(name, tableId, table, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document page table.
+     * 
+     * @param name The document name. (required)
+     * @param tableId The table ID. (required)
+     * @param table The table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putTable(String name, String tableId, Table table, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putTableWithHttpInfo(name, tableId, table, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.refreshToken();
+                ApiResponse<AsposeResponse> resp = putTableWithHttpInfo(name, tableId, table, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document page table.
+     * 
+     * @param name The document name. (required)
+     * @param tableId The table ID. (required)
+     * @param table The table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putTableWithHttpInfo(String name, String tableId, Table table, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putTableValidateBeforeCall(name, tableId, table, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document page table. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param tableId The table ID. (required)
+     * @param table The table. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putTableAsync(String name, String tableId, Table table, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putTableValidateBeforeCall(name, tableId, table, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -22,9 +22,6 @@
 
 package com.aspose.asposecloudpdfandroid.api;
 
-import android.util.Base64;
-import android.view.textservice.TextInfo;
-
 import com.aspose.asposecloudpdfandroid.ApiException;
 import com.aspose.asposecloudpdfandroid.model.*;
 
@@ -37,7 +34,6 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 

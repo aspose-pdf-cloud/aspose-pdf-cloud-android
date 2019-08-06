@@ -161,7 +161,7 @@ public class Attachment extends LinkElement {
    * The size of the uncompressed embedded file, in bytes.
    * @return size
   **/
-  @ApiModelProperty(value = "The size of the uncompressed embedded file, in bytes.")
+  @ApiModelProperty(required = true, value = "The size of the uncompressed embedded file, in bytes.")
   public Integer getSize() {
     return size;
   }

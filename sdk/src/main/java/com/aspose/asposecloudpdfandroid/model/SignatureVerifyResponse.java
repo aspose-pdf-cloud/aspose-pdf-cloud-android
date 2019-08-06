@@ -51,7 +51,7 @@ public class SignatureVerifyResponse extends AsposeResponse {
    * True if signature is valid and false if not
    * @return valid
   **/
-  @ApiModelProperty(value = "True if signature is valid and false if not")
+  @ApiModelProperty(required = true, value = "True if signature is valid and false if not")
   public Boolean isValid() {
     return valid;
   }

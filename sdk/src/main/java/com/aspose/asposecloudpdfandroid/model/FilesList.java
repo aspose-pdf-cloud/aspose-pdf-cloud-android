@@ -23,8 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.DiscUsage;
+import com.aspose.asposecloudpdfandroid.model.StorageFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,31 +32,42 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * DiscUsageResponse
+ * Files list
  */
+@ApiModel(description = "Files list")
 
-public class DiscUsageResponse extends AsposeResponse {
-  @SerializedName("DiscUsage")
-  private DiscUsage discUsage = null;
+public class FilesList {
+  @SerializedName("Value")
+  private List<StorageFile> value = null;
 
-  public DiscUsageResponse discUsage(DiscUsage discUsage) {
-    this.discUsage = discUsage;
+  public FilesList value(List<StorageFile> value) {
+    this.value = value;
+    return this;
+  }
+
+  public FilesList addValueItem(StorageFile valueItem) {
+    if (this.value == null) {
+      this.value = new ArrayList<StorageFile>();
+    }
+    this.value.add(valueItem);
     return this;
   }
 
    /**
-   * Get discUsage
-   * @return discUsage
+   * Files and folders contained by folder StorageFile.
+   * @return value
   **/
-  @ApiModelProperty(value = "")
-  public DiscUsage getDiscUsage() {
-    return discUsage;
+  @ApiModelProperty(value = "Files and folders contained by folder StorageFile.")
+  public List<StorageFile> getValue() {
+    return value;
   }
 
-  public void setDiscUsage(DiscUsage discUsage) {
-    this.discUsage = discUsage;
+  public void setValue(List<StorageFile> value) {
+    this.value = value;
   }
 
 
@@ -69,23 +79,22 @@ public class DiscUsageResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DiscUsageResponse discUsageResponse = (DiscUsageResponse) o;
-    return Objects.equals(this.discUsage, discUsageResponse.discUsage) &&
-        super.equals(o);
+    FilesList filesList = (FilesList) o;
+    return Objects.equals(this.value, filesList.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discUsage, super.hashCode());
+    return Objects.hash(value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DiscUsageResponse {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    discUsage: ").append(toIndentedString(discUsage)).append("\n");
+    sb.append("class FilesList {\n");
+    
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

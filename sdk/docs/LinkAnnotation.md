@@ -5,11 +5,11 @@ Provides link to linkAnnotation.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actionType** | [**LinkActionType**](LinkActionType.md) |  | 
-**action** | **String** |  | 
-**highlighting** | [**LinkHighlightingMode**](LinkHighlightingMode.md) |  | 
+**actionType** | [**LinkActionType**](LinkActionType.md) |  | [optional]
+**action** | **String** |  | [optional]
+**highlighting** | [**LinkHighlightingMode**](LinkHighlightingMode.md) |  | [optional]
 **color** | [**Color**](Color.md) |  | [optional]
-**rect** | [**Rectangle**](Rectangle.md) |  | 
+**rect** | [**Rectangle**](Rectangle.md) |  | [optional]
 **id** | **String** |  | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 

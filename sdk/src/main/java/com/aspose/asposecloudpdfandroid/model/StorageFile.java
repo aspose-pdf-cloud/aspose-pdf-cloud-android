@@ -34,12 +34,12 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * Represents file DTO.
+ * File or folder information
  */
-@ApiModel(description = "Represents file DTO.")
+@ApiModel(description = "File or folder information")
 
 
-public class File {
+public class StorageFile {
   @SerializedName("Name")
   private String name = null;
 
@@ -55,16 +55,16 @@ public class File {
   @SerializedName("Path")
   private String path = null;
 
-  public File name(String name) {
+  public StorageFile name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Get name
+   * File or folder name.
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "File or folder name.")
   public String getName() {
     return name;
   }
@@ -73,16 +73,16 @@ public class File {
     this.name = name;
   }
 
-  public File isFolder(Boolean isFolder) {
+  public StorageFile isFolder(Boolean isFolder) {
     this.isFolder = isFolder;
     return this;
   }
 
    /**
-   * Get isFolder
+   * True if it is a folder.
    * @return isFolder
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "True if it is a folder.")
   public Boolean isIsFolder() {
     return isFolder;
   }
@@ -91,16 +91,16 @@ public class File {
     this.isFolder = isFolder;
   }
 
-  public File modifiedDate(OffsetDateTime modifiedDate) {
+  public StorageFile modifiedDate(OffsetDateTime modifiedDate) {
     this.modifiedDate = modifiedDate;
     return this;
   }
 
    /**
-   * Get modifiedDate
+   * File or folder last modified DateTime.
    * @return modifiedDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "File or folder last modified DateTime.")
   public OffsetDateTime getModifiedDate() {
     return modifiedDate;
   }
@@ -109,16 +109,16 @@ public class File {
     this.modifiedDate = modifiedDate;
   }
 
-  public File size(Long size) {
+  public StorageFile size(Long size) {
     this.size = size;
     return this;
   }
 
    /**
-   * Get size
+   * File or folder size.
    * @return size
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "File or folder size.")
   public Long getSize() {
     return size;
   }
@@ -127,16 +127,16 @@ public class File {
     this.size = size;
   }
 
-  public File path(String path) {
+  public StorageFile path(String path) {
     this.path = path;
     return this;
   }
 
    /**
-   * Get path
+   * File or folder path.
    * @return path
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "File or folder path.")
   public String getPath() {
     return path;
   }
@@ -154,12 +154,12 @@ public class File {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    File file = (File) o;
-    return Objects.equals(this.name, file.name) &&
-        Objects.equals(this.isFolder, file.isFolder) &&
-        Objects.equals(this.modifiedDate, file.modifiedDate) &&
-        Objects.equals(this.size, file.size) &&
-        Objects.equals(this.path, file.path);
+    StorageFile storageFile = (StorageFile) o;
+    return Objects.equals(this.name, storageFile.name) &&
+        Objects.equals(this.isFolder, storageFile.isFolder) &&
+        Objects.equals(this.modifiedDate, storageFile.modifiedDate) &&
+        Objects.equals(this.size, storageFile.size) &&
+        Objects.equals(this.path, storageFile.path);
   }
 
   @Override
@@ -171,7 +171,7 @@ public class File {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class File {\n");
+    sb.append("class StorageFile {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    isFolder: ").append(toIndentedString(isFolder)).append("\n");

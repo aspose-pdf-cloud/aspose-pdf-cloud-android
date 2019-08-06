@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.FileVersion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -32,31 +32,42 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * StorageExistResponse
+ * File versions FileVersion.
  */
+@ApiModel(description = "File versions FileVersion.")
 
-public class StorageExistResponse extends AsposeResponse {
-  @SerializedName("IsExist")
-  private Boolean isExist = null;
+public class FileVersions {
+  @SerializedName("Value")
+  private List<FileVersion> value = null;
 
-  public StorageExistResponse isExist(Boolean isExist) {
-    this.isExist = isExist;
+  public FileVersions value(List<FileVersion> value) {
+    this.value = value;
+    return this;
+  }
+
+  public FileVersions addValueItem(FileVersion valueItem) {
+    if (this.value == null) {
+      this.value = new ArrayList<FileVersion>();
+    }
+    this.value.add(valueItem);
     return this;
   }
 
    /**
-   * Get isExist
-   * @return isExist
+   * File versions FileVersion.
+   * @return value
   **/
-  @ApiModelProperty(value = "")
-  public Boolean isIsExist() {
-    return isExist;
+  @ApiModelProperty(value = "File versions FileVersion.")
+  public List<FileVersion> getValue() {
+    return value;
   }
 
-  public void setIsExist(Boolean isExist) {
-    this.isExist = isExist;
+  public void setValue(List<FileVersion> value) {
+    this.value = value;
   }
 
 
@@ -68,23 +79,22 @@ public class StorageExistResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StorageExistResponse storageExistResponse = (StorageExistResponse) o;
-    return Objects.equals(this.isExist, storageExistResponse.isExist) &&
-        super.equals(o);
+    FileVersions fileVersions = (FileVersions) o;
+    return Objects.equals(this.value, fileVersions.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isExist, super.hashCode());
+    return Objects.hash(value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StorageExistResponse {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    isExist: ").append(toIndentedString(isExist)).append("\n");
+    sb.append("class FileVersions {\n");
+    
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -66,7 +66,7 @@ public class Image extends LinkElement {
    * Gets width of the image.
    * @return width
   **/
-  @ApiModelProperty(value = "Gets width of the image.")
+  @ApiModelProperty(required = true, value = "Gets width of the image.")
   public Integer getWidth() {
     return width;
   }
@@ -84,7 +84,7 @@ public class Image extends LinkElement {
    * Gets height of the image.
    * @return height
   **/
-  @ApiModelProperty(value = "Gets height of the image.")
+  @ApiModelProperty(required = true, value = "Gets height of the image.")
   public Integer getHeight() {
     return height;
   }
@@ -138,7 +138,7 @@ public class Image extends LinkElement {
    * Gets page number.
    * @return pageNumber
   **/
-  @ApiModelProperty(value = "Gets page number.")
+  @ApiModelProperty(required = true, value = "Gets page number.")
   public Integer getPageNumber() {
     return pageNumber;
   }

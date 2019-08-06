@@ -205,7 +205,7 @@ public class Annotation extends LinkElement {
    * Gets Rect of the annotation.
    * @return rect
   **/
-  @ApiModelProperty(value = "Gets Rect of the annotation.")
+  @ApiModelProperty(required = true, value = "Gets Rect of the annotation.")
   public Rectangle getRect() {
     return rect;
   }

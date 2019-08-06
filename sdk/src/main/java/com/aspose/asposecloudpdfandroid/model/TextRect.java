@@ -163,10 +163,10 @@ public class TextRect {
   }
 
    /**
-   * Gets or sets text position for text, represented with  object.
+   * Gets or sets text position for text, represented with TextRect object.
    * @return position
   **/
-  @ApiModelProperty(value = "Gets or sets text position for text, represented with  object.")
+  @ApiModelProperty(value = "Gets or sets text position for text, represented with TextRect object.")
   public Position getPosition() {
     return position;
   }
@@ -181,10 +181,10 @@ public class TextRect {
   }
 
    /**
-   * Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+   * Gets text position for text, represented with TextRect object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
    * @return baselinePosition
   **/
-  @ApiModelProperty(value = "Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.")
+  @ApiModelProperty(value = "Gets text position for text, represented with TextRect object. The YIndent of the Position structure represents baseline coordinate of the text fragment.")
   public Position getBaselinePosition() {
     return baselinePosition;
   }
@@ -199,10 +199,10 @@ public class TextRect {
   }
 
    /**
-   * Gets or sets text state for the text that  object represents.
+   * Gets or sets text state for the text that TextRect object represents.
    * @return textState
   **/
-  @ApiModelProperty(value = "Gets or sets text state for the text that  object represents.")
+  @ApiModelProperty(value = "Gets or sets text state for the text that TextRect object represents.")
   public TextState getTextState() {
     return textState;
   }

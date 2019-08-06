@@ -33,9 +33,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents the privileges for accessing Pdf file./&gt;.
+ * Represents the privileges for accessing Pdf file.
  */
-@ApiModel(description = "Represents the privileges for accessing Pdf file./>.")
+@ApiModel(description = "Represents the privileges for accessing Pdf file.")
 
 public class DocumentPrivilege {
   @SerializedName("AllowPrint")

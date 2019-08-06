@@ -23,7 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.Error;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,37 +36,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * FilesResponse
+ * File upload result
  */
+@ApiModel(description = "File upload result")
 
-public class FilesResponse extends AsposeResponse {
-  @SerializedName("Files")
-  private List<File> files = null;
+public class FilesUploadResult {
+  @SerializedName("Uploaded")
+  private List<String> uploaded = null;
 
-  public FilesResponse files(List<File> files) {
-    this.files = files;
+  @SerializedName("Errors")
+  private List<Error> errors = null;
+
+  public FilesUploadResult uploaded(List<String> uploaded) {
+    this.uploaded = uploaded;
     return this;
   }
 
-  public FilesResponse addFilesItem(File filesItem) {
-    if (this.files == null) {
-      this.files = new ArrayList<File>();
+  public FilesUploadResult addUploadedItem(String uploadedItem) {
+    if (this.uploaded == null) {
+      this.uploaded = new ArrayList<String>();
     }
-    this.files.add(filesItem);
+    this.uploaded.add(uploadedItem);
     return this;
   }
 
    /**
-   * Get files
-   * @return files
+   * List of uploaded file names
+   * @return uploaded
   **/
-  @ApiModelProperty(value = "")
-  public List<File> getFiles() {
-    return files;
+  @ApiModelProperty(value = "List of uploaded file names")
+  public List<String> getUploaded() {
+    return uploaded;
   }
 
-  public void setFiles(List<File> files) {
-    this.files = files;
+  public void setUploaded(List<String> uploaded) {
+    this.uploaded = uploaded;
+  }
+
+  public FilesUploadResult errors(List<Error> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public FilesUploadResult addErrorsItem(Error errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<Error>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * List of errors.
+   * @return errors
+  **/
+  @ApiModelProperty(value = "List of errors.")
+  public List<Error> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<Error> errors) {
+    this.errors = errors;
   }
 
 
@@ -78,23 +108,24 @@ public class FilesResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FilesResponse filesResponse = (FilesResponse) o;
-    return Objects.equals(this.files, filesResponse.files) &&
-        super.equals(o);
+    FilesUploadResult filesUploadResult = (FilesUploadResult) o;
+    return Objects.equals(this.uploaded, filesUploadResult.uploaded) &&
+        Objects.equals(this.errors, filesUploadResult.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(files, super.hashCode());
+    return Objects.hash(uploaded, errors);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FilesResponse {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    files: ").append(toIndentedString(files)).append("\n");
+    sb.append("class FilesUploadResult {\n");
+    
+    sb.append("    uploaded: ").append(toIndentedString(uploaded)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

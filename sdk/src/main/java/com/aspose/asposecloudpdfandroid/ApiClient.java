@@ -62,7 +62,7 @@ import java.util.regex.Pattern;
 
 public class ApiClient {
 
-    private String basePath = "https://api.aspose.cloud/v2.0";
+    private String basePath = "https://api.aspose.cloud/v3.0";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -73,7 +73,6 @@ public class ApiClient {
     private HttpLoggingInterceptor loggingInterceptor;
 
     private String accessToken;
-    private String refreshToken;
     private String appKey;
     private String appSid;
 
@@ -149,7 +148,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api.aspose.cloud/v2.0
+     * @param basePath Base path of the URL (e.g https://api.aspose.cloud/v3.0
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
@@ -210,16 +209,6 @@ public class ApiClient {
     public void setAccessToken(String accessToken) 
     {
         this.accessToken = accessToken;
-    }
-
-    /**
-     * Set refresh token for the OAuth2 authentication.
-     *
-     * @param refreshToken Access token
-     */
-    public void setRefreshToken(String refreshToken) 
-    {
-        this.refreshToken = refreshToken;
     }
     
     /**
@@ -1010,7 +999,7 @@ public class ApiClient {
      /**
      * Request OAuth token
      */
-    private void requestToken() throws ApiException
+    public void requestToken() throws ApiException
     {
         try {
             RequestBody requestBody = new FormEncodingBuilder()
@@ -1019,7 +1008,7 @@ public class ApiClient {
                     .addEncoded("client_secret", getAppKey())
                     .build();
 
-            String url = basePath.replace("/v2.0", "") + "/oauth2/token";
+            String url = basePath.replace("/v3.0", "") + "/connect/token";
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)
@@ -1029,7 +1018,6 @@ public class ApiClient {
             Response response = httpClient.newCall(request).execute();
             GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
             setAccessToken(result.access_token);
-            setRefreshToken(result.refresh_token);
         }
         catch (Exception ex)
         {
@@ -1037,35 +1025,6 @@ public class ApiClient {
         }
     }
 
-    /**
-     * Refresh OAuth token
-     */
-    public void refreshToken() throws ApiException
-    {
-        try {
-            RequestBody requestBody = new FormEncodingBuilder()
-                    .addEncoded("grant_type", "refresh_token")
-                    .addEncoded("refresh_token", this.refreshToken)
-                    .build();
-
-            String url = basePath.replace("/v2.0", "") + "/oauth2/token";
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(requestBody)
-                    .addHeader("Content-Type", " application/x-www-form-urlencoded")
-                    .build();
-
-            Response response = httpClient.newCall(request).execute();
-            GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
-            setAccessToken(result.access_token);
-            setRefreshToken(result.refresh_token);
-        }
-        catch (Exception ex)
-        {
-            throw new ApiException(ex);
-        }
-    }
-    
     
      /**
      * Add OAuth2 header
@@ -1087,6 +1046,5 @@ public class ApiClient {
     private class GetAccessTokenResult
     {
         public String access_token;
-        public String refresh_token;
     }
 }

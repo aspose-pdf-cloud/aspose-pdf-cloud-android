@@ -51,7 +51,7 @@ public class SplitResultDocument extends Link {
    * Gets or sets the page number.
    * @return id
   **/
-  @ApiModelProperty(value = "Gets or sets the page number.")
+  @ApiModelProperty(required = true, value = "Gets or sets the page number.")
   public Integer getId() {
     return id;
   }

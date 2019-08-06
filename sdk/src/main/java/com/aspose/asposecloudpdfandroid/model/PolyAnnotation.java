@@ -63,7 +63,7 @@ public class PolyAnnotation extends MarkupAnnotation {
   private PolyIntent intent = null;
 
   @SerializedName("Vertices")
-  private List<Point> vertices = null;
+  private List<Point> vertices = new ArrayList<Point>();
 
   public PolyAnnotation interiorColor(Color interiorColor) {
     this.interiorColor = interiorColor;
@@ -143,9 +143,6 @@ public class PolyAnnotation extends MarkupAnnotation {
   }
 
   public PolyAnnotation addVerticesItem(Point verticesItem) {
-    if (this.vertices == null) {
-      this.vertices = new ArrayList<Point>();
-    }
     this.vertices.add(verticesItem);
     return this;
   }
@@ -154,7 +151,7 @@ public class PolyAnnotation extends MarkupAnnotation {
    * Gets or sets an array of points representing the horizontal and vertical coordinates of each vertex.
    * @return vertices
   **/
-  @ApiModelProperty(value = "Gets or sets an array of points representing the horizontal and vertical coordinates of each vertex.")
+  @ApiModelProperty(required = true, value = "Gets or sets an array of points representing the horizontal and vertical coordinates of each vertex.")
   public List<Point> getVertices() {
     return vertices;
   }

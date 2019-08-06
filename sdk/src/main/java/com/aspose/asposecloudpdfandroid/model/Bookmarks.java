@@ -23,6 +23,9 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.Bookmark;
+import com.aspose.asposecloudpdfandroid.model.Link;
+import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -31,74 +34,42 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Class for appendDocument service request building.
+ * Represents list of bookmark.
  */
-@ApiModel(description = "Class for appendDocument service request building.")
+@ApiModel(description = "Represents list of bookmark.")
 
-public class AppendDocument {
-  @SerializedName("Document")
-  private String document = null;
+public class Bookmarks extends LinkElement {
+  @SerializedName("List")
+  private List<Bookmark> list = null;
 
-  @SerializedName("StartPage")
-  private Integer startPage = null;
+  public Bookmarks list(List<Bookmark> list) {
+    this.list = list;
+    return this;
+  }
 
-  @SerializedName("EndPage")
-  private Integer endPage = null;
-
-  public AppendDocument document(String document) {
-    this.document = document;
+  public Bookmarks addListItem(Bookmark listItem) {
+    if (this.list == null) {
+      this.list = new ArrayList<Bookmark>();
+    }
+    this.list.add(listItem);
     return this;
   }
 
    /**
-   * Document to append (server path).
-   * @return document
+   * List of bookmarks.
+   * @return list
   **/
-  @ApiModelProperty(required = true, value = "Document to append (server path).")
-  public String getDocument() {
-    return document;
+  @ApiModelProperty(value = "List of bookmarks.")
+  public List<Bookmark> getList() {
+    return list;
   }
 
-  public void setDocument(String document) {
-    this.document = document;
-  }
-
-  public AppendDocument startPage(Integer startPage) {
-    this.startPage = startPage;
-    return this;
-  }
-
-   /**
-   * Appending start page.
-   * @return startPage
-  **/
-  @ApiModelProperty(required = true, value = "Appending start page.")
-  public Integer getStartPage() {
-    return startPage;
-  }
-
-  public void setStartPage(Integer startPage) {
-    this.startPage = startPage;
-  }
-
-  public AppendDocument endPage(Integer endPage) {
-    this.endPage = endPage;
-    return this;
-  }
-
-   /**
-   * Appending end page.
-   * @return endPage
-  **/
-  @ApiModelProperty(required = true, value = "Appending end page.")
-  public Integer getEndPage() {
-    return endPage;
-  }
-
-  public void setEndPage(Integer endPage) {
-    this.endPage = endPage;
+  public void setList(List<Bookmark> list) {
+    this.list = list;
   }
 
 
@@ -110,26 +81,23 @@ public class AppendDocument {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AppendDocument appendDocument = (AppendDocument) o;
-    return Objects.equals(this.document, appendDocument.document) &&
-        Objects.equals(this.startPage, appendDocument.startPage) &&
-        Objects.equals(this.endPage, appendDocument.endPage);
+    Bookmarks bookmarks = (Bookmarks) o;
+    return Objects.equals(this.list, bookmarks.list) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(document, startPage, endPage);
+    return Objects.hash(list, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AppendDocument {\n");
-    
-    sb.append("    document: ").append(toIndentedString(document)).append("\n");
-    sb.append("    startPage: ").append(toIndentedString(startPage)).append("\n");
-    sb.append("    endPage: ").append(toIndentedString(endPage)).append("\n");
+    sb.append("class Bookmarks {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    list: ").append(toIndentedString(list)).append("\n");
     sb.append("}");
     return sb.toString();
   }

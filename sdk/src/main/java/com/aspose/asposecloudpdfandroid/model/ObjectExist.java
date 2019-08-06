@@ -33,44 +33,45 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * FileExist
+ * Object exists
  */
+@ApiModel(description = "Object exists")
 
-public class FileExist {
-  @SerializedName("IsExist")
-  private Boolean isExist = null;
+public class ObjectExist {
+  @SerializedName("Exists")
+  private Boolean exists = null;
 
   @SerializedName("IsFolder")
   private Boolean isFolder = null;
 
-  public FileExist isExist(Boolean isExist) {
-    this.isExist = isExist;
+  public ObjectExist exists(Boolean exists) {
+    this.exists = exists;
     return this;
   }
 
    /**
-   * Get isExist
-   * @return isExist
+   * Indicates that the file or folder exists.
+   * @return exists
   **/
-  @ApiModelProperty(required = true, value = "")
-  public Boolean isIsExist() {
-    return isExist;
+  @ApiModelProperty(required = true, value = "Indicates that the file or folder exists.")
+  public Boolean isExists() {
+    return exists;
   }
 
-  public void setIsExist(Boolean isExist) {
-    this.isExist = isExist;
+  public void setExists(Boolean exists) {
+    this.exists = exists;
   }
 
-  public FileExist isFolder(Boolean isFolder) {
+  public ObjectExist isFolder(Boolean isFolder) {
     this.isFolder = isFolder;
     return this;
   }
 
    /**
-   * Get isFolder
+   * True if it is a folder, false if it is a file.
    * @return isFolder
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "True if it is a folder, false if it is a file.")
   public Boolean isIsFolder() {
     return isFolder;
   }
@@ -88,23 +89,23 @@ public class FileExist {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FileExist fileExist = (FileExist) o;
-    return Objects.equals(this.isExist, fileExist.isExist) &&
-        Objects.equals(this.isFolder, fileExist.isFolder);
+    ObjectExist objectExist = (ObjectExist) o;
+    return Objects.equals(this.exists, objectExist.exists) &&
+        Objects.equals(this.isFolder, objectExist.isFolder);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isExist, isFolder);
+    return Objects.hash(exists, isFolder);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FileExist {\n");
+    sb.append("class ObjectExist {\n");
     
-    sb.append("    isExist: ").append(toIndentedString(isExist)).append("\n");
+    sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
     sb.append("    isFolder: ").append(toIndentedString(isFolder)).append("\n");
     sb.append("}");
     return sb.toString();

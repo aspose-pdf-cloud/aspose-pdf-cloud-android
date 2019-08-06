@@ -23,6 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.StorageFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -34,10 +35,11 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * FileVersion
+ * File Version
  */
+@ApiModel(description = "File Version")
 
-public class FileVersion extends File {
+public class FileVersion extends StorageFile {
   @SerializedName("VersionId")
   private String versionId = null;
 
@@ -50,10 +52,10 @@ public class FileVersion extends File {
   }
 
    /**
-   * Get versionId
+   * File Version ID.
    * @return versionId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "File Version ID.")
   public String getVersionId() {
     return versionId;
   }
@@ -68,10 +70,10 @@ public class FileVersion extends File {
   }
 
    /**
-   * Get isLatest
+   * Specifies whether the file is (true) or is not (false) the latest version of an file.
    * @return isLatest
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Specifies whether the file is (true) or is not (false) the latest version of an file.")
   public Boolean isIsLatest() {
     return isLatest;
   }

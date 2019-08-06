@@ -95,7 +95,7 @@ public class LineAnnotation extends MarkupAnnotation {
    * Gets or sets starting point of line.
    * @return starting
   **/
-  @ApiModelProperty(value = "Gets or sets starting point of line.")
+  @ApiModelProperty(required = true, value = "Gets or sets starting point of line.")
   public Point getStarting() {
     return starting;
   }
@@ -131,7 +131,7 @@ public class LineAnnotation extends MarkupAnnotation {
    * Gets or sets ending point of line.
    * @return ending
   **/
-  @ApiModelProperty(value = "Gets or sets ending point of line.")
+  @ApiModelProperty(required = true, value = "Gets or sets ending point of line.")
   public Point getEnding() {
     return ending;
   }

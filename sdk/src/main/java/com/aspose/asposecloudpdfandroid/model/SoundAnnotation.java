@@ -75,7 +75,7 @@ public class SoundAnnotation extends MarkupAnnotation {
    * A sound file path defining the sound to be played when the annotation is activated.
    * @return filePath
   **/
-  @ApiModelProperty(value = "A sound file path defining the sound to be played when the annotation is activated.")
+  @ApiModelProperty(required = true, value = "A sound file path defining the sound to be played when the annotation is activated.")
   public String getFilePath() {
     return filePath;
   }

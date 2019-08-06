@@ -82,10 +82,10 @@ public class TextReplaceListRequest {
   }
 
    /**
-   * Get defaultFont
+   * Name of font to use if requested font is not embedded into document.
    * @return defaultFont
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Name of font to use if requested font is not embedded into document.")
   public String getDefaultFont() {
     return defaultFont;
   }

@@ -181,7 +181,7 @@ public class StampInfo extends LinkElement {
    * Gets stamp type.
    * @return stampType
   **/
-  @ApiModelProperty(value = "Gets stamp type.")
+  @ApiModelProperty(required = true, value = "Gets stamp type.")
   public StampType getStampType() {
     return stampType;
   }

@@ -24,7 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.FileExist;
+import com.aspose.asposecloudpdfandroid.model.Bookmarks;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,29 +35,30 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * FileExistResponse
+ * Represents response containing multiple bookmarks info
  */
+@ApiModel(description = "Represents response containing multiple bookmarks info")
 
-public class FileExistResponse extends AsposeResponse {
-  @SerializedName("FileExist")
-  private FileExist fileExist = null;
+public class BookmarksResponse extends AsposeResponse {
+  @SerializedName("Bookmarks")
+  private Bookmarks bookmarks = null;
 
-  public FileExistResponse fileExist(FileExist fileExist) {
-    this.fileExist = fileExist;
+  public BookmarksResponse bookmarks(Bookmarks bookmarks) {
+    this.bookmarks = bookmarks;
     return this;
   }
 
    /**
-   * Get fileExist
-   * @return fileExist
+   * Bookmarks object
+   * @return bookmarks
   **/
-  @ApiModelProperty(value = "")
-  public FileExist getFileExist() {
-    return fileExist;
+  @ApiModelProperty(value = "Bookmarks object")
+  public Bookmarks getBookmarks() {
+    return bookmarks;
   }
 
-  public void setFileExist(FileExist fileExist) {
-    this.fileExist = fileExist;
+  public void setBookmarks(Bookmarks bookmarks) {
+    this.bookmarks = bookmarks;
   }
 
 
@@ -69,23 +70,23 @@ public class FileExistResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FileExistResponse fileExistResponse = (FileExistResponse) o;
-    return Objects.equals(this.fileExist, fileExistResponse.fileExist) &&
+    BookmarksResponse bookmarksResponse = (BookmarksResponse) o;
+    return Objects.equals(this.bookmarks, bookmarksResponse.bookmarks) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileExist, super.hashCode());
+    return Objects.hash(bookmarks, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FileExistResponse {\n");
+    sb.append("class BookmarksResponse {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    fileExist: ").append(toIndentedString(fileExist)).append("\n");
+    sb.append("    bookmarks: ").append(toIndentedString(bookmarks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

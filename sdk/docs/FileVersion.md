@@ -6,7 +6,7 @@ File Version
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **versionId** | **String** | File Version ID. | [optional]
-**isLatest** | **Boolean** | Specifies whether the file is (true) or is not (false) the latest version of an file. | [optional]
+**isLatest** | **Boolean** | Specifies whether the file is (true) or is not (false) the latest version of an file. | 
 **name** | **String** | File or folder name. | [optional]
 **isFolder** | **Boolean** | True if it is a folder. | 
 **modifiedDate** | **String** | File or folder last modified DateTime. | [optional]

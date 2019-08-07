@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Pame of the property. | [optional]
 **value** | **String** | Property value. | [optional]
-**builtIn** | **Boolean** | Value indicating whether it is a built-in property. | [optional]
+**builtIn** | **Boolean** | Value indicating whether it is a built-in property. | 
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

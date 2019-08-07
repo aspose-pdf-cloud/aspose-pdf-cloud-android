@@ -5,11 +5,11 @@ Represents image DTO.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **Integer** | Gets width of the image. | [optional]
-**height** | **Integer** | Gets height of the image. | [optional]
+**width** | **Integer** | Gets width of the image. | 
+**height** | **Integer** | Gets height of the image. | 
 **id** | **String** | Gets ID of the image. | [optional]
 **rectangle** | [**Rectangle**](Rectangle.md) | Gets rectangle of the image. | [optional]
-**pageNumber** | **Integer** | Gets page number. | [optional]
+**pageNumber** | **Integer** | Gets page number. | 
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

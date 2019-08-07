@@ -104,10 +104,10 @@ public class TextFooter extends StampBase {
   }
 
    /**
-   * Gets text properties of the stamp. See  for details.
+   * Gets text properties of the stamp. See TextState for details.
    * @return textState
   **/
-  @ApiModelProperty(value = "Gets text properties of the stamp. See  for details.")
+  @ApiModelProperty(value = "Gets text properties of the stamp. See TextState for details.")
   public TextState getTextState() {
     return textState;
   }

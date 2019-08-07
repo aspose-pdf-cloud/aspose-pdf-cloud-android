@@ -33,8 +33,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * DiscUsage
+ * Class for disc space information.
  */
+@ApiModel(description = "Class for disc space information.")
 
 public class DiscUsage {
   @SerializedName("UsedSize")
@@ -49,10 +50,10 @@ public class DiscUsage {
   }
 
    /**
-   * Get usedSize
+   * Application used disc space.
    * @return usedSize
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Application used disc space.")
   public Long getUsedSize() {
     return usedSize;
   }
@@ -67,10 +68,10 @@ public class DiscUsage {
   }
 
    /**
-   * Get totalSize
+   * Total disc space.
    * @return totalSize
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Total disc space.")
   public Long getTotalSize() {
     return totalSize;
   }

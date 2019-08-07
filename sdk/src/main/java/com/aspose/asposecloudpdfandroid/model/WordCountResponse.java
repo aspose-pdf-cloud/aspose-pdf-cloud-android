@@ -49,10 +49,10 @@ public class WordCountResponse extends AsposeResponse {
   }
 
    /**
-   * with words per page info.            
+   * WordCount with words per page info.
    * @return wordsPerPage
   **/
-  @ApiModelProperty(value = "with words per page info.            ")
+  @ApiModelProperty(value = "WordCount with words per page info.")
   public WordCount getWordsPerPage() {
     return wordsPerPage;
   }

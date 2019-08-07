@@ -57,7 +57,7 @@ public class Field extends LinkElement {
   private Rectangle rect = null;
 
   @SerializedName("Values")
-  private List<String> values = null;
+  private List<String> values = new ArrayList<String>();
 
   public Field name(String name) {
     this.name = name;
@@ -145,9 +145,6 @@ public class Field extends LinkElement {
   }
 
   public Field addValuesItem(String valuesItem) {
-    if (this.values == null) {
-      this.values = new ArrayList<String>();
-    }
     this.values.add(valuesItem);
     return this;
   }
@@ -156,7 +153,7 @@ public class Field extends LinkElement {
    * Field values.
    * @return values
   **/
-  @ApiModelProperty(value = "Field values.")
+  @ApiModelProperty(required = true, value = "Field values.")
   public List<String> getValues() {
     return values;
   }

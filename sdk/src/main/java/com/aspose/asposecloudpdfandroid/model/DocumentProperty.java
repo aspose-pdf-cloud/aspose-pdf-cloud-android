@@ -95,7 +95,7 @@ public class DocumentProperty extends LinkElement {
    * Value indicating whether it is a built-in property.
    * @return builtIn
   **/
-  @ApiModelProperty(value = "Value indicating whether it is a built-in property.")
+  @ApiModelProperty(required = true, value = "Value indicating whether it is a built-in property.")
   public Boolean isBuiltIn() {
     return builtIn;
   }

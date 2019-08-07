@@ -44,7 +44,7 @@ import java.util.List;
 
 public class Fields extends LinkElement {
   @SerializedName("List")
-  private List<Field> list = null;
+  private List<Field> list = new ArrayList<Field>();
 
   public Fields list(List<Field> list) {
     this.list = list;
@@ -52,9 +52,6 @@ public class Fields extends LinkElement {
   }
 
   public Fields addListItem(Field listItem) {
-    if (this.list == null) {
-      this.list = new ArrayList<Field>();
-    }
     this.list.add(listItem);
     return this;
   }
@@ -63,7 +60,7 @@ public class Fields extends LinkElement {
    * List of form fields.
    * @return list
   **/
-  @ApiModelProperty(value = "List of form fields.")
+  @ApiModelProperty(required = true, value = "List of form fields.")
   public List<Field> getList() {
     return list;
   }

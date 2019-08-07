@@ -78,7 +78,7 @@ public class Table extends LinkElement {
   private BorderInfo border = null;
 
   @SerializedName("Rows")
-  private List<Row> rows = null;
+  private List<Row> rows = new ArrayList<Row>();
 
   @SerializedName("DefaultColumnWidth")
   private String defaultColumnWidth = null;
@@ -269,9 +269,6 @@ public class Table extends LinkElement {
   }
 
   public Table addRowsItem(Row rowsItem) {
-    if (this.rows == null) {
-      this.rows = new ArrayList<Row>();
-    }
     this.rows.add(rowsItem);
     return this;
   }
@@ -280,7 +277,7 @@ public class Table extends LinkElement {
    * Sets the rows of the table.
    * @return rows
   **/
-  @ApiModelProperty(value = "Sets the rows of the table.")
+  @ApiModelProperty(required = true, value = "Sets the rows of the table.")
   public List<Row> getRows() {
     return rows;
   }

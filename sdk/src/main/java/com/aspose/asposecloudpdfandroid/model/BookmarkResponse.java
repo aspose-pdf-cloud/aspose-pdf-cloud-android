@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2018 Aspose.PDF Cloud
+ *   Copyright (c) 2019 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -23,6 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.Bookmark;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,93 +35,30 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents rectangle DTO.
+ * Represents response containing single bookmark info
  */
-@ApiModel(description = "Represents rectangle DTO.")
+@ApiModel(description = "Represents response containing single bookmark info")
 
-public class RectanglePdf {
-  @SerializedName("LLX")
-  private Double LLX = null;
+public class BookmarkResponse extends AsposeResponse {
+  @SerializedName("Bookmark")
+  private Bookmark bookmark = null;
 
-  @SerializedName("LLY")
-  private Double LLY = null;
-
-  @SerializedName("URX")
-  private Double URX = null;
-
-  @SerializedName("URY")
-  private Double URY = null;
-
-  public RectanglePdf LLX(Double LLX) {
-    this.LLX = LLX;
+  public BookmarkResponse bookmark(Bookmark bookmark) {
+    this.bookmark = bookmark;
     return this;
   }
 
    /**
-   * Get LLX
-   * @return LLX
+   * Bookmark object
+   * @return bookmark
   **/
-  @ApiModelProperty(required = true, value = "")
-  public Double getLLX() {
-    return LLX;
+  @ApiModelProperty(value = "Bookmark object")
+  public Bookmark getBookmark() {
+    return bookmark;
   }
 
-  public void setLLX(Double LLX) {
-    this.LLX = LLX;
-  }
-
-  public RectanglePdf LLY(Double LLY) {
-    this.LLY = LLY;
-    return this;
-  }
-
-   /**
-   * Get LLY
-   * @return LLY
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public Double getLLY() {
-    return LLY;
-  }
-
-  public void setLLY(Double LLY) {
-    this.LLY = LLY;
-  }
-
-  public RectanglePdf URX(Double URX) {
-    this.URX = URX;
-    return this;
-  }
-
-   /**
-   * Get URX
-   * @return URX
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public Double getURX() {
-    return URX;
-  }
-
-  public void setURX(Double URX) {
-    this.URX = URX;
-  }
-
-  public RectanglePdf URY(Double URY) {
-    this.URY = URY;
-    return this;
-  }
-
-   /**
-   * Get URY
-   * @return URY
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public Double getURY() {
-    return URY;
-  }
-
-  public void setURY(Double URY) {
-    this.URY = URY;
+  public void setBookmark(Bookmark bookmark) {
+    this.bookmark = bookmark;
   }
 
 
@@ -131,28 +70,23 @@ public class RectanglePdf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RectanglePdf rectanglePdf = (RectanglePdf) o;
-    return Objects.equals(this.LLX, rectanglePdf.LLX) &&
-        Objects.equals(this.LLY, rectanglePdf.LLY) &&
-        Objects.equals(this.URX, rectanglePdf.URX) &&
-        Objects.equals(this.URY, rectanglePdf.URY);
+    BookmarkResponse bookmarkResponse = (BookmarkResponse) o;
+    return Objects.equals(this.bookmark, bookmarkResponse.bookmark) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(LLX, LLY, URX, URY);
+    return Objects.hash(bookmark, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RectanglePdf {\n");
-    
-    sb.append("    LLX: ").append(toIndentedString(LLX)).append("\n");
-    sb.append("    LLY: ").append(toIndentedString(LLY)).append("\n");
-    sb.append("    URX: ").append(toIndentedString(URX)).append("\n");
-    sb.append("    URY: ").append(toIndentedString(URY)).append("\n");
+    sb.append("class BookmarkResponse {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
     sb.append("}");
     return sb.toString();
   }

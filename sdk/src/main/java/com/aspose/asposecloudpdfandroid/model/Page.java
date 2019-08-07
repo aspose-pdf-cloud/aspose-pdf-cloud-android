@@ -61,7 +61,7 @@ public class Page extends LinkElement {
    * Page&#39;s id.
    * @return id
   **/
-  @ApiModelProperty(value = "Page's id.")
+  @ApiModelProperty(required = true, value = "Page's id.")
   public Integer getId() {
     return id;
   }

@@ -72,7 +72,7 @@ public class LinkAnnotation extends LinkElement {
    * Get actionType
    * @return actionType
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public LinkActionType getActionType() {
     return actionType;
   }
@@ -90,7 +90,7 @@ public class LinkAnnotation extends LinkElement {
    * Get action
    * @return action
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getAction() {
     return action;
   }
@@ -108,7 +108,7 @@ public class LinkAnnotation extends LinkElement {
    * Get highlighting
    * @return highlighting
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public LinkHighlightingMode getHighlighting() {
     return highlighting;
   }
@@ -144,7 +144,7 @@ public class LinkAnnotation extends LinkElement {
    * Get rect
    * @return rect
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public Rectangle getRect() {
     return rect;
   }

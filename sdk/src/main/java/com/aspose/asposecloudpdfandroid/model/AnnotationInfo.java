@@ -59,7 +59,7 @@ public class AnnotationInfo extends Annotation {
    * Gets annotation type.
    * @return annotationType
   **/
-  @ApiModelProperty(value = "Gets annotation type.")
+  @ApiModelProperty(required = true, value = "Gets annotation type.")
   public AnnotationType getAnnotationType() {
     return annotationType;
   }

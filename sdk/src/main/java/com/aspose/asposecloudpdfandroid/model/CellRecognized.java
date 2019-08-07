@@ -51,10 +51,10 @@ public class CellRecognized {
   }
 
    /**
-   * Gets collection of  objects that describes text containing in the cell
+   * Gets collection of TextRect objects that describes text containing in the cell
    * @return textRects
   **/
-  @ApiModelProperty(value = "Gets collection of  objects that describes text containing in the cell")
+  @ApiModelProperty(value = "Gets collection of TextRect objects that describes text containing in the cell")
   public TextRects getTextRects() {
     return textRects;
   }

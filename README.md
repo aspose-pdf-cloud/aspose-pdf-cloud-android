@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
-- API version: 2.0
-- Package version: 19.5.0
+- API version: 3.0
+- Package version: 19.7.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>19.5.0</version>
+    <version>19.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:19.5.0"
+compile "com.aspose:aspose-cloud-pdf-android:19.7.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-19.5.0.jar
+* target/aspose-cloud-pdf-android-19.7.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -111,18 +111,23 @@ All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.aspose.cloud/v2.0/*
+All URIs are relative to *https://api.aspose.cloud/v3.0/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*PdfApi* | [**copyFile**](sdk/docs/PdfApi.md#copyFile) | **PUT** /pdf/storage/file/copy/\{srcPath} | Copy file
+*PdfApi* | [**copyFolder**](sdk/docs/PdfApi.md#copyFolder) | **PUT** /pdf/storage/folder/copy/\{srcPath} | Copy folder
+*PdfApi* | [**createFolder**](sdk/docs/PdfApi.md#createFolder) | **PUT** /pdf/storage/folder/\{path} | Create the folder
 *PdfApi* | [**deleteAnnotation**](sdk/docs/PdfApi.md#deleteAnnotation) | **DELETE** /pdf/\{name}/annotations/\{annotationId} | Delete document annotation by ID
+*PdfApi* | [**deleteBookmark**](sdk/docs/PdfApi.md#deleteBookmark) | **DELETE** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Delete document bookmark by ID.
 *PdfApi* | [**deleteDocumentAnnotations**](sdk/docs/PdfApi.md#deleteDocumentAnnotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
+*PdfApi* | [**deleteDocumentBookmarks**](sdk/docs/PdfApi.md#deleteDocumentBookmarks) | **DELETE** /pdf/\{name}/bookmarks/tree | Delete all document bookmarks.
 *PdfApi* | [**deleteDocumentLinkAnnotations**](sdk/docs/PdfApi.md#deleteDocumentLinkAnnotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 *PdfApi* | [**deleteDocumentStamps**](sdk/docs/PdfApi.md#deleteDocumentStamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
 *PdfApi* | [**deleteDocumentTables**](sdk/docs/PdfApi.md#deleteDocumentTables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
 *PdfApi* | [**deleteField**](sdk/docs/PdfApi.md#deleteField) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
-*PdfApi* | [**deleteFile**](sdk/docs/PdfApi.md#deleteFile) | **DELETE** /storage/file | Remove a specific file 
-*PdfApi* | [**deleteFolder**](sdk/docs/PdfApi.md#deleteFolder) | **DELETE** /storage/folder | Remove a specific folder 
+*PdfApi* | [**deleteFile**](sdk/docs/PdfApi.md#deleteFile) | **DELETE** /pdf/storage/file/\{path} | Delete file
+*PdfApi* | [**deleteFolder**](sdk/docs/PdfApi.md#deleteFolder) | **DELETE** /pdf/storage/folder/\{path} | Delete folder
 *PdfApi* | [**deleteImage**](sdk/docs/PdfApi.md#deleteImage) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 *PdfApi* | [**deleteLinkAnnotation**](sdk/docs/PdfApi.md#deleteLinkAnnotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 *PdfApi* | [**deletePage**](sdk/docs/PdfApi.md#deletePage) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -134,13 +139,17 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**deleteProperty**](sdk/docs/PdfApi.md#deleteProperty) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 *PdfApi* | [**deleteStamp**](sdk/docs/PdfApi.md#deleteStamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 *PdfApi* | [**deleteTable**](sdk/docs/PdfApi.md#deleteTable) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
+*PdfApi* | [**downloadFile**](sdk/docs/PdfApi.md#downloadFile) | **GET** /pdf/storage/file/\{path} | Download file
+*PdfApi* | [**getBookmark**](sdk/docs/PdfApi.md#getBookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
+*PdfApi* | [**getBookmarks**](sdk/docs/PdfApi.md#getBookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 *PdfApi* | [**getCaretAnnotation**](sdk/docs/PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 *PdfApi* | [**getCircleAnnotation**](sdk/docs/PdfApi.md#getCircleAnnotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
-*PdfApi* | [**getDiscUsage**](sdk/docs/PdfApi.md#getDiscUsage) | **GET** /storage/disc | Check the disk usage of the current account 
+*PdfApi* | [**getDiscUsage**](sdk/docs/PdfApi.md#getDiscUsage) | **GET** /pdf/storage/disc | Get disc usage
 *PdfApi* | [**getDocument**](sdk/docs/PdfApi.md#getDocument) | **GET** /pdf/\{name} | Read common document info.
 *PdfApi* | [**getDocumentAnnotations**](sdk/docs/PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *PdfApi* | [**getDocumentAttachmentByIndex**](sdk/docs/PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 *PdfApi* | [**getDocumentAttachments**](sdk/docs/PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
+*PdfApi* | [**getDocumentBookmarks**](sdk/docs/PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
 *PdfApi* | [**getDocumentCaretAnnotations**](sdk/docs/PdfApi.md#getDocumentCaretAnnotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 *PdfApi* | [**getDocumentCircleAnnotations**](sdk/docs/PdfApi.md#getDocumentCircleAnnotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 *PdfApi* | [**getDocumentFileAttachmentAnnotations**](sdk/docs/PdfApi.md#getDocumentFileAttachmentAnnotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -166,13 +175,17 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getDocumentTables**](sdk/docs/PdfApi.md#getDocumentTables) | **GET** /pdf/\{name}/tables | Read document tables.
 *PdfApi* | [**getDocumentTextAnnotations**](sdk/docs/PdfApi.md#getDocumentTextAnnotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 *PdfApi* | [**getDocumentUnderlineAnnotations**](sdk/docs/PdfApi.md#getDocumentUnderlineAnnotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
-*PdfApi* | [**getDownload**](sdk/docs/PdfApi.md#getDownload) | **GET** /storage/file | Download a specific file 
 *PdfApi* | [**getDownloadDocumentAttachmentByIndex**](sdk/docs/PdfApi.md#getDownloadDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
 *PdfApi* | [**getEpubInStorageToPdf**](sdk/docs/PdfApi.md#getEpubInStorageToPdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+*PdfApi* | [**getExportFieldsFromPdfToFdfInStorage**](sdk/docs/PdfApi.md#getExportFieldsFromPdfToFdfInStorage) | **GET** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file.
+*PdfApi* | [**getExportFieldsFromPdfToXfdfInStorage**](sdk/docs/PdfApi.md#getExportFieldsFromPdfToXfdfInStorage) | **GET** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file.
+*PdfApi* | [**getExportFieldsFromPdfToXmlInStorage**](sdk/docs/PdfApi.md#getExportFieldsFromPdfToXmlInStorage) | **GET** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file.
 *PdfApi* | [**getField**](sdk/docs/PdfApi.md#getField) | **GET** /pdf/\{name}/fields/\{fieldName} | Get document field by name.
 *PdfApi* | [**getFields**](sdk/docs/PdfApi.md#getFields) | **GET** /pdf/\{name}/fields | Get document fields.
 *PdfApi* | [**getFileAttachmentAnnotation**](sdk/docs/PdfApi.md#getFileAttachmentAnnotation) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Read document page FileAttachment annotation by ID.
 *PdfApi* | [**getFileAttachmentAnnotationData**](sdk/docs/PdfApi.md#getFileAttachmentAnnotationData) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data | Read document page FileAttachment annotation by ID.
+*PdfApi* | [**getFileVersions**](sdk/docs/PdfApi.md#getFileVersions) | **GET** /pdf/storage/version/\{path} | Get file versions
+*PdfApi* | [**getFilesList**](sdk/docs/PdfApi.md#getFilesList) | **GET** /pdf/storage/folder/\{path} | Get all files and folders within a folder
 *PdfApi* | [**getFreeTextAnnotation**](sdk/docs/PdfApi.md#getFreeTextAnnotation) | **GET** /pdf/\{name}/annotations/freetext/\{annotationId} | Read document page free text annotation by ID.
 *PdfApi* | [**getHighlightAnnotation**](sdk/docs/PdfApi.md#getHighlightAnnotation) | **GET** /pdf/\{name}/annotations/highlight/\{annotationId} | Read document page highlight annotation by ID.
 *PdfApi* | [**getHtmlInStorageToPdf**](sdk/docs/PdfApi.md#getHtmlInStorageToPdf) | **GET** /pdf/create/html | Convert HTML file (located on storage) to PDF format and return resulting file in response. 
@@ -182,14 +195,13 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getImageExtractAsPng**](sdk/docs/PdfApi.md#getImageExtractAsPng) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 *PdfApi* | [**getImageExtractAsTiff**](sdk/docs/PdfApi.md#getImageExtractAsTiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 *PdfApi* | [**getImages**](sdk/docs/PdfApi.md#getImages) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+*PdfApi* | [**getImportFieldsFromFdfInStorage**](sdk/docs/PdfApi.md#getImportFieldsFromFdfInStorage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+*PdfApi* | [**getImportFieldsFromXfdfInStorage**](sdk/docs/PdfApi.md#getImportFieldsFromXfdfInStorage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+*PdfApi* | [**getImportFieldsFromXmlInStorage**](sdk/docs/PdfApi.md#getImportFieldsFromXmlInStorage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getInkAnnotation**](sdk/docs/PdfApi.md#getInkAnnotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-*PdfApi* | [**getIsExist**](sdk/docs/PdfApi.md#getIsExist) | **GET** /storage/exist | Check if a specific file or folder exists
-*PdfApi* | [**getIsStorageExist**](sdk/docs/PdfApi.md#getIsStorageExist) | **GET** /storage/\{name}/exist | Check if storage exists 
 *PdfApi* | [**getLaTeXInStorageToPdf**](sdk/docs/PdfApi.md#getLaTeXInStorageToPdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getLineAnnotation**](sdk/docs/PdfApi.md#getLineAnnotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 *PdfApi* | [**getLinkAnnotation**](sdk/docs/PdfApi.md#getLinkAnnotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
-*PdfApi* | [**getListFileVersions**](sdk/docs/PdfApi.md#getListFileVersions) | **GET** /storage/version | Get the file&#39;s versions list 
-*PdfApi* | [**getListFiles**](sdk/docs/PdfApi.md#getListFiles) | **GET** /storage/folder | Get the file listing of a specific folder 
 *PdfApi* | [**getMhtInStorageToPdf**](sdk/docs/PdfApi.md#getMhtInStorageToPdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getMovieAnnotation**](sdk/docs/PdfApi.md#getMovieAnnotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 *PdfApi* | [**getPage**](sdk/docs/PdfApi.md#getPage) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -266,7 +278,11 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getXmlInStorageToPdf**](sdk/docs/PdfApi.md#getXmlInStorageToPdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getXpsInStorageToPdf**](sdk/docs/PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getXslFoInStorageToPdf**](sdk/docs/PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
+*PdfApi* | [**moveFile**](sdk/docs/PdfApi.md#moveFile) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
+*PdfApi* | [**moveFolder**](sdk/docs/PdfApi.md#moveFolder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
+*PdfApi* | [**objectExists**](sdk/docs/PdfApi.md#objectExists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
 *PdfApi* | [**postAppendDocument**](sdk/docs/PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+*PdfApi* | [**postBookmark**](sdk/docs/PdfApi.md#postBookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 *PdfApi* | [**postChangePasswordDocumentInStorage**](sdk/docs/PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 *PdfApi* | [**postCreateField**](sdk/docs/PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
 *PdfApi* | [**postDecryptDocumentInStorage**](sdk/docs/PdfApi.md#postDecryptDocumentInStorage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -278,9 +294,10 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postDocumentTextReplace**](sdk/docs/PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 *PdfApi* | [**postEncryptDocumentInStorage**](sdk/docs/PdfApi.md#postEncryptDocumentInStorage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 *PdfApi* | [**postFlattenDocument**](sdk/docs/PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Flatten the document.
+*PdfApi* | [**postImportFieldsFromFdf**](sdk/docs/PdfApi.md#postImportFieldsFromFdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
+*PdfApi* | [**postImportFieldsFromXfdf**](sdk/docs/PdfApi.md#postImportFieldsFromXfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
+*PdfApi* | [**postImportFieldsFromXml**](sdk/docs/PdfApi.md#postImportFieldsFromXml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 *PdfApi* | [**postInsertImage**](sdk/docs/PdfApi.md#postInsertImage) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
-*PdfApi* | [**postMoveFile**](sdk/docs/PdfApi.md#postMoveFile) | **POST** /storage/file | Move a specific file
-*PdfApi* | [**postMoveFolder**](sdk/docs/PdfApi.md#postMoveFolder) | **POST** /storage/folder | Move a specific folder 
 *PdfApi* | [**postMovePage**](sdk/docs/PdfApi.md#postMovePage) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 *PdfApi* | [**postOptimizeDocument**](sdk/docs/PdfApi.md#postOptimizeDocument) | **POST** /pdf/\{name}/optimize | Optimize document.
 *PdfApi* | [**postPageCaretAnnotations**](sdk/docs/PdfApi.md#postPageCaretAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -315,15 +332,17 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putAddNewPage**](sdk/docs/PdfApi.md#putAddNewPage) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 *PdfApi* | [**putAddText**](sdk/docs/PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 *PdfApi* | [**putAnnotationsFlatten**](sdk/docs/PdfApi.md#putAnnotationsFlatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
+*PdfApi* | [**putBookmark**](sdk/docs/PdfApi.md#putBookmark) | **PUT** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Update document bookmark.
 *PdfApi* | [**putCaretAnnotation**](sdk/docs/PdfApi.md#putCaretAnnotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
 *PdfApi* | [**putChangePasswordDocument**](sdk/docs/PdfApi.md#putChangePasswordDocument) | **PUT** /pdf/changepassword | Change document password from content.
 *PdfApi* | [**putCircleAnnotation**](sdk/docs/PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
-*PdfApi* | [**putCreate**](sdk/docs/PdfApi.md#putCreate) | **PUT** /storage/file | Upload a specific file 
 *PdfApi* | [**putCreateDocument**](sdk/docs/PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
-*PdfApi* | [**putCreateFolder**](sdk/docs/PdfApi.md#putCreateFolder) | **PUT** /storage/folder | Create the folder 
 *PdfApi* | [**putDecryptDocument**](sdk/docs/PdfApi.md#putDecryptDocument) | **PUT** /pdf/decrypt | Decrypt document from content.
 *PdfApi* | [**putEncryptDocument**](sdk/docs/PdfApi.md#putEncryptDocument) | **PUT** /pdf/encrypt | Encrypt document from content.
 *PdfApi* | [**putEpubInStorageToPdf**](sdk/docs/PdfApi.md#putEpubInStorageToPdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+*PdfApi* | [**putExportFieldsFromPdfToFdfInStorage**](sdk/docs/PdfApi.md#putExportFieldsFromPdfToFdfInStorage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
+*PdfApi* | [**putExportFieldsFromPdfToXfdfInStorage**](sdk/docs/PdfApi.md#putExportFieldsFromPdfToXfdfInStorage) | **PUT** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file in storage.
+*PdfApi* | [**putExportFieldsFromPdfToXmlInStorage**](sdk/docs/PdfApi.md#putExportFieldsFromPdfToXmlInStorage) | **PUT** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file in storage.
 *PdfApi* | [**putFieldsFlatten**](sdk/docs/PdfApi.md#putFieldsFlatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 *PdfApi* | [**putFileAttachmentAnnotation**](sdk/docs/PdfApi.md#putFileAttachmentAnnotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
 *PdfApi* | [**putFileAttachmentAnnotationDataExtract**](sdk/docs/PdfApi.md#putFileAttachmentAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data/extract | Extract document FileAttachment annotation content to storage
@@ -339,6 +358,9 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putImagesExtractAsJpeg**](sdk/docs/PdfApi.md#putImagesExtractAsJpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/jpeg | Extract document images in JPEG format to folder.
 *PdfApi* | [**putImagesExtractAsPng**](sdk/docs/PdfApi.md#putImagesExtractAsPng) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/png | Extract document images in PNG format to folder.
 *PdfApi* | [**putImagesExtractAsTiff**](sdk/docs/PdfApi.md#putImagesExtractAsTiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/tiff | Extract document images in TIFF format to folder.
+*PdfApi* | [**putImportFieldsFromFdfInStorage**](sdk/docs/PdfApi.md#putImportFieldsFromFdfInStorage) | **PUT** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+*PdfApi* | [**putImportFieldsFromXfdfInStorage**](sdk/docs/PdfApi.md#putImportFieldsFromXfdfInStorage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+*PdfApi* | [**putImportFieldsFromXmlInStorage**](sdk/docs/PdfApi.md#putImportFieldsFromXmlInStorage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 *PdfApi* | [**putInkAnnotation**](sdk/docs/PdfApi.md#putInkAnnotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
 *PdfApi* | [**putLaTeXInStorageToPdf**](sdk/docs/PdfApi.md#putLaTeXInStorageToPdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putLineAnnotation**](sdk/docs/PdfApi.md#putLineAnnotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
@@ -410,6 +432,8 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putXmlInStorageToPdf**](sdk/docs/PdfApi.md#putXmlInStorageToPdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putXpsInStorageToPdf**](sdk/docs/PdfApi.md#putXpsInStorageToPdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putXslFoInStorageToPdf**](sdk/docs/PdfApi.md#putXslFoInStorageToPdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
+*PdfApi* | [**storageExists**](sdk/docs/PdfApi.md#storageExists) | **GET** /pdf/storage/\{storageName}/exist | Check if storage exists
+*PdfApi* | [**uploadFile**](sdk/docs/PdfApi.md#uploadFile) | **PUT** /pdf/storage/file/\{path} | Upload file
 
 
 ## Documentation for Models
@@ -418,7 +442,6 @@ Class | Method | HTTP request | Description
  - [AnnotationState](sdk/docs/AnnotationState.md)
  - [AnnotationType](sdk/docs/AnnotationType.md)
  - [AntialiasingProcessingType](sdk/docs/AntialiasingProcessingType.md)
- - [AppendDocument](sdk/docs/AppendDocument.md)
  - [AsposeResponse](sdk/docs/AsposeResponse.md)
  - [BorderCornerStyle](sdk/docs/BorderCornerStyle.md)
  - [BorderInfo](sdk/docs/BorderInfo.md)
@@ -437,9 +460,13 @@ Class | Method | HTTP request | Description
  - [DocRecognitionMode](sdk/docs/DocRecognitionMode.md)
  - [DocumentPrivilege](sdk/docs/DocumentPrivilege.md)
  - [EpubRecognitionMode](sdk/docs/EpubRecognitionMode.md)
+ - [Error](sdk/docs/Error.md)
+ - [ErrorDetails](sdk/docs/ErrorDetails.md)
  - [FieldType](sdk/docs/FieldType.md)
- - [FileExist](sdk/docs/FileExist.md)
  - [FileIcon](sdk/docs/FileIcon.md)
+ - [FileVersions](sdk/docs/FileVersions.md)
+ - [FilesList](sdk/docs/FilesList.md)
+ - [FilesUploadResult](sdk/docs/FilesUploadResult.md)
  - [FontEncodingRules](sdk/docs/FontEncodingRules.md)
  - [FontSavingModes](sdk/docs/FontSavingModes.md)
  - [FontStyles](sdk/docs/FontStyles.md)
@@ -462,6 +489,7 @@ Class | Method | HTTP request | Description
  - [LinkHighlightingMode](sdk/docs/LinkHighlightingMode.md)
  - [MarginInfo](sdk/docs/MarginInfo.md)
  - [MergeDocuments](sdk/docs/MergeDocuments.md)
+ - [ObjectExist](sdk/docs/ObjectExist.md)
  - [OptimizeOptions](sdk/docs/OptimizeOptions.md)
  - [PageWordCount](sdk/docs/PageWordCount.md)
  - [Paragraph](sdk/docs/Paragraph.md)
@@ -486,6 +514,8 @@ Class | Method | HTTP request | Description
  - [Stamp](sdk/docs/Stamp.md)
  - [StampIcon](sdk/docs/StampIcon.md)
  - [StampType](sdk/docs/StampType.md)
+ - [StorageExist](sdk/docs/StorageExist.md)
+ - [StorageFile](sdk/docs/StorageFile.md)
  - [TableBroken](sdk/docs/TableBroken.md)
  - [TextHorizontalAlignment](sdk/docs/TextHorizontalAlignment.md)
  - [TextIcon](sdk/docs/TextIcon.md)
@@ -506,13 +536,16 @@ Class | Method | HTTP request | Description
  - [AttachmentResponse](sdk/docs/AttachmentResponse.md)
  - [Attachments](sdk/docs/Attachments.md)
  - [AttachmentsResponse](sdk/docs/AttachmentsResponse.md)
+ - [Bookmark](sdk/docs/Bookmark.md)
+ - [BookmarkResponse](sdk/docs/BookmarkResponse.md)
+ - [Bookmarks](sdk/docs/Bookmarks.md)
+ - [BookmarksResponse](sdk/docs/BookmarksResponse.md)
  - [CaretAnnotationResponse](sdk/docs/CaretAnnotationResponse.md)
  - [CaretAnnotations](sdk/docs/CaretAnnotations.md)
  - [CaretAnnotationsResponse](sdk/docs/CaretAnnotationsResponse.md)
  - [CircleAnnotationResponse](sdk/docs/CircleAnnotationResponse.md)
  - [CircleAnnotations](sdk/docs/CircleAnnotations.md)
  - [CircleAnnotationsResponse](sdk/docs/CircleAnnotationsResponse.md)
- - [DiscUsageResponse](sdk/docs/DiscUsageResponse.md)
  - [Document](sdk/docs/Document.md)
  - [DocumentPageResponse](sdk/docs/DocumentPageResponse.md)
  - [DocumentPagesResponse](sdk/docs/DocumentPagesResponse.md)
@@ -528,10 +561,7 @@ Class | Method | HTTP request | Description
  - [FileAttachmentAnnotationResponse](sdk/docs/FileAttachmentAnnotationResponse.md)
  - [FileAttachmentAnnotations](sdk/docs/FileAttachmentAnnotations.md)
  - [FileAttachmentAnnotationsResponse](sdk/docs/FileAttachmentAnnotationsResponse.md)
- - [FileExistResponse](sdk/docs/FileExistResponse.md)
  - [FileVersion](sdk/docs/FileVersion.md)
- - [FileVersionsResponse](sdk/docs/FileVersionsResponse.md)
- - [FilesResponse](sdk/docs/FilesResponse.md)
  - [FreeTextAnnotationResponse](sdk/docs/FreeTextAnnotationResponse.md)
  - [FreeTextAnnotations](sdk/docs/FreeTextAnnotations.md)
  - [FreeTextAnnotationsResponse](sdk/docs/FreeTextAnnotationsResponse.md)
@@ -591,7 +621,6 @@ Class | Method | HTTP request | Description
  - [StampInfo](sdk/docs/StampInfo.md)
  - [StampsInfo](sdk/docs/StampsInfo.md)
  - [StampsInfoResponse](sdk/docs/StampsInfoResponse.md)
- - [StorageExistResponse](sdk/docs/StorageExistResponse.md)
  - [StrikeOutAnnotationResponse](sdk/docs/StrikeOutAnnotationResponse.md)
  - [StrikeOutAnnotations](sdk/docs/StrikeOutAnnotations.md)
  - [StrikeOutAnnotationsResponse](sdk/docs/StrikeOutAnnotationsResponse.md)

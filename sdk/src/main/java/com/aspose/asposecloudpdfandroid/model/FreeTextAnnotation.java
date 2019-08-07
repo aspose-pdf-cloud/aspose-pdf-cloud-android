@@ -125,7 +125,7 @@ public class FreeTextAnnotation extends MarkupAnnotation {
    * Text style of the annotation.
    * @return textStyle
   **/
-  @ApiModelProperty(value = "Text style of the annotation.")
+  @ApiModelProperty(required = true, value = "Text style of the annotation.")
   public TextStyle getTextStyle() {
     return textStyle;
   }

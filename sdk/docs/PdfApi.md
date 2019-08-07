@@ -1,17 +1,22 @@
 ﻿# PdfApi
 
-All URIs are relative to *https://api.aspose.cloud/v2.0*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**copyFile**](PdfApi.md#copyFile) | **PUT** /pdf/storage/file/copy/\{srcPath} | Copy file
+[**copyFolder**](PdfApi.md#copyFolder) | **PUT** /pdf/storage/folder/copy/\{srcPath} | Copy folder
+[**createFolder**](PdfApi.md#createFolder) | **PUT** /pdf/storage/folder/\{path} | Create the folder
 [**deleteAnnotation**](PdfApi.md#deleteAnnotation) | **DELETE** /pdf/\{name}/annotations/\{annotationId} | Delete document annotation by ID
+[**deleteBookmark**](PdfApi.md#deleteBookmark) | **DELETE** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Delete document bookmark by ID.
 [**deleteDocumentAnnotations**](PdfApi.md#deleteDocumentAnnotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
+[**deleteDocumentBookmarks**](PdfApi.md#deleteDocumentBookmarks) | **DELETE** /pdf/\{name}/bookmarks/tree | Delete all document bookmarks.
 [**deleteDocumentLinkAnnotations**](PdfApi.md#deleteDocumentLinkAnnotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**deleteDocumentStamps**](PdfApi.md#deleteDocumentStamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
 [**deleteDocumentTables**](PdfApi.md#deleteDocumentTables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
 [**deleteField**](PdfApi.md#deleteField) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
-[**deleteFile**](PdfApi.md#deleteFile) | **DELETE** /storage/file | Remove a specific file 
-[**deleteFolder**](PdfApi.md#deleteFolder) | **DELETE** /storage/folder | Remove a specific folder 
+[**deleteFile**](PdfApi.md#deleteFile) | **DELETE** /pdf/storage/file/\{path} | Delete file
+[**deleteFolder**](PdfApi.md#deleteFolder) | **DELETE** /pdf/storage/folder/\{path} | Delete folder
 [**deleteImage**](PdfApi.md#deleteImage) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 [**deleteLinkAnnotation**](PdfApi.md#deleteLinkAnnotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 [**deletePage**](PdfApi.md#deletePage) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -23,13 +28,17 @@ Method | HTTP request | Description
 [**deleteProperty**](PdfApi.md#deleteProperty) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 [**deleteStamp**](PdfApi.md#deleteStamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 [**deleteTable**](PdfApi.md#deleteTable) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
+[**downloadFile**](PdfApi.md#downloadFile) | **GET** /pdf/storage/file/\{path} | Download file
+[**getBookmark**](PdfApi.md#getBookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
+[**getBookmarks**](PdfApi.md#getBookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 [**getCaretAnnotation**](PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 [**getCircleAnnotation**](PdfApi.md#getCircleAnnotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
-[**getDiscUsage**](PdfApi.md#getDiscUsage) | **GET** /storage/disc | Check the disk usage of the current account 
+[**getDiscUsage**](PdfApi.md#getDiscUsage) | **GET** /pdf/storage/disc | Get disc usage
 [**getDocument**](PdfApi.md#getDocument) | **GET** /pdf/\{name} | Read common document info.
 [**getDocumentAnnotations**](PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**getDocumentAttachmentByIndex**](PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 [**getDocumentAttachments**](PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
+[**getDocumentBookmarks**](PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
 [**getDocumentCaretAnnotations**](PdfApi.md#getDocumentCaretAnnotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 [**getDocumentCircleAnnotations**](PdfApi.md#getDocumentCircleAnnotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 [**getDocumentFileAttachmentAnnotations**](PdfApi.md#getDocumentFileAttachmentAnnotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -55,13 +64,17 @@ Method | HTTP request | Description
 [**getDocumentTables**](PdfApi.md#getDocumentTables) | **GET** /pdf/\{name}/tables | Read document tables.
 [**getDocumentTextAnnotations**](PdfApi.md#getDocumentTextAnnotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 [**getDocumentUnderlineAnnotations**](PdfApi.md#getDocumentUnderlineAnnotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
-[**getDownload**](PdfApi.md#getDownload) | **GET** /storage/file | Download a specific file 
 [**getDownloadDocumentAttachmentByIndex**](PdfApi.md#getDownloadDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
 [**getEpubInStorageToPdf**](PdfApi.md#getEpubInStorageToPdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+[**getExportFieldsFromPdfToFdfInStorage**](PdfApi.md#getExportFieldsFromPdfToFdfInStorage) | **GET** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file.
+[**getExportFieldsFromPdfToXfdfInStorage**](PdfApi.md#getExportFieldsFromPdfToXfdfInStorage) | **GET** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file.
+[**getExportFieldsFromPdfToXmlInStorage**](PdfApi.md#getExportFieldsFromPdfToXmlInStorage) | **GET** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file.
 [**getField**](PdfApi.md#getField) | **GET** /pdf/\{name}/fields/\{fieldName} | Get document field by name.
 [**getFields**](PdfApi.md#getFields) | **GET** /pdf/\{name}/fields | Get document fields.
 [**getFileAttachmentAnnotation**](PdfApi.md#getFileAttachmentAnnotation) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Read document page FileAttachment annotation by ID.
 [**getFileAttachmentAnnotationData**](PdfApi.md#getFileAttachmentAnnotationData) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data | Read document page FileAttachment annotation by ID.
+[**getFileVersions**](PdfApi.md#getFileVersions) | **GET** /pdf/storage/version/\{path} | Get file versions
+[**getFilesList**](PdfApi.md#getFilesList) | **GET** /pdf/storage/folder/\{path} | Get all files and folders within a folder
 [**getFreeTextAnnotation**](PdfApi.md#getFreeTextAnnotation) | **GET** /pdf/\{name}/annotations/freetext/\{annotationId} | Read document page free text annotation by ID.
 [**getHighlightAnnotation**](PdfApi.md#getHighlightAnnotation) | **GET** /pdf/\{name}/annotations/highlight/\{annotationId} | Read document page highlight annotation by ID.
 [**getHtmlInStorageToPdf**](PdfApi.md#getHtmlInStorageToPdf) | **GET** /pdf/create/html | Convert HTML file (located on storage) to PDF format and return resulting file in response. 
@@ -71,14 +84,13 @@ Method | HTTP request | Description
 [**getImageExtractAsPng**](PdfApi.md#getImageExtractAsPng) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 [**getImageExtractAsTiff**](PdfApi.md#getImageExtractAsTiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**getImages**](PdfApi.md#getImages) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+[**getImportFieldsFromFdfInStorage**](PdfApi.md#getImportFieldsFromFdfInStorage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**getImportFieldsFromXfdfInStorage**](PdfApi.md#getImportFieldsFromXfdfInStorage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**getImportFieldsFromXmlInStorage**](PdfApi.md#getImportFieldsFromXmlInStorage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 [**getInkAnnotation**](PdfApi.md#getInkAnnotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-[**getIsExist**](PdfApi.md#getIsExist) | **GET** /storage/exist | Check if a specific file or folder exists
-[**getIsStorageExist**](PdfApi.md#getIsStorageExist) | **GET** /storage/\{name}/exist | Check if storage exists 
 [**getLaTeXInStorageToPdf**](PdfApi.md#getLaTeXInStorageToPdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**getLineAnnotation**](PdfApi.md#getLineAnnotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**getLinkAnnotation**](PdfApi.md#getLinkAnnotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
-[**getListFileVersions**](PdfApi.md#getListFileVersions) | **GET** /storage/version | Get the file&#39;s versions list 
-[**getListFiles**](PdfApi.md#getListFiles) | **GET** /storage/folder | Get the file listing of a specific folder 
 [**getMhtInStorageToPdf**](PdfApi.md#getMhtInStorageToPdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**getMovieAnnotation**](PdfApi.md#getMovieAnnotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 [**getPage**](PdfApi.md#getPage) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -155,7 +167,11 @@ Method | HTTP request | Description
 [**getXmlInStorageToPdf**](PdfApi.md#getXmlInStorageToPdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
 [**getXpsInStorageToPdf**](PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**getXslFoInStorageToPdf**](PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
+[**moveFile**](PdfApi.md#moveFile) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
+[**moveFolder**](PdfApi.md#moveFolder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
+[**objectExists**](PdfApi.md#objectExists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
 [**postAppendDocument**](PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+[**postBookmark**](PdfApi.md#postBookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 [**postChangePasswordDocumentInStorage**](PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**postCreateField**](PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
 [**postDecryptDocumentInStorage**](PdfApi.md#postDecryptDocumentInStorage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -167,9 +183,10 @@ Method | HTTP request | Description
 [**postDocumentTextReplace**](PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 [**postEncryptDocumentInStorage**](PdfApi.md#postEncryptDocumentInStorage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**postFlattenDocument**](PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Flatten the document.
+[**postImportFieldsFromFdf**](PdfApi.md#postImportFieldsFromFdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
+[**postImportFieldsFromXfdf**](PdfApi.md#postImportFieldsFromXfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
+[**postImportFieldsFromXml**](PdfApi.md#postImportFieldsFromXml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 [**postInsertImage**](PdfApi.md#postInsertImage) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
-[**postMoveFile**](PdfApi.md#postMoveFile) | **POST** /storage/file | Move a specific file
-[**postMoveFolder**](PdfApi.md#postMoveFolder) | **POST** /storage/folder | Move a specific folder 
 [**postMovePage**](PdfApi.md#postMovePage) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**postOptimizeDocument**](PdfApi.md#postOptimizeDocument) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**postPageCaretAnnotations**](PdfApi.md#postPageCaretAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -204,15 +221,17 @@ Method | HTTP request | Description
 [**putAddNewPage**](PdfApi.md#putAddNewPage) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 [**putAddText**](PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 [**putAnnotationsFlatten**](PdfApi.md#putAnnotationsFlatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
+[**putBookmark**](PdfApi.md#putBookmark) | **PUT** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Update document bookmark.
 [**putCaretAnnotation**](PdfApi.md#putCaretAnnotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
 [**putChangePasswordDocument**](PdfApi.md#putChangePasswordDocument) | **PUT** /pdf/changepassword | Change document password from content.
 [**putCircleAnnotation**](PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
-[**putCreate**](PdfApi.md#putCreate) | **PUT** /storage/file | Upload a specific file 
 [**putCreateDocument**](PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
-[**putCreateFolder**](PdfApi.md#putCreateFolder) | **PUT** /storage/folder | Create the folder 
 [**putDecryptDocument**](PdfApi.md#putDecryptDocument) | **PUT** /pdf/decrypt | Decrypt document from content.
 [**putEncryptDocument**](PdfApi.md#putEncryptDocument) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**putEpubInStorageToPdf**](PdfApi.md#putEpubInStorageToPdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+[**putExportFieldsFromPdfToFdfInStorage**](PdfApi.md#putExportFieldsFromPdfToFdfInStorage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
+[**putExportFieldsFromPdfToXfdfInStorage**](PdfApi.md#putExportFieldsFromPdfToXfdfInStorage) | **PUT** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file in storage.
+[**putExportFieldsFromPdfToXmlInStorage**](PdfApi.md#putExportFieldsFromPdfToXmlInStorage) | **PUT** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file in storage.
 [**putFieldsFlatten**](PdfApi.md#putFieldsFlatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**putFileAttachmentAnnotation**](PdfApi.md#putFileAttachmentAnnotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
 [**putFileAttachmentAnnotationDataExtract**](PdfApi.md#putFileAttachmentAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data/extract | Extract document FileAttachment annotation content to storage
@@ -228,6 +247,9 @@ Method | HTTP request | Description
 [**putImagesExtractAsJpeg**](PdfApi.md#putImagesExtractAsJpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/jpeg | Extract document images in JPEG format to folder.
 [**putImagesExtractAsPng**](PdfApi.md#putImagesExtractAsPng) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/png | Extract document images in PNG format to folder.
 [**putImagesExtractAsTiff**](PdfApi.md#putImagesExtractAsTiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/tiff | Extract document images in TIFF format to folder.
+[**putImportFieldsFromFdfInStorage**](PdfApi.md#putImportFieldsFromFdfInStorage) | **PUT** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**putImportFieldsFromXfdfInStorage**](PdfApi.md#putImportFieldsFromXfdfInStorage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**putImportFieldsFromXmlInStorage**](PdfApi.md#putImportFieldsFromXmlInStorage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 [**putInkAnnotation**](PdfApi.md#putInkAnnotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
 [**putLaTeXInStorageToPdf**](PdfApi.md#putLaTeXInStorageToPdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**putLineAnnotation**](PdfApi.md#putLineAnnotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
@@ -299,7 +321,80 @@ Method | HTTP request | Description
 [**putXmlInStorageToPdf**](PdfApi.md#putXmlInStorageToPdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
 [**putXpsInStorageToPdf**](PdfApi.md#putXpsInStorageToPdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 [**putXslFoInStorageToPdf**](PdfApi.md#putXslFoInStorageToPdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
+[**storageExists**](PdfApi.md#storageExists) | **GET** /pdf/storage/\{storageName}/exist | Check if storage exists
+[**uploadFile**](PdfApi.md#uploadFile) | **PUT** /pdf/storage/file/\{path} | Upload file
 
+
+<a name="copyFile"></a>
+# **copyFile**
+> copyFile(srcPath, destPath, srcStorageName, destStorageName, versionId)
+
+Copy file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Source file path e.g. &#39;/folder/file.ext&#39; |
+ **destPath** | **String**| Destination file path |
+ **srcStorageName** | **String**| Source storage name | [optional]
+ **destStorageName** | **String**| Destination storage name | [optional]
+ **versionId** | **String**| File version ID to copy | [optional]
+
+### Return type
+
+null (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="copyFolder"></a>
+# **copyFolder**
+> copyFolder(srcPath, destPath, srcStorageName, destStorageName)
+
+Copy folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Source folder path e.g. &#39;/src&#39; |
+ **destPath** | **String**| Destination folder path e.g. &#39;/dst&#39; |
+ **srcStorageName** | **String**| Source storage name | [optional]
+ **destStorageName** | **String**| Destination storage name | [optional]
+
+### Return type
+
+null (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createFolder"></a>
+# **createFolder**
+> createFolder(path, storageName)
+
+Create the folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; |
+ **storageName** | **String**| Storage name | [optional]
+
+### Return type
+
+null (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="deleteAnnotation"></a>
 # **deleteAnnotation**
@@ -325,6 +420,30 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="deleteBookmark"></a>
+# **deleteBookmark**
+> AsposeResponse deleteBookmark(name, bookmarkPath, folder, storage)
+
+Delete document bookmark by ID.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **bookmarkPath** | **String**| The bookmark path. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="deleteDocumentAnnotations"></a>
 # **deleteDocumentAnnotations**
 > AsposeResponse deleteDocumentAnnotations(name, storage, folder)
@@ -338,6 +457,29 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="deleteDocumentBookmarks"></a>
+# **deleteDocumentBookmarks**
+> AsposeResponse deleteDocumentBookmarks(name, folder, storage)
+
+Delete all document bookmarks.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
 
 ### Return type
 
@@ -443,21 +585,21 @@ Name | Type | Description  | Notes
 
 <a name="deleteFile"></a>
 # **deleteFile**
-> AsposeResponse deleteFile(path, versionId, storage)
+> deleteFile(path, storageName, versionId)
 
-Remove a specific file 
+Delete file
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Path of the file including file name and extension e.g. /Folder1/file.ext |
- **versionId** | **String**| File&#39;s version | [optional]
- **storage** | **String**| User&#39;s storage name | [optional]
+ **path** | **String**| File path e.g. &#39;/folder/file.ext&#39; |
+ **storageName** | **String**| Storage name | [optional]
+ **versionId** | **String**| File version ID to delete | [optional]
 
 ### Return type
 
-[**AsposeResponse**](AsposeResponse.md)
+null (empty response body)
 
 ### HTTP request headers
 
@@ -466,21 +608,21 @@ Name | Type | Description  | Notes
 
 <a name="deleteFolder"></a>
 # **deleteFolder**
-> AsposeResponse deleteFolder(path, storage, recursive)
+> deleteFolder(path, storageName, recursive)
 
-Remove a specific folder 
+Delete folder
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| Folder path e.g. /Folder1 |
- **storage** | **String**| User&#39;s storage name | [optional]
- **recursive** | **Boolean**| Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. | [optional] [default to false]
+ **path** | **String**| Folder path e.g. &#39;/folder&#39; |
+ **storageName** | **String**| Storage name | [optional]
+ **recursive** | **Boolean**| Enable to delete folders, subfolders and files | [optional] [default to false]
 
 ### Return type
 
-[**AsposeResponse**](AsposeResponse.md)
+null (empty response body)
 
 ### HTTP request headers
 
@@ -750,6 +892,77 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="downloadFile"></a>
+# **downloadFile**
+> File downloadFile(path, storageName, versionId)
+
+Download file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File path e.g. &#39;/folder/file.ext&#39; |
+ **storageName** | **String**| Storage name | [optional]
+ **versionId** | **String**| File version ID to download | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+<a name="getBookmark"></a>
+# **getBookmark**
+> BookmarkResponse getBookmark(name, bookmarkPath, folder, storage)
+
+Read document bookmark.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **bookmarkPath** | **String**| The bookmark path. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**BookmarkResponse**](BookmarkResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getBookmarks"></a>
+# **getBookmarks**
+> BookmarksResponse getBookmarks(name, bookmarkPath, folder, storage)
+
+Read document bookmarks node list.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **bookmarkPath** | **String**| The bookmark path. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getCaretAnnotation"></a>
 # **getCaretAnnotation**
 > CaretAnnotationResponse getCaretAnnotation(name, annotationId, storage, folder)
@@ -800,19 +1013,19 @@ Name | Type | Description  | Notes
 
 <a name="getDiscUsage"></a>
 # **getDiscUsage**
-> DiscUsageResponse getDiscUsage(storage)
+> DiscUsage getDiscUsage(storageName)
 
-Check the disk usage of the current account 
+Get disc usage
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storage** | **String**| User&#39;s storage name | [optional]
+ **storageName** | **String**| Storage name | [optional]
 
 ### Return type
 
-[**DiscUsageResponse**](DiscUsageResponse.md)
+[**DiscUsage**](DiscUsage.md)
 
 ### HTTP request headers
 
@@ -906,6 +1119,29 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AttachmentsResponse**](AttachmentsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getDocumentBookmarks"></a>
+# **getDocumentBookmarks**
+> BookmarksResponse getDocumentBookmarks(name, folder, storage)
+
+Read document bookmarks tree.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
 
 ### HTTP request headers
 
@@ -1489,29 +1725,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="getDownload"></a>
-# **getDownload**
-> File getDownload(path, versionId, storage)
-
-Download a specific file 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| Path of the file including the file name and extension e.g. /file.ext |
- **versionId** | **String**| File&#39;s version | [optional]
- **storage** | **String**| User&#39;s storage name | [optional]
-
-### Return type
-
-**File**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: multipart/form-data
-
 <a name="getDownloadDocumentAttachmentByIndex"></a>
 # **getDownloadDocumentAttachmentByIndex**
 > File getDownloadDocumentAttachmentByIndex(name, attachmentIndex, storage, folder)
@@ -1558,6 +1771,75 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
 
+<a name="getExportFieldsFromPdfToFdfInStorage"></a>
+# **getExportFieldsFromPdfToFdfInStorage**
+> File getExportFieldsFromPdfToFdfInStorage(name, storage, folder)
+
+Export fields from from PDF in storage to FDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+<a name="getExportFieldsFromPdfToXfdfInStorage"></a>
+# **getExportFieldsFromPdfToXfdfInStorage**
+> File getExportFieldsFromPdfToXfdfInStorage(name, storage, folder)
+
+Export fields from from PDF in storage to XFDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+<a name="getExportFieldsFromPdfToXmlInStorage"></a>
+# **getExportFieldsFromPdfToXmlInStorage**
+> File getExportFieldsFromPdfToXmlInStorage(name, storage, folder)
+
+Export fields from from PDF in storage to XML file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
 <a name="getField"></a>
 # **getField**
 > FieldResponse getField(name, fieldName, storage, folder)
@@ -1569,7 +1851,7 @@ Get document field by name.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **fieldName** | **String**| The field name/ |
+ **fieldName** | **String**| The field name (name should be encoded). |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -1627,7 +1909,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getFileAttachmentAnnotationData"></a>
 # **getFileAttachmentAnnotationData**
@@ -1652,6 +1934,50 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
+
+<a name="getFileVersions"></a>
+# **getFileVersions**
+> FileVersions getFileVersions(path, storageName)
+
+Get file versions
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File path e.g. &#39;/file.ext&#39; |
+ **storageName** | **String**| Storage name | [optional]
+
+### Return type
+
+[**FileVersions**](FileVersions.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getFilesList"></a>
+# **getFilesList**
+> FilesList getFilesList(path, storageName)
+
+Get all files and folders within a folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Folder path e.g. &#39;/folder&#39; |
+ **storageName** | **String**| Storage name | [optional]
+
+### Return type
+
+[**FilesList**](FilesList.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="getFreeTextAnnotation"></a>
 # **getFreeTextAnnotation**
@@ -1753,7 +2079,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getImageExtractAsGif"></a>
 # **getImageExtractAsGif**
@@ -1767,8 +2093,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -1793,8 +2119,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -1819,8 +2145,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -1845,8 +2171,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -1883,6 +2209,78 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getImportFieldsFromFdfInStorage"></a>
+# **getImportFieldsFromFdfInStorage**
+> File getImportFieldsFromFdfInStorage(name, fdfFilePath, storage, folder)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **fdfFilePath** | **String**| The Fdf file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+<a name="getImportFieldsFromXfdfInStorage"></a>
+# **getImportFieldsFromXfdfInStorage**
+> File getImportFieldsFromXfdfInStorage(name, xfdfFilePath, storage, folder)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xfdfFilePath** | **String**| The XFDF file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+<a name="getImportFieldsFromXmlInStorage"></a>
+# **getImportFieldsFromXmlInStorage**
+> File getImportFieldsFromXmlInStorage(name, xmlFilePath, storage, folder)
+
+Import from XML file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xmlFilePath** | **String**| Full source filename (ex. /folder1/folder2/template.xml) |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
 <a name="getInkAnnotation"></a>
 # **getInkAnnotation**
 > InkAnnotationResponse getInkAnnotation(name, annotationId, storage, folder)
@@ -1901,50 +2299,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InkAnnotationResponse**](InkAnnotationResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="getIsExist"></a>
-# **getIsExist**
-> FileExistResponse getIsExist(path, versionId, storage)
-
-Check if a specific file or folder exists
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| File or folder path e.g. /file.ext or /Folder1 |
- **versionId** | **String**| File&#39;s version | [optional]
- **storage** | **String**| User&#39;s storage name | [optional]
-
-### Return type
-
-[**FileExistResponse**](FileExistResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="getIsStorageExist"></a>
-# **getIsStorageExist**
-> StorageExistResponse getIsStorageExist(name)
-
-Check if storage exists 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Storage name |
-
-### Return type
-
-[**StorageExistResponse**](StorageExistResponse.md)
 
 ### HTTP request headers
 
@@ -2021,50 +2375,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="getListFileVersions"></a>
-# **getListFileVersions**
-> FileVersionsResponse getListFileVersions(path, storage)
-
-Get the file&#39;s versions list 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| File path e.g. /file.ext or /Folder1/file.ext |
- **storage** | **String**| User&#39;s storage name | [optional]
-
-### Return type
-
-[**FileVersionsResponse**](FileVersionsResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="getListFiles"></a>
-# **getListFiles**
-> FilesResponse getListFiles(path, storage)
-
-Get the file listing of a specific folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39; | [optional] [default to /]
- **storage** | **String**| User&#39;s storage name | [optional]
-
-### Return type
-
-[**FilesResponse**](FilesResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 <a name="getMhtInStorageToPdf"></a>
 # **getMhtInStorageToPdf**
 > File getMhtInStorageToPdf(srcPath, storage)
@@ -2133,7 +2443,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getPageAnnotations"></a>
 # **getPageAnnotations**
@@ -2219,8 +2529,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2245,8 +2555,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2271,8 +2581,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2297,8 +2607,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2323,8 +2633,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2349,8 +2659,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2862,7 +3172,7 @@ Name | Type | Description  | Notes
  **URY** | **Double**| Y - coordinate of upper-right corner. |
  **format** | **List&lt;String&gt;**| List of formats for search. | [optional]
  **regex** | **String**| Formats are specified as a regular expression. | [optional]
- **splitRects** | **Boolean**| Split result fragments (default is true). | [optional]
+ **splitRects** | **Boolean**| Split result fragments (default is true). | [optional] [default to true]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -2980,11 +3290,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **addReturnToLineEnd** | **Boolean**| Add return to line end. | [optional]
- **format** | **String**| Allows to specify .doc or .docx file format. | [optional]
+ **format** | **String**| Allows to specify .doc or .docx file format. | [optional] [enum: Doc, DocX]
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **folder** | **String**| The document folder. | [optional]
@@ -3010,7 +3320,7 @@ Converts PDF document (located on storage) to EPUB format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] [enum: Flow, PdfFlow, Fixed]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -3038,7 +3348,7 @@ Name | Type | Description  | Notes
  **compressSvgGraphicsIfAny** | **Boolean**| The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving. | [optional]
  **convertMarkedContentToLayers** | **Boolean**| If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with &quot;data-pdflayer&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content. | [optional]
  **defaultFontName** | **String**| Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used. | [optional]
- **documentType** | **String**| Result document type. | [optional]
+ **documentType** | **String**| Result document type. | [optional] [enum: Xhtml, Html5]
  **fixedLayout** | **Boolean**| The value indicating whether that HTML is created as fixed layout. | [optional]
  **imageResolution** | **Integer**| Resolution for image rendering. | [optional]
  **minimalLineWidth** | **Integer**| This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers. | [optional]
@@ -3046,16 +3356,16 @@ Name | Type | Description  | Notes
  **splitCssIntoPages** | **Boolean**| When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page. | [optional]
  **splitIntoPages** | **Boolean**| The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages. | [optional]
  **useZOrder** | **Boolean**| If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects. | [optional]
- **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional]
+ **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional] [enum: NoAdditionalProcessing, TryCorrectResultHtml]
  **cssClassNamesPrefix** | **String**| When PDFtoHTML converter generates result CSSs, CSS class names (something like &quot;.stl_01 {}&quot; ... &quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix. | [optional]
  **explicitListOfSavedPages** | **List&lt;Integer&gt;**| With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF. | [optional]
- **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional]
- **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional]
- **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional]
- **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional]
+ **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional] [enum: Default, DecreaseToUnicodePriorityLevel]
+ **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional] [enum: AlwaysSaveAsWOFF, AlwaysSaveAsTTF, AlwaysSaveAsEOT, SaveInAllFormats]
+ **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional] [enum: WriteAllHtml, WriteOnlyBodyContent]
+ **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional] [enum: UseEmUnitsAndCompensationOfRoundingErrorsInCss, UsePixelUnitsInCssLetterSpacingForIE]
  **pagesFlowTypeDependsOnViewersScreenSize** | **Boolean**| If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer. | [optional]
- **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional]
- **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional]
+ **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional] [enum: EmbedAllIntoHtml, EmbedCssOnly, NoEmbedding]
+ **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional] [enum: AsPngImagesEmbeddedIntoSvg, AsExternalPngFilesReferencedViaSvg, AsEmbeddedPartsOfPngPageBackground]
  **removeEmptyAreasOnTopAndBottom** | **Boolean**| Defines whether in created HTML will be removed top and bottom empty area without any content (if any). | [optional]
  **saveShadowedTextsAsTransparentTexts** | **Boolean**| Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard). | [optional]
  **saveTransparentTexts** | **Boolean**| Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML. | [optional]
@@ -3132,7 +3442,7 @@ Converts PDF document (located on storage) to PdfA format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **type** | **String**| Type of PdfA format. |
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -3206,13 +3516,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **brightness** | **Double**| Image brightness. | [optional]
- **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional]
- **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional]
+ **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional] [enum: LZW, CCITT4, CCITT3, RLE, None]
+ **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional] [enum: Default, Format8bpp, Format4bpp, Format1bpp]
  **leftMargin** | **Integer**| Left image margin. | [optional]
  **rightMargin** | **Integer**| Right image margin. | [optional]
  **topMargin** | **Integer**| Top image margin. | [optional]
  **bottomMargin** | **Integer**| Bottom image margin. | [optional]
- **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional]
+ **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional] [enum: None, Landscape, Portrait]
  **skipBlankPages** | **Boolean**| Skip blank pages flag. | [optional]
  **width** | **Integer**| Image width. | [optional]
  **height** | **Integer**| Image height. | [optional]
@@ -3472,7 +3782,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getScreenAnnotationData"></a>
 # **getScreenAnnotationData**
@@ -3520,7 +3830,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="getSoundAnnotationData"></a>
 # **getSoundAnnotationData**
@@ -3737,7 +4047,7 @@ Name | Type | Description  | Notes
  **URY** | **Double**| Y - coordinate of upper-right corner. |
  **format** | **List&lt;String&gt;**| List of formats for search. | [optional]
  **regex** | **String**| Formats are specified as a regular expression. | [optional]
- **splitRects** | **Boolean**| Split result fragments (default is true). | [optional]
+ **splitRects** | **Boolean**| Split result fragments (default is true). | [optional] [default to true]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -3964,9 +4274,81 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
 
+<a name="moveFile"></a>
+# **moveFile**
+> moveFile(srcPath, destPath, srcStorageName, destStorageName, versionId)
+
+Move file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Source file path e.g. &#39;/src.ext&#39; |
+ **destPath** | **String**| Destination file path e.g. &#39;/dest.ext&#39; |
+ **srcStorageName** | **String**| Source storage name | [optional]
+ **destStorageName** | **String**| Destination storage name | [optional]
+ **versionId** | **String**| File version ID to move | [optional]
+
+### Return type
+
+null (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="moveFolder"></a>
+# **moveFolder**
+> moveFolder(srcPath, destPath, srcStorageName, destStorageName)
+
+Move folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Folder path to move e.g. &#39;/folder&#39; |
+ **destPath** | **String**| Destination folder path to move to e.g &#39;/dst&#39; |
+ **srcStorageName** | **String**| Source storage name | [optional]
+ **destStorageName** | **String**| Destination storage name | [optional]
+
+### Return type
+
+null (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="objectExists"></a>
+# **objectExists**
+> ObjectExist objectExists(path, storageName, versionId)
+
+Check if file or folder exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39; |
+ **storageName** | **String**| Storage name | [optional]
+ **versionId** | **String**| File version ID | [optional]
+
+### Return type
+
+[**ObjectExist**](ObjectExist.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postAppendDocument"></a>
 # **postAppendDocument**
-> DocumentResponse postAppendDocument(name, appendDocument, appendFile, startPage, endPage, storage, folder)
+> DocumentResponse postAppendDocument(name, appendFile, startPage, endPage, storage, folder)
 
 Append document to existing one.
 
@@ -3975,8 +4357,7 @@ Append document to existing one.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The original document name. |
- **appendDocument** | [**AppendDocument**](AppendDocument.md)| with the append document data. | [optional]
- **appendFile** | **String**| Append file server path. | [optional]
+ **appendFile** | **String**| Append file server path. |
  **startPage** | **Integer**| Appending start page. | [optional] [default to 0]
  **endPage** | **Integer**| Appending end page. | [optional] [default to 0]
  **storage** | **String**| The documents storage. | [optional]
@@ -3985,6 +4366,31 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postBookmark"></a>
+# **postBookmark**
+> BookmarksResponse postBookmark(name, bookmarkPath, bookmarks, folder, storage)
+
+Add document bookmarks.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **bookmarkPath** | **String**| The bookmark path. |
+ **bookmarks** | [**List&lt;Bookmark&gt;**](Bookmark.md)| The array of bookmark. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
 
 ### HTTP request headers
 
@@ -4029,7 +4435,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **page** | **Integer**| Document page number. |
- **field** | [**Field**](Field.md)| with the field data. | [optional]
+ **field** | [**Field**](Field.md)| Field with the field data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -4233,8 +4639,8 @@ Name | Type | Description  | Notes
  **name** | **String**| Document name. |
  **userPassword** | **String**| User password (encrypted Base64). |
  **ownerPassword** | **String**| Owner password (encrypted Base64). |
- **cryptoAlgorithm** | **String**| Cryptographic algorithm, see  for details. |
- **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional]
+ **cryptoAlgorithm** | **String**| Cryptographic algorithm, see CryptoAlgorithm for details. | [enum: RC4x40, RC4x128, AESx128, AESx256]
+ **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see PermissionsFlags for details. | [optional]
  **usePdf20** | **Boolean**| Support for revision 6 (Extension 8). | [optional]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
@@ -4274,6 +4680,78 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="postImportFieldsFromFdf"></a>
+# **postImportFieldsFromFdf**
+> AsposeResponse postImportFieldsFromFdf(name, storage, folder, fdfData)
+
+Update fields from FDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **fdfData** | [****](.md)| Fdf file. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postImportFieldsFromXfdf"></a>
+# **postImportFieldsFromXfdf**
+> AsposeResponse postImportFieldsFromXfdf(name, storage, folder, xfdfData)
+
+Update fields from XFDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **xfdfData** | [****](.md)| Xfdf file. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postImportFieldsFromXml"></a>
+# **postImportFieldsFromXml**
+> AsposeResponse postImportFieldsFromXml(name, storage, folder, xmlData)
+
+Update fields from XML file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **xmlData** | [****](.md)| Xml file. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postInsertImage"></a>
 # **postInsertImage**
 > AsposeResponse postInsertImage(name, pageNumber, llx, lly, urx, ury, imageFilePath, storage, folder, image)
@@ -4294,55 +4772,6 @@ Name | Type | Description  | Notes
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **image** | [****](.md)| Image file. | [optional]
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="postMoveFile"></a>
-# **postMoveFile**
-> AsposeResponse postMoveFile(src, dest, versionId, storage, destStorage)
-
-Move a specific file
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **src** | **String**| Source file path e.g. /fileSource.ext |
- **dest** | **String**| Destination file path e.g. /fileDestination.ext |
- **versionId** | **String**| Source file&#39;s version, | [optional]
- **storage** | **String**| User&#39;s source storage name | [optional]
- **destStorage** | **String**| User&#39;s destination storage name | [optional]
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="postMoveFolder"></a>
-# **postMoveFolder**
-> AsposeResponse postMoveFolder(src, dest, storage, destStorage)
-
-Move a specific folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **src** | **String**| Source folder path e.g. /Folder1 |
- **dest** | **String**| Destination folder path e.g. /Folder2 |
- **storage** | **String**| User&#39;s source storage name | [optional]
- **destStorage** | **String**| User&#39;s destination storage name | [optional]
 
 ### Return type
 
@@ -4389,7 +4818,7 @@ Optimize document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **options** | [**OptimizeOptions**](OptimizeOptions.md)| The optimization options. | [optional]
+ **options** | [**OptimizeOptions**](OptimizeOptions.md)| The optimization options. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -5054,7 +5483,7 @@ Name | Type | Description  | Notes
 
 <a name="postSignDocument"></a>
 # **postSignDocument**
-> AsposeResponse postSignDocument(name, signature, storage, folder)
+> AsposeResponse postSignDocument(name, sign, storage, folder)
 
 Sign document.
 
@@ -5063,7 +5492,7 @@ Sign document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **signature** | [**Signature**](Signature.md)| Signature object containing signature data. | [optional]
+ **sign** | [**Signature**](Signature.md)| Signature object containing signature data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -5078,7 +5507,7 @@ Name | Type | Description  | Notes
 
 <a name="postSignPage"></a>
 # **postSignPage**
-> AsposeResponse postSignPage(name, pageNumber, signature, storage, folder)
+> AsposeResponse postSignPage(name, pageNumber, sign, storage, folder)
 
 Sign page.
 
@@ -5088,7 +5517,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **signature** | [**Signature**](Signature.md)| Signature object containing signature data. | [optional]
+ **sign** | [**Signature**](Signature.md)| Signature object containing signature data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -5162,7 +5591,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| Number of page (starting from 1). |
- **paragraph** | [**Paragraph**](Paragraph.md)| Paragraph data. | [optional]
+ **paragraph** | [**Paragraph**](Paragraph.md)| Paragraph data. |
  **folder** | **String**| Document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -5195,6 +5624,31 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putBookmark"></a>
+# **putBookmark**
+> BookmarkResponse putBookmark(name, bookmarkPath, bookmark, folder, storage)
+
+Update document bookmark.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **bookmarkPath** | **String**| The bookmark path. |
+ **bookmark** | [**Bookmark**](Bookmark.md)| The bookmark. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**BookmarkResponse**](BookmarkResponse.md)
 
 ### HTTP request headers
 
@@ -5277,30 +5731,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="putCreate"></a>
-# **putCreate**
-> AsposeResponse putCreate(path, file, versionId, storage)
-
-Upload a specific file 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext |
- **file** | **File**| File to upload |
- **versionId** | **String**| Source file&#39;s version | [optional]
- **storage** | **String**| User&#39;s storage name | [optional]
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 <a name="putCreateDocument"></a>
 # **putCreateDocument**
 > DocumentResponse putCreateDocument(name, storage, folder)
@@ -5318,29 +5748,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="putCreateFolder"></a>
-# **putCreateFolder**
-> AsposeResponse putCreateFolder(path, storage, destStorage)
-
-Create the folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **String**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively |
- **storage** | **String**| User&#39;s source storage name | [optional]
- **destStorage** | **String**| User&#39;s destination storage name | [optional]
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -5384,8 +5791,8 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
  **userPassword** | **String**| User password (encrypted Base64). |
  **ownerPassword** | **String**| Owner password (encrypted Base64). |
- **cryptoAlgorithm** | **String**| Cryptographic algorithm, see  for details. |
- **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional]
+ **cryptoAlgorithm** | **String**| Cryptographic algorithm, see CryptoAlgorithm for details. | [enum: RC4x40, RC4x128, AESx128, AESx256]
+ **permissionsFlags** | [**List&lt;PermissionsFlags&gt;**](PermissionsFlags.md)| Array of document permissions, see PermissionsFlags for details. | [optional]
  **usePdf20** | **Boolean**| Support for revision 6 (Extension 8). | [optional]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be encrypted. | [optional]
@@ -5413,6 +5820,78 @@ Name | Type | Description  | Notes
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.epub) |
  **storage** | **String**| The document storage. | [optional]
  **dstFolder** | **String**| The destination document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putExportFieldsFromPdfToFdfInStorage"></a>
+# **putExportFieldsFromPdfToFdfInStorage**
+> AsposeResponse putExportFieldsFromPdfToFdfInStorage(name, fdfOutputFilePath, storage, folder)
+
+Export fields from from PDF in storage to FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **fdfOutputFilePath** | **String**| The output Fdf file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putExportFieldsFromPdfToXfdfInStorage"></a>
+# **putExportFieldsFromPdfToXfdfInStorage**
+> AsposeResponse putExportFieldsFromPdfToXfdfInStorage(name, xfdfOutputFilePath, storage, folder)
+
+Export fields from from PDF in storage to XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xfdfOutputFilePath** | **String**| The output xfdf file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putExportFieldsFromPdfToXmlInStorage"></a>
+# **putExportFieldsFromPdfToXmlInStorage**
+> AsposeResponse putExportFieldsFromPdfToXmlInStorage(name, xmlOutputFilePath, storage, folder)
+
+Export fields from from PDF in storage to XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xmlOutputFilePath** | **String**| The output xml file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
 
 ### Return type
 
@@ -5590,8 +6069,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5617,8 +6096,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5644,8 +6123,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5671,8 +6150,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **imageId** | **String**| Image ID. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5697,7 +6176,7 @@ Convert image file (located on storage) to PDF format and upload resulting file 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **imageTemplates** | [**ImageTemplatesRequest**](ImageTemplatesRequest.md)| Image templates |
+ **imageTemplates** | [**ImageTemplatesRequest**](ImageTemplatesRequest.md)| ImageTemplatesRequestImage templates |
  **dstFolder** | **String**| The destination document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -5722,8 +6201,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5749,9 +6228,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
- **storage** | **String**|  | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
+ **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
 
@@ -5776,8 +6255,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
@@ -5803,11 +6282,83 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **destFolder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putImportFieldsFromFdfInStorage"></a>
+# **putImportFieldsFromFdfInStorage**
+> AsposeResponse putImportFieldsFromFdfInStorage(name, fdfFilePath, storage, folder)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **fdfFilePath** | **String**| The Fdf file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putImportFieldsFromXfdfInStorage"></a>
+# **putImportFieldsFromXfdfInStorage**
+> AsposeResponse putImportFieldsFromXfdfInStorage(name, xfdfFilePath, storage, folder)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xfdfFilePath** | **String**| The XFDF file path. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putImportFieldsFromXmlInStorage"></a>
+# **putImportFieldsFromXmlInStorage**
+> AsposeResponse putImportFieldsFromXmlInStorage(name, xmlFilePath, storage, folder)
+
+Update fields from XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **xmlFilePath** | **String**| Full source filename (ex. /folder1/folder2/template.xml) |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
 
 ### Return type
 
@@ -5928,7 +6479,7 @@ Merge a list of documents.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Resulting documen name. |
- **mergeDocuments** | [**MergeDocuments**](MergeDocuments.md)| with a list of documents. | [optional]
+ **mergeDocuments** | [**MergeDocuments**](MergeDocuments.md)| MergeDocuments with a list of documents. |
  **storage** | **String**| Resulting document storage. | [optional]
  **folder** | **String**| Resulting document folder. | [optional]
 
@@ -6002,7 +6553,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **stamp** | [**Stamp**](Stamp.md)| with data. |
+ **stamp** | [**Stamp**](Stamp.md)| Stamp with data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -6028,8 +6579,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6055,8 +6606,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6082,8 +6633,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6109,8 +6660,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6136,8 +6687,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6163,8 +6714,8 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **outPath** | **String**| The out path of result image. |
- **width** | **Integer**| The converted image width. | [optional]
- **height** | **Integer**| The converted image height. | [optional]
+ **width** | **Integer**| The converted image width. | [optional] [default to 0]
+ **height** | **Integer**| The converted image height. | [optional] [default to 0]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6213,11 +6764,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
  **addReturnToLineEnd** | **Boolean**| Add return to line end. | [optional]
- **format** | **String**| Allows to specify .doc or .docx file format. | [optional]
+ **format** | **String**| Allows to specify .doc or .docx file format. | [optional] [enum: Doc, DocX]
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **storage** | **String**| The document storage. | [optional]
@@ -6243,7 +6794,7 @@ Converts PDF document (in request content) to EPUB format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) |
- **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] [enum: Flow, PdfFlow, Fixed]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
@@ -6271,7 +6822,7 @@ Name | Type | Description  | Notes
  **compressSvgGraphicsIfAny** | **Boolean**| The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving. | [optional]
  **convertMarkedContentToLayers** | **Boolean**| If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with &quot;data-pdflayer&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content. | [optional]
  **defaultFontName** | **String**| Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used. | [optional]
- **documentType** | **String**| Result document type. | [optional]
+ **documentType** | **String**| Result document type. | [optional] [enum: Xhtml, Html5]
  **fixedLayout** | **Boolean**| The value indicating whether that HTML is created as fixed layout. | [optional]
  **imageResolution** | **Integer**| Resolution for image rendering. | [optional]
  **minimalLineWidth** | **Integer**| This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers. | [optional]
@@ -6279,16 +6830,16 @@ Name | Type | Description  | Notes
  **splitCssIntoPages** | **Boolean**| When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page. | [optional]
  **splitIntoPages** | **Boolean**| The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages. | [optional]
  **useZOrder** | **Boolean**| If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects. | [optional]
- **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional]
+ **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional] [enum: NoAdditionalProcessing, TryCorrectResultHtml]
  **cssClassNamesPrefix** | **String**| When PDFtoHTML converter generates result CSSs, CSS class names (something like &quot;.stl_01 {}&quot; ... &quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix. | [optional]
  **explicitListOfSavedPages** | **List&lt;Integer&gt;**| With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF. | [optional]
- **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional]
- **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional]
- **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional]
- **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional]
+ **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional] [enum: Default, DecreaseToUnicodePriorityLevel]
+ **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional] [enum: AlwaysSaveAsWOFF, AlwaysSaveAsTTF, AlwaysSaveAsEOT, SaveInAllFormats]
+ **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional] [enum: WriteAllHtml, WriteOnlyBodyContent]
+ **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional] [enum: UseEmUnitsAndCompensationOfRoundingErrorsInCss, UsePixelUnitsInCssLetterSpacingForIE]
  **pagesFlowTypeDependsOnViewersScreenSize** | **Boolean**| If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer. | [optional]
- **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional]
- **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional]
+ **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional] [enum: EmbedAllIntoHtml, EmbedCssOnly, NoEmbedding]
+ **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional] [enum: AsPngImagesEmbeddedIntoSvg, AsExternalPngFilesReferencedViaSvg, AsEmbeddedPartsOfPngPageBackground]
  **removeEmptyAreasOnTopAndBottom** | **Boolean**| Defines whether in created HTML will be removed top and bottom empty area without any content (if any). | [optional]
  **saveShadowedTextsAsTransparentTexts** | **Boolean**| Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard). | [optional]
  **saveTransparentTexts** | **Boolean**| Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML. | [optional]
@@ -6365,7 +6916,7 @@ Converts PDF document (in request content) to PdfA format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. |
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
@@ -6438,13 +6989,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.tiff) |
  **brightness** | **Double**| Image brightness. | [optional]
- **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional]
- **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional]
+ **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional] [enum: LZW, CCITT4, CCITT3, RLE, None]
+ **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional] [enum: Default, Format8bpp, Format4bpp, Format1bpp]
  **leftMargin** | **Integer**| Left image margin. | [optional]
  **rightMargin** | **Integer**| Right image margin. | [optional]
  **topMargin** | **Integer**| Top image margin. | [optional]
  **bottomMargin** | **Integer**| Bottom image margin. | [optional]
- **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional]
+ **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional] [enum: None, Landscape, Portrait]
  **skipBlankPages** | **Boolean**| Skip blank pages flag. | [optional]
  **width** | **Integer**| Image width. | [optional]
  **height** | **Integer**| Image height. | [optional]
@@ -6577,11 +7128,11 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
  **addReturnToLineEnd** | **Boolean**| Add return to line end. | [optional]
- **format** | **String**| Allows to specify .doc or .docx file format. | [optional]
+ **format** | **String**| Allows to specify .doc or .docx file format. | [optional] [enum: Doc, DocX]
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **folder** | **String**| The document folder. | [optional]
@@ -6608,7 +7159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) |
- **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional]
+ **contentRecognitionMode** | **String**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] [enum: Flow, PdfFlow, Fixed]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6637,7 +7188,7 @@ Name | Type | Description  | Notes
  **compressSvgGraphicsIfAny** | **Boolean**| The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving. | [optional]
  **convertMarkedContentToLayers** | **Boolean**| If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with &quot;data-pdflayer&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content. | [optional]
  **defaultFontName** | **String**| Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used. | [optional]
- **documentType** | **String**| Result document type. | [optional]
+ **documentType** | **String**| Result document type. | [optional] [enum: Xhtml, Html5]
  **fixedLayout** | **Boolean**| The value indicating whether that HTML is created as fixed layout. | [optional]
  **imageResolution** | **Integer**| Resolution for image rendering. | [optional]
  **minimalLineWidth** | **Integer**| This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers. | [optional]
@@ -6645,16 +7196,16 @@ Name | Type | Description  | Notes
  **splitCssIntoPages** | **Boolean**| When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page. | [optional]
  **splitIntoPages** | **Boolean**| The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages. | [optional]
  **useZOrder** | **Boolean**| If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects. | [optional]
- **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional]
+ **antialiasingProcessing** | **String**| The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML. | [optional] [enum: NoAdditionalProcessing, TryCorrectResultHtml]
  **cssClassNamesPrefix** | **String**| When PDFtoHTML converter generates result CSSs, CSS class names (something like &quot;.stl_01 {}&quot; ... &quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix. | [optional]
  **explicitListOfSavedPages** | **List&lt;Integer&gt;**| With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF. | [optional]
- **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional]
- **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional]
- **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional]
- **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional]
+ **fontEncodingStrategy** | **String**| Defines encoding special rule to tune PDF decoding for current document. | [optional] [enum: Default, DecreaseToUnicodePriorityLevel]
+ **fontSavingMode** | **String**| Defines font saving mode that will be used during saving of PDF to desirable format. | [optional] [enum: AlwaysSaveAsWOFF, AlwaysSaveAsTTF, AlwaysSaveAsEOT, SaveInAllFormats]
+ **htmlMarkupGenerationMode** | **String**| Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments. | [optional] [enum: WriteAllHtml, WriteOnlyBodyContent]
+ **lettersPositioningMethod** | **String**| The mode of positioning of letters in words in result HTML. | [optional] [enum: UseEmUnitsAndCompensationOfRoundingErrorsInCss, UsePixelUnitsInCssLetterSpacingForIE]
  **pagesFlowTypeDependsOnViewersScreenSize** | **Boolean**| If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer. | [optional]
- **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional]
- **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional]
+ **partsEmbeddingMode** | **String**| It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities. | [optional] [enum: EmbedAllIntoHtml, EmbedCssOnly, NoEmbedding]
+ **rasterImagesSavingMode** | **String**| Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML. | [optional] [enum: AsPngImagesEmbeddedIntoSvg, AsExternalPngFilesReferencedViaSvg, AsEmbeddedPartsOfPngPageBackground]
  **removeEmptyAreasOnTopAndBottom** | **Boolean**| Defines whether in created HTML will be removed top and bottom empty area without any content (if any). | [optional]
  **saveShadowedTextsAsTransparentTexts** | **Boolean**| Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard). | [optional]
  **saveTransparentTexts** | **Boolean**| Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML. | [optional]
@@ -6734,7 +7285,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. |
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -6810,13 +7361,13 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.tiff) |
  **brightness** | **Double**| Image brightness. | [optional]
- **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional]
- **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional]
+ **compression** | **String**| Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None. | [optional] [enum: LZW, CCITT4, CCITT3, RLE, None]
+ **colorDepth** | **String**| Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp. | [optional] [enum: Default, Format8bpp, Format4bpp, Format1bpp]
  **leftMargin** | **Integer**| Left image margin. | [optional]
  **rightMargin** | **Integer**| Right image margin. | [optional]
  **topMargin** | **Integer**| Top image margin. | [optional]
  **bottomMargin** | **Integer**| Bottom image margin. | [optional]
- **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional]
+ **orientation** | **String**| Image orientation. Possible values are: None, Landscape, Portait. | [optional] [enum: None, Landscape, Portrait]
  **skipBlankPages** | **Boolean**| Skip blank pages flag. | [optional]
  **width** | **Integer**| Image width. | [optional]
  **height** | **Integer**| Image height. | [optional]
@@ -7026,7 +7577,7 @@ Update privilege document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **privileges** | [**DocumentPrivilege**](DocumentPrivilege.md)| Document privileges.  | [optional]
+ **privileges** | [**DocumentPrivilege**](DocumentPrivilege.md)| Document privileges. DocumentPrivilege |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -7507,7 +8058,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **fieldName** | **String**| The name of a field to be updated. |
- **field** | [**Field**](Field.md)| with the field data. | [optional]
+ **field** | [**Field**](Field.md)| Field with the field data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -7531,7 +8082,7 @@ Update fields.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **fields** | [**Fields**](Fields.md)| with the fields data. | [optional]
+ **fields** | [**Fields**](Fields.md)| Fields with the fields data. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -7689,6 +8240,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="storageExists"></a>
+# **storageExists**
+> StorageExist storageExists(storageName)
+
+Check if storage exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storageName** | **String**| Storage name |
+
+### Return type
+
+[**StorageExist**](StorageExist.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="uploadFile"></a>
+# **uploadFile**
+> FilesUploadResult uploadFile(path, file, storageName)
+
+Upload file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              |
+ **file** | **File**| File to upload |
+ **storageName** | **String**| Storage name | [optional]
+
+### Return type
+
+[**FilesUploadResult**](FilesUploadResult.md)
 
 ### HTTP request headers
 

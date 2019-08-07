@@ -98,10 +98,10 @@ public class GraphInfo {
   }
 
    /**
-   * Gets or sets a  object that indicates the color of the graph.
+   * Gets or sets a Color object that indicates the color of the graph.
    * @return color
   **/
-  @ApiModelProperty(value = "Gets or sets a  object that indicates the color of the graph.")
+  @ApiModelProperty(value = "Gets or sets a Color object that indicates the color of the graph.")
   public Color getColor() {
     return color;
   }
@@ -160,10 +160,10 @@ public class GraphInfo {
   }
 
    /**
-   * Gets or sets a  object that indicates the fill color of the graph.
+   * Gets or sets a Color object that indicates the fill color of the graph.
    * @return fillColor
   **/
-  @ApiModelProperty(value = "Gets or sets a  object that indicates the fill color of the graph.")
+  @ApiModelProperty(value = "Gets or sets a Color object that indicates the fill color of the graph.")
   public Color getFillColor() {
     return fillColor;
   }

@@ -51,7 +51,7 @@ public class TextReplaceResponse extends AsposeResponse {
    * Number of matches
    * @return matches
   **/
-  @ApiModelProperty(value = "Number of matches")
+  @ApiModelProperty(required = true, value = "Number of matches")
   public Integer getMatches() {
     return matches;
   }

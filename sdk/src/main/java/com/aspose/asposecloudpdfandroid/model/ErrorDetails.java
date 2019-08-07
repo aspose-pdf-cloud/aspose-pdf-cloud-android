@@ -23,8 +23,6 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
-import com.aspose.asposecloudpdfandroid.model.FileVersion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,41 +31,54 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
- * FileVersionsResponse
+ * The error details
  */
+@ApiModel(description = "The error details")
 
-public class FileVersionsResponse extends AsposeResponse {
-  @SerializedName("FileVersions")
-  private List<FileVersion> fileVersions = null;
+public class ErrorDetails {
+  @SerializedName("RequestId")
+  private String requestId = null;
 
-  public FileVersionsResponse fileVersions(List<FileVersion> fileVersions) {
-    this.fileVersions = fileVersions;
-    return this;
-  }
+  @SerializedName("Date")
+  private OffsetDateTime date = null;
 
-  public FileVersionsResponse addFileVersionsItem(FileVersion fileVersionsItem) {
-    if (this.fileVersions == null) {
-      this.fileVersions = new ArrayList<FileVersion>();
-    }
-    this.fileVersions.add(fileVersionsItem);
+  public ErrorDetails requestId(String requestId) {
+    this.requestId = requestId;
     return this;
   }
 
    /**
-   * Get fileVersions
-   * @return fileVersions
+   * The request id
+   * @return requestId
   **/
-  @ApiModelProperty(value = "")
-  public List<FileVersion> getFileVersions() {
-    return fileVersions;
+  @ApiModelProperty(value = "The request id")
+  public String getRequestId() {
+    return requestId;
   }
 
-  public void setFileVersions(List<FileVersion> fileVersions) {
-    this.fileVersions = fileVersions;
+  public void setRequestId(String requestId) {
+    this.requestId = requestId;
+  }
+
+  public ErrorDetails date(OffsetDateTime date) {
+    this.date = date;
+    return this;
+  }
+
+   /**
+   * Date
+   * @return date
+  **/
+  @ApiModelProperty(required = true, value = "Date")
+  public OffsetDateTime getDate() {
+    return date;
+  }
+
+  public void setDate(OffsetDateTime date) {
+    this.date = date;
   }
 
 
@@ -79,23 +90,24 @@ public class FileVersionsResponse extends AsposeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FileVersionsResponse fileVersionsResponse = (FileVersionsResponse) o;
-    return Objects.equals(this.fileVersions, fileVersionsResponse.fileVersions) &&
-        super.equals(o);
+    ErrorDetails errorDetails = (ErrorDetails) o;
+    return Objects.equals(this.requestId, errorDetails.requestId) &&
+        Objects.equals(this.date, errorDetails.date);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileVersions, super.hashCode());
+    return Objects.hash(requestId, date);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FileVersionsResponse {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    fileVersions: ").append(toIndentedString(fileVersions)).append("\n");
+    sb.append("class ErrorDetails {\n");
+    
+    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("}");
     return sb.toString();
   }

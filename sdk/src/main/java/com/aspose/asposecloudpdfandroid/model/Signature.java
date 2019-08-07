@@ -211,10 +211,10 @@ public class Signature {
   }
 
    /**
-   * Gets or sets a value indicating whether this  is visible. Supports only when signing particular page.
+   * Gets or sets a value indicating whether this Signature is visible. Supports only when signing particular page.
    * @return visible
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether this  is visible. Supports only when signing particular page.")
+  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether this Signature is visible. Supports only when signing particular page.")
   public Boolean isVisible() {
     return visible;
   }

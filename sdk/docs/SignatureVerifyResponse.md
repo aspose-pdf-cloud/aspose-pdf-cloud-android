@@ -5,7 +5,7 @@ Represent responce containing signature verification result
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**valid** | **Boolean** | True if signature is valid and false if not | [optional]
+**valid** | **Boolean** | True if signature is valid and false if not | 
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional]
 

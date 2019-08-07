@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **selectedItems** | **List&lt;Integer&gt;** | Selected items. | [optional]
 **type** | [**FieldType**](FieldType.md) | Field type. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]
-**values** | **List&lt;String&gt;** | Field values. | [optional]
+**values** | **List&lt;String&gt;** | Field values. | 
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 
 

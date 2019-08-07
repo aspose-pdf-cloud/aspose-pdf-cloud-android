@@ -5,7 +5,7 @@ Provides SoundAnnotation.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filePath** | **String** | A sound file path defining the sound to be played when the annotation is activated. | [optional]
+**filePath** | **String** | A sound file path defining the sound to be played when the annotation is activated. | 
 **icon** | [**SoundIcon**](SoundIcon.md) | Gets or sets an icon to be used in displaying the annotation. | [optional]
 **rate** | **Integer** | Gets or sets the sampling rate, in samples per second. | [optional]
 **channels** | **Integer** | Gets or sets the number of sound channels. | [optional]
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **id** | **String** | Gets ID of the annotation. | [optional]
 **flags** | [**List&lt;AnnotationFlags&gt;**](AnnotationFlags.md) | Gets Flags of the annotation. | [optional]
 **name** | **String** | Gets Name of the annotation. | [optional]
-**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | [optional]
+**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | 
 **pageIndex** | **Integer** | Gets PageIndex of the annotation. | [optional]
 **zIndex** | **Integer** | Gets ZIndex of the annotation. | [optional]
 **horizontalAlignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. | [optional]

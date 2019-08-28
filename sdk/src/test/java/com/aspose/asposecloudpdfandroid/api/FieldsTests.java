@@ -220,4 +220,58 @@ public class FieldsTests {
         AsposeResponse response = th.pdfApi.postFlattenDocument(name, updateAppearances, null, hideButtons, null, folder);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * GetDocumentSignatureFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentSignatureFieldsTest() throws ApiException
+    {
+        String name = "adbe.x509.rsa_sha1.valid.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        SignatureFieldsResponse response = th.pdfApi.getDocumentSignatureFields(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageSignatureFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageSignatureFieldsTest() throws ApiException
+    {
+        String name = "adbe.x509.rsa_sha1.valid.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        int pageNumber = 1;
+        SignatureFieldsResponse response = th.pdfApi.getPageSignatureFields(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetSignatureField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getSignatureFieldTest() throws ApiException
+    {
+        String name = "adbe.x509.rsa_sha1.valid.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "Signature1";
+        SignatureFieldResponse response = th.pdfApi.getSignatureField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 }

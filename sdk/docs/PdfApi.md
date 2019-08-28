@@ -55,6 +55,7 @@ Method | HTTP request | Description
 [**getDocumentProperty**](PdfApi.md#getDocumentProperty) | **GET** /pdf/\{name}/documentproperties/\{propertyName} | Read document property by name.
 [**getDocumentRedactionAnnotations**](PdfApi.md#getDocumentRedactionAnnotations) | **GET** /pdf/\{name}/annotations/redaction | Read document redaction annotations.
 [**getDocumentScreenAnnotations**](PdfApi.md#getDocumentScreenAnnotations) | **GET** /pdf/\{name}/annotations/screen | Read document screen annotations.
+[**getDocumentSignatureFields**](PdfApi.md#getDocumentSignatureFields) | **GET** /pdf/\{name}/fields/signature | Read document signature fields.
 [**getDocumentSoundAnnotations**](PdfApi.md#getDocumentSoundAnnotations) | **GET** /pdf/\{name}/annotations/sound | Read document sound annotations.
 [**getDocumentSquareAnnotations**](PdfApi.md#getDocumentSquareAnnotations) | **GET** /pdf/\{name}/annotations/square | Read document square annotations.
 [**getDocumentSquigglyAnnotations**](PdfApi.md#getDocumentSquigglyAnnotations) | **GET** /pdf/\{name}/annotations/squiggly | Read document squiggly annotations.
@@ -91,6 +92,7 @@ Method | HTTP request | Description
 [**getLaTeXInStorageToPdf**](PdfApi.md#getLaTeXInStorageToPdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**getLineAnnotation**](PdfApi.md#getLineAnnotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**getLinkAnnotation**](PdfApi.md#getLinkAnnotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+[**getMarkdownInStorageToPdf**](PdfApi.md#getMarkdownInStorageToPdf) | **GET** /pdf/create/markdown | Convert MD file (located on storage) to PDF format and return resulting file in response. 
 [**getMhtInStorageToPdf**](PdfApi.md#getMhtInStorageToPdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**getMovieAnnotation**](PdfApi.md#getMovieAnnotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 [**getPage**](PdfApi.md#getPage) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -116,6 +118,7 @@ Method | HTTP request | Description
 [**getPagePopupAnnotations**](PdfApi.md#getPagePopupAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/popup | Read document page popup annotations.
 [**getPageRedactionAnnotations**](PdfApi.md#getPageRedactionAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Read document page redaction annotations.
 [**getPageScreenAnnotations**](PdfApi.md#getPageScreenAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/screen | Read document page screen annotations.
+[**getPageSignatureFields**](PdfApi.md#getPageSignatureFields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/signature | Read document page signature fields.
 [**getPageSoundAnnotations**](PdfApi.md#getPageSoundAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/sound | Read document page sound annotations.
 [**getPageSquareAnnotations**](PdfApi.md#getPageSquareAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/square | Read document page square annotations.
 [**getPageSquigglyAnnotations**](PdfApi.md#getPageSquigglyAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Read document page squiggly annotations.
@@ -148,6 +151,7 @@ Method | HTTP request | Description
 [**getRedactionAnnotation**](PdfApi.md#getRedactionAnnotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
 [**getScreenAnnotation**](PdfApi.md#getScreenAnnotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
 [**getScreenAnnotationData**](PdfApi.md#getScreenAnnotationData) | **GET** /pdf/\{name}/annotations/screen/\{annotationId}/data | Read document page screen annotation by ID.
+[**getSignatureField**](PdfApi.md#getSignatureField) | **GET** /pdf/\{name}/fields/signature/\{fieldName} | Read document signature field by name.
 [**getSoundAnnotation**](PdfApi.md#getSoundAnnotation) | **GET** /pdf/\{name}/annotations/sound/\{annotationId} | Read document page sound annotation by ID.
 [**getSoundAnnotationData**](PdfApi.md#getSoundAnnotationData) | **GET** /pdf/\{name}/annotations/sound/\{annotationId}/data | Read document page sound annotation by ID.
 [**getSquareAnnotation**](PdfApi.md#getSquareAnnotation) | **GET** /pdf/\{name}/annotations/square/\{annotationId} | Read document page square annotation by ID.
@@ -190,6 +194,7 @@ Method | HTTP request | Description
 [**postMovePage**](PdfApi.md#postMovePage) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**postOptimizeDocument**](PdfApi.md#postOptimizeDocument) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**postPageCaretAnnotations**](PdfApi.md#postPageCaretAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
+[**postPageCertify**](PdfApi.md#postPageCertify) | **POST** /pdf/\{name}/pages/\{pageNumber}/certify | Certify document page.
 [**postPageCircleAnnotations**](PdfApi.md#postPageCircleAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/circle | Add document page circle annotations.
 [**postPageFileAttachmentAnnotations**](PdfApi.md#postPageFileAttachmentAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/fileattachment | Add document page FileAttachment annotations.
 [**postPageFreeTextAnnotations**](PdfApi.md#postPageFreeTextAnnotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/freetext | Add document page free text annotations.
@@ -254,6 +259,7 @@ Method | HTTP request | Description
 [**putLaTeXInStorageToPdf**](PdfApi.md#putLaTeXInStorageToPdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**putLineAnnotation**](PdfApi.md#putLineAnnotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 [**putLinkAnnotation**](PdfApi.md#putLinkAnnotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
+[**putMarkdownInStorageToPdf**](PdfApi.md#putMarkdownInStorageToPdf) | **PUT** /pdf/\{name}/create/markdown | Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
 [**putMergeDocuments**](PdfApi.md#putMergeDocuments) | **PUT** /pdf/\{name}/merge | Merge a list of documents.
 [**putMhtInStorageToPdf**](PdfApi.md#putMhtInStorageToPdf) | **PUT** /pdf/\{name}/create/mht | Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 [**putMovieAnnotation**](PdfApi.md#putMovieAnnotation) | **PUT** /pdf/\{name}/annotations/movie/\{annotationId} | Replace document movie annotation
@@ -1518,6 +1524,29 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getDocumentSignatureFields"></a>
+# **getDocumentSignatureFields**
+> SignatureFieldsResponse getDocumentSignatureFields(name, storage, folder)
+
+Read document signature fields.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**SignatureFieldsResponse**](SignatureFieldsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getDocumentSoundAnnotations"></a>
 # **getDocumentSoundAnnotations**
 > SoundAnnotationsResponse getDocumentSoundAnnotations(name, storage, folder)
@@ -2375,6 +2404,28 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getMarkdownInStorageToPdf"></a>
+# **getMarkdownInStorageToPdf**
+> File getMarkdownInStorageToPdf(srcPath, storage)
+
+Convert MD file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.md) |
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
 <a name="getMhtInStorageToPdf"></a>
 # **getMhtInStorageToPdf**
 > File getMhtInStorageToPdf(srcPath, storage)
@@ -2980,6 +3031,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ScreenAnnotationsResponse**](ScreenAnnotationsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getPageSignatureFields"></a>
+# **getPageSignatureFields**
+> SignatureFieldsResponse getPageSignatureFields(name, pageNumber, storage, folder)
+
+Read document page signature fields.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| The page number. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**SignatureFieldsResponse**](SignatureFieldsResponse.md)
 
 ### HTTP request headers
 
@@ -3807,6 +3882,30 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
+
+<a name="getSignatureField"></a>
+# **getSignatureField**
+> SignatureFieldResponse getSignatureField(name, fieldName, storage, folder)
+
+Read document signature field by name.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **fieldName** | **String**| The field name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**SignatureFieldResponse**](SignatureFieldResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="getSoundAnnotation"></a>
 # **getSoundAnnotation**
@@ -4844,6 +4943,32 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
  **annotations** | [**List&lt;CaretAnnotation&gt;**](CaretAnnotation.md)| The array of annotation. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postPageCertify"></a>
+# **postPageCertify**
+> AsposeResponse postPageCertify(name, pageNumber, sign, docMdpAccessPermissionType, storage, folder)
+
+Certify document page.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| The page number. |
+ **sign** | [**Signature**](Signature.md)| Signature object containing signature data. |
+ **docMdpAccessPermissionType** | **String**| The access permissions granted for this document. | [enum: NoChanges, FillingInForms, AnnotationModification]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -6462,6 +6587,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putMarkdownInStorageToPdf"></a>
+# **putMarkdownInStorageToPdf**
+> AsposeResponse putMarkdownInStorageToPdf(name, srcPath, storage, dstFolder)
+
+Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.md) |
+ **storage** | **String**| The document storage. | [optional]
+ **dstFolder** | **String**| The destination document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 

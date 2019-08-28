@@ -24,7 +24,9 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.Rectangle;
+import com.aspose.asposecloudpdfandroid.model.SignatureCustomAppearance;
 import com.aspose.asposecloudpdfandroid.model.SignatureType;
+import com.aspose.asposecloudpdfandroid.model.TimestampSettings;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -78,6 +80,15 @@ public class Signature {
 
   @SerializedName("ShowProperties")
   private Boolean showProperties = null;
+
+  @SerializedName("TimestampSettings")
+  private TimestampSettings timestampSettings = null;
+
+  @SerializedName("IsValid")
+  private Boolean isValid = null;
+
+  @SerializedName("CustomAppearance")
+  private SignatureCustomAppearance customAppearance = null;
 
   public Signature signaturePath(String signaturePath) {
     this.signaturePath = signaturePath;
@@ -313,6 +324,60 @@ public class Signature {
     this.showProperties = showProperties;
   }
 
+  public Signature timestampSettings(TimestampSettings timestampSettings) {
+    this.timestampSettings = timestampSettings;
+    return this;
+  }
+
+   /**
+   * Gets/sets timestamp settings.
+   * @return timestampSettings
+  **/
+  @ApiModelProperty(value = "Gets/sets timestamp settings.")
+  public TimestampSettings getTimestampSettings() {
+    return timestampSettings;
+  }
+
+  public void setTimestampSettings(TimestampSettings timestampSettings) {
+    this.timestampSettings = timestampSettings;
+  }
+
+  public Signature isValid(Boolean isValid) {
+    this.isValid = isValid;
+    return this;
+  }
+
+   /**
+   * Verify the document regarding this signature and return true if document is valid or otherwise false.
+   * @return isValid
+  **/
+  @ApiModelProperty(value = "Verify the document regarding this signature and return true if document is valid or otherwise false.")
+  public Boolean isIsValid() {
+    return isValid;
+  }
+
+  public void setIsValid(Boolean isValid) {
+    this.isValid = isValid;
+  }
+
+  public Signature customAppearance(SignatureCustomAppearance customAppearance) {
+    this.customAppearance = customAppearance;
+    return this;
+  }
+
+   /**
+   * Gets/sets the custom appearance.
+   * @return customAppearance
+  **/
+  @ApiModelProperty(value = "Gets/sets the custom appearance.")
+  public SignatureCustomAppearance getCustomAppearance() {
+    return customAppearance;
+  }
+
+  public void setCustomAppearance(SignatureCustomAppearance customAppearance) {
+    this.customAppearance = customAppearance;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -335,12 +400,15 @@ public class Signature {
         Objects.equals(this.formFieldName, signature.formFieldName) &&
         Objects.equals(this.authority, signature.authority) &&
         Objects.equals(this.date, signature.date) &&
-        Objects.equals(this.showProperties, signature.showProperties);
+        Objects.equals(this.showProperties, signature.showProperties) &&
+        Objects.equals(this.timestampSettings, signature.timestampSettings) &&
+        Objects.equals(this.isValid, signature.isValid) &&
+        Objects.equals(this.customAppearance, signature.customAppearance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(signaturePath, signatureType, password, appearance, reason, contact, location, visible, rectangle, formFieldName, authority, date, showProperties);
+    return Objects.hash(signaturePath, signatureType, password, appearance, reason, contact, location, visible, rectangle, formFieldName, authority, date, showProperties, timestampSettings, isValid, customAppearance);
   }
 
 
@@ -362,6 +430,9 @@ public class Signature {
     sb.append("    authority: ").append(toIndentedString(authority)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    showProperties: ").append(toIndentedString(showProperties)).append("\n");
+    sb.append("    timestampSettings: ").append(toIndentedString(timestampSettings)).append("\n");
+    sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
+    sb.append("    customAppearance: ").append(toIndentedString(customAppearance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

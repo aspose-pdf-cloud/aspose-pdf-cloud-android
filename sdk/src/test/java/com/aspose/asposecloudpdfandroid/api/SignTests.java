@@ -158,4 +158,46 @@ public class SignTests {
         SignatureVerifyResponse response = th.pdfApi.getVerifySignature(name, signature.getFormFieldName(), null, folder);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * PostPageCertify Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postPageCertifyTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String signatureFileName = "33226.p12";
+        th.uploadFile(signatureFileName);
+
+        int pageNumber = 1;
+        DocMDPAccessPermissionType permissionType = DocMDPAccessPermissionType.NOCHANGES;
+
+        Rectangle rectangle = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(500.)
+                .URY(200.);
+
+        String folder = th.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("sIikZSmz");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        AsposeResponse response = th.pdfApi.postPageCertify(name, pageNumber, signature, permissionType.toString(), null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 }

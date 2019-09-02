@@ -522,4 +522,42 @@ public class ConvertToPdfTests {
         assertEquals(200, (int)response.getCode());
     }
 
+    /**
+     * GetMarkdownInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getMarkdownInStorageToPdfTest() throws ApiException
+    {
+        String name = "mixed.md";
+        th.uploadFile(name);
+
+
+        String srcPath = th.tempFolder + '/' + name;
+
+        File response = th.pdfApi.getMarkdownInStorageToPdf(srcPath, null);
+        assertNotNull(response);
+    }
+
+
+    /**
+     * PutMarkdownInStorageToPdf Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putMarkdownInStorageToPdfTest() throws ApiException
+    {
+        String name = "mixed.md";
+        th.uploadFile(name);
+
+
+        String srcPath = th.tempFolder + '/' + name;
+        String resultName = "fromPs.pdf";
+
+        AsposeResponse response = th.pdfApi.putMarkdownInStorageToPdf(resultName, srcPath, th.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 }

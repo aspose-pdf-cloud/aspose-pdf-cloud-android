@@ -274,4 +274,123 @@ public class FieldsTests {
         SignatureFieldResponse response = th.pdfApi.getSignatureField(name, fieldName, null, folder);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * GetDocumentTextBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentTextBoxFieldsTest() throws ApiException
+    {
+        String name = "FormDataTextBox.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        TextBoxFieldsResponse response = th.pdfApi.getDocumentTextBoxFields(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageTextBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageTextBoxFieldsTest() throws ApiException
+    {
+        String name = "FormDataTextBox.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        int pageNumber = 1;
+
+        TextBoxFieldsResponse response = th.pdfApi.getPageTextBoxFields(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetTextBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getTextBoxFieldTest() throws ApiException
+    {
+        String name = "FormDataTextBox.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "Petitioner";
+
+        TextBoxFieldResponse response = th.pdfApi.getTextBoxField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostTextBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postTextBoxFieldsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        TextBoxField textBox = new TextBoxField()
+            .multiline(true)
+            .maxLen(100);
+
+        textBox.rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(200.))
+            .pageIndex(1)
+            .isGroup(false)
+            .color(new Color().A(255).R(255).G(0).B(0))
+            .value("Page 1\nValue")
+            .partialName("testField");
+
+        ArrayList<TextBoxField> fields = new ArrayList<>();
+        fields.add(textBox);
+
+        AsposeResponse response = th.pdfApi.postTextBoxFields(name, fields, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutTextBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putTextBoxFieldTest() throws ApiException
+    {
+        String name = "FormDataTextBox.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        TextBoxField textBox = new TextBoxField()
+                .multiline(true)
+                .maxLen(100);
+
+        textBox.rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(200.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .value("Page 1\nValue")
+                .partialName("testField");
+
+        String fieldName = "Petitioner";
+
+        AsposeResponse response = th.pdfApi.putTextBoxField(name, fieldName, textBox, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 }

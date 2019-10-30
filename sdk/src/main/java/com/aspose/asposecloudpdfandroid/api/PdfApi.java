@@ -47,6 +47,9 @@ import com.aspose.asposecloudpdfandroid.model.BookmarksResponse;
 import com.aspose.asposecloudpdfandroid.model.CaretAnnotation;
 import com.aspose.asposecloudpdfandroid.model.CaretAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.CaretAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.CheckBoxField;
+import com.aspose.asposecloudpdfandroid.model.CheckBoxFieldResponse;
+import com.aspose.asposecloudpdfandroid.model.CheckBoxFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotation;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationsResponse;
@@ -108,6 +111,9 @@ import com.aspose.asposecloudpdfandroid.model.PolygonAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.PopupAnnotation;
 import com.aspose.asposecloudpdfandroid.model.PopupAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.PopupAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.RadioButtonField;
+import com.aspose.asposecloudpdfandroid.model.RadioButtonFieldResponse;
+import com.aspose.asposecloudpdfandroid.model.RadioButtonFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotation;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotationsResponse;
@@ -201,7 +207,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/file/copy/{srcPath}"
-            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapeString(srcPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapePathSegmentString(srcPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -360,7 +366,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/folder/copy/{srcPath}"
-            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapeString(srcPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapePathSegmentString(srcPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -512,7 +518,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/folder/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -651,8 +657,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -809,8 +815,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/bookmark/{bookmarkPath}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapeString(bookmarkPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapePathSegmentString(bookmarkPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -966,7 +972,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1114,7 +1120,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/tree"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1262,7 +1268,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/links"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1410,7 +1416,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/stamps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1558,7 +1564,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/tables"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1707,8 +1713,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1864,7 +1870,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/file/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2007,7 +2013,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/folder/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2151,8 +2157,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2309,8 +2315,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/links/{linkId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapeString(linkId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapePathSegmentString(linkId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2467,8 +2473,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2625,8 +2631,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2783,8 +2789,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/links"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2941,8 +2947,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3099,8 +3105,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/tables"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3256,7 +3262,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/documentproperties"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3405,8 +3411,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/documentproperties/{propertyName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapeString(propertyName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapePathSegmentString(propertyName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3563,8 +3569,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/stamps/{stampId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "stampId" + "\\}", apiClient.escapeString(stampId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "stampId" + "\\}", apiClient.escapePathSegmentString(stampId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3721,8 +3727,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/tables/{tableId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapeString(tableId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapePathSegmentString(tableId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3878,7 +3884,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/file/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4027,8 +4033,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/bookmark/{bookmarkPath}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapeString(bookmarkPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapePathSegmentString(bookmarkPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4185,8 +4191,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/list/{bookmarkPath}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapeString(bookmarkPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapePathSegmentString(bookmarkPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4343,8 +4349,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/caret/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4486,6 +4492,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getCheckBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCheckBoxFieldCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/checkbox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getCheckBoxFieldValidateBeforeCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getCheckBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling getCheckBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getCheckBoxFieldCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document checkbox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return CheckBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CheckBoxFieldResponse getCheckBoxField(String name, String fieldName, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<CheckBoxFieldResponse> resp = getCheckBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<CheckBoxFieldResponse> resp = getCheckBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document checkbox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;CheckBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CheckBoxFieldResponse> getCheckBoxFieldWithHttpInfo(String name, String fieldName, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getCheckBoxFieldValidateBeforeCall(name, fieldName, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document checkbox field by name. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getCheckBoxFieldAsync(String name, String fieldName, String storage, String folder, final ApiCallback<CheckBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getCheckBoxFieldValidateBeforeCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getCircleAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -4501,8 +4665,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/circle/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4790,7 +4954,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4938,7 +5102,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5087,8 +5251,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/attachments/{attachmentIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "attachmentIndex" + "\\}", apiClient.escapeString(attachmentIndex.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "attachmentIndex" + "\\}", apiClient.escapePathSegmentString(attachmentIndex.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5244,7 +5408,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/attachments"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5392,7 +5556,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/tree"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5540,7 +5704,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/caret"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5674,6 +5838,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getDocumentCheckBoxFields
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentCheckBoxFieldsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/checkbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentCheckBoxFieldsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentCheckBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentCheckBoxFieldsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return CheckBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CheckBoxFieldsResponse getDocumentCheckBoxFields(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<CheckBoxFieldsResponse> resp = getDocumentCheckBoxFieldsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<CheckBoxFieldsResponse> resp = getDocumentCheckBoxFieldsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;CheckBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CheckBoxFieldsResponse> getDocumentCheckBoxFieldsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentCheckBoxFieldsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document checkbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentCheckBoxFieldsAsync(String name, String storage, String folder, final ApiCallback<CheckBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentCheckBoxFieldsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDocumentCircleAnnotations
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -5688,7 +6000,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/circle"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5836,7 +6148,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/fileattachment"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5984,7 +6296,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/freetext"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6132,7 +6444,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/highlight"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6280,7 +6592,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/ink"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6428,7 +6740,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/line"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6576,7 +6888,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/movie"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6724,7 +7036,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polyline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6872,7 +7184,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polygon"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7020,7 +7332,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/popup"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7169,8 +7481,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/{annotationId}/popup"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7326,7 +7638,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/documentproperties"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7475,8 +7787,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/documentproperties/{propertyName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapeString(propertyName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapePathSegmentString(propertyName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7618,6 +7930,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getDocumentRadioButtonFields
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentRadioButtonFieldsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/radiobutton"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentRadioButtonFieldsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentRadioButtonFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentRadioButtonFieldsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document radiobutton fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return RadioButtonFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RadioButtonFieldsResponse getDocumentRadioButtonFields(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<RadioButtonFieldsResponse> resp = getDocumentRadioButtonFieldsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<RadioButtonFieldsResponse> resp = getDocumentRadioButtonFieldsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document radiobutton fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;RadioButtonFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RadioButtonFieldsResponse> getDocumentRadioButtonFieldsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentRadioButtonFieldsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document radiobutton fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentRadioButtonFieldsAsync(String name, String storage, String folder, final ApiCallback<RadioButtonFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentRadioButtonFieldsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDocumentRedactionAnnotations
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -7632,7 +8092,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/redaction"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7780,7 +8240,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/screen"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7928,7 +8388,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/signature"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8076,7 +8536,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/sound"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8224,7 +8684,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/square"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8372,7 +8832,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/squiggly"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8520,7 +8980,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/stamp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8668,7 +9128,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/stamps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8816,7 +9276,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/strikeout"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8964,7 +9424,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/tables"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9112,7 +9572,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9260,7 +9720,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/textbox"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9408,7 +9868,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/underline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9557,8 +10017,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/attachments/{attachmentIndex}/download"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "attachmentIndex" + "\\}", apiClient.escapeString(attachmentIndex.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "attachmentIndex" + "\\}", apiClient.escapePathSegmentString(attachmentIndex.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9857,7 +10317,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/fdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10005,7 +10465,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/xfdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10153,7 +10613,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10302,8 +10762,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10459,7 +10919,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10608,8 +11068,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/fileattachment/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10766,8 +11226,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/fileattachment/{annotationId}/data"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10922,7 +11382,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/version/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11064,7 +11524,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/folder/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11208,8 +11668,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/freetext/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11366,8 +11826,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/highlight/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11715,8 +12175,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11875,8 +12335,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/gif"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12045,8 +12505,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/jpeg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12215,8 +12675,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/png"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12385,8 +12845,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12553,8 +13013,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12711,7 +13171,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/fdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -12870,7 +13330,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xfdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -13029,7 +13489,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -13188,8 +13648,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/ink/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -13489,8 +13949,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/line/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -13647,8 +14107,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/links/{linkId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapeString(linkId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapePathSegmentString(linkId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14091,8 +14551,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/movie/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14249,8 +14709,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14407,8 +14867,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14565,8 +15025,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/caret"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14708,6 +15168,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPageCheckBoxFields
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageCheckBoxFieldsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/checkbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageCheckBoxFieldsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageCheckBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageCheckBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageCheckBoxFieldsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return CheckBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CheckBoxFieldsResponse getPageCheckBoxFields(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<CheckBoxFieldsResponse> resp = getPageCheckBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<CheckBoxFieldsResponse> resp = getPageCheckBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;CheckBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CheckBoxFieldsResponse> getPageCheckBoxFieldsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageCheckBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page checkbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageCheckBoxFieldsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<CheckBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageCheckBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPageCircleAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -14723,8 +15341,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/circle"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -14883,8 +15501,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/bmp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15053,8 +15671,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/emf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15223,8 +15841,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/gif"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15393,8 +16011,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/jpeg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15563,8 +16181,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/png"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15733,8 +16351,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -15901,8 +16519,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/fileattachment"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16059,8 +16677,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/freetext"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16217,8 +16835,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/highlight"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16375,8 +16993,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/ink"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16533,8 +17151,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/line"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16694,9 +17312,9 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/links/{linkId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapeString(linkId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()))
+            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapePathSegmentString(linkId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16868,8 +17486,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/links"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17026,8 +17644,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/movie"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17184,8 +17802,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/polyline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17342,8 +17960,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/polygon"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17500,8 +18118,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/popup"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17643,6 +18261,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPageRadioButtonFields
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageRadioButtonFieldsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/radiobutton"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageRadioButtonFieldsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageRadioButtonFields(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageRadioButtonFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageRadioButtonFieldsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page radiobutton fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return RadioButtonFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RadioButtonFieldsResponse getPageRadioButtonFields(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<RadioButtonFieldsResponse> resp = getPageRadioButtonFieldsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<RadioButtonFieldsResponse> resp = getPageRadioButtonFieldsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page radiobutton fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;RadioButtonFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RadioButtonFieldsResponse> getPageRadioButtonFieldsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageRadioButtonFieldsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page radiobutton fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageRadioButtonFieldsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<RadioButtonFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageRadioButtonFieldsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPageRedactionAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
@@ -17658,8 +18434,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/redaction"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17816,8 +18592,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/screen"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -17974,8 +18750,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/signature"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18132,8 +18908,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/sound"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18290,8 +19066,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/square"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18448,8 +19224,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/squiggly"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18606,8 +19382,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/stamp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18764,8 +19540,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -18922,8 +19698,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/strikeout"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19080,8 +19856,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/tables"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19245,8 +20021,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19458,8 +20234,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19616,8 +20392,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/textbox"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19774,8 +20550,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/underline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -19931,7 +20707,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -20230,7 +21006,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/doc"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -20419,7 +21195,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/epub"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -20600,7 +21376,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/html"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -20889,7 +21665,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21042,7 +21818,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/mobixml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21191,7 +21967,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/pdfa"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21351,7 +22127,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/pptx"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21510,7 +22286,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/svg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21678,7 +22454,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21905,7 +22681,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xls"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22077,7 +22853,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xlsx"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22245,7 +23021,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22393,7 +23169,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22542,8 +23318,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polyline/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22700,8 +23476,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polygon/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22858,8 +23634,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/popup/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23144,6 +23920,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getRadioButtonField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getRadioButtonFieldCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/radiobutton/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getRadioButtonFieldValidateBeforeCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getRadioButtonField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling getRadioButtonField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getRadioButtonFieldCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document RadioButton field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return RadioButtonFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RadioButtonFieldResponse getRadioButtonField(String name, String fieldName, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<RadioButtonFieldResponse> resp = getRadioButtonFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<RadioButtonFieldResponse> resp = getRadioButtonFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document RadioButton field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;RadioButtonFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RadioButtonFieldResponse> getRadioButtonFieldWithHttpInfo(String name, String fieldName, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getRadioButtonFieldValidateBeforeCall(name, fieldName, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document RadioButton field by name. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getRadioButtonFieldAsync(String name, String fieldName, String storage, String folder, final ApiCallback<RadioButtonFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getRadioButtonFieldValidateBeforeCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getRedactionAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -23159,8 +24093,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/redaction/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23317,8 +24251,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/screen/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23475,8 +24409,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/screen/{annotationId}/data"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23633,8 +24567,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/signature/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23791,8 +24725,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/sound/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -23949,8 +24883,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/sound/{annotationId}/data"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -24107,8 +25041,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/square/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -24265,8 +25199,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/squiggly/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -24423,8 +25357,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/stamp/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -24581,8 +25515,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/stamp/{annotationId}/data"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -24739,8 +25673,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/strikeout/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25088,8 +26022,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/tables/{tableId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapeString(tableId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapePathSegmentString(tableId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25252,7 +26186,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25456,8 +26390,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/text/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25614,8 +26548,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/textbox/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25772,8 +26706,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/underline/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -25930,7 +26864,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/verifySignature"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -26273,7 +27207,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/wordCount"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -26421,7 +27355,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xfatoacroform"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27006,7 +27940,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/file/move/{srcPath}"
-            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapeString(srcPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapePathSegmentString(srcPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27165,7 +28099,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/folder/move/{srcPath}"
-            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapeString(srcPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "srcPath" + "\\}", apiClient.escapePathSegmentString(srcPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27318,7 +28252,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/exist/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27469,7 +28403,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/appendDocument"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27639,8 +28573,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/bookmark/{bookmarkPath}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapeString(bookmarkPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapePathSegmentString(bookmarkPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27807,7 +28741,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/changepassword"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -27971,6 +28905,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postCheckBoxFields
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postCheckBoxFieldsCall(String name, List<CheckBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = fields;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/checkbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postCheckBoxFieldsValidateBeforeCall(String name, List<CheckBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postCheckBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'fields' is set
+        if (fields == null) {
+            throw new ApiException("Missing the required parameter 'fields' when calling postCheckBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postCheckBoxFieldsCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postCheckBoxFields(String name, List<CheckBoxField> fields, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postCheckBoxFieldsWithHttpInfo(name, fields, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postCheckBoxFieldsWithHttpInfo(name, fields, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document checkbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postCheckBoxFieldsWithHttpInfo(String name, List<CheckBoxField> fields, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postCheckBoxFieldsValidateBeforeCall(name, fields, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document checkbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postCheckBoxFieldsAsync(String name, List<CheckBoxField> fields, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postCheckBoxFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postCreateField
      * @param name The document name. (required)
      * @param page Document page number. (required)
@@ -27987,7 +29078,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28154,7 +29245,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/decrypt"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28315,7 +29406,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/footer/image"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28484,7 +29575,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/header/image"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28653,7 +29744,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/stamps/pagenumber"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28822,7 +29913,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/footer/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -28991,7 +30082,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/header/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29158,7 +30249,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/text/replace"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29319,7 +30410,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/encrypt"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29510,7 +30601,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/flatten"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29674,7 +30765,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/fdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29826,7 +30917,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xfdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -29978,7 +31069,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -30136,8 +31227,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -30343,8 +31434,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/movePage"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -30511,7 +31602,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/optimize"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -30669,8 +31760,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/caret"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -30837,8 +31928,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/certify"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31014,8 +32105,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/circle"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31181,8 +32272,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/fileattachment"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31348,8 +32439,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/freetext"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31515,8 +32606,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/highlight"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31682,8 +32773,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamps/image"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -31849,8 +32940,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/ink"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32016,8 +33107,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/line"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32183,8 +33274,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/links"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32350,8 +33441,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/movie"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32517,8 +33608,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamps/pdfpage"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32684,8 +33775,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/polyline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -32851,8 +33942,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/polygon"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33018,8 +34109,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/redaction"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33185,8 +34276,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/screen"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33352,8 +34443,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/sound"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33519,8 +34610,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/square"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33686,8 +34777,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/squiggly"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -33853,8 +34944,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/stamp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34020,8 +35111,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/strikeout"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34187,8 +35278,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/tables"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34354,8 +35445,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34521,8 +35612,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/text/replace"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34688,8 +35779,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamps/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -34855,8 +35946,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/annotations/underline"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35022,8 +36113,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/{annotationId}/popup"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35173,6 +36264,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postRadioButtonFields
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postRadioButtonFieldsCall(String name, List<RadioButtonField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = fields;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/radiobutton"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postRadioButtonFieldsValidateBeforeCall(String name, List<RadioButtonField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postRadioButtonFields(Async)");
+        }
+        
+        // verify the required parameter 'fields' is set
+        if (fields == null) {
+            throw new ApiException("Missing the required parameter 'fields' when calling postRadioButtonFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postRadioButtonFieldsCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document RadioButton fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postRadioButtonFields(String name, List<RadioButtonField> fields, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postRadioButtonFieldsWithHttpInfo(name, fields, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postRadioButtonFieldsWithHttpInfo(name, fields, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document RadioButton fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postRadioButtonFieldsWithHttpInfo(String name, List<RadioButtonField> fields, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postRadioButtonFieldsValidateBeforeCall(name, fields, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document RadioButton fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postRadioButtonFieldsAsync(String name, List<RadioButtonField> fields, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postRadioButtonFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postSignDocument
      * @param name The document name. (required)
      * @param sign Signature object containing signature data. (required)
@@ -35188,7 +36436,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/sign"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35346,8 +36594,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/sign"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35514,7 +36762,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/split"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35678,7 +36926,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/textbox"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35834,7 +37082,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -35984,8 +37232,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/text"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -36152,7 +37400,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/flatten"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -36317,8 +37565,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/bookmarks/bookmark/{bookmarkPath}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapeString(bookmarkPath.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "bookmarkPath" + "\\}", apiClient.escapePathSegmentString(bookmarkPath.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -36484,8 +37732,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/caret/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -36815,6 +38063,173 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putCheckBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putCheckBoxFieldCall(String name, String fieldName, CheckBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/checkbox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putCheckBoxFieldValidateBeforeCall(String name, String fieldName, CheckBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putCheckBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling putCheckBoxField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling putCheckBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putCheckBoxFieldCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document checkbox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return CheckBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CheckBoxFieldResponse putCheckBoxField(String name, String fieldName, CheckBoxField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<CheckBoxFieldResponse> resp = putCheckBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<CheckBoxFieldResponse> resp = putCheckBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document checkbox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;CheckBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CheckBoxFieldResponse> putCheckBoxFieldWithHttpInfo(String name, String fieldName, CheckBoxField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putCheckBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document checkbox field (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putCheckBoxFieldAsync(String name, String fieldName, CheckBoxField field, String storage, String folder, final ApiCallback<CheckBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putCheckBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CheckBoxFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putCircleAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -36831,8 +38246,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/circle/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -36996,7 +38411,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -37495,7 +38910,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/epub"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -37654,7 +39069,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/fdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -37813,7 +39228,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/xfdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -37972,7 +39387,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/export/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38130,7 +39545,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/flatten"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38280,8 +39695,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/fileattachment/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38447,8 +39862,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/fileattachment/{annotationId}/data/extract"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38611,8 +40026,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/freetext/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38778,8 +40193,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/highlight/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -38952,7 +40367,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/html"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -39154,8 +40569,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/gif"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -39330,8 +40745,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/jpeg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -39506,8 +40921,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/png"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -39682,8 +41097,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}/extract/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -39855,7 +41270,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/images"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40015,8 +41430,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/gif"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40191,8 +41606,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/jpeg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40367,8 +41782,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/png"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40543,8 +41958,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/images/extract/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40716,7 +42131,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/fdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -40875,7 +42290,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xfdf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41034,7 +42449,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/import/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41194,8 +42609,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/ink/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41360,7 +42775,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41520,8 +42935,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/line/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41687,8 +43102,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/links/{linkId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapeString(linkId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "linkId" + "\\}", apiClient.escapePathSegmentString(linkId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -41853,7 +43268,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/markdown"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42012,7 +43427,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/merge"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42169,7 +43584,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/mht"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42329,8 +43744,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/movie/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42496,8 +43911,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/stamp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42665,8 +44080,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/bmp"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -42846,8 +44261,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/emf"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -43027,8 +44442,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/gif"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -43208,8 +44623,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/jpeg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -43389,8 +44804,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/png"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -43570,8 +44985,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/pages/{pageNumber}/convert/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapeString(pageNumber.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -43748,7 +45163,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/pcl"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -46215,7 +47630,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/doc"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -46415,7 +47830,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/epub"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -46607,7 +48022,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/html"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -46907,7 +48322,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47071,7 +48486,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/mobixml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47231,7 +48646,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/pdfa"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47402,7 +48817,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/pptx"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47571,7 +48986,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/svg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47745,7 +49160,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/tiff"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -47983,7 +49398,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xls"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48166,7 +49581,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xlsx"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48345,7 +49760,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48504,7 +49919,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48664,8 +50079,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polyline/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48831,8 +50246,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/polygon/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -48998,8 +50413,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/popup/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49164,7 +50579,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/privileges"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49321,7 +50736,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/ps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49465,6 +50880,173 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putRadioButtonField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putRadioButtonFieldCall(String name, String fieldName, RadioButtonField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/radiobutton/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putRadioButtonFieldValidateBeforeCall(String name, String fieldName, RadioButtonField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putRadioButtonField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling putRadioButtonField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling putRadioButtonField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putRadioButtonFieldCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document RadioButton field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return RadioButtonFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RadioButtonFieldResponse putRadioButtonField(String name, String fieldName, RadioButtonField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<RadioButtonFieldResponse> resp = putRadioButtonFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<RadioButtonFieldResponse> resp = putRadioButtonFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document RadioButton field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;RadioButtonFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RadioButtonFieldResponse> putRadioButtonFieldWithHttpInfo(String name, String fieldName, RadioButtonField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putRadioButtonFieldValidateBeforeCall(name, fieldName, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document RadioButton field (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putRadioButtonFieldAsync(String name, String fieldName, RadioButtonField field, String storage, String folder, final ApiCallback<RadioButtonFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putRadioButtonFieldValidateBeforeCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RadioButtonFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putRedactionAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -49481,8 +51063,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/redaction/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49649,8 +51231,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/images/{imageId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapeString(imageId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "imageId" + "\\}", apiClient.escapePathSegmentString(imageId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49816,8 +51398,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/screen/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -49983,8 +51565,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/screen/{annotationId}/data/extract"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50151,7 +51733,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/ocr"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50306,8 +51888,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/documentproperties/{propertyName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapeString(propertyName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "propertyName" + "\\}", apiClient.escapePathSegmentString(propertyName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50475,8 +52057,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/sound/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50642,8 +52224,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/sound/{annotationId}/data/extract"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50811,8 +52393,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/square/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -50978,8 +52560,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/squiggly/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -51145,8 +52727,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/stamp/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -51312,8 +52894,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/stamp/{annotationId}/data/extract"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -51481,8 +53063,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/strikeout/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -51655,7 +53237,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/svg"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -51855,8 +53437,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/tables/{tableId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapeString(tableId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "tableId" + "\\}", apiClient.escapePathSegmentString(tableId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52022,8 +53604,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/text/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52189,8 +53771,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/textbox/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52356,8 +53938,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/annotations/underline/{annotationId}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapeString(annotationId.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "annotationId" + "\\}", apiClient.escapePathSegmentString(annotationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52523,8 +54105,8 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields/{fieldName}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"))
-            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapeString(fieldName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52689,7 +54271,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/fields"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -52853,7 +54435,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/web"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53194,7 +54776,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/convert/xfatoacroform"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53354,7 +54936,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/xml"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53518,7 +55100,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/xps"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53677,7 +55259,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/{name}/create/xslfo"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53833,7 +55415,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/{storageName}/exist"
-            .replaceAll("\\{" + "storageName" + "\\}", apiClient.escapeString(storageName.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "storageName" + "\\}", apiClient.escapePathSegmentString(storageName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -53971,7 +55553,7 @@ public class PdfApi {
 
         // create path and map variables
         String localVarPath = "/pdf/storage/file/{path}"
-            .replaceAll("\\{" + "path" + "\\}", apiClient.escapeString(path.toString()).replace("%2F", "/"));
+            .replaceAll("\\{" + "path" + "\\}", apiClient.escapePathSegmentString(path.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

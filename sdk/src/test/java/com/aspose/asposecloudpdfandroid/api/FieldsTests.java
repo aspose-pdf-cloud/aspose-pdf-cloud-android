@@ -393,4 +393,286 @@ public class FieldsTests {
         AsposeResponse response = th.pdfApi.putTextBoxField(name, fieldName, textBox, null, folder);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * GetDocumentCheckBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentCheckBoxFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        CheckBoxFieldsResponse response = th.pdfApi.getDocumentCheckBoxFields(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageCheckBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageCheckBoxFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        int pageNumber = 1;
+
+        CheckBoxFieldsResponse response = th.pdfApi.getPageCheckBoxFields(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetCheckBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getCheckBoxFieldTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "checkboxField";
+
+        CheckBoxFieldResponse response = th.pdfApi.getCheckBoxField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostCheckBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postCheckBoxFieldsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        CheckBoxField field = new CheckBoxField()
+                .checked(true)
+                .exportValue("true")
+                .style(BoxStyle.CROSS);
+
+        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(200.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+        ArrayList<CheckBoxField> fields = new ArrayList<>();
+        fields.add(field);
+
+        AsposeResponse response = th.pdfApi.postCheckBoxFields(name, fields, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutCheckBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putCheckBoxFieldTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "checkboxField";
+
+        CheckBoxField field = new CheckBoxField()
+                .checked(true)
+                .exportValue("true")
+                .style(BoxStyle.CROSS);
+
+        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(500.).URY(200.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+
+        AsposeResponse response = th.pdfApi.putCheckBoxField(name, fieldName, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetDocumentRadioButtonFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentRadioButtonFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        RadioButtonFieldsResponse response = th.pdfApi.getDocumentRadioButtonFields(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageRadioButtonFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageRadioButtonFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        int pageNumber = 1;
+
+        RadioButtonFieldsResponse response = th.pdfApi.getPageRadioButtonFields(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetRadioButtonField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getRadioButtonFieldTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "radiobuttonField";
+
+        RadioButtonFieldResponse response = th.pdfApi.getRadioButtonField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostRadioButtonFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postRadioButtonFieldsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        ArrayList<RadioButtonOptionField> options = new ArrayList<>();
+
+        RadioButtonOptionField option1 = new RadioButtonOptionField()
+            .optionName("1")
+            .style(BoxStyle.CROSS);
+
+        option1.pageIndex(1)
+                .isGroup(false)
+                .rect(new Rectangle().LLX(100.).LLY(130.).URX(160.).URY(140.));
+
+        RadioButtonOptionField option2 = new RadioButtonOptionField()
+                .optionName("2")
+                .style(BoxStyle.CROSS);
+
+        option2.pageIndex(1)
+                .isGroup(false)
+                .rect(new Rectangle().LLX(150.).LLY(120.).URX(160.).URY(130.));
+
+        options.add(option1);
+        options.add(option2);
+
+        RadioButtonField field = new RadioButtonField()
+                .selected(1)
+                .style(BoxStyle.CROSS)
+                .radioButtonOptionsField(options);
+
+        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+                .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+        ArrayList<RadioButtonField> fields = new ArrayList<>();
+        fields.add(field);
+
+        AsposeResponse response = th.pdfApi.postRadioButtonFields(name, fields, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutRadioButtonField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putRadioButtonFieldTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "radiobuttonField";
+
+        ArrayList<RadioButtonOptionField> options = new ArrayList<>();
+
+        RadioButtonOptionField option1 = new RadioButtonOptionField()
+                .optionName("1")
+                .style(BoxStyle.CROSS);
+
+        option1.pageIndex(1)
+                .isGroup(false)
+                .rect(new Rectangle().LLX(100.).LLY(130.).URX(160.).URY(140.));
+
+        RadioButtonOptionField option2 = new RadioButtonOptionField()
+                .optionName("2")
+                .style(BoxStyle.CROSS);
+
+        option2.pageIndex(1)
+                .isGroup(false)
+                .rect(new Rectangle().LLX(150.).LLY(120.).URX(160.).URY(130.));
+
+        options.add(option1);
+        options.add(option2);
+
+        RadioButtonField field = new RadioButtonField()
+                .selected(1)
+                .style(BoxStyle.CROSS)
+                .radioButtonOptionsField(options);
+
+        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+                .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+
+        AsposeResponse response = th.pdfApi.putRadioButtonField(name, fieldName, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 }

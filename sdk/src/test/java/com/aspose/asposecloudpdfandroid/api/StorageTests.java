@@ -174,7 +174,7 @@ public class StorageTests
     @Test
     public void getIsStorageExistTest() throws ApiException
     {
-        String name = "PDF-CI";
+        String name = "First Storage";
 
         StorageExist response = th.pdfApi.storageExists(name);
         assertTrue(response.isExists());

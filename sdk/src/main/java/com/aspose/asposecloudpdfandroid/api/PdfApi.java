@@ -53,6 +53,9 @@ import com.aspose.asposecloudpdfandroid.model.CheckBoxFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotation;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.CircleAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.ComboBoxField;
+import com.aspose.asposecloudpdfandroid.model.ComboBoxFieldResponse;
+import com.aspose.asposecloudpdfandroid.model.ComboBoxFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.DiscUsage;
 import com.aspose.asposecloudpdfandroid.model.DocumentPageResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPagesResponse;
@@ -4808,6 +4811,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getComboBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getComboBoxFieldCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/combobox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getComboBoxFieldValidateBeforeCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getComboBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling getComboBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getComboBoxFieldCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document combobox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ComboBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ComboBoxFieldResponse getComboBoxField(String name, String fieldName, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ComboBoxFieldResponse> resp = getComboBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ComboBoxFieldResponse> resp = getComboBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document combobox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ComboBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ComboBoxFieldResponse> getComboBoxFieldWithHttpInfo(String name, String fieldName, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getComboBoxFieldValidateBeforeCall(name, fieldName, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document combobox field by name. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getComboBoxFieldAsync(String name, String fieldName, String storage, String folder, final ApiCallback<ComboBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getComboBoxFieldValidateBeforeCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDiscUsage
      * @param storageName Storage name (optional)
      * @param progressListener Progress listener
@@ -6130,6 +6291,154 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getDocumentCircleAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CircleAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getDocumentComboBoxFields
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentComboBoxFieldsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/combobox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentComboBoxFieldsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentComboBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentComboBoxFieldsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ComboBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ComboBoxFieldsResponse getDocumentComboBoxFields(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ComboBoxFieldsResponse> resp = getDocumentComboBoxFieldsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ComboBoxFieldsResponse> resp = getDocumentComboBoxFieldsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ComboBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ComboBoxFieldsResponse> getDocumentComboBoxFieldsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentComboBoxFieldsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document combobox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentComboBoxFieldsAsync(String name, String storage, String folder, final ApiCallback<ComboBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentComboBoxFieldsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -15480,6 +15789,164 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getPageCircleAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CircleAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageComboBoxFields
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageComboBoxFieldsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/combobox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageComboBoxFieldsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageComboBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageComboBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageComboBoxFieldsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ComboBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ComboBoxFieldsResponse getPageComboBoxFields(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ComboBoxFieldsResponse> resp = getPageComboBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ComboBoxFieldsResponse> resp = getPageComboBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ComboBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ComboBoxFieldsResponse> getPageComboBoxFieldsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageComboBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page combobox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageComboBoxFieldsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<ComboBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageComboBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -29062,6 +29529,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postComboBoxFields
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postComboBoxFieldsCall(String name, List<ComboBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = fields;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/combobox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postComboBoxFieldsValidateBeforeCall(String name, List<ComboBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postComboBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'fields' is set
+        if (fields == null) {
+            throw new ApiException("Missing the required parameter 'fields' when calling postComboBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postComboBoxFieldsCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postComboBoxFields(String name, List<ComboBoxField> fields, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postComboBoxFieldsWithHttpInfo(name, fields, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postComboBoxFieldsWithHttpInfo(name, fields, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document combobox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postComboBoxFieldsWithHttpInfo(String name, List<ComboBoxField> fields, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postComboBoxFieldsValidateBeforeCall(name, fields, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document combobox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postComboBoxFieldsAsync(String name, List<ComboBoxField> fields, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postComboBoxFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postCreateField
      * @param name The document name. (required)
      * @param page Document page number. (required)
@@ -38393,6 +39017,173 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putCircleAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CircleAnnotationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putComboBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putComboBoxFieldCall(String name, String fieldName, ComboBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/combobox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putComboBoxFieldValidateBeforeCall(String name, String fieldName, ComboBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putComboBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling putComboBoxField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling putComboBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putComboBoxFieldCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document combobox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ComboBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ComboBoxFieldResponse putComboBoxField(String name, String fieldName, ComboBoxField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ComboBoxFieldResponse> resp = putComboBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ComboBoxFieldResponse> resp = putComboBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document combobox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ComboBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ComboBoxFieldResponse> putComboBoxFieldWithHttpInfo(String name, String fieldName, ComboBoxField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putComboBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document combobox field (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putComboBoxFieldAsync(String name, String fieldName, ComboBoxField field, String storage, String folder, final ApiCallback<ComboBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putComboBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ComboBoxFieldResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

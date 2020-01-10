@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -57,6 +57,9 @@ import com.aspose.asposecloudpdfandroid.model.ComboBoxField;
 import com.aspose.asposecloudpdfandroid.model.ComboBoxFieldResponse;
 import com.aspose.asposecloudpdfandroid.model.ComboBoxFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.DiscUsage;
+import com.aspose.asposecloudpdfandroid.model.DisplayProperties;
+import com.aspose.asposecloudpdfandroid.model.DisplayPropertiesResponse;
+import com.aspose.asposecloudpdfandroid.model.DocumentConfig;
 import com.aspose.asposecloudpdfandroid.model.DocumentPageResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPagesResponse;
 import com.aspose.asposecloudpdfandroid.model.DocumentPrivilege;
@@ -95,6 +98,9 @@ import com.aspose.asposecloudpdfandroid.model.LineAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotation;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.LinkAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.ListBoxField;
+import com.aspose.asposecloudpdfandroid.model.ListBoxFieldResponse;
+import com.aspose.asposecloudpdfandroid.model.ListBoxFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.MergeDocuments;
 import com.aspose.asposecloudpdfandroid.model.MovieAnnotation;
 import com.aspose.asposecloudpdfandroid.model.MovieAnnotationResponse;
@@ -6443,6 +6449,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getDocumentDisplayProperties
+     * @param name  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentDisplayPropertiesCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/displayproperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentDisplayPropertiesValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentDisplayProperties(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentDisplayPropertiesCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document display properties.
+     * 
+     * @param name  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @return DisplayPropertiesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DisplayPropertiesResponse getDocumentDisplayProperties(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<DisplayPropertiesResponse> resp = getDocumentDisplayPropertiesWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<DisplayPropertiesResponse> resp = getDocumentDisplayPropertiesWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document display properties.
+     * 
+     * @param name  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @return ApiResponse&lt;DisplayPropertiesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DisplayPropertiesResponse> getDocumentDisplayPropertiesWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentDisplayPropertiesValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<DisplayPropertiesResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document display properties. (asynchronously)
+     * 
+     * @param name  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentDisplayPropertiesAsync(String name, String storage, String folder, final ApiCallback<DisplayPropertiesResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentDisplayPropertiesValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DisplayPropertiesResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getDocumentFileAttachmentAnnotations
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -7179,6 +7333,154 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getDocumentLineAnnotationsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LineAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getDocumentListBoxFields
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentListBoxFieldsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/listbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getDocumentListBoxFieldsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getDocumentListBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getDocumentListBoxFieldsCall(name, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ListBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListBoxFieldsResponse getDocumentListBoxFields(String name, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ListBoxFieldsResponse> resp = getDocumentListBoxFieldsWithHttpInfo(name, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ListBoxFieldsResponse> resp = getDocumentListBoxFieldsWithHttpInfo(name, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ListBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListBoxFieldsResponse> getDocumentListBoxFieldsWithHttpInfo(String name, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentListBoxFieldsValidateBeforeCall(name, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ListBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document listbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getDocumentListBoxFieldsAsync(String name, String storage, String folder, final ApiCallback<ListBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getDocumentListBoxFieldsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListBoxFieldsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -14559,6 +14861,164 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getListBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getListBoxFieldCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/listbox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getListBoxFieldValidateBeforeCall(String name, String fieldName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getListBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling getListBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getListBoxFieldCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document listbox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ListBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListBoxFieldResponse getListBoxField(String name, String fieldName, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ListBoxFieldResponse> resp = getListBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ListBoxFieldResponse> resp = getListBoxFieldWithHttpInfo(name, fieldName, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document listbox field by name.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ListBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListBoxFieldResponse> getListBoxFieldWithHttpInfo(String name, String fieldName, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getListBoxFieldValidateBeforeCall(name, fieldName, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ListBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document listbox field by name. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getListBoxFieldAsync(String name, String fieldName, String storage, String folder, final ApiCallback<ListBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getListBoxFieldValidateBeforeCall(name, fieldName, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListBoxFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getMarkdownInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.md) (required)
      * @param storage The document storage. (optional)
@@ -18092,6 +18552,164 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = getPageLinkAnnotationsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LinkAnnotationsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPageListBoxFields
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPageListBoxFieldsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/page/{pageNumber}/fields/listbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "pageNumber" + "\\}", apiClient.escapePathSegmentString(pageNumber.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPageListBoxFieldsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPageListBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new ApiException("Missing the required parameter 'pageNumber' when calling getPageListBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPageListBoxFieldsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read document page listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ListBoxFieldsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListBoxFieldsResponse getPageListBoxFields(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ListBoxFieldsResponse> resp = getPageListBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ListBoxFieldsResponse> resp = getPageListBoxFieldsWithHttpInfo(name, pageNumber, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Read document page listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ListBoxFieldsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListBoxFieldsResponse> getPageListBoxFieldsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = getPageListBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ListBoxFieldsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read document page listbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pageNumber The page number. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPageListBoxFieldsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<ListBoxFieldsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPageListBoxFieldsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListBoxFieldsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -21833,12 +22451,13 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToHtmlCall(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToHtmlCall(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -21907,6 +22526,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (flowLayoutParagraphFullWidth != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("flowLayoutParagraphFullWidth", flowLayoutParagraphFullWidth));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -21941,7 +22562,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToHtmlValidateBeforeCall(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToHtmlValidateBeforeCall(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -21949,7 +22570,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToHtmlCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToHtmlCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, progressListener, progressRequestListener);
         return call;
 
     }
@@ -21988,13 +22609,14 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToHtml(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToHtml(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -22002,7 +22624,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToHtmlWithHttpInfo(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth);
                 return resp.getData();
             }
             throw ex;
@@ -22043,11 +22665,12 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToHtmlWithHttpInfo(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToHtmlValidateBeforeCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToHtmlWithHttpInfo(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToHtmlValidateBeforeCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -22086,11 +22709,12 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToHtmlAsync(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToHtmlAsync(String name, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -22111,7 +22735,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToHtmlValidateBeforeCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToHtmlValidateBeforeCall(name, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -29686,6 +30310,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postCreateDocument
+     * @param name The new document name. (required)
+     * @param documentConfig The document config for new document. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The new document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postCreateDocumentCall(String name, DocumentConfig documentConfig, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = documentConfig;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postCreateDocumentValidateBeforeCall(String name, DocumentConfig documentConfig, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postCreateDocument(Async)");
+        }
+        
+        // verify the required parameter 'documentConfig' is set
+        if (documentConfig == null) {
+            throw new ApiException("Missing the required parameter 'documentConfig' when calling postCreateDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postCreateDocumentCall(name, documentConfig, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Create empty document.
+     * 
+     * @param name The new document name. (required)
+     * @param documentConfig The document config for new document. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The new document folder. (optional)
+     * @return DocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DocumentResponse postCreateDocument(String name, DocumentConfig documentConfig, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<DocumentResponse> resp = postCreateDocumentWithHttpInfo(name, documentConfig, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<DocumentResponse> resp = postCreateDocumentWithHttpInfo(name, documentConfig, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Create empty document.
+     * 
+     * @param name The new document name. (required)
+     * @param documentConfig The document config for new document. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The new document folder. (optional)
+     * @return ApiResponse&lt;DocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DocumentResponse> postCreateDocumentWithHttpInfo(String name, DocumentConfig documentConfig, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postCreateDocumentValidateBeforeCall(name, documentConfig, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Create empty document. (asynchronously)
+     * 
+     * @param name The new document name. (required)
+     * @param documentConfig The document config for new document. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The new document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postCreateDocumentAsync(String name, DocumentConfig documentConfig, String storage, String folder, final ApiCallback<DocumentResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postCreateDocumentValidateBeforeCall(name, documentConfig, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postCreateField
      * @param name The document name. (required)
      * @param page Document page number. (required)
@@ -32037,6 +32818,163 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postInsertImageValidateBeforeCall(name, pageNumber, llx, lly, urx, ury, imageFilePath, storage, folder, image, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postListBoxFields
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postListBoxFieldsCall(String name, List<ListBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = fields;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/listbox"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postListBoxFieldsValidateBeforeCall(String name, List<ListBoxField> fields, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postListBoxFields(Async)");
+        }
+        
+        // verify the required parameter 'fields' is set
+        if (fields == null) {
+            throw new ApiException("Missing the required parameter 'fields' when calling postListBoxFields(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postListBoxFieldsCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postListBoxFields(String name, List<ListBoxField> fields, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postListBoxFieldsWithHttpInfo(name, fields, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postListBoxFieldsWithHttpInfo(name, fields, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document listbox fields.
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postListBoxFieldsWithHttpInfo(String name, List<ListBoxField> fields, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postListBoxFieldsValidateBeforeCall(name, fields, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document listbox fields. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fields The array of field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postListBoxFieldsAsync(String name, List<ListBoxField> fields, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postListBoxFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -39494,6 +40432,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putDocumentDisplayProperties
+     * @param name The document name. (required)
+     * @param displayProperties The display properties. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putDocumentDisplayPropertiesCall(String name, DisplayProperties displayProperties, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = displayProperties;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/displayproperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putDocumentDisplayPropertiesValidateBeforeCall(String name, DisplayProperties displayProperties, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putDocumentDisplayProperties(Async)");
+        }
+        
+        // verify the required parameter 'displayProperties' is set
+        if (displayProperties == null) {
+            throw new ApiException("Missing the required parameter 'displayProperties' when calling putDocumentDisplayProperties(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putDocumentDisplayPropertiesCall(name, displayProperties, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Update document display properties.
+     * 
+     * @param name The document name. (required)
+     * @param displayProperties The display properties. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return DisplayPropertiesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DisplayPropertiesResponse putDocumentDisplayProperties(String name, DisplayProperties displayProperties, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<DisplayPropertiesResponse> resp = putDocumentDisplayPropertiesWithHttpInfo(name, displayProperties, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<DisplayPropertiesResponse> resp = putDocumentDisplayPropertiesWithHttpInfo(name, displayProperties, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Update document display properties.
+     * 
+     * @param name The document name. (required)
+     * @param displayProperties The display properties. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;DisplayPropertiesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DisplayPropertiesResponse> putDocumentDisplayPropertiesWithHttpInfo(String name, DisplayProperties displayProperties, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putDocumentDisplayPropertiesValidateBeforeCall(name, displayProperties, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<DisplayPropertiesResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Update document display properties. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param displayProperties The display properties. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putDocumentDisplayPropertiesAsync(String name, DisplayProperties displayProperties, String storage, String folder, final ApiCallback<DisplayPropertiesResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putDocumentDisplayPropertiesValidateBeforeCall(name, displayProperties, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DisplayPropertiesResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putEncryptDocument
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
      * @param userPassword User password (encrypted Base64). (required)
@@ -44044,6 +45139,173 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for putListBoxField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putListBoxFieldCall(String name, String fieldName, ListBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/listbox/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putListBoxFieldValidateBeforeCall(String name, String fieldName, ListBoxField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putListBoxField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling putListBoxField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling putListBoxField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putListBoxFieldCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document listbox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ListBoxFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListBoxFieldResponse putListBoxField(String name, String fieldName, ListBoxField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<ListBoxFieldResponse> resp = putListBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ListBoxFieldResponse> resp = putListBoxFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document listbox field
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;ListBoxFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListBoxFieldResponse> putListBoxFieldWithHttpInfo(String name, String fieldName, ListBoxField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putListBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<ListBoxFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document listbox field (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putListBoxFieldAsync(String name, String fieldName, ListBoxField field, String storage, String folder, final ApiCallback<ListBoxFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putListBoxFieldValidateBeforeCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListBoxFieldResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for putMarkdownInStorageToPdf
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.md) (required)
@@ -46477,13 +47739,14 @@ public class PdfApi {
      * @param specialFolderForSvgImages The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. (optional)
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToHtmlCall(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToHtmlCall(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, Boolean flowLayoutParagraphFullWidth, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -46551,6 +47814,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("trySaveTextUnderliningAndStrikeoutingInCss", trySaveTextUnderliningAndStrikeoutingInCss));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (flowLayoutParagraphFullWidth != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("flowLayoutParagraphFullWidth", flowLayoutParagraphFullWidth));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -46585,7 +47850,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToHtmlValidateBeforeCall(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToHtmlValidateBeforeCall(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, Boolean flowLayoutParagraphFullWidth, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -46593,7 +47858,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToHtmlCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToHtmlCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -46631,14 +47896,15 @@ public class PdfApi {
      * @param specialFolderForSvgImages The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. (optional)
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToHtml(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToHtml(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, Boolean flowLayoutParagraphFullWidth, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -46646,7 +47912,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToHtmlWithHttpInfo(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file);
                 return resp.getData();
             }
             throw ex;
@@ -46686,12 +47952,13 @@ public class PdfApi {
      * @param specialFolderForSvgImages The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. (optional)
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToHtmlWithHttpInfo(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToHtmlValidateBeforeCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToHtmlWithHttpInfo(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, Boolean flowLayoutParagraphFullWidth, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToHtmlValidateBeforeCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -46729,12 +47996,13 @@ public class PdfApi {
      * @param specialFolderForSvgImages The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. (optional)
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToHtmlAsync(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToHtmlAsync(String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String storage, Boolean flowLayoutParagraphFullWidth, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -46755,7 +48023,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToHtmlValidateBeforeCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToHtmlValidateBeforeCall(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -48803,12 +50071,13 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToHtmlCall(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToHtmlCall(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -48879,6 +50148,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (flowLayoutParagraphFullWidth != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("flowLayoutParagraphFullWidth", flowLayoutParagraphFullWidth));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -48913,7 +50184,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToHtmlValidateBeforeCall(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToHtmlValidateBeforeCall(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -48926,7 +50197,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToHtmlCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToHtmlCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, progressListener, progressRequestListener);
         return call;
 
     }
@@ -48966,13 +50237,14 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToHtml(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToHtml(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -48980,7 +50252,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToHtmlWithHttpInfo(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth);
                 return resp.getData();
             }
             throw ex;
@@ -49022,11 +50294,12 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToHtmlWithHttpInfo(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToHtmlValidateBeforeCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToHtmlWithHttpInfo(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToHtmlValidateBeforeCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -49066,11 +50339,12 @@ public class PdfApi {
      * @param trySaveTextUnderliningAndStrikeoutingInCss PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param flowLayoutParagraphFullWidth This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToHtmlAsync(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToHtmlAsync(String name, String outPath, Integer additionalMarginWidthInPoints, Boolean compressSvgGraphicsIfAny, Boolean convertMarkedContentToLayers, String defaultFontName, String documentType, Boolean fixedLayout, Integer imageResolution, Integer minimalLineWidth, Boolean preventGlyphsGrouping, Boolean splitCssIntoPages, Boolean splitIntoPages, Boolean useZOrder, String antialiasingProcessing, String cssClassNamesPrefix, List<Integer> explicitListOfSavedPages, String fontEncodingStrategy, String fontSavingMode, String htmlMarkupGenerationMode, String lettersPositioningMethod, Boolean pagesFlowTypeDependsOnViewersScreenSize, String partsEmbeddingMode, String rasterImagesSavingMode, Boolean removeEmptyAreasOnTopAndBottom, Boolean saveShadowedTextsAsTransparentTexts, Boolean saveTransparentTexts, String specialFolderForAllImages, String specialFolderForSvgImages, Boolean trySaveTextUnderliningAndStrikeoutingInCss, String folder, String storage, Boolean flowLayoutParagraphFullWidth, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -49091,7 +50365,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToHtmlValidateBeforeCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToHtmlValidateBeforeCall(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

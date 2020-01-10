@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,6 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.Border;
 import com.aspose.asposecloudpdfandroid.model.BoxStyle;
 import com.aspose.asposecloudpdfandroid.model.ChoiceField;
 import com.aspose.asposecloudpdfandroid.model.Color;
@@ -61,9 +62,6 @@ public class RadioButtonField extends ChoiceField {
 
   @SerializedName("Style")
   private BoxStyle style = null;
-
-  @SerializedName("Selected")
-  private Integer selected = null;
 
   public RadioButtonField options(List<Option> options) {
     this.options = options;
@@ -135,24 +133,6 @@ public class RadioButtonField extends ChoiceField {
     this.style = style;
   }
 
-  public RadioButtonField selected(Integer selected) {
-    this.selected = selected;
-    return this;
-  }
-
-   /**
-   * Gets or sets index of selected item. Numbering of items is started from 1.
-   * @return selected
-  **/
-  @ApiModelProperty(required = true, value = "Gets or sets index of selected item. Numbering of items is started from 1.")
-  public Integer getSelected() {
-    return selected;
-  }
-
-  public void setSelected(Integer selected) {
-    this.selected = selected;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -166,13 +146,12 @@ public class RadioButtonField extends ChoiceField {
     return Objects.equals(this.options, radioButtonField.options) &&
         Objects.equals(this.radioButtonOptionsField, radioButtonField.radioButtonOptionsField) &&
         Objects.equals(this.style, radioButtonField.style) &&
-        Objects.equals(this.selected, radioButtonField.selected) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(options, radioButtonOptionsField, style, selected, super.hashCode());
+    return Objects.hash(options, radioButtonOptionsField, style, super.hashCode());
   }
 
 
@@ -184,7 +163,6 @@ public class RadioButtonField extends ChoiceField {
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    radioButtonOptionsField: ").append(toIndentedString(radioButtonOptionsField)).append("\n");
     sb.append("    style: ").append(toIndentedString(style)).append("\n");
-    sb.append("    selected: ").append(toIndentedString(selected)).append("\n");
     sb.append("}");
     return sb.toString();
   }

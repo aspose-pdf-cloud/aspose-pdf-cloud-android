@@ -6,6 +6,7 @@ Represents document DTO.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **documentProperties** | [**DocumentProperties**](DocumentProperties.md) | Document properties. | [optional]
+**displayProperties** | [**DisplayProperties**](DisplayProperties.md) | Document display properties. | [optional]
 **pages** | [**Pages**](Pages.md) | Document pages. | [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
 

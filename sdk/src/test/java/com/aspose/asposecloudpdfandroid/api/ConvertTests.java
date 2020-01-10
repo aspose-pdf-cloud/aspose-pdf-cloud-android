@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2009 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -440,7 +440,7 @@ public class ConvertTests {
 
 
         File response = th.pdfApi.getPdfInStorageToHtml(name, null, null, null, null, null,  null,  null, null,
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null);
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null, null);
         assertNotNull(response);
     }
 
@@ -491,6 +491,7 @@ public class ConvertTests {
                 null,
                 null,
                 folder,
+                null,
                 null);
         assertEquals(200, (int)response.getCode());
     }
@@ -510,6 +511,7 @@ public class ConvertTests {
 
         AsposeResponse response = th.pdfApi.putPdfInRequestToHtml(
                 th.tempFolder + '/' + resFileName,
+                null,
                 null,
                 null,
                 null,

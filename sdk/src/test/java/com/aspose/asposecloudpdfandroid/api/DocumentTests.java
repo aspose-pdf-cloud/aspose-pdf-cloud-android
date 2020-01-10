@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2009 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -26,6 +26,9 @@ import com.aspose.asposecloudpdfandroid.model.*;
 
 import org.junit.Test;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -115,6 +118,95 @@ public class DocumentTests {
         String folder = this.th.tempFolder;
 
         DocumentResponse response = this.th.pdfApi.putCreateDocument(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostCreateEmptyDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postCreateEmptyDocumentTest() throws ApiException
+    {
+        String name = "empty_post.pdf";
+
+        String folder = this.th.tempFolder;
+
+        DocumentConfig config = new DocumentConfig()
+                .pagesCount(2)
+                .documentProperties(
+                    new DocumentProperties()
+                        .list(new ArrayList<>(
+                                Arrays.asList(
+                                    new DocumentProperty()
+                                            .builtIn(false)
+                                            .name("prop1")
+                                            .value("Val1")
+                                )
+                        ))
+                )
+                .displayProperties(
+                    new DisplayProperties()
+                    .centerWindow(true)
+                    .hideMenuBar(true)
+                )
+                .defaultPageConfig(
+                    new DefaultPageConfig()
+                    .height(100.)
+                    .width(100.)
+                );
+
+        DocumentResponse response = this.th.pdfApi.postCreateDocument(name, config, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetDocumentDisplayProperties Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentDisplayPropertiesTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        DisplayPropertiesResponse response = th.pdfApi.getDocumentDisplayProperties(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutDocumentDisplayProperties Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putDocumentDisplayPropertiesTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        DisplayProperties displayProperties = new DisplayProperties()
+            .centerWindow(true)
+            .direction(Direction.L2R)
+            .displayDocTitle(true)
+            .hideMenuBar(true)
+            .hideToolBar(true)
+            .hideWindowUI(true)
+            .nonFullScreenPageMode(PageMode.USENONE)
+            .pageLayout(PageLayout.TWOPAGELEFT)
+            .pageMode(PageMode.USEOC);
+
+
+        DisplayPropertiesResponse response = th.pdfApi.putDocumentDisplayProperties(name, displayProperties, null, folder);
         assertEquals(200, (int)response.getCode());
     }
 }

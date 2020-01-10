@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2009 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -27,6 +27,7 @@ import com.aspose.asposecloudpdfandroid.model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -605,11 +606,12 @@ public class FieldsTests {
         options.add(option2);
 
         RadioButtonField field = new RadioButtonField()
-                .selected(1)
+
                 .style(BoxStyle.CROSS)
                 .radioButtonOptionsField(options);
 
-        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+        field.selected(1)
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
                 .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
                 .pageIndex(1)
                 .isGroup(false)
@@ -660,11 +662,11 @@ public class FieldsTests {
         options.add(option2);
 
         RadioButtonField field = new RadioButtonField()
-                .selected(1)
                 .style(BoxStyle.CROSS)
                 .radioButtonOptionsField(options);
 
-        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+        field.selected(1)
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
                 .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
                 .pageIndex(1)
                 .isGroup(false)
@@ -761,10 +763,11 @@ public class FieldsTests {
         options.add(option2);
 
         ComboBoxField field = new ComboBoxField()
-                .selected(1)
+
                 .options(options);
 
-        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+        field.selected(1)
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
                 .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
                 .pageIndex(1)
                 .isGroup(false)
@@ -807,10 +810,11 @@ public class FieldsTests {
         options.add(option2);
 
         ComboBoxField field = new ComboBoxField()
-                .selected(1)
+
                 .options(options);
 
-        field.rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+        field.selected(1)
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
                 .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
                 .pageIndex(1)
                 .isGroup(false)
@@ -819,6 +823,176 @@ public class FieldsTests {
 
 
         AsposeResponse response = th.pdfApi.putComboBoxField(name, fieldName, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+
+    /**
+     * GetDocumentListBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getDocumentListBoxFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        ListBoxFieldsResponse response = th.pdfApi.getDocumentListBoxFields(name, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPageListBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getPageListBoxFieldsTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        int pageNumber = 1;
+
+        ListBoxFieldsResponse response = th.pdfApi.getPageListBoxFields(name, pageNumber, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetListBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void getListBoxFieldTest() throws ApiException
+    {
+        String name = "PdfWithAcroForm.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "listboxField";
+
+        ListBoxFieldResponse response = th.pdfApi.getListBoxField(name, fieldName, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostListBoxFields Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postListBoxFieldsTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        ArrayList<Option> options = new ArrayList<>();
+
+        Option option1 = new Option()
+                .name("one")
+                .value("one");
+
+        Option option2 = new Option()
+                .name("two")
+                .value("two");
+
+        Option option3 = new Option()
+                .name("three")
+                .value("three");
+
+        Option option4 = new Option()
+                .name("four")
+                .value("four");
+
+        options.add(option1);
+        options.add(option2);
+        options.add(option3);
+        options.add(option4);
+
+        ListBoxField field = new ListBoxField()
+
+                .options(options);
+
+        field.multiSelect(true);
+        field.selectedItems(new ArrayList<>(Arrays.asList(1, 4)))
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+                .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+        ArrayList<ListBoxField> fields = new ArrayList<>();
+        fields.add(field);
+
+        AsposeResponse response = th.pdfApi.postListBoxFields(name, fields, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutListBoxField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putListBoxFieldTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+        String fieldName = "listboxField";
+
+        ArrayList<Option> options = new ArrayList<>();
+
+        Option option1 = new Option()
+                .name("one")
+                .value("one");
+
+        Option option2 = new Option()
+                .name("two")
+                .value("two");
+
+        Option option3 = new Option()
+                .name("three")
+                .value("three");
+
+        Option option4 = new Option()
+                .name("four")
+                .value("four");
+
+        options.add(option1);
+        options.add(option2);
+        options.add(option3);
+        options.add(option4);
+
+        ListBoxField field = new ListBoxField()
+
+                .options(options);
+
+        field.multiSelect(true);
+        field.selectedItems(new ArrayList<>(Arrays.asList(1, 4)))
+                .rect(new Rectangle().LLX(100.).LLY(100.).URX(160.).URY(140.))
+                .margin(new MarginInfo().bottom(0.).left(0.).right(0.).top(0.))
+                .pageIndex(1)
+                .isGroup(false)
+                .color(new Color().A(255).R(255).G(0).B(0))
+                .partialName("testField");
+
+
+        AsposeResponse response = th.pdfApi.putListBoxField(name, fieldName, field, null, folder);
         assertEquals(200, (int)response.getCode());
     }
 }

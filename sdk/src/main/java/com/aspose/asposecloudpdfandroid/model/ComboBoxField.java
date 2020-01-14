@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,6 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.Border;
 import com.aspose.asposecloudpdfandroid.model.ChoiceField;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.FormField;
@@ -62,9 +63,6 @@ public class ComboBoxField extends ChoiceField {
 
   @SerializedName("SpellCheck")
   private Boolean spellCheck = null;
-
-  @SerializedName("Selected")
-  private Integer selected = null;
 
   public ComboBoxField options(List<Option> options) {
     this.options = options;
@@ -146,24 +144,6 @@ public class ComboBoxField extends ChoiceField {
     this.spellCheck = spellCheck;
   }
 
-  public ComboBoxField selected(Integer selected) {
-    this.selected = selected;
-    return this;
-  }
-
-   /**
-   * Gets or sets index of selected item. Numbering of items is started from 1.
-   * @return selected
-  **/
-  @ApiModelProperty(required = true, value = "Gets or sets index of selected item. Numbering of items is started from 1.")
-  public Integer getSelected() {
-    return selected;
-  }
-
-  public void setSelected(Integer selected) {
-    this.selected = selected;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -178,13 +158,12 @@ public class ComboBoxField extends ChoiceField {
         Objects.equals(this.activeState, comboBoxField.activeState) &&
         Objects.equals(this.editable, comboBoxField.editable) &&
         Objects.equals(this.spellCheck, comboBoxField.spellCheck) &&
-        Objects.equals(this.selected, comboBoxField.selected) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(options, activeState, editable, spellCheck, selected, super.hashCode());
+    return Objects.hash(options, activeState, editable, spellCheck, super.hashCode());
   }
 
 
@@ -197,7 +176,6 @@ public class ComboBoxField extends ChoiceField {
     sb.append("    activeState: ").append(toIndentedString(activeState)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
     sb.append("    spellCheck: ").append(toIndentedString(spellCheck)).append("\n");
-    sb.append("    selected: ").append(toIndentedString(selected)).append("\n");
     sb.append("}");
     return sb.toString();
   }

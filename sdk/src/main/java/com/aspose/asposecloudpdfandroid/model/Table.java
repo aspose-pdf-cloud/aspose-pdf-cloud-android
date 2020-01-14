@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -76,6 +76,9 @@ public class Table extends LinkElement {
 
   @SerializedName("Border")
   private BorderInfo border = null;
+
+  @SerializedName("Margin")
+  private MarginInfo margin = null;
 
   @SerializedName("Rows")
   private List<Row> rows = new ArrayList<Row>();
@@ -261,6 +264,24 @@ public class Table extends LinkElement {
 
   public void setBorder(BorderInfo border) {
     this.border = border;
+  }
+
+  public Table margin(MarginInfo margin) {
+    this.margin = margin;
+    return this;
+  }
+
+   /**
+   * Gets or sets a outer margin for paragraph (for pdf generation)
+   * @return margin
+  **/
+  @ApiModelProperty(value = "Gets or sets a outer margin for paragraph (for pdf generation)")
+  public MarginInfo getMargin() {
+    return margin;
+  }
+
+  public void setMargin(MarginInfo margin) {
+    this.margin = margin;
   }
 
   public Table rows(List<Row> rows) {
@@ -538,6 +559,7 @@ public class Table extends LinkElement {
         Objects.equals(this.defaultCellTextState, table.defaultCellTextState) &&
         Objects.equals(this.defaultCellPadding, table.defaultCellPadding) &&
         Objects.equals(this.border, table.border) &&
+        Objects.equals(this.margin, table.margin) &&
         Objects.equals(this.rows, table.rows) &&
         Objects.equals(this.defaultColumnWidth, table.defaultColumnWidth) &&
         Objects.equals(this.defaultCellBorder, table.defaultCellBorder) &&
@@ -557,7 +579,7 @@ public class Table extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alignment, horizontalAlignment, verticalAlignment, top, left, defaultCellTextState, defaultCellPadding, border, rows, defaultColumnWidth, defaultCellBorder, broken, columnWidths, repeatingRowsCount, repeatingColumnsCount, repeatingRowsStyle, cornerStyle, breakText, backgroundColor, isBordersIncluded, columnAdjustment, zindex, super.hashCode());
+    return Objects.hash(alignment, horizontalAlignment, verticalAlignment, top, left, defaultCellTextState, defaultCellPadding, border, margin, rows, defaultColumnWidth, defaultCellBorder, broken, columnWidths, repeatingRowsCount, repeatingColumnsCount, repeatingRowsStyle, cornerStyle, breakText, backgroundColor, isBordersIncluded, columnAdjustment, zindex, super.hashCode());
   }
 
 
@@ -574,6 +596,7 @@ public class Table extends LinkElement {
     sb.append("    defaultCellTextState: ").append(toIndentedString(defaultCellTextState)).append("\n");
     sb.append("    defaultCellPadding: ").append(toIndentedString(defaultCellPadding)).append("\n");
     sb.append("    border: ").append(toIndentedString(border)).append("\n");
+    sb.append("    margin: ").append(toIndentedString(margin)).append("\n");
     sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
     sb.append("    defaultColumnWidth: ").append(toIndentedString(defaultColumnWidth)).append("\n");
     sb.append("    defaultCellBorder: ").append(toIndentedString(defaultCellBorder)).append("\n");

@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,6 +24,7 @@ package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.AnnotationFlags;
+import com.aspose.asposecloudpdfandroid.model.Border;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.FormField;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
@@ -100,6 +101,9 @@ public class FormField extends LinkElement {
 
   @SerializedName("VerticalAlignment")
   private VerticalAlignment verticalAlignment = null;
+
+  @SerializedName("Border")
+  private Border border = null;
 
   public FormField partialName(String partialName) {
     this.partialName = partialName;
@@ -236,7 +240,7 @@ public class FormField extends LinkElement {
    * Is group.
    * @return isGroup
   **/
-  @ApiModelProperty(required = true, value = "Is group.")
+  @ApiModelProperty(value = "Is group.")
   public Boolean isIsGroup() {
     return isGroup;
   }
@@ -415,6 +419,24 @@ public class FormField extends LinkElement {
     this.verticalAlignment = verticalAlignment;
   }
 
+  public FormField border(Border border) {
+    this.border = border;
+    return this;
+  }
+
+   /**
+   * Gets or sets annotation border characteristics.
+   * @return border
+  **/
+  @ApiModelProperty(value = "Gets or sets annotation border characteristics.")
+  public Border getBorder() {
+    return border;
+  }
+
+  public void setBorder(Border border) {
+    this.border = border;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -442,12 +464,13 @@ public class FormField extends LinkElement {
         Objects.equals(this.highlighting, formField.highlighting) &&
         Objects.equals(this.horizontalAlignment, formField.horizontalAlignment) &&
         Objects.equals(this.verticalAlignment, formField.verticalAlignment) &&
+        Objects.equals(this.border, formField.border) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partialName, rect, value, pageIndex, height, width, zindex, isGroup, parent, isSharedField, flags, color, contents, margin, highlighting, horizontalAlignment, verticalAlignment, super.hashCode());
+    return Objects.hash(partialName, rect, value, pageIndex, height, width, zindex, isGroup, parent, isSharedField, flags, color, contents, margin, highlighting, horizontalAlignment, verticalAlignment, border, super.hashCode());
   }
 
 
@@ -473,6 +496,7 @@ public class FormField extends LinkElement {
     sb.append("    highlighting: ").append(toIndentedString(highlighting)).append("\n");
     sb.append("    horizontalAlignment: ").append(toIndentedString(horizontalAlignment)).append("\n");
     sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
+    sb.append("    border: ").append(toIndentedString(border)).append("\n");
     sb.append("}");
     return sb.toString();
   }

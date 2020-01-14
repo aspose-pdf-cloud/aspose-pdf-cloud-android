@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2019 Aspose.PDF Cloud
+ *   Copyright (c) 2020 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -23,6 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.DisplayProperties;
 import com.aspose.asposecloudpdfandroid.model.DocumentProperties;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
@@ -46,6 +47,9 @@ public class Document extends LinkElement {
   @SerializedName("DocumentProperties")
   private DocumentProperties documentProperties = null;
 
+  @SerializedName("DisplayProperties")
+  private DisplayProperties displayProperties = null;
+
   @SerializedName("Pages")
   private Pages pages = null;
 
@@ -65,6 +69,24 @@ public class Document extends LinkElement {
 
   public void setDocumentProperties(DocumentProperties documentProperties) {
     this.documentProperties = documentProperties;
+  }
+
+  public Document displayProperties(DisplayProperties displayProperties) {
+    this.displayProperties = displayProperties;
+    return this;
+  }
+
+   /**
+   * Document display properties.
+   * @return displayProperties
+  **/
+  @ApiModelProperty(value = "Document display properties.")
+  public DisplayProperties getDisplayProperties() {
+    return displayProperties;
+  }
+
+  public void setDisplayProperties(DisplayProperties displayProperties) {
+    this.displayProperties = displayProperties;
   }
 
   public Document pages(Pages pages) {
@@ -96,13 +118,14 @@ public class Document extends LinkElement {
     }
     Document document = (Document) o;
     return Objects.equals(this.documentProperties, document.documentProperties) &&
+        Objects.equals(this.displayProperties, document.displayProperties) &&
         Objects.equals(this.pages, document.pages) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentProperties, pages, super.hashCode());
+    return Objects.hash(documentProperties, displayProperties, pages, super.hashCode());
   }
 
 
@@ -112,6 +135,7 @@ public class Document extends LinkElement {
     sb.append("class Document {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    documentProperties: ").append(toIndentedString(documentProperties)).append("\n");
+    sb.append("    displayProperties: ").append(toIndentedString(displayProperties)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();

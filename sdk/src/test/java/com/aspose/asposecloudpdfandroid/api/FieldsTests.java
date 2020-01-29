@@ -277,6 +277,96 @@ public class FieldsTests {
     }
 
     /**
+     * PostSignatureField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void PostSignatureFieldTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String signatureFileName = "33226.p12";
+        th.uploadFile(signatureFileName);
+
+        Rectangle rectangle = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(0.)
+                .URY(0.);
+
+        String folder = th.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("sIikZSmz");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        SignatureField field = new SignatureField()
+                .signature(signature);
+        field.rect(rectangle)
+                .pageIndex(1)
+                .partialName("sign1");
+
+        AsposeResponse response = th.pdfApi.postSignatureField(name, field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PutSignatureField Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void PutSignatureFieldTest() throws ApiException
+    {
+        String name = "adbe.x509.rsa_sha1.valid.pdf";
+        th.uploadFile(name);
+
+        String signatureFileName = "33226.p12";
+        th.uploadFile(signatureFileName);
+
+        Rectangle rectangle = new Rectangle()
+                .LLX(100.)
+                .LLY(100.)
+                .URX(0.)
+                .URY(0.);
+
+        String folder = th.tempFolder;
+
+        Signature signature = new Signature();
+        signature.setAuthority("Sergey Smal");
+        signature.setContact("test@mail.ru");
+        signature.setDate("08/01/2012 12:15:00.000 PM");
+        signature.setFormFieldName("Signature1");
+        signature.setLocation("Ukraine");
+        signature.setPassword("sIikZSmz");
+        signature.setRectangle(rectangle);
+        signature.setSignaturePath(folder + '/' + signatureFileName);
+        signature.setSignatureType(SignatureType.PKCS7);
+        signature.setVisible(true);
+
+        SignatureField field = new SignatureField()
+                .signature(signature);
+        field.rect(rectangle)
+                .pageIndex(1)
+                .partialName("sign1");
+
+        AsposeResponse response = th.pdfApi.putSignatureField(name, "Signature1", field, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
      * GetDocumentTextBoxFields Test
      * @throws ApiException
      *          if the Api call fails

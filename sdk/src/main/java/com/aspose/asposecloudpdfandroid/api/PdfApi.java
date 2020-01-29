@@ -130,6 +130,7 @@ import com.aspose.asposecloudpdfandroid.model.ScreenAnnotation;
 import com.aspose.asposecloudpdfandroid.model.ScreenAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.ScreenAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.Signature;
+import com.aspose.asposecloudpdfandroid.model.SignatureField;
 import com.aspose.asposecloudpdfandroid.model.SignatureFieldResponse;
 import com.aspose.asposecloudpdfandroid.model.SignatureFieldsResponse;
 import com.aspose.asposecloudpdfandroid.model.SignatureVerifyResponse;
@@ -38307,6 +38308,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postSignatureField
+     * @param name The document name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postSignatureFieldCall(String name, SignatureField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/signature"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postSignatureFieldValidateBeforeCall(String name, SignatureField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postSignatureField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling postSignatureField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postSignatureFieldCall(name, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add document signature field.
+     * 
+     * @param name The document name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postSignatureField(String name, SignatureField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postSignatureFieldWithHttpInfo(name, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postSignatureFieldWithHttpInfo(name, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add document signature field.
+     * 
+     * @param name The document name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postSignatureFieldWithHttpInfo(String name, SignatureField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postSignatureFieldValidateBeforeCall(name, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add document signature field. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postSignatureFieldAsync(String name, SignatureField field, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postSignatureFieldValidateBeforeCall(name, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postSplitDocument
      * @param name Document name. (required)
      * @param format Resulting documents format. (optional)
@@ -54102,6 +54260,173 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putSetPropertyValidateBeforeCall(name, propertyName, value, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putSignatureField
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putSignatureFieldCall(String name, String fieldName, SignatureField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = field;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/fields/signature/{fieldName}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()))
+            .replaceAll("\\{" + "fieldName" + "\\}", apiClient.escapePathSegmentString(fieldName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putSignatureFieldValidateBeforeCall(String name, String fieldName, SignatureField field, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putSignatureField(Async)");
+        }
+        
+        // verify the required parameter 'fieldName' is set
+        if (fieldName == null) {
+            throw new ApiException("Missing the required parameter 'fieldName' when calling putSignatureField(Async)");
+        }
+        
+        // verify the required parameter 'field' is set
+        if (field == null) {
+            throw new ApiException("Missing the required parameter 'field' when calling putSignatureField(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putSignatureFieldCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document signature field.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return SignatureFieldResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SignatureFieldResponse putSignatureField(String name, String fieldName, SignatureField field, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<SignatureFieldResponse> resp = putSignatureFieldWithHttpInfo(name, fieldName, field, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<SignatureFieldResponse> resp = putSignatureFieldWithHttpInfo(name, fieldName, field, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document signature field.
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;SignatureFieldResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SignatureFieldResponse> putSignatureFieldWithHttpInfo(String name, String fieldName, SignatureField field, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = putSignatureFieldValidateBeforeCall(name, fieldName, field, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<SignatureFieldResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document signature field. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param fieldName The field name. (required)
+     * @param field The field. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putSignatureFieldAsync(String name, String fieldName, SignatureField field, String storage, String folder, final ApiCallback<SignatureFieldResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putSignatureFieldValidateBeforeCall(name, fieldName, field, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SignatureFieldResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

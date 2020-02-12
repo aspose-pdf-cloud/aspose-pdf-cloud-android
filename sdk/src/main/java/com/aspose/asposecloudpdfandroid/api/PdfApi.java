@@ -22070,6 +22070,155 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPdfAInStorageToPdf
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPdfAInStorageToPdfCall(String srcPath, Boolean dontOptimize, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/create/pdfa";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (srcPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+        if (dontOptimize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dontOptimize", dontOptimize));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPdfAInStorageToPdfValidateBeforeCall(String srcPath, Boolean dontOptimize, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'srcPath' is set
+        if (srcPath == null) {
+            throw new ApiException("Missing the required parameter 'srcPath' when calling getPdfAInStorageToPdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPdfAInStorageToPdfCall(srcPath, dontOptimize, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPdfAInStorageToPdf(String srcPath, Boolean dontOptimize, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<File> resp = getPdfAInStorageToPdfWithHttpInfo(srcPath, dontOptimize, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<File> resp = getPdfAInStorageToPdfWithHttpInfo(srcPath, dontOptimize, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPdfAInStorageToPdfWithHttpInfo(String srcPath, Boolean dontOptimize, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfAInStorageToPdfValidateBeforeCall(srcPath, dontOptimize, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and return resulting file in response.  (asynchronously)
+     * 
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPdfAInStorageToPdfAsync(String srcPath, Boolean dontOptimize, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPdfAInStorageToPdfValidateBeforeCall(srcPath, dontOptimize, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPdfInStorageToDoc
      * @param name The document name. (required)
      * @param addReturnToLineEnd Add return to line end. (optional)
@@ -29651,7 +29800,7 @@ public class PdfApi {
     /**
      * Build call for postBookmark
      * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. (required)
+     * @param bookmarkPath The parent bookmark path. Specify an empty string when adding a bookmark to the root. (required)
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -29735,7 +29884,7 @@ public class PdfApi {
      * Add document bookmarks.
      * 
      * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. (required)
+     * @param bookmarkPath The parent bookmark path. Specify an empty string when adding a bookmark to the root. (required)
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -29764,7 +29913,7 @@ public class PdfApi {
      * Add document bookmarks.
      * 
      * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. (required)
+     * @param bookmarkPath The parent bookmark path. Specify an empty string when adding a bookmark to the root. (required)
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -29781,7 +29930,7 @@ public class PdfApi {
      * Add document bookmarks. (asynchronously)
      * 
      * @param name The document name. (required)
-     * @param bookmarkPath The bookmark path. (required)
+     * @param bookmarkPath The parent bookmark path. Specify an empty string when adding a bookmark to the root. (required)
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -47513,6 +47662,171 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = putPclInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putPdfAInStorageToPdf
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putPdfAInStorageToPdfCall(String name, String srcPath, String dstFolder, Boolean dontOptimize, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/create/pdfa"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (srcPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+        if (dstFolder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dstFolder", dstFolder));
+        if (dontOptimize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dontOptimize", dontOptimize));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putPdfAInStorageToPdfValidateBeforeCall(String name, String srcPath, String dstFolder, Boolean dontOptimize, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putPdfAInStorageToPdf(Async)");
+        }
+        
+        // verify the required parameter 'srcPath' is set
+        if (srcPath == null) {
+            throw new ApiException("Missing the required parameter 'srcPath' when calling putPdfAInStorageToPdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putPdfAInStorageToPdfCall(name, srcPath, dstFolder, dontOptimize, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse putPdfAInStorageToPdf(String name, String srcPath, String dstFolder, Boolean dontOptimize, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = putPdfAInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, dontOptimize, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = putPdfAInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, dontOptimize, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> putPdfAInStorageToPdfWithHttpInfo(String name, String srcPath, String dstFolder, Boolean dontOptimize, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfAInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, dontOptimize, storage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Convert PDFA file (located on storage) to PDF format and upload resulting file to storage.  (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param srcPath Full source filename (ex. /folder1/folder2/template.pdf) (required)
+     * @param dstFolder The destination document folder. (optional)
+     * @param dontOptimize If set, document resources will not be optimized. (optional)
+     * @param storage The document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putPdfAInStorageToPdfAsync(String name, String srcPath, String dstFolder, Boolean dontOptimize, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putPdfAInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, dontOptimize, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

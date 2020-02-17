@@ -145,6 +145,7 @@ Method | HTTP request | Description
 [**getPageUnderlineAnnotations**](PdfApi.md#getPageUnderlineAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
 [**getPages**](PdfApi.md#getPages) | **GET** /pdf/\{name}/pages | Read document pages info.
 [**getPclInStorageToPdf**](PdfApi.md#getPclInStorageToPdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+[**getPdfAInStorageToPdf**](PdfApi.md#getPdfAInStorageToPdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
 [**getPdfInStorageToDoc**](PdfApi.md#getPdfInStorageToDoc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
 [**getPdfInStorageToEpub**](PdfApi.md#getPdfInStorageToEpub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 [**getPdfInStorageToHtml**](PdfApi.md#getPdfInStorageToHtml) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
@@ -298,6 +299,7 @@ Method | HTTP request | Description
 [**putPageConvertToPng**](PdfApi.md#putPageConvertToPng) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/png | Convert document page to png image and upload resulting file to storage.
 [**putPageConvertToTiff**](PdfApi.md#putPageConvertToTiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/tiff | Convert document page to Tiff image and upload resulting file to storage.
 [**putPclInStorageToPdf**](PdfApi.md#putPclInStorageToPdf) | **PUT** /pdf/\{name}/create/pcl | Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+[**putPdfAInStorageToPdf**](PdfApi.md#putPdfAInStorageToPdf) | **PUT** /pdf/\{name}/create/pdfa | Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
 [**putPdfInRequestToDoc**](PdfApi.md#putPdfInRequestToDoc) | **PUT** /pdf/convert/doc | Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 [**putPdfInRequestToEpub**](PdfApi.md#putPdfInRequestToEpub) | **PUT** /pdf/convert/epub | Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 [**putPdfInRequestToHtml**](PdfApi.md#putPdfInRequestToHtml) | **PUT** /pdf/convert/html | Converts PDF document (in request content) to Html format and uploads resulting file to storage.
@@ -3713,6 +3715,29 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
 
+<a name="getPdfAInStorageToPdf"></a>
+# **getPdfAInStorageToPdf**
+> File getPdfAInStorageToPdf(srcPath, dontOptimize, storage)
+
+Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.pdf) |
+ **dontOptimize** | **Boolean**| If set, document resources will not be optimized. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
 <a name="getPdfInStorageToDoc"></a>
 # **getPdfInStorageToDoc**
 > File getPdfInStorageToDoc(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage)
@@ -4891,7 +4916,7 @@ Add document bookmarks.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **bookmarkPath** | **String**| The bookmark path. |
+ **bookmarkPath** | **String**| The parent bookmark path. Specify an empty string when adding a bookmark to the root. |
  **bookmarks** | [**List&lt;Bookmark&gt;**](Bookmark.md)| The array of bookmark. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
@@ -7566,6 +7591,31 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.pcl) |
  **dstFolder** | **String**| The destination document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putPdfAInStorageToPdf"></a>
+# **putPdfAInStorageToPdf**
+> AsposeResponse putPdfAInStorageToPdf(name, srcPath, dstFolder, dontOptimize, storage)
+
+Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.pdf) |
+ **dstFolder** | **String**| The destination document folder. | [optional]
+ **dontOptimize** | **Boolean**| If set, document resources will not be optimized. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
 ### Return type

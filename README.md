@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 3.0
-- Package version: 20.1.0
+- Package version: 20.2.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>20.1.0</version>
+    <version>20.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:20.1.0"
+compile "com.aspose:aspose-cloud-pdf-android:20.2.0"
 ```
 
 ### Others
@@ -59,7 +59,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-20.1.0.jar
+* target/aspose-cloud-pdf-android-20.2.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -257,6 +257,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getPageUnderlineAnnotations**](sdk/docs/PdfApi.md#getPageUnderlineAnnotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
 *PdfApi* | [**getPages**](sdk/docs/PdfApi.md#getPages) | **GET** /pdf/\{name}/pages | Read document pages info.
 *PdfApi* | [**getPclInStorageToPdf**](sdk/docs/PdfApi.md#getPclInStorageToPdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+*PdfApi* | [**getPdfAInStorageToPdf**](sdk/docs/PdfApi.md#getPdfAInStorageToPdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getPdfInStorageToDoc**](sdk/docs/PdfApi.md#getPdfInStorageToDoc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToEpub**](sdk/docs/PdfApi.md#getPdfInStorageToEpub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToHtml**](sdk/docs/PdfApi.md#getPdfInStorageToHtml) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
@@ -410,6 +411,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putPageConvertToPng**](sdk/docs/PdfApi.md#putPageConvertToPng) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/png | Convert document page to png image and upload resulting file to storage.
 *PdfApi* | [**putPageConvertToTiff**](sdk/docs/PdfApi.md#putPageConvertToTiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/tiff | Convert document page to Tiff image and upload resulting file to storage.
 *PdfApi* | [**putPclInStorageToPdf**](sdk/docs/PdfApi.md#putPclInStorageToPdf) | **PUT** /pdf/\{name}/create/pcl | Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+*PdfApi* | [**putPdfAInStorageToPdf**](sdk/docs/PdfApi.md#putPdfAInStorageToPdf) | **PUT** /pdf/\{name}/create/pdfa | Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putPdfInRequestToDoc**](sdk/docs/PdfApi.md#putPdfInRequestToDoc) | **PUT** /pdf/convert/doc | Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToEpub**](sdk/docs/PdfApi.md#putPdfInRequestToEpub) | **PUT** /pdf/convert/epub | Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToHtml**](sdk/docs/PdfApi.md#putPdfInRequestToHtml) | **PUT** /pdf/convert/html | Converts PDF document (in request content) to Html format and uploads resulting file to storage.

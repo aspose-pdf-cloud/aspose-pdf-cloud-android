@@ -557,7 +557,7 @@ public class ConvertToPdfTests {
         String srcPath = th.tempFolder + '/' + name;
         String resultName = "fromPs.pdf";
 
-        AsposeResponse response = th.pdfApi.putMarkdownInStorageToPdf(resultName, srcPath, th.tempFolder, null);
+        AsposeResponse response = th.pdfApi.putMarkdownInStorageToPdf(resultName, srcPath, null, th.tempFolder);
         assertEquals(200, (int)response.getCode());
     }
 

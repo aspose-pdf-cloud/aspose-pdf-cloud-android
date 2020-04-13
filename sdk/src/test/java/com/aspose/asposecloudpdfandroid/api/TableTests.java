@@ -253,9 +253,7 @@ public class TableTests {
                 else if (c == 4)
                 {
                     cell.getParagraphs().clear();
-                    cell.getParagraphs().add(new TextRect().text("y"));
-                    cell.getParagraphs().get(0).setTextState(textState);
-                    cell.getParagraphs().get(0).getTextState().setForegroundColor(new Color().A(255).B(255));
+                    cell.setHtmlFragment("<ul><li>First</li><li>Second</li></ul>");
                 }
                 row.getCells().add(cell);
 

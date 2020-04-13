@@ -26,6 +26,7 @@ import java.util.Objects;
 import com.aspose.asposecloudpdfandroid.model.BorderInfo;
 import com.aspose.asposecloudpdfandroid.model.Color;
 import com.aspose.asposecloudpdfandroid.model.HorizontalAlignment;
+import com.aspose.asposecloudpdfandroid.model.ImageFragment;
 import com.aspose.asposecloudpdfandroid.model.MarginInfo;
 import com.aspose.asposecloudpdfandroid.model.TextRect;
 import com.aspose.asposecloudpdfandroid.model.TextState;
@@ -62,6 +63,9 @@ public class Cell {
   @SerializedName("BackgroundImageFile")
   private String backgroundImageFile = null;
 
+  @SerializedName("BackgroundImageStorageFile")
+  private String backgroundImageStorageFile = null;
+
   @SerializedName("Alignment")
   private HorizontalAlignment alignment = null;
 
@@ -85,6 +89,12 @@ public class Cell {
 
   @SerializedName("Width")
   private Double width = null;
+
+  @SerializedName("HtmlFragment")
+  private String htmlFragment = null;
+
+  @SerializedName("Images")
+  private List<ImageFragment> images = null;
 
   public Cell isNoBorder(Boolean isNoBorder) {
     this.isNoBorder = isNoBorder;
@@ -174,6 +184,24 @@ public class Cell {
 
   public void setBackgroundImageFile(String backgroundImageFile) {
     this.backgroundImageFile = backgroundImageFile;
+  }
+
+  public Cell backgroundImageStorageFile(String backgroundImageStorageFile) {
+    this.backgroundImageStorageFile = backgroundImageStorageFile;
+    return this;
+  }
+
+   /**
+   * Gets or sets path of the background image file from storage.
+   * @return backgroundImageStorageFile
+  **/
+  @ApiModelProperty(value = "Gets or sets path of the background image file from storage.")
+  public String getBackgroundImageStorageFile() {
+    return backgroundImageStorageFile;
+  }
+
+  public void setBackgroundImageStorageFile(String backgroundImageStorageFile) {
+    this.backgroundImageStorageFile = backgroundImageStorageFile;
   }
 
   public Cell alignment(HorizontalAlignment alignment) {
@@ -328,6 +356,50 @@ public class Cell {
     this.width = width;
   }
 
+  public Cell htmlFragment(String htmlFragment) {
+    this.htmlFragment = htmlFragment;
+    return this;
+  }
+
+   /**
+   * Gets or sets Html fragment.
+   * @return htmlFragment
+  **/
+  @ApiModelProperty(value = "Gets or sets Html fragment.")
+  public String getHtmlFragment() {
+    return htmlFragment;
+  }
+
+  public void setHtmlFragment(String htmlFragment) {
+    this.htmlFragment = htmlFragment;
+  }
+
+  public Cell images(List<ImageFragment> images) {
+    this.images = images;
+    return this;
+  }
+
+  public Cell addImagesItem(ImageFragment imagesItem) {
+    if (this.images == null) {
+      this.images = new ArrayList<ImageFragment>();
+    }
+    this.images.add(imagesItem);
+    return this;
+  }
+
+   /**
+   * Gets or sets ImageFragment list.
+   * @return images
+  **/
+  @ApiModelProperty(value = "Gets or sets ImageFragment list.")
+  public List<ImageFragment> getImages() {
+    return images;
+  }
+
+  public void setImages(List<ImageFragment> images) {
+    this.images = images;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -343,6 +415,7 @@ public class Cell {
         Objects.equals(this.border, cell.border) &&
         Objects.equals(this.backgroundColor, cell.backgroundColor) &&
         Objects.equals(this.backgroundImageFile, cell.backgroundImageFile) &&
+        Objects.equals(this.backgroundImageStorageFile, cell.backgroundImageStorageFile) &&
         Objects.equals(this.alignment, cell.alignment) &&
         Objects.equals(this.defaultCellTextState, cell.defaultCellTextState) &&
         Objects.equals(this.paragraphs, cell.paragraphs) &&
@@ -350,12 +423,14 @@ public class Cell {
         Objects.equals(this.verticalAlignment, cell.verticalAlignment) &&
         Objects.equals(this.colSpan, cell.colSpan) &&
         Objects.equals(this.rowSpan, cell.rowSpan) &&
-        Objects.equals(this.width, cell.width);
+        Objects.equals(this.width, cell.width) &&
+        Objects.equals(this.htmlFragment, cell.htmlFragment) &&
+        Objects.equals(this.images, cell.images);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isNoBorder, margin, border, backgroundColor, backgroundImageFile, alignment, defaultCellTextState, paragraphs, isWordWrapped, verticalAlignment, colSpan, rowSpan, width);
+    return Objects.hash(isNoBorder, margin, border, backgroundColor, backgroundImageFile, backgroundImageStorageFile, alignment, defaultCellTextState, paragraphs, isWordWrapped, verticalAlignment, colSpan, rowSpan, width, htmlFragment, images);
   }
 
 
@@ -369,6 +444,7 @@ public class Cell {
     sb.append("    border: ").append(toIndentedString(border)).append("\n");
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    backgroundImageFile: ").append(toIndentedString(backgroundImageFile)).append("\n");
+    sb.append("    backgroundImageStorageFile: ").append(toIndentedString(backgroundImageStorageFile)).append("\n");
     sb.append("    alignment: ").append(toIndentedString(alignment)).append("\n");
     sb.append("    defaultCellTextState: ").append(toIndentedString(defaultCellTextState)).append("\n");
     sb.append("    paragraphs: ").append(toIndentedString(paragraphs)).append("\n");
@@ -377,6 +453,8 @@ public class Cell {
     sb.append("    colSpan: ").append(toIndentedString(colSpan)).append("\n");
     sb.append("    rowSpan: ").append(toIndentedString(rowSpan)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    htmlFragment: ").append(toIndentedString(htmlFragment)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("}");
     return sb.toString();
   }

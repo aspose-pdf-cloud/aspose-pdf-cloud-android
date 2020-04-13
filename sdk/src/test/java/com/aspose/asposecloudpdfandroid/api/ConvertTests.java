@@ -672,7 +672,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
 
 
-        File response = th.pdfApi.getPdfInStorageToLaTeX(name, null, folder, null);
+        File response = th.pdfApi.getPdfInStorageToLaTeX(name, folder, null);
         assertNotNull(response);
     }
 
@@ -691,7 +691,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
         String resFileName = "result.latex";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToLaTeX(name, th.tempFolder + '/' + resFileName, null, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToLaTeX(name, th.tempFolder + '/' + resFileName, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -708,7 +708,7 @@ public class ConvertTests {
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.latex";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToLaTeX(th.tempFolder + '/' + resFileName, null, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToLaTeX(th.tempFolder + '/' + resFileName, null, file);
         assertEquals(200, (int)response.getCode());
     }
 

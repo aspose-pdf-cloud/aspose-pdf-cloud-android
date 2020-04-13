@@ -3847,7 +3847,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToLaTeX"></a>
 # **getPdfInStorageToLaTeX**
-> File getPdfInStorageToLaTeX(name, pagesCount, folder, storage)
+> File getPdfInStorageToLaTeX(name, folder, storage)
 
 Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
 
@@ -3856,7 +3856,6 @@ Converts PDF document (located on storage) to LaTeX format and returns resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **pagesCount** | **Integer**| Pages count. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -7736,7 +7735,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToLaTeX"></a>
 # **putPdfInRequestToLaTeX**
-> AsposeResponse putPdfInRequestToLaTeX(outPath, pagesCount, storage, file)
+> AsposeResponse putPdfInRequestToLaTeX(outPath, storage, file)
 
 Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
 
@@ -7745,7 +7744,6 @@ Converts PDF document (in request content) to LaTeX format and uploads resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.tex) |
- **pagesCount** | **Integer**| Pages count. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
@@ -8103,7 +8101,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToLaTeX"></a>
 # **putPdfInStorageToLaTeX**
-> AsposeResponse putPdfInStorageToLaTeX(name, outPath, pagesCount, folder, storage)
+> AsposeResponse putPdfInStorageToLaTeX(name, outPath, folder, storage)
 
 Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
 
@@ -8113,7 +8111,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.tex) |
- **pagesCount** | **Integer**| Pages count. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 

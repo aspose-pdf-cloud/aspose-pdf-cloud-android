@@ -22893,7 +22893,6 @@ public class PdfApi {
     /**
      * Build call for getPdfInStorageToLaTeX
      * @param name The document name. (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -22901,7 +22900,7 @@ public class PdfApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToLaTeXCall(String name, Integer pagesCount, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToLaTeXCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -22910,8 +22909,6 @@ public class PdfApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (pagesCount != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("pagesCount", pagesCount));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
@@ -22950,7 +22947,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToLaTeXValidateBeforeCall(String name, Integer pagesCount, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToLaTeXValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -22958,7 +22955,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXCall(name, pagesCount, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXCall(name, folder, storage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -22967,16 +22964,15 @@ public class PdfApi {
      * Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToLaTeX(String name, Integer pagesCount, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToLaTeX(String name, String folder, String storage) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, pagesCount, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, folder, storage);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -22984,7 +22980,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, pagesCount, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, folder, storage);
                 return resp.getData();
             }
             throw ex;
@@ -22995,14 +22991,13 @@ public class PdfApi {
      * Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
      * 
      * @param name The document name. (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToLaTeXWithHttpInfo(String name, Integer pagesCount, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, pagesCount, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToLaTeXWithHttpInfo(String name, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -23011,14 +23006,13 @@ public class PdfApi {
      * Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content (asynchronously)
      * 
      * @param name The document name. (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToLaTeXAsync(String name, Integer pagesCount, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToLaTeXAsync(String name, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23039,7 +23033,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, pagesCount, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -48503,7 +48497,6 @@ public class PdfApi {
     /**
      * Build call for putPdfInRequestToLaTeX
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
@@ -48511,7 +48504,7 @@ public class PdfApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToLaTeXCall(String outPath, Integer pagesCount, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToLaTeXCall(String outPath, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -48521,8 +48514,6 @@ public class PdfApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
-        if (pagesCount != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("pagesCount", pagesCount));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
 
@@ -48559,7 +48550,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToLaTeXValidateBeforeCall(String outPath, Integer pagesCount, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToLaTeXValidateBeforeCall(String outPath, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -48567,7 +48558,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXCall(outPath, pagesCount, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXCall(outPath, storage, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -48576,16 +48567,15 @@ public class PdfApi {
      * Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToLaTeX(String outPath, Integer pagesCount, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToLaTeX(String outPath, String storage, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, pagesCount, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, storage, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -48593,7 +48583,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, pagesCount, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, storage, file);
                 return resp.getData();
             }
             throw ex;
@@ -48604,14 +48594,13 @@ public class PdfApi {
      * Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToLaTeXWithHttpInfo(String outPath, Integer pagesCount, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, pagesCount, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToLaTeXWithHttpInfo(String outPath, String storage, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, storage, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -48620,14 +48609,13 @@ public class PdfApi {
      * Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToLaTeXAsync(String outPath, Integer pagesCount, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToLaTeXAsync(String outPath, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -48648,7 +48636,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, pagesCount, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, storage, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -50846,7 +50834,6 @@ public class PdfApi {
      * Build call for putPdfInStorageToLaTeX
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -50854,7 +50841,7 @@ public class PdfApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToLaTeXCall(String name, String outPath, Integer pagesCount, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToLaTeXCall(String name, String outPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -50865,8 +50852,6 @@ public class PdfApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
-        if (pagesCount != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("pagesCount", pagesCount));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
@@ -50905,7 +50890,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToLaTeXValidateBeforeCall(String name, String outPath, Integer pagesCount, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToLaTeXValidateBeforeCall(String name, String outPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -50918,7 +50903,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXCall(name, outPath, pagesCount, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXCall(name, outPath, folder, storage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -50928,16 +50913,15 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToLaTeX(String name, String outPath, Integer pagesCount, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToLaTeX(String name, String outPath, String folder, String storage) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, pagesCount, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, folder, storage);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -50945,7 +50929,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, pagesCount, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, folder, storage);
                 return resp.getData();
             }
             throw ex;
@@ -50957,14 +50941,13 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToLaTeXWithHttpInfo(String name, String outPath, Integer pagesCount, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, pagesCount, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToLaTeXWithHttpInfo(String name, String outPath, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -50974,14 +50957,13 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param pagesCount Pages count. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToLaTeXAsync(String name, String outPath, Integer pagesCount, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToLaTeXAsync(String name, String outPath, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -51002,7 +50984,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, pagesCount, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, folder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

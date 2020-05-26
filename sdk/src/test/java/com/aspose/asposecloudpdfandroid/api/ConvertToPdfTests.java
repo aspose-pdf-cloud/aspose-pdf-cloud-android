@@ -116,13 +116,13 @@ public class ConvertToPdfTests {
 
 
     /**
-     * GetLaTeXInStorageToPdf Test
+     * GetTeXInStorageToPdf Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void getLaTeXInStorageToPdfTest() throws ApiException
+    public void getTeXInStorageToPdfTest() throws ApiException
     {
         String name = "sample.tex";
         th.uploadFile(name);
@@ -130,19 +130,19 @@ public class ConvertToPdfTests {
 
         String srcPath = th.tempFolder + '/' + name;
 
-        File response = th.pdfApi.getLaTeXInStorageToPdf(srcPath, null);
+        File response = th.pdfApi.getTeXInStorageToPdf(srcPath, null);
         assertNotNull(response);
     }
 
 
     /**
-     * PutLaTeXInStorageToPdf Test
+     * PutTeXInStorageToPdf Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void putLaTeXInStorageToPdfTest() throws ApiException
+    public void putTeXInStorageToPdfTest() throws ApiException
     {
         String name = "sample.tex";
         th.uploadFile(name);
@@ -151,7 +151,7 @@ public class ConvertToPdfTests {
         String srcPath = th.tempFolder + '/' + name;
         String resultName = "fromTex.pdf";
 
-        AsposeResponse response = th.pdfApi.putLaTeXInStorageToPdf(resultName, srcPath, th.tempFolder, null);
+        AsposeResponse response = th.pdfApi.putTeXInStorageToPdf(resultName, srcPath, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 

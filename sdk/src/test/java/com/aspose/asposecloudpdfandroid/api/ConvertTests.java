@@ -658,13 +658,13 @@ public class ConvertTests {
 
 
     /**
-     * GetPdfInStorageToLaTeX Test
+     * GetPdfInStorageToTeX Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void getPdfInStorageToLaTeXTest() throws ApiException
+    public void getPdfInStorageToTeXTest() throws ApiException
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
@@ -672,43 +672,43 @@ public class ConvertTests {
         String folder = th.tempFolder;
 
 
-        File response = th.pdfApi.getPdfInStorageToLaTeX(name, folder, null);
+        File response = th.pdfApi.getPdfInStorageToTeX(name, folder, null);
         assertNotNull(response);
     }
 
     /**
-     * PutPdfInStorageToLaTeX Test
+     * PutPdfInStorageToTeX Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void putPdfInStorageToLaTeXTest() throws ApiException
+    public void putPdfInStorageToTeXTest() throws ApiException
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
 
         String folder = th.tempFolder;
-        String resFileName = "result.latex";
+        String resFileName = "result.tex";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToLaTeX(name, th.tempFolder + '/' + resFileName, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToTeX(name, th.tempFolder + '/' + resFileName, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
     /**
-     * PutPdfInRequestToLaTeX Test
+     * PutPdfInRequestToTeX Test
      * @throws ApiException
      *          if the Api call fails
      */
 
     @Test
-    public void putPdfInRequestToLaTeXTest() throws ApiException
+    public void putPdfInRequestToTeXTest() throws ApiException
     {
         String name = "4pages.pdf";
         File file = new File(th.testDataFolder + "/" + name);
-        String resFileName = "result.latex";
+        String resFileName = "result.tex";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToLaTeX(th.tempFolder + '/' + resFileName, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToTeX(th.tempFolder + '/' + resFileName, null, file);
         assertEquals(200, (int)response.getCode());
     }
 

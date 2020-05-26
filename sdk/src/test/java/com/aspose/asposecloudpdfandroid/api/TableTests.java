@@ -249,7 +249,7 @@ public class TableTests {
                     cell.getParagraphs().get(0).getTextState().setForegroundColor(new Color().A(255).G(255));
                 }
 
-                // change properties on paragraph AFTER first clearing and re-adding paragraphs
+                // HTML Fragment
                 else if (c == 4)
                 {
                     cell.getParagraphs().clear();

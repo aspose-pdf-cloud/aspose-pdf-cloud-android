@@ -90,6 +90,10 @@ public class ApiClient {
         // Set default User-Agent.
         setUserAgent("aspose pdf java sdk");
         
+        // Add custom headers
+        addDefaultHeader("x-aspose-client", "android sdk");
+        addDefaultHeader("x-aspose-client-version", "20.5.0");
+        
         // PDFCLOUD-418 Set default Connect Timeout
         setConnectTimeout(5 * 60 * 1000);
         setReadTimeout(5 * 60 * 1000);

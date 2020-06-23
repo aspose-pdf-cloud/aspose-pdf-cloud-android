@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **optionName** | **String** | Gets or sets name of the option. | [optional]
 **style** | [**BoxStyle**](BoxStyle.md) | Style of field box. | [optional]
 **partialName** | **String** | Field name. | [optional]
+**fullName** | **String** | Full Field name. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]
 **value** | **String** | Field value. | [optional]
 **pageIndex** | **Integer** | Page index. | 

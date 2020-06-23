@@ -7733,7 +7733,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToHtml"></a>
 # **putPdfInRequestToHtml**
-> AsposeResponse putPdfInRequestToHtml(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, file)
+> AsposeResponse putPdfInRequestToHtml(outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, storage, flowLayoutParagraphFullWidth, outputFormat, file)
 
 Converts PDF document (in request content) to Html format and uploads resulting file to storage.
 
@@ -7772,6 +7772,7 @@ Name | Type | Description  | Notes
  **trySaveTextUnderliningAndStrikeoutingInCss** | **Boolean**| PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **flowLayoutParagraphFullWidth** | **Boolean**| This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. | [optional]
+ **outputFormat** | **String**| This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is &quot;Zip&quot; or missed (default). In case of the &quot;Folder&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file. | [optional] [default to Zip] [enum: Zip, Folder]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -8121,7 +8122,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToHtml"></a>
 # **putPdfInStorageToHtml**
-> AsposeResponse putPdfInStorageToHtml(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth)
+> AsposeResponse putPdfInStorageToHtml(name, outPath, additionalMarginWidthInPoints, compressSvgGraphicsIfAny, convertMarkedContentToLayers, defaultFontName, documentType, fixedLayout, imageResolution, minimalLineWidth, preventGlyphsGrouping, splitCssIntoPages, splitIntoPages, useZOrder, antialiasingProcessing, cssClassNamesPrefix, explicitListOfSavedPages, fontEncodingStrategy, fontSavingMode, htmlMarkupGenerationMode, lettersPositioningMethod, pagesFlowTypeDependsOnViewersScreenSize, partsEmbeddingMode, rasterImagesSavingMode, removeEmptyAreasOnTopAndBottom, saveShadowedTextsAsTransparentTexts, saveTransparentTexts, specialFolderForAllImages, specialFolderForSvgImages, trySaveTextUnderliningAndStrikeoutingInCss, folder, storage, flowLayoutParagraphFullWidth, outputFormat)
 
 Converts PDF document (located on storage) to Html format and uploads resulting file to storage
 
@@ -8162,6 +8163,7 @@ Name | Type | Description  | Notes
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **flowLayoutParagraphFullWidth** | **Boolean**| This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. | [optional]
+ **outputFormat** | **String**| This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is &quot;Zip&quot; or missed (default). In case of the &quot;Folder&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file. | [optional] [default to Zip] [enum: Zip, Folder]
 
 ### Return type
 

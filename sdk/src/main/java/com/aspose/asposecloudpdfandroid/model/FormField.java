@@ -54,6 +54,9 @@ public class FormField extends LinkElement {
   @SerializedName("PartialName")
   private String partialName = null;
 
+  @SerializedName("FullName")
+  private String fullName = null;
+
   @SerializedName("Rect")
   private Rectangle rect = null;
 
@@ -121,6 +124,24 @@ public class FormField extends LinkElement {
 
   public void setPartialName(String partialName) {
     this.partialName = partialName;
+  }
+
+  public FormField fullName(String fullName) {
+    this.fullName = fullName;
+    return this;
+  }
+
+   /**
+   * Full Field name.
+   * @return fullName
+  **/
+  @ApiModelProperty(value = "Full Field name.")
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public FormField rect(Rectangle rect) {
@@ -448,6 +469,7 @@ public class FormField extends LinkElement {
     }
     FormField formField = (FormField) o;
     return Objects.equals(this.partialName, formField.partialName) &&
+        Objects.equals(this.fullName, formField.fullName) &&
         Objects.equals(this.rect, formField.rect) &&
         Objects.equals(this.value, formField.value) &&
         Objects.equals(this.pageIndex, formField.pageIndex) &&
@@ -470,7 +492,7 @@ public class FormField extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(partialName, rect, value, pageIndex, height, width, zindex, isGroup, parent, isSharedField, flags, color, contents, margin, highlighting, horizontalAlignment, verticalAlignment, border, super.hashCode());
+    return Objects.hash(partialName, fullName, rect, value, pageIndex, height, width, zindex, isGroup, parent, isSharedField, flags, color, contents, margin, highlighting, horizontalAlignment, verticalAlignment, border, super.hashCode());
   }
 
 
@@ -480,6 +502,7 @@ public class FormField extends LinkElement {
     sb.append("class FormField {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    partialName: ").append(toIndentedString(partialName)).append("\n");
+    sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
     sb.append("    rect: ").append(toIndentedString(rect)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    pageIndex: ").append(toIndentedString(pageIndex)).append("\n");

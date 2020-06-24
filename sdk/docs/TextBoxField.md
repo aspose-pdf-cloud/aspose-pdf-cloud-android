@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **maxLen** | **Integer** | Gets or sets maximum length of text in the field. | [optional]
 **barcode** | **String** | Adds barcode 128 into the field. Field value will be changed onto the code and field become read only. | [optional]
 **partialName** | **String** | Field name. | [optional]
+**fullName** | **String** | Full Field name. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]
 **value** | **String** | Field value. | [optional]
 **pageIndex** | **Integer** | Page index. | 

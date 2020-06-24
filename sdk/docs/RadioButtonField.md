@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **multiSelect** | **Boolean** | Gets or sets multiselection flag. | [optional]
 **selected** | **Integer** | Gets or sets index of selected item. Numbering of items is started from 1. | [optional]
 **partialName** | **String** | Field name. | [optional]
+**fullName** | **String** | Full Field name. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]
 **value** | **String** | Field value. | [optional]
 **pageIndex** | **Integer** | Page index. | 

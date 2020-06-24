@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 3.0
-- Package version: 20.5.0
+- Package version: 20.6.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>20.5.0</version>
+    <version>20.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:20.5.0"
+compile "com.aspose:aspose-cloud-pdf-android:20.6.0"
 ```
 
 ### Others
@@ -59,7 +59,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-20.5.0.jar
+* target/aspose-cloud-pdf-android-20.6.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -546,6 +546,7 @@ Class | Method | HTTP request | Description
  - [ObjectExist](sdk/docs/ObjectExist.md)
  - [OptimizeOptions](sdk/docs/OptimizeOptions.md)
  - [Option](sdk/docs/Option.md)
+ - [OutputFormat](sdk/docs/OutputFormat.md)
  - [PageLayout](sdk/docs/PageLayout.md)
  - [PageMode](sdk/docs/PageMode.md)
  - [PageWordCount](sdk/docs/PageWordCount.md)

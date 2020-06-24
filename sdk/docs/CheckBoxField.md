@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **checked** | **Boolean** | Gets or sets state of check box. | 
 **exportValue** | **String** | Gets or sets export value of CheckBox field. | [optional]
 **partialName** | **String** | Field name. | [optional]
+**fullName** | **String** | Full Field name. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]
 **value** | **String** | Field value. | [optional]
 **pageIndex** | **Integer** | Page index. | 

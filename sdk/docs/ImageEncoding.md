@@ -1,13 +1,14 @@
 ﻿
-# PdfAType
-Allows to specify PdfA file format.
+# ImageEncoding
+Image encoding type.
 
 ## Enum
  Name | Description
 ------------ | ------------
-**PDFA1A** | Pdf/A-1a format
-**PDFA1B** | Pdf/A-1b format
-**PDFA3A** | Pdf/A-3a format
+**Unchanged** | Don't change encoding.
+**Jpeg** | JPEG (DCT) encoding.
+**Flate** | Flate encoding.
+**Jpeg2000** | JPEG2000 (JPX) encoding.
 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

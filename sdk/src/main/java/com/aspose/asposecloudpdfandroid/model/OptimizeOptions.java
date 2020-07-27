@@ -23,6 +23,8 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.ImageCompressionVersion;
+import com.aspose.asposecloudpdfandroid.model.ImageEncoding;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,6 +61,24 @@ public class OptimizeOptions {
   @SerializedName("UnembedFonts")
   private Boolean unembedFonts = null;
 
+  @SerializedName("ResizeImages")
+  private Boolean resizeImages = null;
+
+  @SerializedName("MaxResolution")
+  private Integer maxResolution = null;
+
+  @SerializedName("SubsetFonts")
+  private Boolean subsetFonts = null;
+
+  @SerializedName("RemovePrivateInfo")
+  private Boolean removePrivateInfo = null;
+
+  @SerializedName("ImageEncoding")
+  private ImageEncoding imageEncoding = null;
+
+  @SerializedName("ImageCompressionVersion")
+  private ImageCompressionVersion imageCompressionVersion = null;
+
   public OptimizeOptions allowReusePageContent(Boolean allowReusePageContent) {
     this.allowReusePageContent = allowReusePageContent;
     return this;
@@ -68,7 +88,7 @@ public class OptimizeOptions {
    * If true page contents will be reused when document is optimized for equal pages.
    * @return allowReusePageContent
   **/
-  @ApiModelProperty(required = true, value = "If true page contents will be reused when document is optimized for equal pages.")
+  @ApiModelProperty(value = "If true page contents will be reused when document is optimized for equal pages.")
   public Boolean isAllowReusePageContent() {
     return allowReusePageContent;
   }
@@ -83,10 +103,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.
+   * If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.
    * @return compressImages
   **/
-  @ApiModelProperty(required = true, value = "If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.")
+  @ApiModelProperty(value = "If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.")
   public Boolean isCompressImages() {
     return compressImages;
   }
@@ -101,10 +121,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * Specifie slevel of image compression when CompressIamges flag is used.
+   * Specifies level of image compression when CompressImages flag is used.
    * @return imageQuality
   **/
-  @ApiModelProperty(required = true, value = "Specifie slevel of image compression when CompressIamges flag is used.")
+  @ApiModelProperty(value = "Specifies level of image compression when CompressImages flag is used.")
   public Integer getImageQuality() {
     return imageQuality;
   }
@@ -119,10 +139,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).
+   * If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thees streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenated multiple times).
    * @return linkDuplcateStreams
   **/
-  @ApiModelProperty(required = true, value = "If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).")
+  @ApiModelProperty(value = "If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thees streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenated multiple times).")
   public Boolean isLinkDuplcateStreams() {
     return linkDuplcateStreams;
   }
@@ -140,7 +160,7 @@ public class OptimizeOptions {
    * If this flag is set to true, all document objects will be checked and unused objects (i.e. objects which does not have any reference) are removed from document.
    * @return removeUnusedObjects
   **/
-  @ApiModelProperty(required = true, value = "If this flag is set to true, all document objects will be checked and unused objects (i.e. objects which does not have any reference) are removed from document.")
+  @ApiModelProperty(value = "If this flag is set to true, all document objects will be checked and unused objects (i.e. objects which does not have any reference) are removed from document.")
   public Boolean isRemoveUnusedObjects() {
     return removeUnusedObjects;
   }
@@ -158,7 +178,7 @@ public class OptimizeOptions {
    * If this flag set to true, every resource is checked on it&#39;s usage. If resource is never used, then resources is removed. This may decrease document size for example when pages were extracted from document. 
    * @return removeUnusedStreams
   **/
-  @ApiModelProperty(required = true, value = "If this flag set to true, every resource is checked on it's usage. If resource is never used, then resources is removed. This may decrease document size for example when pages were extracted from document. ")
+  @ApiModelProperty(value = "If this flag set to true, every resource is checked on it's usage. If resource is never used, then resources is removed. This may decrease document size for example when pages were extracted from document. ")
   public Boolean isRemoveUnusedStreams() {
     return removeUnusedStreams;
   }
@@ -176,13 +196,121 @@ public class OptimizeOptions {
    * Make fonts not embedded if set to true. 
    * @return unembedFonts
   **/
-  @ApiModelProperty(required = true, value = "Make fonts not embedded if set to true. ")
+  @ApiModelProperty(value = "Make fonts not embedded if set to true. ")
   public Boolean isUnembedFonts() {
     return unembedFonts;
   }
 
   public void setUnembedFonts(Boolean unembedFonts) {
     this.unembedFonts = unembedFonts;
+  }
+
+  public OptimizeOptions resizeImages(Boolean resizeImages) {
+    this.resizeImages = resizeImages;
+    return this;
+  }
+
+   /**
+   * If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.
+   * @return resizeImages
+  **/
+  @ApiModelProperty(value = "If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.")
+  public Boolean isResizeImages() {
+    return resizeImages;
+  }
+
+  public void setResizeImages(Boolean resizeImages) {
+    this.resizeImages = resizeImages;
+  }
+
+  public OptimizeOptions maxResolution(Integer maxResolution) {
+    this.maxResolution = maxResolution;
+    return this;
+  }
+
+   /**
+   * Specifies maximum resolution of images. If image has higher resolution it will be scaled.
+   * @return maxResolution
+  **/
+  @ApiModelProperty(value = "Specifies maximum resolution of images. If image has higher resolution it will be scaled.")
+  public Integer getMaxResolution() {
+    return maxResolution;
+  }
+
+  public void setMaxResolution(Integer maxResolution) {
+    this.maxResolution = maxResolution;
+  }
+
+  public OptimizeOptions subsetFonts(Boolean subsetFonts) {
+    this.subsetFonts = subsetFonts;
+    return this;
+  }
+
+   /**
+   * Fonts will be converted into subsets if set to true.
+   * @return subsetFonts
+  **/
+  @ApiModelProperty(value = "Fonts will be converted into subsets if set to true.")
+  public Boolean isSubsetFonts() {
+    return subsetFonts;
+  }
+
+  public void setSubsetFonts(Boolean subsetFonts) {
+    this.subsetFonts = subsetFonts;
+  }
+
+  public OptimizeOptions removePrivateInfo(Boolean removePrivateInfo) {
+    this.removePrivateInfo = removePrivateInfo;
+    return this;
+  }
+
+   /**
+   * Remove private information (page piece info).
+   * @return removePrivateInfo
+  **/
+  @ApiModelProperty(value = "Remove private information (page piece info).")
+  public Boolean isRemovePrivateInfo() {
+    return removePrivateInfo;
+  }
+
+  public void setRemovePrivateInfo(Boolean removePrivateInfo) {
+    this.removePrivateInfo = removePrivateInfo;
+  }
+
+  public OptimizeOptions imageEncoding(ImageEncoding imageEncoding) {
+    this.imageEncoding = imageEncoding;
+    return this;
+  }
+
+   /**
+   * Image encode which will be used.
+   * @return imageEncoding
+  **/
+  @ApiModelProperty(value = "Image encode which will be used.")
+  public ImageEncoding getImageEncoding() {
+    return imageEncoding;
+  }
+
+  public void setImageEncoding(ImageEncoding imageEncoding) {
+    this.imageEncoding = imageEncoding;
+  }
+
+  public OptimizeOptions imageCompressionVersion(ImageCompressionVersion imageCompressionVersion) {
+    this.imageCompressionVersion = imageCompressionVersion;
+    return this;
+  }
+
+   /**
+   * Version of compression algorithm. Possible values are: \&quot;Standard\&quot; - standard compression, \&quot;Fast\&quot; - fast (improved compression which is faster then standard but may be applicable not for all images), \&quot;Mixed\&quot; - mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then \&quot;Fast\&quot; algorithm. Version \&quot;Fast\&quot; is not applicable for resizing images (standard method will be used). Default is \&quot;Standard\&quot;.
+   * @return imageCompressionVersion
+  **/
+  @ApiModelProperty(value = "Version of compression algorithm. Possible values are: \"Standard\" - standard compression, \"Fast\" - fast (improved compression which is faster then standard but may be applicable not for all images), \"Mixed\" - mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then \"Fast\" algorithm. Version \"Fast\" is not applicable for resizing images (standard method will be used). Default is \"Standard\".")
+  public ImageCompressionVersion getImageCompressionVersion() {
+    return imageCompressionVersion;
+  }
+
+  public void setImageCompressionVersion(ImageCompressionVersion imageCompressionVersion) {
+    this.imageCompressionVersion = imageCompressionVersion;
   }
 
 
@@ -201,12 +329,18 @@ public class OptimizeOptions {
         Objects.equals(this.linkDuplcateStreams, optimizeOptions.linkDuplcateStreams) &&
         Objects.equals(this.removeUnusedObjects, optimizeOptions.removeUnusedObjects) &&
         Objects.equals(this.removeUnusedStreams, optimizeOptions.removeUnusedStreams) &&
-        Objects.equals(this.unembedFonts, optimizeOptions.unembedFonts);
+        Objects.equals(this.unembedFonts, optimizeOptions.unembedFonts) &&
+        Objects.equals(this.resizeImages, optimizeOptions.resizeImages) &&
+        Objects.equals(this.maxResolution, optimizeOptions.maxResolution) &&
+        Objects.equals(this.subsetFonts, optimizeOptions.subsetFonts) &&
+        Objects.equals(this.removePrivateInfo, optimizeOptions.removePrivateInfo) &&
+        Objects.equals(this.imageEncoding, optimizeOptions.imageEncoding) &&
+        Objects.equals(this.imageCompressionVersion, optimizeOptions.imageCompressionVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowReusePageContent, compressImages, imageQuality, linkDuplcateStreams, removeUnusedObjects, removeUnusedStreams, unembedFonts);
+    return Objects.hash(allowReusePageContent, compressImages, imageQuality, linkDuplcateStreams, removeUnusedObjects, removeUnusedStreams, unembedFonts, resizeImages, maxResolution, subsetFonts, removePrivateInfo, imageEncoding, imageCompressionVersion);
   }
 
 
@@ -222,6 +356,12 @@ public class OptimizeOptions {
     sb.append("    removeUnusedObjects: ").append(toIndentedString(removeUnusedObjects)).append("\n");
     sb.append("    removeUnusedStreams: ").append(toIndentedString(removeUnusedStreams)).append("\n");
     sb.append("    unembedFonts: ").append(toIndentedString(unembedFonts)).append("\n");
+    sb.append("    resizeImages: ").append(toIndentedString(resizeImages)).append("\n");
+    sb.append("    maxResolution: ").append(toIndentedString(maxResolution)).append("\n");
+    sb.append("    subsetFonts: ").append(toIndentedString(subsetFonts)).append("\n");
+    sb.append("    removePrivateInfo: ").append(toIndentedString(removePrivateInfo)).append("\n");
+    sb.append("    imageEncoding: ").append(toIndentedString(imageEncoding)).append("\n");
+    sb.append("    imageCompressionVersion: ").append(toIndentedString(imageCompressionVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

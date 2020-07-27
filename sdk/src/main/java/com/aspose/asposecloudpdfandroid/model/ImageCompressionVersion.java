@@ -33,20 +33,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Allows to specify PdfA file format.
+ * Describes versions of image compression algorithm.
  */
-@JsonAdapter(PdfAType.Adapter.class)
-public enum PdfAType {
+@JsonAdapter(ImageCompressionVersion.Adapter.class)
+public enum ImageCompressionVersion {
   
-  PDFA1A("PDFA1A"),
+  STANDARD("Standard"),
   
-  PDFA1B("PDFA1B"),
+  FAST("Fast"),
   
-  PDFA3A("PDFA3A");
+  MIXED("Mixed");
 
   private String value;
 
-  PdfAType(String value) {
+  ImageCompressionVersion(String value) {
     this.value = value;
   }
 
@@ -59,8 +59,8 @@ public enum PdfAType {
     return String.valueOf(value);
   }
 
-  public static PdfAType fromValue(String text) {
-    for (PdfAType b : PdfAType.values()) {
+  public static ImageCompressionVersion fromValue(String text) {
+    for (ImageCompressionVersion b : ImageCompressionVersion.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
@@ -68,16 +68,16 @@ public enum PdfAType {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<PdfAType> {
+  public static class Adapter extends TypeAdapter<ImageCompressionVersion> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PdfAType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ImageCompressionVersion enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PdfAType read(final JsonReader jsonReader) throws IOException {
+    public ImageCompressionVersion read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PdfAType.fromValue(String.valueOf(value));
+      return ImageCompressionVersion.fromValue(String.valueOf(value));
     }
   }
 }

@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 3.0
-- Package version: 20.6.0
+- Package version: 20.7.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-cloud-pdf-android</artifactId>
-    <version>20.6.0</version>
+    <version>20.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-cloud-pdf-android:20.6.0"
+compile "com.aspose:aspose-cloud-pdf-android:20.7.0"
 ```
 
 ### Others
@@ -59,7 +59,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-cloud-pdf-android-20.6.0.jar
+* target/aspose-cloud-pdf-android-20.7.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**deleteStamp**](sdk/docs/PdfApi.md#deleteStamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 *PdfApi* | [**deleteTable**](sdk/docs/PdfApi.md#deleteTable) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
 *PdfApi* | [**downloadFile**](sdk/docs/PdfApi.md#downloadFile) | **GET** /pdf/storage/file/\{path} | Download file
+*PdfApi* | [**getApiInfo**](sdk/docs/PdfApi.md#getApiInfo) | **GET** /pdf/info | 
 *PdfApi* | [**getBookmark**](sdk/docs/PdfApi.md#getBookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
 *PdfApi* | [**getBookmarks**](sdk/docs/PdfApi.md#getBookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 *PdfApi* | [**getCaretAnnotation**](sdk/docs/PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
@@ -149,7 +150,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getComboBoxField**](sdk/docs/PdfApi.md#getComboBoxField) | **GET** /pdf/\{name}/fields/combobox/\{fieldName} | Read document combobox field by name.
 *PdfApi* | [**getDiscUsage**](sdk/docs/PdfApi.md#getDiscUsage) | **GET** /pdf/storage/disc | Get disc usage
 *PdfApi* | [**getDocument**](sdk/docs/PdfApi.md#getDocument) | **GET** /pdf/\{name} | Read common document info.
-*PdfApi* | [**getDocumentAnnotations**](sdk/docs/PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+*PdfApi* | [**getDocumentAnnotations**](sdk/docs/PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *PdfApi* | [**getDocumentAttachmentByIndex**](sdk/docs/PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 *PdfApi* | [**getDocumentAttachments**](sdk/docs/PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
 *PdfApi* | [**getDocumentBookmarks**](sdk/docs/PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
@@ -298,7 +299,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getVerifySignature**](sdk/docs/PdfApi.md#getVerifySignature) | **GET** /pdf/\{name}/verifySignature | Verify signature document.
 *PdfApi* | [**getWebInStorageToPdf**](sdk/docs/PdfApi.md#getWebInStorageToPdf) | **GET** /pdf/create/web | Convert web page to PDF format and return resulting file in response. 
 *PdfApi* | [**getWordsPerPage**](sdk/docs/PdfApi.md#getWordsPerPage) | **GET** /pdf/\{name}/pages/wordCount | Get number of words per document page.
-*PdfApi* | [**getXfaPdfInStorageToAcroForm**](sdk/docs/PdfApi.md#getXfaPdfInStorageToAcroForm) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+*PdfApi* | [**getXfaPdfInStorageToAcroForm**](sdk/docs/PdfApi.md#getXfaPdfInStorageToAcroForm) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
 *PdfApi* | [**getXmlInStorageToPdf**](sdk/docs/PdfApi.md#getXmlInStorageToPdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getXpsInStorageToPdf**](sdk/docs/PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getXslFoInStorageToPdf**](sdk/docs/PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
@@ -471,8 +472,8 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putUpdateField**](sdk/docs/PdfApi.md#putUpdateField) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
 *PdfApi* | [**putUpdateFields**](sdk/docs/PdfApi.md#putUpdateFields) | **PUT** /pdf/\{name}/fields | Update fields.
 *PdfApi* | [**putWebInStorageToPdf**](sdk/docs/PdfApi.md#putWebInStorageToPdf) | **PUT** /pdf/\{name}/create/web | Convert web page to PDF format and upload resulting file to storage. 
-*PdfApi* | [**putXfaPdfInRequestToAcroForm**](sdk/docs/PdfApi.md#putXfaPdfInRequestToAcroForm) | **PUT** /pdf/convert/xfatoacroform | Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
-*PdfApi* | [**putXfaPdfInStorageToAcroForm**](sdk/docs/PdfApi.md#putXfaPdfInStorageToAcroForm) | **PUT** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+*PdfApi* | [**putXfaPdfInRequestToAcroForm**](sdk/docs/PdfApi.md#putXfaPdfInRequestToAcroForm) | **PUT** /pdf/convert/xfatoacroform | Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+*PdfApi* | [**putXfaPdfInStorageToAcroForm**](sdk/docs/PdfApi.md#putXfaPdfInStorageToAcroForm) | **PUT** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
 *PdfApi* | [**putXmlInStorageToPdf**](sdk/docs/PdfApi.md#putXmlInStorageToPdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putXpsInStorageToPdf**](sdk/docs/PdfApi.md#putXpsInStorageToPdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 *PdfApi* | [**putXslFoInStorageToPdf**](sdk/docs/PdfApi.md#putXslFoInStorageToPdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
@@ -486,6 +487,7 @@ Class | Method | HTTP request | Description
  - [AnnotationState](sdk/docs/AnnotationState.md)
  - [AnnotationType](sdk/docs/AnnotationType.md)
  - [AntialiasingProcessingType](sdk/docs/AntialiasingProcessingType.md)
+ - [ApiInfo](sdk/docs/ApiInfo.md)
  - [AsposeResponse](sdk/docs/AsposeResponse.md)
  - [Border](sdk/docs/Border.md)
  - [BorderCornerStyle](sdk/docs/BorderCornerStyle.md)
@@ -528,6 +530,8 @@ Class | Method | HTTP request | Description
  - [HorizontalAlignment](sdk/docs/HorizontalAlignment.md)
  - [HtmlDocumentType](sdk/docs/HtmlDocumentType.md)
  - [HtmlMarkupGenerationModes](sdk/docs/HtmlMarkupGenerationModes.md)
+ - [ImageCompressionVersion](sdk/docs/ImageCompressionVersion.md)
+ - [ImageEncoding](sdk/docs/ImageEncoding.md)
  - [ImageFragment](sdk/docs/ImageFragment.md)
  - [ImageSrcType](sdk/docs/ImageSrcType.md)
  - [ImageTemplate](sdk/docs/ImageTemplate.md)

@@ -33,20 +33,22 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Allows to specify PdfA file format.
+ * Image encoding type.
  */
-@JsonAdapter(PdfAType.Adapter.class)
-public enum PdfAType {
+@JsonAdapter(ImageEncoding.Adapter.class)
+public enum ImageEncoding {
   
-  PDFA1A("PDFA1A"),
+  UNCHANGED("Unchanged"),
   
-  PDFA1B("PDFA1B"),
+  JPEG("Jpeg"),
   
-  PDFA3A("PDFA3A");
+  FLATE("Flate"),
+  
+  JPEG2000("Jpeg2000");
 
   private String value;
 
-  PdfAType(String value) {
+  ImageEncoding(String value) {
     this.value = value;
   }
 
@@ -59,8 +61,8 @@ public enum PdfAType {
     return String.valueOf(value);
   }
 
-  public static PdfAType fromValue(String text) {
-    for (PdfAType b : PdfAType.values()) {
+  public static ImageEncoding fromValue(String text) {
+    for (ImageEncoding b : ImageEncoding.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
@@ -68,16 +70,16 @@ public enum PdfAType {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<PdfAType> {
+  public static class Adapter extends TypeAdapter<ImageEncoding> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PdfAType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ImageEncoding enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PdfAType read(final JsonReader jsonReader) throws IOException {
+    public ImageEncoding read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PdfAType.fromValue(String.valueOf(value));
+      return ImageEncoding.fromValue(String.valueOf(value));
     }
   }
 }

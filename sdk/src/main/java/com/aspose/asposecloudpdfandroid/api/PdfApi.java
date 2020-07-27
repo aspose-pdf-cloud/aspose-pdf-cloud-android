@@ -38,6 +38,7 @@ import java.io.IOException;
 
 import com.aspose.asposecloudpdfandroid.model.AnnotationType;
 import com.aspose.asposecloudpdfandroid.model.AnnotationsInfoResponse;
+import com.aspose.asposecloudpdfandroid.model.ApiInfo;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentsResponse;
@@ -4028,6 +4029,132 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getApiInfo
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getApiInfoCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/info";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getApiInfoValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getApiInfoCall(progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * 
+     * @return ApiInfo
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiInfo getApiInfo() throws ApiException {
+        try
+        {
+            ApiResponse<ApiInfo> resp = getApiInfoWithHttpInfo();
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ApiInfo> resp = getApiInfoWithHttpInfo();
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @return ApiResponse&lt;ApiInfo&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiInfo> getApiInfoWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getApiInfoValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<ApiInfo>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getApiInfoAsync(final ApiCallback<ApiInfo> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getApiInfoValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiInfo>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getBookmark
      * @param name The document name. (required)
      * @param bookmarkPath The bookmark path. (required)
@@ -5326,7 +5453,7 @@ public class PdfApi {
     }
 
     /**
-     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+     * Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
      * 
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -5353,7 +5480,7 @@ public class PdfApi {
     }
 
     /**
-     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+     * Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
      * 
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -5368,7 +5495,7 @@ public class PdfApi {
     }
 
     /**
-     * Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases. (asynchronously)
+     * Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases. (asynchronously)
      * 
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
@@ -28955,7 +29082,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -28982,7 +29109,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -28997,7 +29124,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content (asynchronously)
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content (asynchronously)
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -35276,7 +35403,7 @@ public class PdfApi {
      * Build call for postPageLinkAnnotations
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
-     * @param links Array of link anotation. (required)
+     * @param links Array of link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param progressListener Progress listener
@@ -35360,7 +35487,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
-     * @param links Array of link anotation. (required)
+     * @param links Array of link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return AsposeResponse
@@ -35389,7 +35516,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
-     * @param links Array of link anotation. (required)
+     * @param links Array of link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
@@ -35406,7 +35533,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param pageNumber The page number. (required)
-     * @param links Array of link anotation. (required)
+     * @param links Array of link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -40888,7 +41015,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
      * @param password The password (encrypted Base64). (required)
      * @param storage The document storage. (optional)
-     * @param file A file to be derypted. (optional)
+     * @param file A file to be decrypted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -40966,7 +41093,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
      * @param password The password (encrypted Base64). (required)
      * @param storage The document storage. (optional)
-     * @param file A file to be derypted. (optional)
+     * @param file A file to be decrypted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -40994,7 +41121,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
      * @param password The password (encrypted Base64). (required)
      * @param storage The document storage. (optional)
-     * @param file A file to be derypted. (optional)
+     * @param file A file to be decrypted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -41010,7 +41137,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
      * @param password The password (encrypted Base64). (required)
      * @param storage The document storage. (optional)
-     * @param file A file to be derypted. (optional)
+     * @param file A file to be decrypted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -45594,7 +45721,7 @@ public class PdfApi {
      * Build call for putLinkAnnotation
      * @param name The document name. (required)
      * @param linkId The link ID. (required)
-     * @param link Link anotation. (required)
+     * @param link Link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param progressListener Progress listener
@@ -45678,7 +45805,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param linkId The link ID. (required)
-     * @param link Link anotation. (required)
+     * @param link Link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return LinkAnnotationResponse
@@ -45707,7 +45834,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param linkId The link ID. (required)
-     * @param link Link anotation. (required)
+     * @param link Link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;LinkAnnotationResponse&gt;
@@ -45724,7 +45851,7 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param linkId The link ID. (required)
-     * @param link Link anotation. (required)
+     * @param link Link annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -46085,7 +46212,7 @@ public class PdfApi {
     }
     /**
      * Build call for putMergeDocuments
-     * @param name Resulting documen name. (required)
+     * @param name Resulting document name. (required)
      * @param mergeDocuments MergeDocuments with a list of documents. (required)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
@@ -46162,7 +46289,7 @@ public class PdfApi {
     /**
      * Merge a list of documents.
      * 
-     * @param name Resulting documen name. (required)
+     * @param name Resulting document name. (required)
      * @param mergeDocuments MergeDocuments with a list of documents. (required)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
@@ -46190,7 +46317,7 @@ public class PdfApi {
     /**
      * Merge a list of documents.
      * 
-     * @param name Resulting documen name. (required)
+     * @param name Resulting document name. (required)
      * @param mergeDocuments MergeDocuments with a list of documents. (required)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
@@ -46206,7 +46333,7 @@ public class PdfApi {
     /**
      * Merge a list of documents. (asynchronously)
      * 
-     * @param name Resulting documen name. (required)
+     * @param name Resulting document name. (required)
      * @param mergeDocuments MergeDocuments with a list of documents. (required)
      * @param storage Resulting document storage. (optional)
      * @param folder Resulting document folder. (optional)
@@ -58182,7 +58309,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+     * Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param storage The document storage. (optional)
@@ -58209,7 +58336,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+     * Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param storage The document storage. (optional)
@@ -58224,7 +58351,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage. (asynchronously)
+     * Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param storage The document storage. (optional)
@@ -58338,7 +58465,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
@@ -58366,7 +58493,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
@@ -58382,7 +58509,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage (asynchronously)
+     * Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage (asynchronously)
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)

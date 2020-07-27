@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**deleteStamp**](PdfApi.md#deleteStamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 [**deleteTable**](PdfApi.md#deleteTable) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
 [**downloadFile**](PdfApi.md#downloadFile) | **GET** /pdf/storage/file/\{path} | Download file
+[**getApiInfo**](PdfApi.md#getApiInfo) | **GET** /pdf/info | 
 [**getBookmark**](PdfApi.md#getBookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
 [**getBookmarks**](PdfApi.md#getBookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 [**getCaretAnnotation**](PdfApi.md#getCaretAnnotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
@@ -37,7 +38,7 @@ Method | HTTP request | Description
 [**getComboBoxField**](PdfApi.md#getComboBoxField) | **GET** /pdf/\{name}/fields/combobox/\{fieldName} | Read document combobox field by name.
 [**getDiscUsage**](PdfApi.md#getDiscUsage) | **GET** /pdf/storage/disc | Get disc usage
 [**getDocument**](PdfApi.md#getDocument) | **GET** /pdf/\{name} | Read common document info.
-[**getDocumentAnnotations**](PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+[**getDocumentAnnotations**](PdfApi.md#getDocumentAnnotations) | **GET** /pdf/\{name}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**getDocumentAttachmentByIndex**](PdfApi.md#getDocumentAttachmentByIndex) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 [**getDocumentAttachments**](PdfApi.md#getDocumentAttachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
 [**getDocumentBookmarks**](PdfApi.md#getDocumentBookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
@@ -186,7 +187,7 @@ Method | HTTP request | Description
 [**getVerifySignature**](PdfApi.md#getVerifySignature) | **GET** /pdf/\{name}/verifySignature | Verify signature document.
 [**getWebInStorageToPdf**](PdfApi.md#getWebInStorageToPdf) | **GET** /pdf/create/web | Convert web page to PDF format and return resulting file in response. 
 [**getWordsPerPage**](PdfApi.md#getWordsPerPage) | **GET** /pdf/\{name}/pages/wordCount | Get number of words per document page.
-[**getXfaPdfInStorageToAcroForm**](PdfApi.md#getXfaPdfInStorageToAcroForm) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+[**getXfaPdfInStorageToAcroForm**](PdfApi.md#getXfaPdfInStorageToAcroForm) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
 [**getXmlInStorageToPdf**](PdfApi.md#getXmlInStorageToPdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
 [**getXpsInStorageToPdf**](PdfApi.md#getXpsInStorageToPdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**getXslFoInStorageToPdf**](PdfApi.md#getXslFoInStorageToPdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
@@ -359,8 +360,8 @@ Method | HTTP request | Description
 [**putUpdateField**](PdfApi.md#putUpdateField) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
 [**putUpdateFields**](PdfApi.md#putUpdateFields) | **PUT** /pdf/\{name}/fields | Update fields.
 [**putWebInStorageToPdf**](PdfApi.md#putWebInStorageToPdf) | **PUT** /pdf/\{name}/create/web | Convert web page to PDF format and upload resulting file to storage. 
-[**putXfaPdfInRequestToAcroForm**](PdfApi.md#putXfaPdfInRequestToAcroForm) | **PUT** /pdf/convert/xfatoacroform | Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
-[**putXfaPdfInStorageToAcroForm**](PdfApi.md#putXfaPdfInStorageToAcroForm) | **PUT** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+[**putXfaPdfInRequestToAcroForm**](PdfApi.md#putXfaPdfInRequestToAcroForm) | **PUT** /pdf/convert/xfatoacroform | Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+[**putXfaPdfInStorageToAcroForm**](PdfApi.md#putXfaPdfInStorageToAcroForm) | **PUT** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
 [**putXmlInStorageToPdf**](PdfApi.md#putXmlInStorageToPdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
 [**putXpsInStorageToPdf**](PdfApi.md#putXpsInStorageToPdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 [**putXslFoInStorageToPdf**](PdfApi.md#putXslFoInStorageToPdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
@@ -958,6 +959,24 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
 
+<a name="getApiInfo"></a>
+# **getApiInfo**
+> ApiInfo getApiInfo()
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiInfo**](ApiInfo.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getBookmark"></a>
 # **getBookmark**
 > BookmarkResponse getBookmark(name, bookmarkPath, folder, storage)
@@ -1150,7 +1169,7 @@ Name | Type | Description  | Notes
 # **getDocumentAnnotations**
 > AnnotationsInfoResponse getDocumentAnnotations(name, storage, folder)
 
-Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 
 ### Parameters
 
@@ -3907,7 +3926,7 @@ Converts PDF document (located on storage) to PdfA format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -4770,7 +4789,7 @@ Name | Type | Description  | Notes
 # **getXfaPdfInStorageToAcroForm**
 > File getXfaPdfInStorageToAcroForm(name, folder, storage)
 
-Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
 
 ### Parameters
 
@@ -5747,7 +5766,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **pageNumber** | **Integer**| The page number. |
- **links** | [**List&lt;LinkAnnotation&gt;**](LinkAnnotation.md)| Array of link anotation. |
+ **links** | [**List&lt;LinkAnnotation&gt;**](LinkAnnotation.md)| Array of link annotation. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -6593,7 +6612,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.doc) |
  **password** | **String**| The password (encrypted Base64). |
  **storage** | **String**| The document storage. | [optional]
- **file** | **File**| A file to be derypted. | [optional]
+ **file** | **File**| A file to be decrypted. | [optional]
 
 ### Return type
 
@@ -7305,7 +7324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **linkId** | **String**| The link ID. |
- **link** | [**LinkAnnotation**](LinkAnnotation.md)| Link anotation. |
+ **link** | [**LinkAnnotation**](LinkAnnotation.md)| Link annotation. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
 
@@ -7377,7 +7396,7 @@ Merge a list of documents.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Resulting documen name. |
+ **name** | **String**| Resulting document name. |
  **mergeDocuments** | [**MergeDocuments**](MergeDocuments.md)| MergeDocuments with a list of documents. |
  **storage** | **String**| Resulting document storage. | [optional]
  **folder** | **String**| Resulting document folder. | [optional]
@@ -7841,7 +7860,7 @@ Converts PDF document (in request content) to PdfA format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **storage** | **String**| The document storage. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
@@ -8234,7 +8253,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 
@@ -9202,7 +9221,7 @@ Name | Type | Description  | Notes
 # **putXfaPdfInRequestToAcroForm**
 > AsposeResponse putXfaPdfInRequestToAcroForm(outPath, storage, file)
 
-Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
 
 ### Parameters
 
@@ -9225,7 +9244,7 @@ Name | Type | Description  | Notes
 # **putXfaPdfInStorageToAcroForm**
 > AsposeResponse putXfaPdfInStorageToAcroForm(name, outPath, folder, storage)
 
-Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
 
 ### Parameters
 

@@ -55,6 +55,9 @@ public class TextState {
   @SerializedName("FontStyle")
   private FontStyles fontStyle = null;
 
+  @SerializedName("FontFile")
+  private String fontFile = null;
+
   public TextState fontSize(Double fontSize) {
     this.fontSize = fontSize;
     return this;
@@ -79,10 +82,10 @@ public class TextState {
   }
 
    /**
-   * Gets or sets font of the text.
+   * Gets or sets font name of the text.
    * @return font
   **/
-  @ApiModelProperty(value = "Gets or sets font of the text.")
+  @ApiModelProperty(value = "Gets or sets font name of the text.")
   public String getFont() {
     return font;
   }
@@ -145,6 +148,24 @@ public class TextState {
     this.fontStyle = fontStyle;
   }
 
+  public TextState fontFile(String fontFile) {
+    this.fontFile = fontFile;
+    return this;
+  }
+
+   /**
+   * Sets path of font file in storage.
+   * @return fontFile
+  **/
+  @ApiModelProperty(value = "Sets path of font file in storage.")
+  public String getFontFile() {
+    return fontFile;
+  }
+
+  public void setFontFile(String fontFile) {
+    this.fontFile = fontFile;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -159,12 +180,13 @@ public class TextState {
         Objects.equals(this.font, textState.font) &&
         Objects.equals(this.foregroundColor, textState.foregroundColor) &&
         Objects.equals(this.backgroundColor, textState.backgroundColor) &&
-        Objects.equals(this.fontStyle, textState.fontStyle);
+        Objects.equals(this.fontStyle, textState.fontStyle) &&
+        Objects.equals(this.fontFile, textState.fontFile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fontSize, font, foregroundColor, backgroundColor, fontStyle);
+    return Objects.hash(fontSize, font, foregroundColor, backgroundColor, fontStyle, fontFile);
   }
 
 
@@ -178,6 +200,7 @@ public class TextState {
     sb.append("    foregroundColor: ").append(toIndentedString(foregroundColor)).append("\n");
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    fontStyle: ").append(toIndentedString(fontStyle)).append("\n");
+    sb.append("    fontFile: ").append(toIndentedString(fontFile)).append("\n");
     sb.append("}");
     return sb.toString();
   }

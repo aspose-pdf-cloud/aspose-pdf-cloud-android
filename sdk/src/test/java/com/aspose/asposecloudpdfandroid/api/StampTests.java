@@ -111,7 +111,7 @@ public class StampTests {
         th.uploadFile(name);
         int pageNumber = 1;
 
-        TextState textState = new TextState().fontSize(14.);
+        TextState textState = new TextState().fontSize(14.).font("Arial");
 
         TextStamp stamp = new TextStamp()
                 .textAlignment(HorizontalAlignment.CENTER)

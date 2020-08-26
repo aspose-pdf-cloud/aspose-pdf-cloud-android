@@ -64,7 +64,8 @@ public class HeaderFooterTests {
         TextState textState = new TextState()
                 .fontSize(14.)
                 .foregroundColor(foregroundColor)
-                .backgroundColor(backgroundColor);
+                .backgroundColor(backgroundColor)
+                .font("Arial");
 
         TextHeader header = new TextHeader()
                 .leftMargin(1.)
@@ -116,7 +117,8 @@ public class HeaderFooterTests {
         TextState textState = new TextState()
                 .fontSize(14.)
                 .foregroundColor(foregroundColor)
-                .backgroundColor(backgroundColor);
+                .backgroundColor(backgroundColor)
+                .font("Arial");
 
         TextFooter footer = new TextFooter()
                 .leftMargin(1.)

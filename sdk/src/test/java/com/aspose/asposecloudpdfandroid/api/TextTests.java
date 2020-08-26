@@ -99,6 +99,9 @@ public class TextTests {
         String name = "4pages.pdf";
         th.uploadFile(name);
 
+        String fontFile = "Righteous-Regular.ttf";
+        th.uploadFile(fontFile);
+
         int pageNumber = 1;
         String folder = th.tempFolder;
 
@@ -121,11 +124,12 @@ public class TextTests {
         backgroundColor.setB(0x00);
 
         TextState textState = new TextState();
-        textState.setFont("Arial");
+        textState.setFont("Righteous");
         textState.setFontSize(10.);
         textState.setForegroundColor(foregroundColor);
         textState.setBackgroundColor(backgroundColor);
-        textState.setFontStyle(FontStyles.BOLD);
+        textState.setFontStyle(FontStyles.REGULAR);
+        textState.setFontFile(folder + '/' + fontFile);
 
         final Segment segment = new Segment();
         segment.setValue("segment 1");

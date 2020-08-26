@@ -124,10 +124,10 @@ public class Paragraph {
   }
 
    /**
-   * Horizontal alignment for the text inside paragrph&#39;s rectangle.
+   * Horizontal alignment for the text inside paragraph&#39;s rectangle.
    * @return horizontalAlignment
   **/
-  @ApiModelProperty(value = "Horizontal alignment for the text inside paragrph's rectangle.")
+  @ApiModelProperty(value = "Horizontal alignment for the text inside paragraph's rectangle.")
   public TextHorizontalAlignment getHorizontalAlignment() {
     return horizontalAlignment;
   }
@@ -268,10 +268,10 @@ public class Paragraph {
   }
 
    /**
-   * Vertical alignment for the text inside paragrph&#39;s rectangle
+   * Vertical alignment for the text inside paragraph&#39;s rectangle
    * @return verticalAlignment
   **/
-  @ApiModelProperty(value = "Vertical alignment for the text inside paragrph's rectangle")
+  @ApiModelProperty(value = "Vertical alignment for the text inside paragraph's rectangle")
   public VerticalAlignment getVerticalAlignment() {
     return verticalAlignment;
   }

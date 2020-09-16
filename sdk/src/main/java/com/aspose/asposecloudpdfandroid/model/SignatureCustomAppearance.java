@@ -33,9 +33,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * An abstract class which represents signature custon appearance object.
+ * An abstract class which represents signature custom appearance object.
  */
-@ApiModel(description = "An abstract class which represents signature custon appearance object.")
+@ApiModel(description = "An abstract class which represents signature custom appearance object.")
 
 public class SignatureCustomAppearance {
   @SerializedName("FontFamilyName")

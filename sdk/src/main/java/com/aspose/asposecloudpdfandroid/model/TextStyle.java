@@ -51,6 +51,9 @@ public class TextStyle {
   @SerializedName("BackgroundColor")
   private Color backgroundColor = null;
 
+  @SerializedName("FontFile")
+  private String fontFile = null;
+
   public TextStyle fontSize(Double fontSize) {
     this.fontSize = fontSize;
     return this;
@@ -123,6 +126,24 @@ public class TextStyle {
     this.backgroundColor = backgroundColor;
   }
 
+  public TextStyle fontFile(String fontFile) {
+    this.fontFile = fontFile;
+    return this;
+  }
+
+   /**
+   * Sets path of font file in storage.
+   * @return fontFile
+  **/
+  @ApiModelProperty(value = "Sets path of font file in storage.")
+  public String getFontFile() {
+    return fontFile;
+  }
+
+  public void setFontFile(String fontFile) {
+    this.fontFile = fontFile;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -136,12 +157,13 @@ public class TextStyle {
     return Objects.equals(this.fontSize, textStyle.fontSize) &&
         Objects.equals(this.font, textStyle.font) &&
         Objects.equals(this.foregroundColor, textStyle.foregroundColor) &&
-        Objects.equals(this.backgroundColor, textStyle.backgroundColor);
+        Objects.equals(this.backgroundColor, textStyle.backgroundColor) &&
+        Objects.equals(this.fontFile, textStyle.fontFile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fontSize, font, foregroundColor, backgroundColor);
+    return Objects.hash(fontSize, font, foregroundColor, backgroundColor, fontFile);
   }
 
 
@@ -154,6 +176,7 @@ public class TextStyle {
     sb.append("    font: ").append(toIndentedString(font)).append("\n");
     sb.append("    foregroundColor: ").append(toIndentedString(foregroundColor)).append("\n");
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
+    sb.append("    fontFile: ").append(toIndentedString(fontFile)).append("\n");
     sb.append("}");
     return sb.toString();
   }

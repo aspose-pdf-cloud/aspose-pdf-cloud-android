@@ -36241,12 +36241,13 @@ public class PdfApi {
      * @param annotations The array of annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postPageRedactionAnnotationsCall(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postPageRedactionAnnotationsCall(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, Boolean apply, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = annotations;
 
         // create path and map variables
@@ -36260,6 +36261,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (apply != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("apply", apply));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -36294,7 +36297,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postPageRedactionAnnotationsValidateBeforeCall(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postPageRedactionAnnotationsValidateBeforeCall(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, Boolean apply, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -36312,7 +36315,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postPageRedactionAnnotationsCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageRedactionAnnotationsCall(name, pageNumber, annotations, storage, folder, apply, progressListener, progressRequestListener);
         return call;
 
     }
@@ -36325,13 +36328,14 @@ public class PdfApi {
      * @param annotations The array of annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse postPageRedactionAnnotations(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder) throws ApiException {
+    public AsposeResponse postPageRedactionAnnotations(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, Boolean apply) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = postPageRedactionAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+            ApiResponse<AsposeResponse> resp = postPageRedactionAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder, apply);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -36339,7 +36343,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = postPageRedactionAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder);
+                ApiResponse<AsposeResponse> resp = postPageRedactionAnnotationsWithHttpInfo(name, pageNumber, annotations, storage, folder, apply);
                 return resp.getData();
             }
             throw ex;
@@ -36354,11 +36358,12 @@ public class PdfApi {
      * @param annotations The array of annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> postPageRedactionAnnotationsWithHttpInfo(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postPageRedactionAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> postPageRedactionAnnotationsWithHttpInfo(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, Boolean apply) throws ApiException {
+        com.squareup.okhttp.Call call = postPageRedactionAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, apply, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -36371,11 +36376,12 @@ public class PdfApi {
      * @param annotations The array of annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postPageRedactionAnnotationsAsync(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postPageRedactionAnnotationsAsync(String name, Integer pageNumber, List<RedactionAnnotation> annotations, String storage, String folder, Boolean apply, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -36396,7 +36402,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postPageRedactionAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageRedactionAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, apply, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -54353,12 +54359,13 @@ public class PdfApi {
      * @param annotation Annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putRedactionAnnotationCall(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putRedactionAnnotationCall(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, Boolean apply, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = annotation;
 
         // create path and map variables
@@ -54372,6 +54379,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (apply != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("apply", apply));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -54406,7 +54415,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putRedactionAnnotationValidateBeforeCall(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putRedactionAnnotationValidateBeforeCall(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, Boolean apply, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -54424,7 +54433,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putRedactionAnnotationCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putRedactionAnnotationCall(name, annotationId, annotation, storage, folder, apply, progressListener, progressRequestListener);
         return call;
 
     }
@@ -54437,13 +54446,14 @@ public class PdfApi {
      * @param annotation Annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @return RedactionAnnotationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public RedactionAnnotationResponse putRedactionAnnotation(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder) throws ApiException {
+    public RedactionAnnotationResponse putRedactionAnnotation(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, Boolean apply) throws ApiException {
         try
         {
-            ApiResponse<RedactionAnnotationResponse> resp = putRedactionAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+            ApiResponse<RedactionAnnotationResponse> resp = putRedactionAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder, apply);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -54451,7 +54461,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<RedactionAnnotationResponse> resp = putRedactionAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder);
+                ApiResponse<RedactionAnnotationResponse> resp = putRedactionAnnotationWithHttpInfo(name, annotationId, annotation, storage, folder, apply);
                 return resp.getData();
             }
             throw ex;
@@ -54466,11 +54476,12 @@ public class PdfApi {
      * @param annotation Annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @return ApiResponse&lt;RedactionAnnotationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<RedactionAnnotationResponse> putRedactionAnnotationWithHttpInfo(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = putRedactionAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, null, null);
+    public ApiResponse<RedactionAnnotationResponse> putRedactionAnnotationWithHttpInfo(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, Boolean apply) throws ApiException {
+        com.squareup.okhttp.Call call = putRedactionAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, apply, null, null);
         Type localVarReturnType = new TypeToken<RedactionAnnotationResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -54483,11 +54494,12 @@ public class PdfApi {
      * @param annotation Annotation. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param apply Apply redaction immediately after adding. (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putRedactionAnnotationAsync(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, final ApiCallback<RedactionAnnotationResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putRedactionAnnotationAsync(String name, String annotationId, RedactionAnnotation annotation, String storage, String folder, Boolean apply, final ApiCallback<RedactionAnnotationResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -54508,7 +54520,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putRedactionAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putRedactionAnnotationValidateBeforeCall(name, annotationId, annotation, storage, folder, apply, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<RedactionAnnotationResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

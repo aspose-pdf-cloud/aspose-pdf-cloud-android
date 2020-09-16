@@ -108,7 +108,7 @@ public class RedactionAnnotationsTests {
         List<RedactionAnnotation> annotations = new ArrayList<>();
         annotations.add(annotation);
 
-        AsposeResponse response = th.pdfApi.postPageRedactionAnnotations(name, pageNumber, annotations, null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.postPageRedactionAnnotations(name, pageNumber, annotations, null, th.tempFolder, false);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -168,7 +168,7 @@ public class RedactionAnnotationsTests {
         assertEquals(200, (int)responseAnnotations.getCode());
         String annotationId = responseAnnotations.getAnnotations().getList().get(0).getId();
 
-        AsposeResponse response = th.pdfApi.putRedactionAnnotation(name, annotationId, annotation, null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.putRedactionAnnotation(name, annotationId, annotation, null, th.tempFolder, true);
         assertEquals(200, (int)response.getCode());
     }
 }

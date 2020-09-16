@@ -152,10 +152,10 @@ public class RedactionAnnotation extends Annotation {
   }
 
    /**
-   * If true overlay text will be repated on the annotation. 
+   * If true overlay text will be repeated on the annotation. 
    * @return repeat
   **/
-  @ApiModelProperty(value = "If true overlay text will be repated on the annotation. ")
+  @ApiModelProperty(value = "If true overlay text will be repeated on the annotation. ")
   public Boolean isRepeat() {
     return repeat;
   }

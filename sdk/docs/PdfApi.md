@@ -5374,7 +5374,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="postImportFieldsFromXfdf"></a>
@@ -5398,7 +5398,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="postImportFieldsFromXml"></a>
@@ -5422,7 +5422,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="postInsertImage"></a>
@@ -5452,7 +5452,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="postListBoxFields"></a>
@@ -6499,7 +6499,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putCheckBoxField"></a>
@@ -6621,7 +6621,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putDocumentDisplayProperties"></a>
@@ -6673,7 +6673,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putEpubInStorageToPdf"></a>
@@ -7724,7 +7724,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToEpub"></a>
@@ -7748,7 +7748,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToHtml"></a>
@@ -7801,7 +7801,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToLaTeX"></a>
@@ -7824,7 +7824,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToMobiXml"></a>
@@ -7847,7 +7847,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToPdfA"></a>
@@ -7871,7 +7871,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToPptx"></a>
@@ -7896,7 +7896,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToSvg"></a>
@@ -7919,7 +7919,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToTeX"></a>
@@ -7942,7 +7942,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToTiff"></a>
@@ -7980,7 +7980,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToXls"></a>
@@ -8007,7 +8007,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToXlsx"></a>
@@ -8034,7 +8034,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToXml"></a>
@@ -8057,7 +8057,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInRequestToXps"></a>
@@ -8080,7 +8080,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putPdfInStorageToDoc"></a>
@@ -8681,7 +8681,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putScreenAnnotation"></a>
@@ -9239,7 +9239,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 <a name="putXfaPdfInStorageToAcroForm"></a>
@@ -9380,6 +9380,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 

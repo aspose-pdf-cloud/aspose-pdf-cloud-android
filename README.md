@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/api-v3.0-lightgrey)  [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-java)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java)
+![](https://img.shields.io/badge/api-v3.0-lightgrey) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aspose-pdf-cloud/aspose-pdf-cloud-android)  [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-java)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java)
 # Android/Java REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -96,36 +96,20 @@ Then manually install the following JARs:
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
+## Delete Field from PDF in Android using Java
 
 ```java
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	PdfApi pdfApi = new PdfApi("MY_CLIENT_SECRET", "MY_CLIENT_ID");
 
-import com.aspose.asposecloudpdfandroid.*;
-import com.aspose.asposecloudpdfandroid.model.*;
-import com.aspose.asposecloudpdfandroid.api.PdfApi;
+	String name = "name_example"; // String | The document name.
+	String fieldName = "fieldName_example"; // String | The field name/
+	String storage = "storage_example"; // String | The document storage.
+	String folder = "folder_example"; // String | The document folder.
 
-import java.io.File;
-import java.util.*;
-
-public class PdfApiExample {
-
-    public static void main(String[] args) {
-        // Get App key and App SID from https://cloud.aspose.com
-        PdfApi apiInstance = new PdfApi("app_key", "app_sid");
-        String name = "name_example"; // String | The document name.
-        String fieldName = "fieldName_example"; // String | The field name/
-        String storage = "storage_example"; // String | The document storage.
-        String folder = "folder_example"; // String | The document folder.
-        try {
-            SaaSposeResponse result = apiInstance.deleteField(name, fieldName, storage, folder);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling PdfApi#deleteField");
-            e.printStackTrace();
-        }
-    }
-}
-
+	com.squareup.okhttp.Call result = pdfApi.deleteField(name, fieldName, storage, folder);
 ```
+
 
 ## Unit Tests
 Aspose PDF Cloud SDK includes a suite of unit tests within the "test" subdirectory. These Unit Tests also serves as examples of how to use the Aspose PDF Cloud SDK.
@@ -792,7 +776,8 @@ Class | Method | HTTP request | Description
 
  | .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|Go|
  |---|---|---|---|---|---|---|--|--|
- | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-perl) |[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
- | [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/) |
+ | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
+ | [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/v20#readme-aspose-pdf-cloud) |
+
 
  [Product Page](https://products.aspose.cloud/pdf/android) | [Documentation](https://docs.aspose.cloud/display/pdfcloud/Home) | [API Reference](https://apireference.aspose.cloud/pdf/) | [Code Samples](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [Blog](https://blog.aspose.cloud/category/pdf/) | [Free Support](https://forum.aspose.cloud/c/pdf) | [Free Trial](https://dashboard.aspose.cloud/#/apps)

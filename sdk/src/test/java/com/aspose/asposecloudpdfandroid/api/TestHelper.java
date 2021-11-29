@@ -15,12 +15,12 @@ public class TestHelper {
     public static PdfApi pdfApi;
     public static String tempFolder = "TempPdfCloud";
     public static String testDataFolder = "testData";
-    public static String setupFile = "setup.json";
+    public static String setupFile = "..\\..\\..\\Settings\\servercreds.json";
 
     class ApiCreds{
-        public String app_key;
-        public String app_sid;
-        public String product_uri;
+        public String AppKey;
+        public String AppSID;
+        public String ProductUri;
     }
 
     private static TestHelper instance;
@@ -36,8 +36,8 @@ public class TestHelper {
     private TestHelper() throws ApiException
     {
         TestHelper.ApiCreds apiCreds = getApiCreds();
-        pdfApi = new PdfApi(apiCreds.app_key, apiCreds.app_sid);
-        pdfApi.getApiClient().setBasePath(apiCreds.product_uri);
+        pdfApi = new PdfApi(apiCreds.AppKey, apiCreds.AppSID);
+        pdfApi.getApiClient().setBasePath(apiCreds.ProductUri);
     }
 
     private TestHelper.ApiCreds getApiCreds() throws ApiException

@@ -1,7 +1,7 @@
 lazy val root = (project in file(".")).
   settings(
     organization := "com.aspose",
-    name := "aspose-cloud-pdf-android",
+    name := "aspose-pdf-cloud-android",
     version := "18.4.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),

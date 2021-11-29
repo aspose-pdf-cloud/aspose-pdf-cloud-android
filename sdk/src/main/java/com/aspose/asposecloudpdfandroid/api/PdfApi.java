@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright (c) 2020 Aspose.PDF Cloud
+ * Copyright (c) 2021 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -38,7 +38,6 @@ import java.io.IOException;
 
 import com.aspose.asposecloudpdfandroid.model.AnnotationType;
 import com.aspose.asposecloudpdfandroid.model.AnnotationsInfoResponse;
-import com.aspose.asposecloudpdfandroid.model.ApiInfo;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentsResponse;
@@ -4025,132 +4024,6 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = downloadFileValidateBeforeCall(path, storageName, versionId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getApiInfo
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getApiInfoCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/info";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getApiInfoValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
-        com.squareup.okhttp.Call call = getApiInfoCall(progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiInfo
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiInfo getApiInfo() throws ApiException {
-        try
-        {
-            ApiResponse<ApiInfo> resp = getApiInfoWithHttpInfo();
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<ApiInfo> resp = getApiInfoWithHttpInfo();
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;ApiInfo&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiInfo> getApiInfoWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getApiInfoValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<ApiInfo>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getApiInfoAsync(final ApiCallback<ApiInfo> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getApiInfoValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiInfo>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -23027,163 +22900,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for getPdfInStorageToLaTeX
-     * @param name The document name. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getPdfInStorageToLaTeXCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/{name}/convert/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToLaTeXValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getPdfInStorageToLaTeX(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXCall(name, folder, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-     * 
-     * @param name The document name. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public File getPdfInStorageToLaTeX(String name, String folder, String storage) throws ApiException {
-        try
-        {
-            ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, folder, storage);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToLaTeXWithHttpInfo(name, folder, storage);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-     * 
-     * @param name The document name. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<File> getPdfInStorageToLaTeXWithHttpInfo(String name, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, folder, storage, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and returns resulting file in response content (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getPdfInStorageToLaTeXAsync(String name, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getPdfInStorageToLaTeXValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getPdfInStorageToMobiXml
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -23254,7 +22970,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+     * Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -23281,7 +22997,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+     * Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -23296,7 +23012,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content (asynchronously)
+     * Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content. (asynchronously)
      * 
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
@@ -48952,162 +48668,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for putPdfInRequestToLaTeX
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param file A file to be converted. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putPdfInRequestToLaTeXCall(String outPath, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = file;
-
-        // create path and map variables
-        String localVarPath = "/pdf/convert/latex";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (outPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/octet-stream"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToLaTeXValidateBeforeCall(String outPath, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'outPath' is set
-        if (outPath == null) {
-            throw new ApiException("Missing the required parameter 'outPath' when calling putPdfInRequestToLaTeX(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXCall(outPath, storage, file, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-     * 
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param file A file to be converted. (optional)
-     * @return AsposeResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public AsposeResponse putPdfInRequestToLaTeX(String outPath, String storage, File file) throws ApiException {
-        try
-        {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, storage, file);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToLaTeXWithHttpInfo(outPath, storage, file);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-     * 
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param file A file to be converted. (optional)
-     * @return ApiResponse&lt;AsposeResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<AsposeResponse> putPdfInRequestToLaTeXWithHttpInfo(String outPath, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, storage, file, null, null);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Converts PDF document (in request content) to TeX format and uploads resulting file to storage. (asynchronously)
-     * 
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param file A file to be converted. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putPdfInRequestToLaTeXAsync(String outPath, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = putPdfInRequestToLaTeXValidateBeforeCall(outPath, storage, file, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for putPdfInRequestToMobiXml
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
      * @param storage The document storage. (optional)
@@ -49177,7 +48737,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+     * Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
      * @param storage The document storage. (optional)
@@ -49204,7 +48764,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+     * Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
      * @param storage The document storage. (optional)
@@ -49219,7 +48779,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage. (asynchronously)
+     * Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
      * @param storage The document storage. (optional)
@@ -51450,174 +51010,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for putPdfInStorageToLaTeX
-     * @param name The document name. (required)
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putPdfInStorageToLaTeXCall(String name, String outPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/{name}/convert/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (outPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToLaTeXValidateBeforeCall(String name, String outPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling putPdfInStorageToLaTeX(Async)");
-        }
-        
-        // verify the required parameter 'outPath' is set
-        if (outPath == null) {
-            throw new ApiException("Missing the required parameter 'outPath' when calling putPdfInStorageToLaTeX(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXCall(name, outPath, folder, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-     * 
-     * @param name The document name. (required)
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return AsposeResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public AsposeResponse putPdfInStorageToLaTeX(String name, String outPath, String folder, String storage) throws ApiException {
-        try
-        {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, folder, storage);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToLaTeXWithHttpInfo(name, outPath, folder, storage);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-     * 
-     * @param name The document name. (required)
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;AsposeResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<AsposeResponse> putPdfInStorageToLaTeXWithHttpInfo(String name, String outPath, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, folder, storage, null, null);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Converts PDF document (located on storage) to TeX format and uploads resulting file to storage (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param outPath Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putPdfInStorageToLaTeXAsync(String name, String outPath, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = putPdfInStorageToLaTeXValidateBeforeCall(name, outPath, folder, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for putPdfInStorageToMobiXml
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
@@ -51696,7 +51088,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
@@ -51724,7 +51116,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
@@ -51740,7 +51132,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage (asynchronously)
+     * Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage (asynchronously)
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)

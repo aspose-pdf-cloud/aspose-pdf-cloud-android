@@ -56,10 +56,10 @@ public class DocumentProperty extends LinkElement {
   }
 
    /**
-   * Pame of the property.
+   * Name of the property.
    * @return name
   **/
-  @ApiModelProperty(value = "Pame of the property.")
+  @ApiModelProperty(value = "Name of the property.")
   public String getName() {
     return name;
   }

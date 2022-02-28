@@ -20,7 +20,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.aspose'
-version = '22.1.0'
+version = '22.2.0'
 
 buildscript {
     repositories {
@@ -100,7 +100,7 @@ dependencies {
 publish {
     groupId = 'com.aspose'
     artifactId = 'aspose-cloud-pdf-android'
-    publishVersion = '22.1.0'
+    publishVersion = '22.2.0'
     desc = 'Aspose.PDF Cloud is a REST API for creating and editing PDF files. It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more. Aspose.PDF Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image. Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others. Aspose.PDF Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on. Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting. Add images to a PDF file or convert PDF pages to images.'
     licences = ['MIT']
     website = 'https://products.aspose.cloud/pdf/cloud'

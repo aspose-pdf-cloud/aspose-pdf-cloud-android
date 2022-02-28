@@ -14403,158 +14403,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for getLaTeXInStorageToPdf
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getLaTeXInStorageToPdfCall(String srcPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/create/latex";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (srcPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getLaTeXInStorageToPdfValidateBeforeCall(String srcPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'srcPath' is set
-        if (srcPath == null) {
-            throw new ApiException("Missing the required parameter 'srcPath' when calling getLaTeXInStorageToPdf(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getLaTeXInStorageToPdfCall(srcPath, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and return resulting file in response. 
-     * 
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param storage The document storage. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public File getLaTeXInStorageToPdf(String srcPath, String storage) throws ApiException {
-        try
-        {
-            ApiResponse<File> resp = getLaTeXInStorageToPdfWithHttpInfo(srcPath, storage);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<File> resp = getLaTeXInStorageToPdfWithHttpInfo(srcPath, storage);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and return resulting file in response. 
-     * 
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<File> getLaTeXInStorageToPdfWithHttpInfo(String srcPath, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getLaTeXInStorageToPdfValidateBeforeCall(srcPath, storage, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and return resulting file in response.  (asynchronously)
-     * 
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getLaTeXInStorageToPdfAsync(String srcPath, String storage, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getLaTeXInStorageToPdfValidateBeforeCall(srcPath, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getLineAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -23911,7 +23759,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -23994,7 +23842,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24025,7 +23873,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24044,7 +23892,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24083,7 +23931,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24166,7 +24014,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24197,7 +24045,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -24216,7 +24064,7 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -45105,174 +44953,6 @@ public class PdfApi {
         return call;
     }
     /**
-     * Build call for putLaTeXInStorageToPdf
-     * @param name The document name. (required)
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param dstFolder The destination document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putLaTeXInStorageToPdfCall(String name, String srcPath, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/pdf/{name}/create/latex"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (srcPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
-        if (dstFolder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("dstFolder", dstFolder));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putLaTeXInStorageToPdfValidateBeforeCall(String name, String srcPath, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling putLaTeXInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'srcPath' is set
-        if (srcPath == null) {
-            throw new ApiException("Missing the required parameter 'srcPath' when calling putLaTeXInStorageToPdf(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = putLaTeXInStorageToPdfCall(name, srcPath, dstFolder, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
-     * 
-     * @param name The document name. (required)
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param dstFolder The destination document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return AsposeResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public AsposeResponse putLaTeXInStorageToPdf(String name, String srcPath, String dstFolder, String storage) throws ApiException {
-        try
-        {
-            ApiResponse<AsposeResponse> resp = putLaTeXInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, storage);
-            return resp.getData();
-        }
-        catch (ApiException ex)
-        {
-            if (ex.getCode() == 401)
-            {
-                apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putLaTeXInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, storage);
-                return resp.getData();
-            }
-            throw ex;
-        }
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
-     * 
-     * @param name The document name. (required)
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param dstFolder The destination document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;AsposeResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<AsposeResponse> putLaTeXInStorageToPdfWithHttpInfo(String name, String srcPath, String dstFolder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putLaTeXInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, storage, null, null);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Convert TeX file (located on storage) to PDF format and upload resulting file to storage.  (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param srcPath Full source filename (ex. /folder1/folder2/template.tex) (required)
-     * @param dstFolder The destination document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call putLaTeXInStorageToPdfAsync(String name, String srcPath, String dstFolder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = putLaTeXInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for putLineAnnotation
      * @param name The document name. (required)
      * @param annotationId The annotation ID. (required)
@@ -49667,7 +49347,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49749,7 +49429,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49780,7 +49460,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49799,7 +49479,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49838,7 +49518,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49920,7 +49600,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49951,7 +49631,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -49970,7 +49650,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
      * @param file A file to be converted. (optional)
@@ -52082,7 +51762,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52173,7 +51853,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52205,7 +51885,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52225,7 +51905,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xls) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52265,7 +51945,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52356,7 +52036,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52388,7 +52068,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
@@ -52408,7 +52088,7 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xlsx) (required)
      * @param insertBlankColumnAtFirst Insert blank column at first (optional)
      * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
-     * @param scaleFactor Scale factor (optional)
+     * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)

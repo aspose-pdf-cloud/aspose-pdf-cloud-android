@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **backgroundColor** | [**Color**](Color.md) | Sets background color of the text. | [optional]
 **fontStyle** | [**FontStyles**](FontStyles.md) | Sets font style of the text. | 
 **fontFile** | **String** | Sets path of font file in storage. | [optional]
+**underline** | **Boolean** | Gets or sets underline of the text. | [optional]
+**strikeOut** | **Boolean** | Gets or sets strikeout of the text. | [optional]
+**superscript** | **Boolean** | Gets or sets superscript mode of the text. | [optional]
+**subscript** | **Boolean** | Gets or sets subscript mode of the text. | [optional]
 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

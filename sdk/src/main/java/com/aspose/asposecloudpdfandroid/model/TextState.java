@@ -58,6 +58,18 @@ public class TextState {
   @SerializedName("FontFile")
   private String fontFile = null;
 
+  @SerializedName("Underline")
+  private Boolean underline = null;
+
+  @SerializedName("StrikeOut")
+  private Boolean strikeOut = null;
+
+  @SerializedName("Superscript")
+  private Boolean superscript = null;
+
+  @SerializedName("Subscript")
+  private Boolean subscript = null;
+
   public TextState fontSize(Double fontSize) {
     this.fontSize = fontSize;
     return this;
@@ -166,6 +178,78 @@ public class TextState {
     this.fontFile = fontFile;
   }
 
+  public TextState underline(Boolean underline) {
+    this.underline = underline;
+    return this;
+  }
+
+   /**
+   * Gets or sets underline of the text.
+   * @return underline
+  **/
+  @ApiModelProperty(value = "Gets or sets underline of the text.")
+  public Boolean isUnderline() {
+    return underline;
+  }
+
+  public void setUnderline(Boolean underline) {
+    this.underline = underline;
+  }
+
+  public TextState strikeOut(Boolean strikeOut) {
+    this.strikeOut = strikeOut;
+    return this;
+  }
+
+   /**
+   * Gets or sets strikeout of the text.
+   * @return strikeOut
+  **/
+  @ApiModelProperty(value = "Gets or sets strikeout of the text.")
+  public Boolean isStrikeOut() {
+    return strikeOut;
+  }
+
+  public void setStrikeOut(Boolean strikeOut) {
+    this.strikeOut = strikeOut;
+  }
+
+  public TextState superscript(Boolean superscript) {
+    this.superscript = superscript;
+    return this;
+  }
+
+   /**
+   * Gets or sets superscript mode of the text.
+   * @return superscript
+  **/
+  @ApiModelProperty(value = "Gets or sets superscript mode of the text.")
+  public Boolean isSuperscript() {
+    return superscript;
+  }
+
+  public void setSuperscript(Boolean superscript) {
+    this.superscript = superscript;
+  }
+
+  public TextState subscript(Boolean subscript) {
+    this.subscript = subscript;
+    return this;
+  }
+
+   /**
+   * Gets or sets subscript mode of the text.
+   * @return subscript
+  **/
+  @ApiModelProperty(value = "Gets or sets subscript mode of the text.")
+  public Boolean isSubscript() {
+    return subscript;
+  }
+
+  public void setSubscript(Boolean subscript) {
+    this.subscript = subscript;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -181,12 +265,16 @@ public class TextState {
         Objects.equals(this.foregroundColor, textState.foregroundColor) &&
         Objects.equals(this.backgroundColor, textState.backgroundColor) &&
         Objects.equals(this.fontStyle, textState.fontStyle) &&
-        Objects.equals(this.fontFile, textState.fontFile);
+        Objects.equals(this.fontFile, textState.fontFile) &&
+        Objects.equals(this.underline, textState.underline) &&
+        Objects.equals(this.strikeOut, textState.strikeOut) &&
+        Objects.equals(this.superscript, textState.superscript) &&
+        Objects.equals(this.subscript, textState.subscript);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fontSize, font, foregroundColor, backgroundColor, fontStyle, fontFile);
+    return Objects.hash(fontSize, font, foregroundColor, backgroundColor, fontStyle, fontFile, underline, strikeOut, superscript, subscript);
   }
 
 
@@ -201,6 +289,10 @@ public class TextState {
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    fontStyle: ").append(toIndentedString(fontStyle)).append("\n");
     sb.append("    fontFile: ").append(toIndentedString(fontFile)).append("\n");
+    sb.append("    underline: ").append(toIndentedString(underline)).append("\n");
+    sb.append("    strikeOut: ").append(toIndentedString(strikeOut)).append("\n");
+    sb.append("    superscript: ").append(toIndentedString(superscript)).append("\n");
+    sb.append("    subscript: ").append(toIndentedString(subscript)).append("\n");
     sb.append("}");
     return sb.toString();
   }

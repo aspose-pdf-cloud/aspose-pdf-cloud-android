@@ -96,13 +96,38 @@ public class DocumentTests {
     {
         String name = "4pages.pdf";
         this.th.uploadFile(name);
-
         String folder = this.th.tempFolder;
-
         SplitResultResponse response = this.th.pdfApi.postSplitDocument(name, null, null, null, null, folder);
         assertEquals(200, (int)response.getCode());
     }
 
+
+    /**
+     * PostSplitRangePdfDocument Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postSplitRangePdfDocumentTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        this.th.uploadFile(name);
+        SplitRangePdfOptions rangeOptions = new SplitRangePdfOptions();
+        PageRange pageRange1 = new PageRange();
+        pageRange1.setTo(2);
+        rangeOptions.addPageRangesItem(pageRange1);
+        PageRange pageRange2 = new PageRange();
+        pageRange2.setFrom(3);
+        rangeOptions.addPageRangesItem(pageRange2);
+        PageRange pageRange3 = new PageRange();
+        pageRange3.setFrom(2);
+        pageRange3.setTo(3);
+        rangeOptions.addPageRangesItem(pageRange3);
+        String folder = this.th.tempFolder;
+        SplitResultResponse response = this.th.pdfApi.postSplitRangePdfDocument(name, rangeOptions, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
 
     /**
      * PutCreateEmptyDocument Test

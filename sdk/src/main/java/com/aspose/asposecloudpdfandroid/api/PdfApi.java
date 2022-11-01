@@ -137,6 +137,7 @@ import com.aspose.asposecloudpdfandroid.model.SignatureVerifyResponse;
 import com.aspose.asposecloudpdfandroid.model.SoundAnnotation;
 import com.aspose.asposecloudpdfandroid.model.SoundAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.SoundAnnotationsResponse;
+import com.aspose.asposecloudpdfandroid.model.SplitRangePdfOptions;
 import com.aspose.asposecloudpdfandroid.model.SplitResultResponse;
 import com.aspose.asposecloudpdfandroid.model.SquareAnnotation;
 import com.aspose.asposecloudpdfandroid.model.SquareAnnotationResponse;
@@ -16276,12 +16277,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToBmpCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToBmpCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -16299,6 +16301,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -16333,7 +16337,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -16346,7 +16350,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToBmpCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToBmpCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -16360,13 +16364,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToBmp(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToBmp(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -16374,7 +16379,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToBmpWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -16390,11 +16395,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -16408,11 +16414,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToBmpAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToBmpAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -16433,7 +16440,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToBmpValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -16446,12 +16453,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToEmfCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToEmfCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -16469,6 +16477,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -16503,7 +16513,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -16516,7 +16526,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToEmfCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToEmfCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -16530,13 +16540,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToEmf(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToEmf(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -16544,7 +16555,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToEmfWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -16560,11 +16571,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -16578,11 +16590,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToEmfAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToEmfAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -16603,7 +16616,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToEmfValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -16616,12 +16629,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToGifCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToGifCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -16639,6 +16653,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -16673,7 +16689,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -16686,7 +16702,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToGifCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToGifCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -16700,13 +16716,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToGif(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToGif(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -16714,7 +16731,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToGifWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -16730,11 +16747,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToGifWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToGifWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -16748,11 +16766,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToGifAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToGifAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -16773,7 +16792,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToGifValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -16786,12 +16805,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToJpegCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToJpegCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -16809,6 +16829,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -16843,7 +16865,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -16856,7 +16878,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToJpegCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToJpegCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -16870,13 +16892,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToJpeg(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -16884,7 +16907,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToJpegWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -16900,11 +16923,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -16918,11 +16942,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToJpegAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToJpegAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -16943,7 +16968,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToJpegValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -16956,12 +16981,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToPngCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToPngCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -16979,6 +17005,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -17013,7 +17041,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -17026,7 +17054,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToPngCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToPngCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -17040,13 +17068,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToPng(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToPng(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -17054,7 +17083,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToPngWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -17070,11 +17099,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToPngWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToPngWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -17088,11 +17118,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToPngAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToPngAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -17113,7 +17144,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToPngValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -17126,12 +17157,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToTiffCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToTiffCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -17149,6 +17181,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -17183,7 +17217,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -17196,7 +17230,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageConvertToTiffCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToTiffCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -17210,13 +17244,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPageConvertToTiff(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public File getPageConvertToTiff(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder, storage);
+            ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -17224,7 +17259,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder, storage);
+                ApiResponse<File> resp = getPageConvertToTiffWithHttpInfo(name, pageNumber, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -17240,11 +17275,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, storage, null, null);
+    public ApiResponse<File> getPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -17258,11 +17294,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageConvertToTiffAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageConvertToTiffAsync(String name, Integer pageNumber, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -17283,7 +17320,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageConvertToTiffValidateBeforeCall(name, pageNumber, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -22088,12 +22125,13 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToDocCall(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToDocCall(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -22122,6 +22160,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -22156,7 +22196,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToDocValidateBeforeCall(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToDocValidateBeforeCall(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -22164,13 +22204,13 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToDocCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToDocCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
      * 
      * @param name The document name. (required)
      * @param addReturnToLineEnd Add return to line end. (optional)
@@ -22183,13 +22223,14 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToDoc(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToDoc(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -22197,7 +22238,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToDocWithHttpInfo(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -22205,7 +22246,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
      * 
      * @param name The document name. (required)
      * @param addReturnToLineEnd Add return to line end. (optional)
@@ -22218,17 +22259,18 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToDocWithHttpInfo(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToDocValidateBeforeCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToDocWithHttpInfo(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToDocValidateBeforeCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content (asynchronously)
+     * Converts PDF document (located on storage) to DOC format and returns resulting file in response content. (asynchronously)
      * 
      * @param name The document name. (required)
      * @param addReturnToLineEnd Add return to line end. (optional)
@@ -22241,11 +22283,12 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToDocAsync(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToDocAsync(String name, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -22266,7 +22309,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToDocValidateBeforeCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToDocValidateBeforeCall(name, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -38780,6 +38823,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postSplitRangePdfDocument
+     * @param name  (required)
+     * @param options  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postSplitRangePdfDocumentCall(String name, SplitRangePdfOptions options, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = options;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/splitrangepdf"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postSplitRangePdfDocumentValidateBeforeCall(String name, SplitRangePdfOptions options, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postSplitRangePdfDocument(Async)");
+        }
+        
+        // verify the required parameter 'options' is set
+        if (options == null) {
+            throw new ApiException("Missing the required parameter 'options' when calling postSplitRangePdfDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentCall(name, options, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param name  (required)
+     * @param options  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @return SplitResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SplitResultResponse postSplitRangePdfDocument(String name, SplitRangePdfOptions options, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @param name  (required)
+     * @param options  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @return ApiResponse&lt;SplitResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SplitResultResponse> postSplitRangePdfDocumentWithHttpInfo(String name, SplitRangePdfOptions options, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param name  (required)
+     * @param options  (required)
+     * @param storage  (optional)
+     * @param folder  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postSplitRangePdfDocumentAsync(String name, SplitRangePdfOptions options, String storage, String folder, final ApiCallback<SplitResultResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postTextBoxFields
      * @param name The document name. (required)
      * @param fields The array of field. (required)
@@ -46271,12 +46471,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToBmpCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToBmpCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -46296,6 +46497,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -46330,7 +46533,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToBmpValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -46348,7 +46551,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToBmpCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToBmpCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -46363,13 +46566,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToBmp(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToBmp(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -46377,7 +46581,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToBmpWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -46394,11 +46598,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToBmpWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -46413,11 +46618,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToBmpAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToBmpAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -46438,7 +46644,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToBmpValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -46452,12 +46658,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToEmfCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToEmfCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -46477,6 +46684,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -46511,7 +46720,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToEmfValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -46529,7 +46738,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToEmfCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToEmfCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -46544,13 +46753,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToEmf(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToEmf(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -46558,7 +46768,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToEmfWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -46575,11 +46785,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToEmfWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -46594,11 +46805,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToEmfAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToEmfAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -46619,7 +46831,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToEmfValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -46633,12 +46845,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToGifCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToGifCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -46658,6 +46871,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -46692,7 +46907,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToGifValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -46710,7 +46925,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToGifCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToGifCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -46725,13 +46940,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToGif(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToGif(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -46739,7 +46955,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToGifWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -46756,11 +46972,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToGifWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToGifWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -46775,11 +46992,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToGifAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToGifAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -46800,7 +47018,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToGifValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -46814,12 +47032,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToJpegCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToJpegCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -46839,6 +47058,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -46873,7 +47094,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToJpegValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -46891,7 +47112,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToJpegCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToJpegCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -46906,13 +47127,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToJpeg(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToJpeg(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -46920,7 +47142,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToJpegWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -46937,11 +47159,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToJpegWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -46956,11 +47179,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToJpegAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToJpegAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -46981,7 +47205,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToJpegValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -46995,12 +47219,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToPngCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToPngCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -47020,6 +47245,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -47054,7 +47281,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToPngValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -47072,7 +47299,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToPngCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToPngCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -47087,13 +47314,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToPng(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToPng(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -47101,7 +47329,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToPngWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -47118,11 +47346,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToPngWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToPngWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -47137,11 +47366,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToPngAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToPngAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -47162,7 +47392,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToPngValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -47176,12 +47406,13 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToTiffCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToTiffCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -47201,6 +47432,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -47235,7 +47468,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPageConvertToTiffValidateBeforeCall(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -47253,7 +47486,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPageConvertToTiffCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToTiffCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -47268,13 +47501,14 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPageConvertToTiff(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
+    public AsposeResponse putPageConvertToTiff(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -47282,7 +47516,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPageConvertToTiffWithHttpInfo(name, pageNumber, outPath, width, height, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -47299,11 +47533,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPageConvertToTiffWithHttpInfo(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -47318,11 +47553,12 @@ public class PdfApi {
      * @param height The converted image height. (optional, default to 0)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPageConvertToTiffAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPageConvertToTiffAsync(String name, Integer pageNumber, String outPath, Integer width, Integer height, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -47343,7 +47579,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPageConvertToTiffValidateBeforeCall(name, pageNumber, outPath, width, height, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -47684,13 +47920,14 @@ public class PdfApi {
      * @param recognizeBullets Recognize bullets. (optional)
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToDocCall(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToDocCall(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -47718,6 +47955,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("relativeHorizontalProximity", relativeHorizontalProximity));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -47752,7 +47991,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToDocValidateBeforeCall(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToDocValidateBeforeCall(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -47760,7 +47999,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToDocCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToDocCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, password, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -47778,14 +48017,15 @@ public class PdfApi {
      * @param recognizeBullets Recognize bullets. (optional)
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToDoc(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToDoc(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, String password, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, password, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -47793,7 +48033,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToDocWithHttpInfo(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, password, file);
                 return resp.getData();
             }
             throw ex;
@@ -47813,12 +48053,13 @@ public class PdfApi {
      * @param recognizeBullets Recognize bullets. (optional)
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToDocWithHttpInfo(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToDocValidateBeforeCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToDocWithHttpInfo(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToDocValidateBeforeCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, password, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -47836,12 +48077,13 @@ public class PdfApi {
      * @param recognizeBullets Recognize bullets. (optional)
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToDocAsync(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToDocAsync(String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String storage, String password, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -47862,7 +48104,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToDocValidateBeforeCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToDocValidateBeforeCall(outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, storage, password, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -49992,12 +50234,13 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToDocCall(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToDocCall(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -50028,6 +50271,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -50062,7 +50307,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToDocValidateBeforeCall(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToDocValidateBeforeCall(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -50075,13 +50320,13 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToDocCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToDocCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
@@ -50095,13 +50340,14 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToDoc(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToDoc(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -50109,7 +50355,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToDocWithHttpInfo(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -50117,7 +50363,7 @@ public class PdfApi {
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
@@ -50131,17 +50377,18 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToDocWithHttpInfo(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToDocValidateBeforeCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToDocWithHttpInfo(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToDocValidateBeforeCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage (asynchronously)
+     * Converts PDF document (located on storage) to DOC format and uploads resulting file to storage. (asynchronously)
      * 
      * @param name The document name. (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.doc) (required)
@@ -50155,11 +50402,12 @@ public class PdfApi {
      * @param relativeHorizontalProximity Relative horizontal proximity. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToDocAsync(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToDocAsync(String name, String outPath, Boolean addReturnToLineEnd, String format, Integer imageResolutionX, Integer imageResolutionY, Double maxDistanceBetweenTextLines, String mode, Boolean recognizeBullets, Double relativeHorizontalProximity, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -50180,7 +50428,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToDocValidateBeforeCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToDocValidateBeforeCall(name, outPath, addReturnToLineEnd, format, imageResolutionX, imageResolutionY, maxDistanceBetweenTextLines, mode, recognizeBullets, relativeHorizontalProximity, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

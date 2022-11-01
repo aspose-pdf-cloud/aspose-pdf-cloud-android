@@ -51,7 +51,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToTiff(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToTiff(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -70,7 +70,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.tiff";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToTiff(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -87,7 +87,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToJpeg(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToJpeg(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -106,7 +106,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.jpeg";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToJpeg(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -124,7 +124,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToPng(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToPng(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -143,7 +143,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.png";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToPng(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -161,7 +161,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToEmf(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToEmf(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -180,7 +180,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.emf";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToEmf(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -197,7 +197,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToBmp(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToBmp(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -216,7 +216,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.bmp";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToBmp(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -234,7 +234,7 @@ public class PageConvertToImageTests {
 
         int pageNumber = 2;
 
-        File response = th.pdfApi.getPageConvertToGif(name, pageNumber, null, null, th.tempFolder, null);
+        File response = th.pdfApi.getPageConvertToGif(name, pageNumber, null, null, th.tempFolder, null, null);
         assertNotNull(response);
     }
 
@@ -253,7 +253,7 @@ public class PageConvertToImageTests {
         final String resultFile = "page.gif";
         final String outPath = th.tempFolder + '/' + resultFile;
         AsposeResponse response = th.pdfApi.putPageConvertToGif(name, pageNumber, outPath,
-                null, null, th.tempFolder, null);
+                null, null, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 }

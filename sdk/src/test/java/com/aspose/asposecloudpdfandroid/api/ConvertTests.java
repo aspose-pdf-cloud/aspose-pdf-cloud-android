@@ -51,7 +51,7 @@ public class ConvertTests {
         th.uploadFile(name);
         String folder = th.tempFolder;
 
-        File response = th.pdfApi.getPdfInStorageToDoc(name, null, null, null, null, null, null, null, null, folder, null);
+        File response = th.pdfApi.getPdfInStorageToDoc(name, null, null, null, null, null, null, null, null, folder, null, null);
         assertNotNull(response);
     }
 
@@ -69,7 +69,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
         String resFileName = "result.doc";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToDoc(name, th.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToDoc(name, th.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, folder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -86,7 +86,7 @@ public class ConvertTests {
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.doc";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToDoc(th.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToDoc(th.tempFolder + '/' + resFileName, null, null, null, null, null, null, null, null, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 

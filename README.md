@@ -29,8 +29,15 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 22.9
+## Enhancements in Version 22.10
+- Convert password protected PDF to DOC.
+- Support to convert password protected document to graphic formats.
+- Support to convert pages of password protected PDF to JPEG using GetPageConvertToJpeg.
+- Add new REST API endpoint to parse PDF document into PDF parts containing specified page ranges.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 22.10
+- The PostSplitDocument API method is throwing 504 Gateway Error.
 
 ## Requirements
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
@@ -249,7 +256,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**getPages**](sdk/docs/PdfApi.md#getPages) | **GET** /pdf/\{name}/pages | Read document pages info.
 *PdfApi* | [**getPclInStorageToPdf**](sdk/docs/PdfApi.md#getPclInStorageToPdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
 *PdfApi* | [**getPdfAInStorageToPdf**](sdk/docs/PdfApi.md#getPdfAInStorageToPdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
-*PdfApi* | [**getPdfInStorageToDoc**](sdk/docs/PdfApi.md#getPdfInStorageToDoc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+*PdfApi* | [**getPdfInStorageToDoc**](sdk/docs/PdfApi.md#getPdfInStorageToDoc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
 *PdfApi* | [**getPdfInStorageToEpub**](sdk/docs/PdfApi.md#getPdfInStorageToEpub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToHtml**](sdk/docs/PdfApi.md#getPdfInStorageToHtml) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
 *PdfApi* | [**getPdfInStorageToMobiXml**](sdk/docs/PdfApi.md#getPdfInStorageToMobiXml) | **GET** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
@@ -350,6 +357,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postSignPage**](sdk/docs/PdfApi.md#postSignPage) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
 *PdfApi* | [**postSignatureField**](sdk/docs/PdfApi.md#postSignatureField) | **POST** /pdf/\{name}/fields/signature | Add document signature field.
 *PdfApi* | [**postSplitDocument**](sdk/docs/PdfApi.md#postSplitDocument) | **POST** /pdf/\{name}/split | Split document to parts.
+*PdfApi* | [**postSplitRangePdfDocument**](sdk/docs/PdfApi.md#postSplitRangePdfDocument) | **POST** /pdf/\{name}/splitrangepdf | 
 *PdfApi* | [**postTextBoxFields**](sdk/docs/PdfApi.md#postTextBoxFields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
 *PdfApi* | [**putAddNewPage**](sdk/docs/PdfApi.md#putAddNewPage) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 *PdfApi* | [**putAddText**](sdk/docs/PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
@@ -416,7 +424,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**putPdfInRequestToXlsx**](sdk/docs/PdfApi.md#putPdfInRequestToXlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToXml**](sdk/docs/PdfApi.md#putPdfInRequestToXml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInRequestToXps**](sdk/docs/PdfApi.md#putPdfInRequestToXps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
-*PdfApi* | [**putPdfInStorageToDoc**](sdk/docs/PdfApi.md#putPdfInStorageToDoc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+*PdfApi* | [**putPdfInStorageToDoc**](sdk/docs/PdfApi.md#putPdfInStorageToDoc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
 *PdfApi* | [**putPdfInStorageToEpub**](sdk/docs/PdfApi.md#putPdfInStorageToEpub) | **PUT** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToHtml**](sdk/docs/PdfApi.md#putPdfInStorageToHtml) | **PUT** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and uploads resulting file to storage
 *PdfApi* | [**putPdfInStorageToMobiXml**](sdk/docs/PdfApi.md#putPdfInStorageToMobiXml) | **PUT** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
@@ -538,6 +546,7 @@ Class | Method | HTTP request | Description
  - [OutputFormat](sdk/docs/OutputFormat.md)
  - [PageLayout](sdk/docs/PageLayout.md)
  - [PageMode](sdk/docs/PageMode.md)
+ - [PageRange](sdk/docs/PageRange.md)
  - [PageWordCount](sdk/docs/PageWordCount.md)
  - [Paragraph](sdk/docs/Paragraph.md)
  - [PartsEmbeddingModes](sdk/docs/PartsEmbeddingModes.md)
@@ -558,6 +567,7 @@ Class | Method | HTTP request | Description
  - [SignatureType](sdk/docs/SignatureType.md)
  - [SoundEncoding](sdk/docs/SoundEncoding.md)
  - [SoundIcon](sdk/docs/SoundIcon.md)
+ - [SplitRangePdfOptions](sdk/docs/SplitRangePdfOptions.md)
  - [SplitResult](sdk/docs/SplitResult.md)
  - [Stamp](sdk/docs/Stamp.md)
  - [StampIcon](sdk/docs/StampIcon.md)

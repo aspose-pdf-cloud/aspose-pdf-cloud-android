@@ -36,8 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SplitRangePdfOptions
+ * Represents Pdf split into ranges options.
  */
+@ApiModel(description = "Represents Pdf split into ranges options.")
 
 public class SplitRangePdfOptions {
   @SerializedName("PageRanges")

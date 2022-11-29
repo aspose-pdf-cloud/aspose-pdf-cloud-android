@@ -38824,10 +38824,10 @@ public class PdfApi {
     }
     /**
      * Build call for postSplitRangePdfDocument
-     * @param name  (required)
-     * @param options  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param options The splitting options. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -38899,12 +38899,12 @@ public class PdfApi {
     }
 
     /**
+     * Split document into ranges.
      * 
-     * 
-     * @param name  (required)
-     * @param options  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param options The splitting options. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
      * @return SplitResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -38927,12 +38927,12 @@ public class PdfApi {
     }
 
     /**
+     * Split document into ranges.
      * 
-     * 
-     * @param name  (required)
-     * @param options  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param options The splitting options. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
      * @return ApiResponse&lt;SplitResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -38943,12 +38943,12 @@ public class PdfApi {
     }
 
     /**
-     *  (asynchronously)
+     * Split document into ranges. (asynchronously)
      * 
-     * @param name  (required)
-     * @param options  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param options The splitting options. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

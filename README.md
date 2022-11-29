@@ -29,15 +29,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 22.10
-- Convert password protected PDF to DOC.
-- Support to convert password protected document to graphic formats.
-- Support to convert pages of password protected PDF to JPEG using GetPageConvertToJpeg.
-- Add new REST API endpoint to parse PDF document into PDF parts containing specified page ranges.
+## Enhancements in Version 22.11
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 22.10
-- The PostSplitDocument API method is throwing 504 Gateway Error.
 
 ## Requirements
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
@@ -357,7 +350,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**postSignPage**](sdk/docs/PdfApi.md#postSignPage) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
 *PdfApi* | [**postSignatureField**](sdk/docs/PdfApi.md#postSignatureField) | **POST** /pdf/\{name}/fields/signature | Add document signature field.
 *PdfApi* | [**postSplitDocument**](sdk/docs/PdfApi.md#postSplitDocument) | **POST** /pdf/\{name}/split | Split document to parts.
-*PdfApi* | [**postSplitRangePdfDocument**](sdk/docs/PdfApi.md#postSplitRangePdfDocument) | **POST** /pdf/\{name}/splitrangepdf | 
+*PdfApi* | [**postSplitRangePdfDocument**](sdk/docs/PdfApi.md#postSplitRangePdfDocument) | **POST** /pdf/\{name}/splitrangepdf | Split document into ranges.
 *PdfApi* | [**postTextBoxFields**](sdk/docs/PdfApi.md#postTextBoxFields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
 *PdfApi* | [**putAddNewPage**](sdk/docs/PdfApi.md#putAddNewPage) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 *PdfApi* | [**putAddText**](sdk/docs/PdfApi.md#putAddText) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.

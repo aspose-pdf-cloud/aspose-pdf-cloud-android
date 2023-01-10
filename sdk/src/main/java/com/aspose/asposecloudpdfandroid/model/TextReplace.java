@@ -55,6 +55,9 @@ public class TextReplace {
   @SerializedName("Rect")
   private Rectangle rect = null;
 
+  @SerializedName("CenterTextHorizontally")
+  private Boolean centerTextHorizontally = null;
+
   public TextReplace oldValue(String oldValue) {
     this.oldValue = oldValue;
     return this;
@@ -145,6 +148,24 @@ public class TextReplace {
     this.rect = rect;
   }
 
+  public TextReplace centerTextHorizontally(Boolean centerTextHorizontally) {
+    this.centerTextHorizontally = centerTextHorizontally;
+    return this;
+  }
+
+   /**
+   * The text after replacement is centered horizontally relative to the text being replaced.
+   * @return centerTextHorizontally
+  **/
+  @ApiModelProperty(value = "The text after replacement is centered horizontally relative to the text being replaced.")
+  public Boolean isCenterTextHorizontally() {
+    return centerTextHorizontally;
+  }
+
+  public void setCenterTextHorizontally(Boolean centerTextHorizontally) {
+    this.centerTextHorizontally = centerTextHorizontally;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -159,12 +180,13 @@ public class TextReplace {
         Objects.equals(this.newValue, textReplace.newValue) &&
         Objects.equals(this.regex, textReplace.regex) &&
         Objects.equals(this.textState, textReplace.textState) &&
-        Objects.equals(this.rect, textReplace.rect);
+        Objects.equals(this.rect, textReplace.rect) &&
+        Objects.equals(this.centerTextHorizontally, textReplace.centerTextHorizontally);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(oldValue, newValue, regex, textState, rect);
+    return Objects.hash(oldValue, newValue, regex, textState, rect, centerTextHorizontally);
   }
 
 
@@ -178,6 +200,7 @@ public class TextReplace {
     sb.append("    regex: ").append(toIndentedString(regex)).append("\n");
     sb.append("    textState: ").append(toIndentedString(textState)).append("\n");
     sb.append("    rect: ").append(toIndentedString(rect)).append("\n");
+    sb.append("    centerTextHorizontally: ").append(toIndentedString(centerTextHorizontally)).append("\n");
     sb.append("}");
     return sb.toString();
   }

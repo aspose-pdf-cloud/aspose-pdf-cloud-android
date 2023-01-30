@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2022 Aspose.PDF Cloud
+ * Copyright (c) 2023 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -40,6 +40,9 @@ import java.io.IOException;
 @ApiModel(description = "Represents Pdf optimize options.")
 
 public class OptimizeOptions {
+  @SerializedName("Password")
+  private String password = null;
+
   @SerializedName("AllowReusePageContent")
   private Boolean allowReusePageContent = null;
 
@@ -78,6 +81,24 @@ public class OptimizeOptions {
 
   @SerializedName("ImageCompressionVersion")
   private ImageCompressionVersion imageCompressionVersion = null;
+
+  public OptimizeOptions password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Specifies document password (if any) encoded with base-64.
+   * @return password
+  **/
+  @ApiModelProperty(value = "Specifies document password (if any) encoded with base-64.")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public OptimizeOptions allowReusePageContent(Boolean allowReusePageContent) {
     this.allowReusePageContent = allowReusePageContent;
@@ -323,7 +344,8 @@ public class OptimizeOptions {
       return false;
     }
     OptimizeOptions optimizeOptions = (OptimizeOptions) o;
-    return Objects.equals(this.allowReusePageContent, optimizeOptions.allowReusePageContent) &&
+    return Objects.equals(this.password, optimizeOptions.password) &&
+        Objects.equals(this.allowReusePageContent, optimizeOptions.allowReusePageContent) &&
         Objects.equals(this.compressImages, optimizeOptions.compressImages) &&
         Objects.equals(this.imageQuality, optimizeOptions.imageQuality) &&
         Objects.equals(this.linkDuplcateStreams, optimizeOptions.linkDuplcateStreams) &&
@@ -340,7 +362,7 @@ public class OptimizeOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowReusePageContent, compressImages, imageQuality, linkDuplcateStreams, removeUnusedObjects, removeUnusedStreams, unembedFonts, resizeImages, maxResolution, subsetFonts, removePrivateInfo, imageEncoding, imageCompressionVersion);
+    return Objects.hash(password, allowReusePageContent, compressImages, imageQuality, linkDuplcateStreams, removeUnusedObjects, removeUnusedStreams, unembedFonts, resizeImages, maxResolution, subsetFonts, removePrivateInfo, imageEncoding, imageCompressionVersion);
   }
 
 
@@ -349,6 +371,7 @@ public class OptimizeOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class OptimizeOptions {\n");
     
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    allowReusePageContent: ").append(toIndentedString(allowReusePageContent)).append("\n");
     sb.append("    compressImages: ").append(toIndentedString(compressImages)).append("\n");
     sb.append("    imageQuality: ").append(toIndentedString(imageQuality)).append("\n");

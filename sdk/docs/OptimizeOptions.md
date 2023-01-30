@@ -5,6 +5,7 @@ Represents Pdf optimize options.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**password** | **String** | Specifies document password (if any) encoded with base-64. | [optional]
 **allowReusePageContent** | **Boolean** | If true page contents will be reused when document is optimized for equal pages. | [optional]
 **compressImages** | **Boolean** | If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property. | [optional]
 **imageQuality** | **Integer** | Specifies level of image compression when CompressImages flag is used. | [optional]

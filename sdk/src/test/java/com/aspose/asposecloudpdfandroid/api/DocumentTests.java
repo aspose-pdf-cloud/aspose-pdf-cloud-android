@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2022 Aspose.PDF Cloud
+ * Copyright (c) 2023 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -85,6 +85,31 @@ public class DocumentTests {
         assertEquals(200, (int)response.getCode());
     }
 
+    /**
+     * PostOptimizeDocument with password Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postOptimizeDocumentTestWithPassword() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        this.th.uploadFile(name);
+        OptimizeOptions optimizeOptions = new OptimizeOptions();
+        optimizeOptions.setPassword("dXNlciAkXlBhc3N3b3JkISY="); //user $^Password!&
+        optimizeOptions.setAllowReusePageContent(false);
+        optimizeOptions.setCompressImages(true);
+        optimizeOptions.setImageQuality(100);
+        optimizeOptions.setLinkDuplcateStreams(true);
+        optimizeOptions.setRemoveUnusedObjects(true);
+        optimizeOptions.setRemoveUnusedStreams(true);
+        optimizeOptions.setUnembedFonts(true);
+        String folder = this.th.tempFolder;
+        AsposeResponse response = this.th.pdfApi.postOptimizeDocument(name, optimizeOptions, null, folder);
+        assertEquals(200, (int)response.getCode());
+    }
+    
     /**
      * PostSplitDocument Test
      * @throws ApiException

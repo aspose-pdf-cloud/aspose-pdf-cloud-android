@@ -33,50 +33,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PageRange
+ * Data for document organizing.
  */
+@ApiModel(description = "Data for document organizing.")
 
-public class PageRange {
-  @SerializedName("From")
-  private Integer from = null;
+public class OrganizeDocumentData {
+  @SerializedName("Path")
+  private String path = null;
 
-  @SerializedName("To")
-  private Integer to = null;
+  @SerializedName("Pages")
+  private String pages = null;
 
-  public PageRange from(Integer from) {
-    this.from = from;
+  public OrganizeDocumentData path(String path) {
+    this.path = path;
     return this;
   }
 
    /**
-   * Get from
-   * @return from
+   * Full filename of the document for organizing.
+   * @return path
   **/
-  @ApiModelProperty(value = "")
-  public Integer getFrom() {
-    return from;
+  @ApiModelProperty(required = true, value = "Full filename of the document for organizing.")
+  public String getPath() {
+    return path;
   }
 
-  public void setFrom(Integer from) {
-    this.from = from;
+  public void setPath(String path) {
+    this.path = path;
   }
 
-  public PageRange to(Integer to) {
-    this.to = to;
+  public OrganizeDocumentData pages(String pages) {
+    this.pages = pages;
     return this;
   }
 
    /**
-   * Get to
-   * @return to
+   * 1-based page numbers of the document that make up the resulting document.
+   * @return pages
   **/
-  @ApiModelProperty(value = "")
-  public Integer getTo() {
-    return to;
+  @ApiModelProperty(required = true, value = "1-based page numbers of the document that make up the resulting document.")
+  public String getPages() {
+    return pages;
   }
 
-  public void setTo(Integer to) {
-    this.to = to;
+  public void setPages(String pages) {
+    this.pages = pages;
   }
 
 
@@ -88,24 +89,24 @@ public class PageRange {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageRange pageRange = (PageRange) o;
-    return Objects.equals(this.from, pageRange.from) &&
-        Objects.equals(this.to, pageRange.to);
+    OrganizeDocumentData organizeDocumentData = (OrganizeDocumentData) o;
+    return Objects.equals(this.path, organizeDocumentData.path) &&
+        Objects.equals(this.pages, organizeDocumentData.pages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to);
+    return Objects.hash(path, pages);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageRange {\n");
+    sb.append("class OrganizeDocumentData {\n");
     
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
+    sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();
   }

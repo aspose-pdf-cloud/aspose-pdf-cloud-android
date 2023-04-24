@@ -107,6 +107,7 @@ import com.aspose.asposecloudpdfandroid.model.MovieAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.MovieAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.ObjectExist;
 import com.aspose.asposecloudpdfandroid.model.OptimizeOptions;
+import com.aspose.asposecloudpdfandroid.model.OrganizeDocumentRequest;
 import com.aspose.asposecloudpdfandroid.model.PageNumberStamp;
 import com.aspose.asposecloudpdfandroid.model.Paragraph;
 import com.aspose.asposecloudpdfandroid.model.PdfPageStamp;
@@ -33488,6 +33489,328 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postOptimizeDocumentValidateBeforeCall(name, options, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postOrganizeDocument
+     * @param name The original document name. (required)
+     * @param pages 1-based page numbers of the source document that make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param folder The source document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postOrganizeDocumentCall(String name, String pages, String outPath, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/organize"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pages != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("pages", pages));
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postOrganizeDocumentValidateBeforeCall(String name, String pages, String outPath, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postOrganizeDocument(Async)");
+        }
+        
+        // verify the required parameter 'pages' is set
+        if (pages == null) {
+            throw new ApiException("Missing the required parameter 'pages' when calling postOrganizeDocument(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling postOrganizeDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postOrganizeDocumentCall(name, pages, outPath, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Merge selected pages of a document.
+     * 
+     * @param name The original document name. (required)
+     * @param pages 1-based page numbers of the source document that make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param folder The source document folder. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postOrganizeDocument(String name, String pages, String outPath, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postOrganizeDocumentWithHttpInfo(name, pages, outPath, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postOrganizeDocumentWithHttpInfo(name, pages, outPath, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Merge selected pages of a document.
+     * 
+     * @param name The original document name. (required)
+     * @param pages 1-based page numbers of the source document that make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param folder The source document folder. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postOrganizeDocumentWithHttpInfo(String name, String pages, String outPath, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postOrganizeDocumentValidateBeforeCall(name, pages, outPath, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Merge selected pages of a document. (asynchronously)
+     * 
+     * @param name The original document name. (required)
+     * @param pages 1-based page numbers of the source document that make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param folder The source document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postOrganizeDocumentAsync(String name, String pages, String outPath, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postOrganizeDocumentValidateBeforeCall(name, pages, outPath, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postOrganizeDocuments
+     * @param organizeDocuments Array of OrganizeDocumentData to make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postOrganizeDocumentsCall(OrganizeDocumentRequest organizeDocuments, String outPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = organizeDocuments;
+
+        // create path and map variables
+        String localVarPath = "/pdf/organize";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postOrganizeDocumentsValidateBeforeCall(OrganizeDocumentRequest organizeDocuments, String outPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'organizeDocuments' is set
+        if (organizeDocuments == null) {
+            throw new ApiException("Missing the required parameter 'organizeDocuments' when calling postOrganizeDocuments(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling postOrganizeDocuments(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postOrganizeDocumentsCall(organizeDocuments, outPath, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Merge selected pages of different documents.
+     * 
+     * @param organizeDocuments Array of OrganizeDocumentData to make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postOrganizeDocuments(OrganizeDocumentRequest organizeDocuments, String outPath, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postOrganizeDocumentsWithHttpInfo(organizeDocuments, outPath, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postOrganizeDocumentsWithHttpInfo(organizeDocuments, outPath, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Merge selected pages of different documents.
+     * 
+     * @param organizeDocuments Array of OrganizeDocumentData to make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postOrganizeDocumentsWithHttpInfo(OrganizeDocumentRequest organizeDocuments, String outPath, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = postOrganizeDocumentsValidateBeforeCall(organizeDocuments, outPath, storage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Merge selected pages of different documents. (asynchronously)
+     * 
+     * @param organizeDocuments Array of OrganizeDocumentData to make up the resulting document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postOrganizeDocumentsAsync(OrganizeDocumentRequest organizeDocuments, String outPath, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postOrganizeDocumentsValidateBeforeCall(organizeDocuments, outPath, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

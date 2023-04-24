@@ -23,6 +23,7 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.OrganizeDocumentData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -31,52 +32,39 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * PageRange
+ * Documents data for organizing.
  */
+@ApiModel(description = "Documents data for organizing.")
 
-public class PageRange {
-  @SerializedName("From")
-  private Integer from = null;
+public class OrganizeDocumentRequest {
+  @SerializedName("List")
+  private List<OrganizeDocumentData> list = new ArrayList<OrganizeDocumentData>();
 
-  @SerializedName("To")
-  private Integer to = null;
+  public OrganizeDocumentRequest list(List<OrganizeDocumentData> list) {
+    this.list = list;
+    return this;
+  }
 
-  public PageRange from(Integer from) {
-    this.from = from;
+  public OrganizeDocumentRequest addListItem(OrganizeDocumentData listItem) {
+    this.list.add(listItem);
     return this;
   }
 
    /**
-   * Get from
-   * @return from
+   * List of document data for organizing.
+   * @return list
   **/
-  @ApiModelProperty(value = "")
-  public Integer getFrom() {
-    return from;
+  @ApiModelProperty(required = true, value = "List of document data for organizing.")
+  public List<OrganizeDocumentData> getList() {
+    return list;
   }
 
-  public void setFrom(Integer from) {
-    this.from = from;
-  }
-
-  public PageRange to(Integer to) {
-    this.to = to;
-    return this;
-  }
-
-   /**
-   * Get to
-   * @return to
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getTo() {
-    return to;
-  }
-
-  public void setTo(Integer to) {
-    this.to = to;
+  public void setList(List<OrganizeDocumentData> list) {
+    this.list = list;
   }
 
 
@@ -88,24 +76,22 @@ public class PageRange {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageRange pageRange = (PageRange) o;
-    return Objects.equals(this.from, pageRange.from) &&
-        Objects.equals(this.to, pageRange.to);
+    OrganizeDocumentRequest organizeDocumentRequest = (OrganizeDocumentRequest) o;
+    return Objects.equals(this.list, organizeDocumentRequest.list);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to);
+    return Objects.hash(list);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageRange {\n");
+    sb.append("class OrganizeDocumentRequest {\n");
     
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    list: ").append(toIndentedString(list)).append("\n");
     sb.append("}");
     return sb.toString();
   }

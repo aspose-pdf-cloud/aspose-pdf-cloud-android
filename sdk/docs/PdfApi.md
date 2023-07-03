@@ -3882,7 +3882,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToPptx"></a>
 # **getPdfInStorageToPptx**
-> File getPdfInStorageToPptx(name, separateImages, slidesAsImages, folder, storage)
+> File getPdfInStorageToPptx(name, separateImages, slidesAsImages, folder, storage, password)
 
 Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
 
@@ -3895,6 +3895,7 @@ Name | Type | Description  | Notes
  **slidesAsImages** | **Boolean**| Slides as images. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -7849,7 +7850,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToPptx"></a>
 # **putPdfInRequestToPptx**
-> AsposeResponse putPdfInRequestToPptx(outPath, separateImages, slidesAsImages, storage, file)
+> AsposeResponse putPdfInRequestToPptx(outPath, separateImages, slidesAsImages, storage, password, file)
 
 Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
 
@@ -7861,6 +7862,7 @@ Name | Type | Description  | Notes
  **separateImages** | **Boolean**| Separate images. | [optional]
  **slidesAsImages** | **Boolean**| Slides as images. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -8219,7 +8221,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToPptx"></a>
 # **putPdfInStorageToPptx**
-> AsposeResponse putPdfInStorageToPptx(name, outPath, separateImages, slidesAsImages, folder, storage)
+> AsposeResponse putPdfInStorageToPptx(name, outPath, separateImages, slidesAsImages, folder, storage, password)
 
 Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
 
@@ -8233,6 +8235,7 @@ Name | Type | Description  | Notes
  **slidesAsImages** | **Boolean**| Slides as images. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 

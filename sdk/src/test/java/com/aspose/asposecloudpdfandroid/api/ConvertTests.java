@@ -602,7 +602,6 @@ public class ConvertTests {
         assertEquals(200, (int)response.getCode());
     }
 
-
     /**
      * GetPdfInStorageToPptx Test
      * @throws ApiException
@@ -614,11 +613,25 @@ public class ConvertTests {
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
-
         String folder = th.tempFolder;
+        File response = th.pdfApi.getPdfInStorageToPptx(name, null, null, folder, null, null);
+        assertNotNull(response);
+    }
 
+    /**
+     * GetPdfInStorageToPptxWithPassword Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
 
-        File response = th.pdfApi.getPdfInStorageToPptx(name, null, null, folder, null);
+    @Test
+    public void getPdfInStorageToPptxTestWithPassword() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        th.uploadFile(name);
+        String folder = th.tempFolder;
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+        File response = th.pdfApi.getPdfInStorageToPptx(name, null, null, folder, null, userPasswordBase64encoded);
         assertNotNull(response);
     }
 
@@ -633,11 +646,27 @@ public class ConvertTests {
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
-
         String folder = th.tempFolder;
         String resFileName = "result.pptx";
+        AsposeResponse response = th.pdfApi.putPdfInStorageToPptx(name, th.tempFolder + '/' + resFileName, null, null, folder, null, null);
+        assertEquals(200, (int)response.getCode());
+    }
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToPptx(name, th.tempFolder + '/' + resFileName, null, null, folder, null);
+    /**
+     * PutPdfInStorageToPptxWithPassword Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInStorageToPptxTestWithPassword() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        th.uploadFile(name);
+        String folder = th.tempFolder;
+        String resFileName = "result.pptx";
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+        AsposeResponse response = th.pdfApi.putPdfInStorageToPptx(name, th.tempFolder + '/' + resFileName, null, null, folder, null, userPasswordBase64encoded);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -653,11 +682,26 @@ public class ConvertTests {
         String name = "4pages.pdf";
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.pptx";
-
-        AsposeResponse response = th.pdfApi.putPdfInRequestToPptx(th.tempFolder + '/' + resFileName, null, null, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToPptx(th.tempFolder + '/' + resFileName, null, null, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 
+    /**
+     * PutPdfInRequestToPptxWithPassword Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void putPdfInRequestToPptxTestWithPassword() throws ApiException
+    {
+        String name = "4pagesEncrypted.pdf";
+        File file = new File(th.testDataFolder + "/" + name);
+        String resFileName = "result.pptx";
+        String userPasswordBase64encoded = "dXNlciAkXlBhc3N3b3JkISY="; //user $^Password!&
+        AsposeResponse response = th.pdfApi.putPdfInRequestToPptx(th.tempFolder + '/' + resFileName, null, null, null, userPasswordBase64encoded, file);
+        assertEquals(200, (int)response.getCode());
+    }
 
     /**
      * GetPdfInStorageToTeX Test

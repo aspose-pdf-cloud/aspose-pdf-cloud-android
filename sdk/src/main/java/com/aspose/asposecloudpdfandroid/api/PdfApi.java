@@ -23105,12 +23105,13 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToPptxCall(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToPptxCall(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -23127,6 +23128,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -23161,7 +23164,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToPptxValidateBeforeCall(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToPptxValidateBeforeCall(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -23169,7 +23172,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToPptxCall(name, separateImages, slidesAsImages, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToPptxCall(name, separateImages, slidesAsImages, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -23182,13 +23185,14 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToPptx(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToPptx(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -23196,7 +23200,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToPptxWithHttpInfo(name, separateImages, slidesAsImages, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -23211,11 +23215,12 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToPptxWithHttpInfo(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToPptxValidateBeforeCall(name, separateImages, slidesAsImages, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToPptxWithHttpInfo(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToPptxValidateBeforeCall(name, separateImages, slidesAsImages, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -23228,11 +23233,12 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToPptxAsync(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToPptxAsync(String name, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23253,7 +23259,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToPptxValidateBeforeCall(name, separateImages, slidesAsImages, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToPptxValidateBeforeCall(name, separateImages, slidesAsImages, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -49223,13 +49229,14 @@ public class PdfApi {
      * @param separateImages Separate images. (optional)
      * @param slidesAsImages Slides as images. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToPptxCall(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToPptxCall(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -49245,6 +49252,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("slidesAsImages", slidesAsImages));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -49279,7 +49288,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToPptxValidateBeforeCall(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToPptxValidateBeforeCall(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -49287,7 +49296,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToPptxCall(outPath, separateImages, slidesAsImages, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToPptxCall(outPath, separateImages, slidesAsImages, storage, password, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -49299,14 +49308,15 @@ public class PdfApi {
      * @param separateImages Separate images. (optional)
      * @param slidesAsImages Slides as images. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToPptx(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToPptx(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, String password, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, storage, password, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -49314,7 +49324,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToPptxWithHttpInfo(outPath, separateImages, slidesAsImages, storage, password, file);
                 return resp.getData();
             }
             throw ex;
@@ -49328,12 +49338,13 @@ public class PdfApi {
      * @param separateImages Separate images. (optional)
      * @param slidesAsImages Slides as images. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToPptxWithHttpInfo(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToPptxValidateBeforeCall(outPath, separateImages, slidesAsImages, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToPptxWithHttpInfo(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToPptxValidateBeforeCall(outPath, separateImages, slidesAsImages, storage, password, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -49345,12 +49356,13 @@ public class PdfApi {
      * @param separateImages Separate images. (optional)
      * @param slidesAsImages Slides as images. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToPptxAsync(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToPptxAsync(String outPath, Boolean separateImages, Boolean slidesAsImages, String storage, String password, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -49371,7 +49383,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToPptxValidateBeforeCall(outPath, separateImages, slidesAsImages, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToPptxValidateBeforeCall(outPath, separateImages, slidesAsImages, storage, password, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -51597,12 +51609,13 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToPptxCall(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToPptxCall(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -51621,6 +51634,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -51655,7 +51670,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToPptxValidateBeforeCall(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToPptxValidateBeforeCall(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -51668,7 +51683,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToPptxCall(name, outPath, separateImages, slidesAsImages, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToPptxCall(name, outPath, separateImages, slidesAsImages, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -51682,13 +51697,14 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToPptx(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToPptx(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -51696,7 +51712,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToPptxWithHttpInfo(name, outPath, separateImages, slidesAsImages, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -51712,11 +51728,12 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToPptxWithHttpInfo(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToPptxValidateBeforeCall(name, outPath, separateImages, slidesAsImages, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToPptxWithHttpInfo(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToPptxValidateBeforeCall(name, outPath, separateImages, slidesAsImages, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -51730,11 +51747,12 @@ public class PdfApi {
      * @param slidesAsImages Slides as images. (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToPptxAsync(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToPptxAsync(String name, String outPath, Boolean separateImages, Boolean slidesAsImages, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -51755,7 +51773,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToPptxValidateBeforeCall(name, outPath, separateImages, slidesAsImages, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToPptxValidateBeforeCall(name, outPath, separateImages, slidesAsImages, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

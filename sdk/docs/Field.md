@@ -6,6 +6,7 @@ Represents form field.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Field name. | [optional]
+**mappingName** | **String** | Mapping name. | [optional]
 **selectedItems** | **List&lt;Integer&gt;** | Selected items. | [optional]
 **type** | [**FieldType**](FieldType.md) | Field type. | [optional]
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional]

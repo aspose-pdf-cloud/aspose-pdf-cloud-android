@@ -47,6 +47,9 @@ public class Field extends LinkElement {
   @SerializedName("Name")
   private String name = null;
 
+  @SerializedName("MappingName")
+  private String mappingName = null;
+
   @SerializedName("SelectedItems")
   private List<Integer> selectedItems = null;
 
@@ -75,6 +78,24 @@ public class Field extends LinkElement {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public Field mappingName(String mappingName) {
+    this.mappingName = mappingName;
+    return this;
+  }
+
+   /**
+   * Mapping name.
+   * @return mappingName
+  **/
+  @ApiModelProperty(value = "Mapping name.")
+  public String getMappingName() {
+    return mappingName;
+  }
+
+  public void setMappingName(String mappingName) {
+    this.mappingName = mappingName;
   }
 
   public Field selectedItems(List<Integer> selectedItems) {
@@ -173,6 +194,7 @@ public class Field extends LinkElement {
     }
     Field field = (Field) o;
     return Objects.equals(this.name, field.name) &&
+        Objects.equals(this.mappingName, field.mappingName) &&
         Objects.equals(this.selectedItems, field.selectedItems) &&
         Objects.equals(this.type, field.type) &&
         Objects.equals(this.rect, field.rect) &&
@@ -182,7 +204,7 @@ public class Field extends LinkElement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, selectedItems, type, rect, values, super.hashCode());
+    return Objects.hash(name, mappingName, selectedItems, type, rect, values, super.hashCode());
   }
 
 
@@ -192,6 +214,7 @@ public class Field extends LinkElement {
     sb.append("class Field {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    mappingName: ").append(toIndentedString(mappingName)).append("\n");
     sb.append("    selectedItems: ").append(toIndentedString(selectedItems)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    rect: ").append(toIndentedString(rect)).append("\n");

@@ -336,6 +336,7 @@ Method | HTTP request | Description
 [**putRadioButtonField**](PdfApi.md#putRadioButtonField) | **PUT** /pdf/\{name}/fields/radiobutton/\{fieldName} | Replace document RadioButton field
 [**putRedactionAnnotation**](PdfApi.md#putRedactionAnnotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 [**putReplaceImage**](PdfApi.md#putReplaceImage) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
+[**putReplaceMultipleImage**](PdfApi.md#putReplaceMultipleImage) | **PUT** /pdf/\{name}/images/replace | Replace document multiple image.
 [**putScreenAnnotation**](PdfApi.md#putScreenAnnotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
 [**putScreenAnnotationDataExtract**](PdfApi.md#putScreenAnnotationDataExtract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 [**putSearchableDocument**](PdfApi.md#putSearchableDocument) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
@@ -3993,7 +3994,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToXls"></a>
 # **getPdfInStorageToXls**
-> File getPdfInStorageToXls(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+> File getPdfInStorageToXls(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password)
 
 Converts PDF document (located on storage) to XLS format and returns resulting file in response content
 
@@ -4008,6 +4009,7 @@ Name | Type | Description  | Notes
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -4020,7 +4022,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToXlsx"></a>
 # **getPdfInStorageToXlsx**
-> File getPdfInStorageToXlsx(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+> File getPdfInStorageToXlsx(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password)
 
 Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 
@@ -4035,6 +4037,7 @@ Name | Type | Description  | Notes
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -6294,7 +6297,7 @@ Name | Type | Description  | Notes
 
 <a name="postSplitDocument"></a>
 # **postSplitDocument**
-> SplitResultResponse postSplitDocument(name, format, from, to, storage, folder)
+> SplitResultResponse postSplitDocument(name, format, from, to, storage, folder, password)
 
 Split document to parts.
 
@@ -6308,6 +6311,7 @@ Name | Type | Description  | Notes
  **to** | **Integer**| End page if defined. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -6320,7 +6324,7 @@ Name | Type | Description  | Notes
 
 <a name="postSplitRangePdfDocument"></a>
 # **postSplitRangePdfDocument**
-> SplitResultResponse postSplitRangePdfDocument(name, options, storage, folder)
+> SplitResultResponse postSplitRangePdfDocument(name, options, storage, folder, password)
 
 Split document into ranges.
 
@@ -6332,6 +6336,7 @@ Name | Type | Description  | Notes
  **options** | [**SplitRangePdfOptions**](SplitRangePdfOptions.md)| The splitting options. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -7960,7 +7965,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToXls"></a>
 # **putPdfInRequestToXls**
-> AsposeResponse putPdfInRequestToXls(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file)
+> AsposeResponse putPdfInRequestToXls(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file)
 
 Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
 
@@ -7974,6 +7979,7 @@ Name | Type | Description  | Notes
  **scaleFactor** | **Double**| Scale factor (Obsolete) | [optional]
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -7987,7 +7993,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToXlsx"></a>
 # **putPdfInRequestToXlsx**
-> AsposeResponse putPdfInRequestToXlsx(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file)
+> AsposeResponse putPdfInRequestToXlsx(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file)
 
 Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 
@@ -8001,6 +8007,7 @@ Name | Type | Description  | Notes
  **scaleFactor** | **Double**| Scale factor (Obsolete) | [optional]
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -8335,7 +8342,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToXls"></a>
 # **putPdfInStorageToXls**
-> AsposeResponse putPdfInStorageToXls(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+> AsposeResponse putPdfInStorageToXls(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password)
 
 Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
 
@@ -8351,6 +8358,7 @@ Name | Type | Description  | Notes
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -8363,7 +8371,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToXlsx"></a>
 # **putPdfInStorageToXlsx**
-> AsposeResponse putPdfInStorageToXlsx(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage)
+> AsposeResponse putPdfInStorageToXlsx(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password)
 
 Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 
@@ -8379,6 +8387,7 @@ Name | Type | Description  | Notes
  **uniformWorksheets** | **Boolean**| Uniform worksheets | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -8631,6 +8640,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImageResponse**](ImageResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
+
+<a name="putReplaceMultipleImage"></a>
+# **putReplaceMultipleImage**
+> ImagesResponse putReplaceMultipleImage(name, imageIds, imageFilePath, storage, folder, image)
+
+Replace document multiple image.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **imageIds** | **List&lt;String&gt;**| The image IDs. |
+ **imageFilePath** | **String**| Path to image file if specified. Request content is used otherwise. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **image** | [****](.md)| Image file. | [optional]
+
+### Return type
+
+[**ImagesResponse**](ImagesResponse.md)
 
 ### HTTP request headers
 

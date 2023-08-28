@@ -23813,12 +23813,13 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToXlsCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToXlsCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -23839,6 +23840,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -23873,7 +23876,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToXlsValidateBeforeCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToXlsValidateBeforeCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -23881,7 +23884,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -23896,13 +23899,14 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToXls(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToXls(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -23910,7 +23914,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToXlsWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -23927,11 +23931,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToXlsWithHttpInfo(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToXlsWithHttpInfo(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -23946,11 +23951,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToXlsAsync(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToXlsAsync(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23971,7 +23977,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -23985,12 +23991,13 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToXlsxCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToXlsxCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -24011,6 +24018,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -24045,7 +24054,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToXlsxValidateBeforeCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToXlsxValidateBeforeCall(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -24053,7 +24062,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsxCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -24068,13 +24077,14 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToXlsx(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToXlsx(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -24082,7 +24092,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToXlsxWithHttpInfo(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -24099,11 +24109,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToXlsxWithHttpInfo(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToXlsxWithHttpInfo(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -24118,11 +24129,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToXlsxAsync(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToXlsxAsync(String name, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -24143,7 +24155,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToXlsxValidateBeforeCall(name, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -38993,12 +39005,13 @@ public class PdfApi {
      * @param to End page if defined. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postSplitDocumentCall(String name, String format, Integer from, Integer to, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postSplitDocumentCall(String name, String format, Integer from, Integer to, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -39017,6 +39030,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -39051,7 +39066,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postSplitDocumentValidateBeforeCall(String name, String format, Integer from, Integer to, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postSplitDocumentValidateBeforeCall(String name, String format, Integer from, Integer to, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -39059,7 +39074,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postSplitDocumentCall(name, format, from, to, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postSplitDocumentCall(name, format, from, to, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -39073,13 +39088,14 @@ public class PdfApi {
      * @param to End page if defined. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return SplitResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SplitResultResponse postSplitDocument(String name, String format, Integer from, Integer to, String storage, String folder) throws ApiException {
+    public SplitResultResponse postSplitDocument(String name, String format, Integer from, Integer to, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder);
+            ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -39087,7 +39103,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder);
+                ApiResponse<SplitResultResponse> resp = postSplitDocumentWithHttpInfo(name, format, from, to, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -39103,11 +39119,12 @@ public class PdfApi {
      * @param to End page if defined. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;SplitResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SplitResultResponse> postSplitDocumentWithHttpInfo(String name, String format, Integer from, Integer to, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postSplitDocumentValidateBeforeCall(name, format, from, to, storage, folder, null, null);
+    public ApiResponse<SplitResultResponse> postSplitDocumentWithHttpInfo(String name, String format, Integer from, Integer to, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postSplitDocumentValidateBeforeCall(name, format, from, to, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -39121,11 +39138,12 @@ public class PdfApi {
      * @param to End page if defined. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postSplitDocumentAsync(String name, String format, Integer from, Integer to, String storage, String folder, final ApiCallback<SplitResultResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postSplitDocumentAsync(String name, String format, Integer from, Integer to, String storage, String folder, String password, final ApiCallback<SplitResultResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -39146,7 +39164,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postSplitDocumentValidateBeforeCall(name, format, from, to, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postSplitDocumentValidateBeforeCall(name, format, from, to, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -39157,12 +39175,13 @@ public class PdfApi {
      * @param options The splitting options. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postSplitRangePdfDocumentCall(String name, SplitRangePdfOptions options, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postSplitRangePdfDocumentCall(String name, SplitRangePdfOptions options, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = options;
 
         // create path and map variables
@@ -39175,6 +39194,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -39209,7 +39230,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postSplitRangePdfDocumentValidateBeforeCall(String name, SplitRangePdfOptions options, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postSplitRangePdfDocumentValidateBeforeCall(String name, SplitRangePdfOptions options, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -39222,7 +39243,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postSplitRangePdfDocumentCall(name, options, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentCall(name, options, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -39234,13 +39255,14 @@ public class PdfApi {
      * @param options The splitting options. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return SplitResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SplitResultResponse postSplitRangePdfDocument(String name, SplitRangePdfOptions options, String storage, String folder) throws ApiException {
+    public SplitResultResponse postSplitRangePdfDocument(String name, SplitRangePdfOptions options, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder);
+            ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -39248,7 +39270,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder);
+                ApiResponse<SplitResultResponse> resp = postSplitRangePdfDocumentWithHttpInfo(name, options, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -39262,11 +39284,12 @@ public class PdfApi {
      * @param options The splitting options. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;SplitResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SplitResultResponse> postSplitRangePdfDocumentWithHttpInfo(String name, SplitRangePdfOptions options, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, null, null);
+    public ApiResponse<SplitResultResponse> postSplitRangePdfDocumentWithHttpInfo(String name, SplitRangePdfOptions options, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -39278,11 +39301,12 @@ public class PdfApi {
      * @param options The splitting options. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postSplitRangePdfDocumentAsync(String name, SplitRangePdfOptions options, String storage, String folder, final ApiCallback<SplitResultResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postSplitRangePdfDocumentAsync(String name, SplitRangePdfOptions options, String storage, String folder, String password, final ApiCallback<SplitResultResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -39303,7 +39327,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postSplitRangePdfDocumentValidateBeforeCall(name, options, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SplitResultResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -49927,13 +49951,14 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToXlsCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToXlsCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -49953,6 +49978,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -49987,7 +50014,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToXlsValidateBeforeCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToXlsValidateBeforeCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -49995,7 +50022,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -50009,14 +50036,15 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToXls(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToXls(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -50024,7 +50052,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file);
                 return resp.getData();
             }
             throw ex;
@@ -50040,12 +50068,13 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToXlsWithHttpInfo(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToXlsWithHttpInfo(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -50059,12 +50088,13 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToXlsAsync(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToXlsAsync(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -50085,7 +50115,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -50098,13 +50128,14 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToXlsxCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToXlsxCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -50124,6 +50155,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -50158,7 +50191,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToXlsxValidateBeforeCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToXlsxValidateBeforeCall(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -50166,7 +50199,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsxCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -50180,14 +50213,15 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToXlsx(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToXlsx(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -50195,7 +50229,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToXlsxWithHttpInfo(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file);
                 return resp.getData();
             }
             throw ex;
@@ -50211,12 +50245,13 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToXlsxWithHttpInfo(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToXlsxWithHttpInfo(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -50230,12 +50265,13 @@ public class PdfApi {
      * @param scaleFactor Scale factor (Obsolete) (optional)
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToXlsxAsync(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToXlsxAsync(String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String storage, String password, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -50256,7 +50292,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToXlsxValidateBeforeCall(outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, storage, password, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -52355,12 +52391,13 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToXlsCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToXlsCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -52383,6 +52420,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -52417,7 +52456,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToXlsValidateBeforeCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToXlsValidateBeforeCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -52430,7 +52469,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -52446,13 +52485,14 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToXls(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToXls(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -52460,7 +52500,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -52478,11 +52518,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToXlsWithHttpInfo(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToXlsWithHttpInfo(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -52498,11 +52539,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToXlsAsync(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToXlsAsync(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -52523,7 +52565,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -52538,12 +52580,13 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToXlsxCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToXlsxCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -52566,6 +52609,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -52600,7 +52645,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToXlsxValidateBeforeCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToXlsxValidateBeforeCall(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -52613,7 +52658,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsxCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -52629,13 +52674,14 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToXlsx(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToXlsx(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -52643,7 +52689,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToXlsxWithHttpInfo(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -52661,11 +52707,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToXlsxWithHttpInfo(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToXlsxWithHttpInfo(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -52681,11 +52728,12 @@ public class PdfApi {
      * @param uniformWorksheets Uniform worksheets (optional)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToXlsxAsync(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToXlsxAsync(String name, String outPath, Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Double scaleFactor, Boolean uniformWorksheets, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -52706,7 +52754,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToXlsxValidateBeforeCall(name, outPath, insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, scaleFactor, uniformWorksheets, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -54351,6 +54399,175 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = putReplaceImageValidateBeforeCall(name, imageId, imageFilePath, storage, folder, image, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ImageResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for putReplaceMultipleImage
+     * @param name The document name. (required)
+     * @param imageIds The image IDs. (required)
+     * @param imageFilePath Path to image file if specified. Request content is used otherwise. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param image Image file. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putReplaceMultipleImageCall(String name, List<String> imageIds, String imageFilePath, String storage, String folder, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = image;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/images/replace"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (imageIds != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "imageIds", imageIds));
+        if (imageFilePath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("imageFilePath", imageFilePath));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/octet-stream"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call putReplaceMultipleImageValidateBeforeCall(String name, List<String> imageIds, String imageFilePath, String storage, String folder, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putReplaceMultipleImage(Async)");
+        }
+        
+        // verify the required parameter 'imageIds' is set
+        if (imageIds == null) {
+            throw new ApiException("Missing the required parameter 'imageIds' when calling putReplaceMultipleImage(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = putReplaceMultipleImageCall(name, imageIds, imageFilePath, storage, folder, image, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Replace document multiple image.
+     * 
+     * @param name The document name. (required)
+     * @param imageIds The image IDs. (required)
+     * @param imageFilePath Path to image file if specified. Request content is used otherwise. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param image Image file. (optional)
+     * @return ImagesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ImagesResponse putReplaceMultipleImage(String name, List<String> imageIds, String imageFilePath, String storage, String folder, File image) throws ApiException {
+        try
+        {
+            ApiResponse<ImagesResponse> resp = putReplaceMultipleImageWithHttpInfo(name, imageIds, imageFilePath, storage, folder, image);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<ImagesResponse> resp = putReplaceMultipleImageWithHttpInfo(name, imageIds, imageFilePath, storage, folder, image);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Replace document multiple image.
+     * 
+     * @param name The document name. (required)
+     * @param imageIds The image IDs. (required)
+     * @param imageFilePath Path to image file if specified. Request content is used otherwise. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param image Image file. (optional)
+     * @return ApiResponse&lt;ImagesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ImagesResponse> putReplaceMultipleImageWithHttpInfo(String name, List<String> imageIds, String imageFilePath, String storage, String folder, File image) throws ApiException {
+        com.squareup.okhttp.Call call = putReplaceMultipleImageValidateBeforeCall(name, imageIds, imageFilePath, storage, folder, image, null, null);
+        Type localVarReturnType = new TypeToken<ImagesResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Replace document multiple image. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param imageIds The image IDs. (required)
+     * @param imageFilePath Path to image file if specified. Request content is used otherwise. (optional)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param image Image file. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putReplaceMultipleImageAsync(String name, List<String> imageIds, String imageFilePath, String storage, String folder, File image, final ApiCallback<ImagesResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putReplaceMultipleImageValidateBeforeCall(name, imageIds, imageFilePath, storage, folder, image, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ImagesResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -328,7 +328,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
 
 
-        File response = th.pdfApi.getPdfInStorageToXls(name, null, null, null, null, folder, null);
+        File response = th.pdfApi.getPdfInStorageToXls(name, null, null, null, null, folder, null, null);
         assertNotNull(response);
     }
 
@@ -347,7 +347,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
         String resFileName = "result.xls";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToXls(name, th.tempFolder + '/' + resFileName, null, null, null, null, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToXls(name, th.tempFolder + '/' + resFileName, null, null, null, null, folder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -364,7 +364,7 @@ public class ConvertTests {
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.xls";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToXls(th.tempFolder + '/' + resFileName, null, null, null, null, null , file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToXls(th.tempFolder + '/' + resFileName, null, null, null, null, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -383,7 +383,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
 
 
-        File response = th.pdfApi.getPdfInStorageToXlsx(name, null, null, null, null, folder, null);
+        File response = th.pdfApi.getPdfInStorageToXlsx(name, null, null, null, null, folder, null, null);
         assertNotNull(response);
     }
 
@@ -402,7 +402,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
         String resFileName = "result.xlsx";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToXlsx(name, th.tempFolder + '/' + resFileName, null, null, null, null, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToXlsx(name, th.tempFolder + '/' + resFileName, null, null, null, null, folder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -419,7 +419,7 @@ public class ConvertTests {
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.xlsx";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToXlsx(th.tempFolder + '/' + resFileName, null, null, null, null, null , file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToXlsx(th.tempFolder + '/' + resFileName, null, null, null, null, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 

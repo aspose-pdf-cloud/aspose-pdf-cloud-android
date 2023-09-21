@@ -3859,7 +3859,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToPdfA"></a>
 # **getPdfInStorageToPdfA**
-> File getPdfInStorageToPdfA(name, type, folder, storage)
+> File getPdfInStorageToPdfA(name, type, folder, storage, password)
 
 Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
 
@@ -3871,6 +3871,7 @@ Name | Type | Description  | Notes
  **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -7831,7 +7832,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToPdfA"></a>
 # **putPdfInRequestToPdfA**
-> AsposeResponse putPdfInRequestToPdfA(outPath, type, storage, file)
+> AsposeResponse putPdfInRequestToPdfA(outPath, type, storage, password, file)
 
 Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
 
@@ -7842,6 +7843,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
  **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -8203,7 +8205,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToPdfA"></a>
 # **putPdfInStorageToPdfA**
-> AsposeResponse putPdfInStorageToPdfA(name, outPath, type, folder, storage)
+> AsposeResponse putPdfInStorageToPdfA(name, outPath, type, folder, storage, password)
 
 Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
 
@@ -8216,6 +8218,7 @@ Name | Type | Description  | Notes
  **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 

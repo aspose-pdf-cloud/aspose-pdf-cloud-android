@@ -105,8 +105,7 @@ public class ConvertTests {
         String type = PdfAType.PDFA1A.toString();
         String folder = th.tempFolder;
 
-
-        File response = th.pdfApi.getPdfInStorageToPdfA(name, type, folder, null);
+        File response = th.pdfApi.getPdfInStorageToPdfA(name, type, folder, null, null);
         assertNotNull(response);
     }
 
@@ -126,7 +125,7 @@ public class ConvertTests {
         String folder = th.tempFolder;
         String resFileName = "result.pdf";
 
-        AsposeResponse response = th.pdfApi.putPdfInStorageToPdfA(name, th.tempFolder + '/' + resFileName, type, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToPdfA(name, th.tempFolder + '/' + resFileName, type, folder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -144,7 +143,7 @@ public class ConvertTests {
         String type = PdfAType.PDFA1A.toString();
         String resFileName = "result.pdf";
 
-        AsposeResponse response = th.pdfApi.putPdfInRequestToPdfA(th.tempFolder + '/' + resFileName, type, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToPdfA(th.tempFolder + '/' + resFileName, type, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 

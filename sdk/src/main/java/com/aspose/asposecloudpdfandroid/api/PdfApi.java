@@ -22945,12 +22945,13 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToPdfACall(String name, String type, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToPdfACall(String name, String type, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -22965,6 +22966,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -22999,7 +23002,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPdfInStorageToPdfAValidateBeforeCall(String name, String type, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPdfInStorageToPdfAValidateBeforeCall(String name, String type, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -23012,7 +23015,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPdfInStorageToPdfACall(name, type, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToPdfACall(name, type, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -23024,13 +23027,14 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getPdfInStorageToPdfA(String name, String type, String folder, String storage) throws ApiException {
+    public File getPdfInStorageToPdfA(String name, String type, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder, storage);
+            ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -23038,7 +23042,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder, storage);
+                ApiResponse<File> resp = getPdfInStorageToPdfAWithHttpInfo(name, type, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -23052,11 +23056,12 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getPdfInStorageToPdfAWithHttpInfo(String name, String type, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getPdfInStorageToPdfAValidateBeforeCall(name, type, folder, storage, null, null);
+    public ApiResponse<File> getPdfInStorageToPdfAWithHttpInfo(String name, String type, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToPdfAValidateBeforeCall(name, type, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -23068,11 +23073,12 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPdfInStorageToPdfAAsync(String name, String type, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPdfInStorageToPdfAAsync(String name, String type, String folder, String storage, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23093,7 +23099,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPdfInStorageToPdfAValidateBeforeCall(name, type, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPdfInStorageToPdfAValidateBeforeCall(name, type, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -49094,13 +49100,14 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param type Type of PdfA format. (required)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToPdfACall(String outPath, String type, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToPdfACall(String outPath, String type, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = file;
 
         // create path and map variables
@@ -49114,6 +49121,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -49148,7 +49157,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInRequestToPdfAValidateBeforeCall(String outPath, String type, String storage, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInRequestToPdfAValidateBeforeCall(String outPath, String type, String storage, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
         if (outPath == null) {
@@ -49161,7 +49170,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInRequestToPdfACall(outPath, type, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToPdfACall(outPath, type, storage, password, file, progressListener, progressRequestListener);
         return call;
 
     }
@@ -49172,14 +49181,15 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param type Type of PdfA format. (required)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInRequestToPdfA(String outPath, String type, String storage, File file) throws ApiException {
+    public AsposeResponse putPdfInRequestToPdfA(String outPath, String type, String storage, String password, File file) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, storage, file);
+            ApiResponse<AsposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, storage, password, file);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -49187,7 +49197,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, storage, file);
+                ApiResponse<AsposeResponse> resp = putPdfInRequestToPdfAWithHttpInfo(outPath, type, storage, password, file);
                 return resp.getData();
             }
             throw ex;
@@ -49200,12 +49210,13 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param type Type of PdfA format. (required)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInRequestToPdfAWithHttpInfo(String outPath, String type, String storage, File file) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInRequestToPdfAValidateBeforeCall(outPath, type, storage, file, null, null);
+    public ApiResponse<AsposeResponse> putPdfInRequestToPdfAWithHttpInfo(String outPath, String type, String storage, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInRequestToPdfAValidateBeforeCall(outPath, type, storage, password, file, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -49216,12 +49227,13 @@ public class PdfApi {
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param type Type of PdfA format. (required)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param file A file to be converted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInRequestToPdfAAsync(String outPath, String type, String storage, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInRequestToPdfAAsync(String outPath, String type, String storage, String password, File file, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -49242,7 +49254,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInRequestToPdfAValidateBeforeCall(outPath, type, storage, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInRequestToPdfAValidateBeforeCall(outPath, type, storage, password, file, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -51474,12 +51486,13 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToPdfACall(String name, String outPath, String type, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToPdfACall(String name, String outPath, String type, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -51496,6 +51509,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -51530,7 +51545,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putPdfInStorageToPdfAValidateBeforeCall(String name, String outPath, String type, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putPdfInStorageToPdfAValidateBeforeCall(String name, String outPath, String type, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -51548,7 +51563,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putPdfInStorageToPdfACall(name, outPath, type, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToPdfACall(name, outPath, type, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -51561,13 +51576,14 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putPdfInStorageToPdfA(String name, String outPath, String type, String folder, String storage) throws ApiException {
+    public AsposeResponse putPdfInStorageToPdfA(String name, String outPath, String type, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder, storage);
+            ApiResponse<AsposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -51575,7 +51591,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder, storage);
+                ApiResponse<AsposeResponse> resp = putPdfInStorageToPdfAWithHttpInfo(name, outPath, type, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -51590,11 +51606,12 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putPdfInStorageToPdfAWithHttpInfo(String name, String outPath, String type, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putPdfInStorageToPdfAValidateBeforeCall(name, outPath, type, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> putPdfInStorageToPdfAWithHttpInfo(String name, String outPath, String type, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putPdfInStorageToPdfAValidateBeforeCall(name, outPath, type, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -51607,11 +51624,12 @@ public class PdfApi {
      * @param type Type of PdfA format. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putPdfInStorageToPdfAAsync(String name, String outPath, String type, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putPdfInStorageToPdfAAsync(String name, String outPath, String type, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -51632,7 +51650,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putPdfInStorageToPdfAValidateBeforeCall(name, outPath, type, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putPdfInStorageToPdfAValidateBeforeCall(name, outPath, type, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

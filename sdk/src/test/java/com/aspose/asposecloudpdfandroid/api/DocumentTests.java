@@ -49,10 +49,8 @@ public class DocumentTests {
     {
         String name = "4pages.pdf";
         this.th.uploadFile(name);
-
         String folder = this.th.tempFolder;
-
-        DocumentResponse response = this.th.pdfApi.getDocument(name, null, folder);
+        DocumentResponse response = this.th.pdfApi.getDocument(name, null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 

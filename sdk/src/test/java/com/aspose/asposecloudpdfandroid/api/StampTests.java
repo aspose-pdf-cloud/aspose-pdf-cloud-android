@@ -63,8 +63,7 @@ public class StampTests {
     {
         String name = "PageNumberStamp.pdf";
         th.uploadFile(name);
-
-        AsposeResponse response = th.pdfApi.deleteDocumentStamps(name, null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.deleteDocumentStamps(name, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -79,7 +78,7 @@ public class StampTests {
         String name = "PageNumberStamp.pdf";
         th.uploadFile(name);
         int pageNumber = 1;
-        StampsInfoResponse response = th.pdfApi.getPageStamps(name, pageNumber,null, th.tempFolder);
+        StampsInfoResponse response = th.pdfApi.getPageStamps(name, pageNumber, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -94,7 +93,7 @@ public class StampTests {
         String name = "PageNumberStamp.pdf";
         th.uploadFile(name);
         int pageNumber = 1;
-        AsposeResponse response = th.pdfApi.deletePageStamps(name, pageNumber,null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.deletePageStamps(name, pageNumber, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -134,8 +133,7 @@ public class StampTests {
 
         List<TextStamp> stamps = new ArrayList<>();
         stamps.add(stamp);
-
-        AsposeResponse response = th.pdfApi.postPageTextStamps(name, pageNumber, stamps,null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.postPageTextStamps(name, pageNumber, stamps, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -172,8 +170,7 @@ public class StampTests {
 
         List<ImageStamp> stamps = new ArrayList<>();
         stamps.add(stamp);
-
-        AsposeResponse response = th.pdfApi.postPageImageStamps(name, pageNumber, stamps,null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.postPageImageStamps(name, pageNumber, stamps, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -211,8 +208,7 @@ public class StampTests {
 
         List<PdfPageStamp> stamps = new ArrayList<>();
         stamps.add(stamp);
-
-        AsposeResponse response = th.pdfApi.postPagePdfPageStamps(name, pageNumber, stamps,null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.postPagePdfPageStamps(name, pageNumber, stamps, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -230,8 +226,7 @@ public class StampTests {
         StampsInfoResponse stampsResponse = th.pdfApi.getDocumentStamps(name, null, th.tempFolder);
         assertEquals(200, (int)stampsResponse.getCode());
         String stampId = stampsResponse.getStamps().getList().get(0).getId();
-
-        AsposeResponse response = th.pdfApi.deleteStamp(name, stampId, null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.deleteStamp(name, stampId, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -267,8 +262,7 @@ public class StampTests {
 
         int startPageNumber = 2;
         int endPageNumber = 3;
-
-        AsposeResponse response = th.pdfApi.postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, null, th.tempFolder);
+        AsposeResponse response = th.pdfApi.postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 }

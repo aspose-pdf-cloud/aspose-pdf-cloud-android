@@ -191,6 +191,7 @@ Method | HTTP request | Description
 [**moveFile**](PdfApi.md#moveFile) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
 [**moveFolder**](PdfApi.md#moveFolder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
 [**objectExists**](PdfApi.md#objectExists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
+[**postAddDocumentAttachment**](PdfApi.md#postAddDocumentAttachment) | **POST** /pdf/\{name}/attachments | Adds a file attachment to the PDF document.
 [**postAppendDocument**](PdfApi.md#postAppendDocument) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 [**postBookmark**](PdfApi.md#postBookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 [**postChangePasswordDocumentInStorage**](PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
@@ -557,7 +558,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteDocumentStamps"></a>
 # **deleteDocumentStamps**
-> AsposeResponse deleteDocumentStamps(name, storage, folder)
+> AsposeResponse deleteDocumentStamps(name, storage, folder, password)
 
 Delete all stamps from the document
 
@@ -568,6 +569,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -793,7 +795,7 @@ Name | Type | Description  | Notes
 
 <a name="deletePageStamps"></a>
 # **deletePageStamps**
-> AsposeResponse deletePageStamps(name, pageNumber, storage, folder)
+> AsposeResponse deletePageStamps(name, pageNumber, storage, folder, password)
 
 Delete all stamps from the page
 
@@ -805,6 +807,7 @@ Name | Type | Description  | Notes
  **pageNumber** | **Integer**| The page number. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -888,7 +891,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteStamp"></a>
 # **deleteStamp**
-> AsposeResponse deleteStamp(name, stampId, storage, folder)
+> AsposeResponse deleteStamp(name, stampId, storage, folder, password)
 
 Delete document stamp by ID
 
@@ -900,6 +903,7 @@ Name | Type | Description  | Notes
  **stampId** | **String**| The stamp ID. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -1124,7 +1128,7 @@ Name | Type | Description  | Notes
 
 <a name="getDocument"></a>
 # **getDocument**
-> DocumentResponse getDocument(name, storage, folder)
+> DocumentResponse getDocument(name, storage, folder, password)
 
 Read common document info.
 
@@ -1135,6 +1139,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -3485,7 +3490,7 @@ Name | Type | Description  | Notes
 
 <a name="getPageStamps"></a>
 # **getPageStamps**
-> StampsInfoResponse getPageStamps(name, pageNumber, storage, folder)
+> StampsInfoResponse getPageStamps(name, pageNumber, storage, folder, password)
 
 Read page document stamps.
 
@@ -3497,6 +3502,7 @@ Name | Type | Description  | Notes
  **pageNumber** | **Integer**| The page number. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -4893,6 +4899,30 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="postAddDocumentAttachment"></a>
+# **postAddDocumentAttachment**
+> AttachmentsResponse postAddDocumentAttachment(name, attachmentInfo, storage, folder)
+
+Adds a file attachment to the PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **attachmentInfo** | [**AttachmentInfo**](AttachmentInfo.md)| AttachmentInfoAttachmentInfo instance. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AttachmentsResponse**](AttachmentsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="postAppendDocument"></a>
 # **postAppendDocument**
 > DocumentResponse postAppendDocument(name, appendFile, startPage, endPage, storage, folder)
@@ -5145,7 +5175,7 @@ Name | Type | Description  | Notes
 
 <a name="postDocumentPageNumberStamps"></a>
 # **postDocumentPageNumberStamps**
-> AsposeResponse postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, storage, folder)
+> AsposeResponse postDocumentPageNumberStamps(name, stamp, startPageNumber, endPageNumber, storage, folder, password)
 
 Add document page number stamps.
 
@@ -5159,6 +5189,7 @@ Name | Type | Description  | Notes
  **endPageNumber** | **Integer**| The end page number. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -5675,7 +5706,7 @@ Name | Type | Description  | Notes
 
 <a name="postPageImageStamps"></a>
 # **postPageImageStamps**
-> AsposeResponse postPageImageStamps(name, pageNumber, stamps, storage, folder)
+> AsposeResponse postPageImageStamps(name, pageNumber, stamps, storage, folder, password)
 
 Add document page image stamps.
 
@@ -5688,6 +5719,7 @@ Name | Type | Description  | Notes
  **stamps** | [**List&lt;ImageStamp&gt;**](ImageStamp.md)| The array of stamp. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -5800,7 +5832,7 @@ Name | Type | Description  | Notes
 
 <a name="postPagePdfPageStamps"></a>
 # **postPagePdfPageStamps**
-> AsposeResponse postPagePdfPageStamps(name, pageNumber, stamps, storage, folder)
+> AsposeResponse postPagePdfPageStamps(name, pageNumber, stamps, storage, folder, password)
 
 Add document pdf page stamps.
 
@@ -5813,6 +5845,7 @@ Name | Type | Description  | Notes
  **stamps** | [**List&lt;PdfPageStamp&gt;**](PdfPageStamp.md)| The array of stamp. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 
@@ -6126,7 +6159,7 @@ Name | Type | Description  | Notes
 
 <a name="postPageTextStamps"></a>
 # **postPageTextStamps**
-> AsposeResponse postPageTextStamps(name, pageNumber, stamps, storage, folder)
+> AsposeResponse postPageTextStamps(name, pageNumber, stamps, storage, folder, password)
 
 Add document page text stamps.
 
@@ -6139,6 +6172,7 @@ Name | Type | Description  | Notes
  **stamps** | [**List&lt;TextStamp&gt;**](TextStamp.md)| The array of stamp. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
 
 ### Return type
 

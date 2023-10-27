@@ -1,13 +1,14 @@
 ﻿
-# Page
-Provides link to page.
+# AttachmentInfo
+Attachment Info.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Page's id. | 
-**rectangle** | [**Rectangle**](Rectangle.md) | Page's rectangle | [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Link to the document. | [optional]
+**path** | **String** | Attachment file path. | 
+**description** | **String** | Attachment file description. | [optional]
+**name** | **String** | Attachment file name. | [optional]
+**mimeType** | **String** | Attachment file MIME type. | [optional]
 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

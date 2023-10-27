@@ -39,6 +39,7 @@ import java.io.IOException;
 import com.aspose.asposecloudpdfandroid.model.AnnotationType;
 import com.aspose.asposecloudpdfandroid.model.AnnotationsInfoResponse;
 import com.aspose.asposecloudpdfandroid.model.AsposeResponse;
+import com.aspose.asposecloudpdfandroid.model.AttachmentInfo;
 import com.aspose.asposecloudpdfandroid.model.AttachmentResponse;
 import com.aspose.asposecloudpdfandroid.model.AttachmentsResponse;
 import com.aspose.asposecloudpdfandroid.model.Bookmark;
@@ -1418,12 +1419,13 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteDocumentStampsCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteDocumentStampsCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1436,6 +1438,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1470,7 +1474,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteDocumentStampsValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteDocumentStampsValidateBeforeCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -1478,7 +1482,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deleteDocumentStampsCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteDocumentStampsCall(name, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1489,13 +1493,14 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteDocumentStamps(String name, String storage, String folder) throws ApiException {
+    public AsposeResponse deleteDocumentStamps(String name, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deleteDocumentStampsWithHttpInfo(name, storage, folder);
+            ApiResponse<AsposeResponse> resp = deleteDocumentStampsWithHttpInfo(name, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -1503,7 +1508,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deleteDocumentStampsWithHttpInfo(name, storage, folder);
+                ApiResponse<AsposeResponse> resp = deleteDocumentStampsWithHttpInfo(name, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -1516,11 +1521,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deleteDocumentStampsWithHttpInfo(String name, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = deleteDocumentStampsValidateBeforeCall(name, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> deleteDocumentStampsWithHttpInfo(String name, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deleteDocumentStampsValidateBeforeCall(name, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1531,11 +1537,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteDocumentStampsAsync(String name, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteDocumentStampsAsync(String name, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1556,7 +1563,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteDocumentStampsValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteDocumentStampsValidateBeforeCall(name, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2949,12 +2956,13 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deletePageStampsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deletePageStampsCall(String name, Integer pageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2968,6 +2976,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3002,7 +3012,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deletePageStampsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deletePageStampsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -3015,7 +3025,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deletePageStampsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePageStampsCall(name, pageNumber, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3027,13 +3037,14 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deletePageStamps(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+    public AsposeResponse deletePageStamps(String name, Integer pageNumber, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deletePageStampsWithHttpInfo(name, pageNumber, storage, folder);
+            ApiResponse<AsposeResponse> resp = deletePageStampsWithHttpInfo(name, pageNumber, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -3041,7 +3052,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deletePageStampsWithHttpInfo(name, pageNumber, storage, folder);
+                ApiResponse<AsposeResponse> resp = deletePageStampsWithHttpInfo(name, pageNumber, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -3055,11 +3066,12 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deletePageStampsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = deletePageStampsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> deletePageStampsWithHttpInfo(String name, Integer pageNumber, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deletePageStampsValidateBeforeCall(name, pageNumber, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3071,11 +3083,12 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deletePageStampsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deletePageStampsAsync(String name, Integer pageNumber, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3096,7 +3109,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deletePageStampsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePageStampsValidateBeforeCall(name, pageNumber, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3571,12 +3584,13 @@ public class PdfApi {
      * @param stampId The stamp ID. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteStampCall(String name, String stampId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteStampCall(String name, String stampId, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3590,6 +3604,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3624,7 +3640,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteStampValidateBeforeCall(String name, String stampId, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteStampValidateBeforeCall(String name, String stampId, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -3637,7 +3653,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deleteStampCall(name, stampId, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteStampCall(name, stampId, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3649,13 +3665,14 @@ public class PdfApi {
      * @param stampId The stamp ID. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteStamp(String name, String stampId, String storage, String folder) throws ApiException {
+    public AsposeResponse deleteStamp(String name, String stampId, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deleteStampWithHttpInfo(name, stampId, storage, folder);
+            ApiResponse<AsposeResponse> resp = deleteStampWithHttpInfo(name, stampId, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -3663,7 +3680,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deleteStampWithHttpInfo(name, stampId, storage, folder);
+                ApiResponse<AsposeResponse> resp = deleteStampWithHttpInfo(name, stampId, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -3677,11 +3694,12 @@ public class PdfApi {
      * @param stampId The stamp ID. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deleteStampWithHttpInfo(String name, String stampId, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = deleteStampValidateBeforeCall(name, stampId, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> deleteStampWithHttpInfo(String name, String stampId, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deleteStampValidateBeforeCall(name, stampId, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3693,11 +3711,12 @@ public class PdfApi {
      * @param stampId The stamp ID. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteStampAsync(String name, String stampId, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteStampAsync(String name, String stampId, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3718,7 +3737,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteStampValidateBeforeCall(name, stampId, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteStampValidateBeforeCall(name, stampId, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -5114,12 +5133,13 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDocumentCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -5132,6 +5152,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -5166,7 +5188,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDocumentValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDocumentValidateBeforeCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -5174,7 +5196,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getDocumentCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentCall(name, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -5185,13 +5207,14 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return DocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DocumentResponse getDocument(String name, String storage, String folder) throws ApiException {
+    public DocumentResponse getDocument(String name, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<DocumentResponse> resp = getDocumentWithHttpInfo(name, storage, folder);
+            ApiResponse<DocumentResponse> resp = getDocumentWithHttpInfo(name, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -5199,7 +5222,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<DocumentResponse> resp = getDocumentWithHttpInfo(name, storage, folder);
+                ApiResponse<DocumentResponse> resp = getDocumentWithHttpInfo(name, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -5212,11 +5235,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;DocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DocumentResponse> getDocumentWithHttpInfo(String name, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getDocumentValidateBeforeCall(name, storage, folder, null, null);
+    public ApiResponse<DocumentResponse> getDocumentWithHttpInfo(String name, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentValidateBeforeCall(name, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -5227,11 +5251,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDocumentAsync(String name, String storage, String folder, final ApiCallback<DocumentResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentAsync(String name, String storage, String folder, String password, final ApiCallback<DocumentResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5252,7 +5277,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDocumentValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentValidateBeforeCall(name, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -20511,12 +20536,13 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPageStampsCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getPageStampsCall(String name, Integer pageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -20530,6 +20556,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -20564,7 +20592,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPageStampsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getPageStampsValidateBeforeCall(String name, Integer pageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -20577,7 +20605,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getPageStampsCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageStampsCall(name, pageNumber, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -20589,13 +20617,14 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return StampsInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public StampsInfoResponse getPageStamps(String name, Integer pageNumber, String storage, String folder) throws ApiException {
+    public StampsInfoResponse getPageStamps(String name, Integer pageNumber, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<StampsInfoResponse> resp = getPageStampsWithHttpInfo(name, pageNumber, storage, folder);
+            ApiResponse<StampsInfoResponse> resp = getPageStampsWithHttpInfo(name, pageNumber, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -20603,7 +20632,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<StampsInfoResponse> resp = getPageStampsWithHttpInfo(name, pageNumber, storage, folder);
+                ApiResponse<StampsInfoResponse> resp = getPageStampsWithHttpInfo(name, pageNumber, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -20617,11 +20646,12 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;StampsInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<StampsInfoResponse> getPageStampsWithHttpInfo(String name, Integer pageNumber, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getPageStampsValidateBeforeCall(name, pageNumber, storage, folder, null, null);
+    public ApiResponse<StampsInfoResponse> getPageStampsWithHttpInfo(String name, Integer pageNumber, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getPageStampsValidateBeforeCall(name, pageNumber, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<StampsInfoResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -20633,11 +20663,12 @@ public class PdfApi {
      * @param pageNumber The page number. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getPageStampsAsync(String name, Integer pageNumber, String storage, String folder, final ApiCallback<StampsInfoResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPageStampsAsync(String name, Integer pageNumber, String storage, String folder, String password, final ApiCallback<StampsInfoResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -20658,7 +20689,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getPageStampsValidateBeforeCall(name, pageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getPageStampsValidateBeforeCall(name, pageNumber, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StampsInfoResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -29689,6 +29720,163 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postAddDocumentAttachment
+     * @param name The document name. (required)
+     * @param attachmentInfo AttachmentInfoAttachmentInfo instance. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postAddDocumentAttachmentCall(String name, AttachmentInfo attachmentInfo, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = attachmentInfo;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/attachments"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postAddDocumentAttachmentValidateBeforeCall(String name, AttachmentInfo attachmentInfo, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postAddDocumentAttachment(Async)");
+        }
+        
+        // verify the required parameter 'attachmentInfo' is set
+        if (attachmentInfo == null) {
+            throw new ApiException("Missing the required parameter 'attachmentInfo' when calling postAddDocumentAttachment(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postAddDocumentAttachmentCall(name, attachmentInfo, storage, folder, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Adds a file attachment to the PDF document.
+     * 
+     * @param name The document name. (required)
+     * @param attachmentInfo AttachmentInfoAttachmentInfo instance. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return AttachmentsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AttachmentsResponse postAddDocumentAttachment(String name, AttachmentInfo attachmentInfo, String storage, String folder) throws ApiException {
+        try
+        {
+            ApiResponse<AttachmentsResponse> resp = postAddDocumentAttachmentWithHttpInfo(name, attachmentInfo, storage, folder);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AttachmentsResponse> resp = postAddDocumentAttachmentWithHttpInfo(name, attachmentInfo, storage, folder);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Adds a file attachment to the PDF document.
+     * 
+     * @param name The document name. (required)
+     * @param attachmentInfo AttachmentInfoAttachmentInfo instance. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @return ApiResponse&lt;AttachmentsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AttachmentsResponse> postAddDocumentAttachmentWithHttpInfo(String name, AttachmentInfo attachmentInfo, String storage, String folder) throws ApiException {
+        com.squareup.okhttp.Call call = postAddDocumentAttachmentValidateBeforeCall(name, attachmentInfo, storage, folder, null, null);
+        Type localVarReturnType = new TypeToken<AttachmentsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Adds a file attachment to the PDF document. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param attachmentInfo AttachmentInfoAttachmentInfo instance. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postAddDocumentAttachmentAsync(String name, AttachmentInfo attachmentInfo, String storage, String folder, final ApiCallback<AttachmentsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postAddDocumentAttachmentValidateBeforeCall(name, attachmentInfo, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AttachmentsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postAppendDocument
      * @param name The original document name. (required)
      * @param appendFile Append file server path. (required)
@@ -31351,12 +31539,13 @@ public class PdfApi {
      * @param endPageNumber The end page number. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postDocumentPageNumberStampsCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postDocumentPageNumberStampsCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = stamp;
 
         // create path and map variables
@@ -31373,6 +31562,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -31407,7 +31598,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postDocumentPageNumberStampsValidateBeforeCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postDocumentPageNumberStampsValidateBeforeCall(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -31420,7 +31611,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postDocumentPageNumberStampsCall(name, stamp, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsCall(name, stamp, startPageNumber, endPageNumber, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -31434,13 +31625,14 @@ public class PdfApi {
      * @param endPageNumber The end page number. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse postDocumentPageNumberStamps(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
+    public AsposeResponse postDocumentPageNumberStamps(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder);
+            ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -31448,7 +31640,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder);
+                ApiResponse<AsposeResponse> resp = postDocumentPageNumberStampsWithHttpInfo(name, stamp, startPageNumber, endPageNumber, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -31464,11 +31656,12 @@ public class PdfApi {
      * @param endPageNumber The end page number. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> postDocumentPageNumberStampsWithHttpInfo(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> postDocumentPageNumberStampsWithHttpInfo(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -31482,11 +31675,12 @@ public class PdfApi {
      * @param endPageNumber The end page number. (optional)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postDocumentPageNumberStampsAsync(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postDocumentPageNumberStampsAsync(String name, PageNumberStamp stamp, Integer startPageNumber, Integer endPageNumber, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -31507,7 +31701,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -34859,12 +35053,13 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postPageImageStampsCall(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postPageImageStampsCall(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = stamps;
 
         // create path and map variables
@@ -34878,6 +35073,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -34912,7 +35109,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postPageImageStampsValidateBeforeCall(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postPageImageStampsValidateBeforeCall(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -34930,7 +35127,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postPageImageStampsCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageImageStampsCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -34943,13 +35140,14 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse postPageImageStamps(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder) throws ApiException {
+    public AsposeResponse postPageImageStamps(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = postPageImageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+            ApiResponse<AsposeResponse> resp = postPageImageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -34957,7 +35155,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = postPageImageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+                ApiResponse<AsposeResponse> resp = postPageImageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -34972,11 +35170,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> postPageImageStampsWithHttpInfo(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postPageImageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> postPageImageStampsWithHttpInfo(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postPageImageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -34989,11 +35188,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postPageImageStampsAsync(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postPageImageStampsAsync(String name, Integer pageNumber, List<ImageStamp> stamps, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -35014,7 +35214,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postPageImageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageImageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -35694,12 +35894,13 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postPagePdfPageStampsCall(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postPagePdfPageStampsCall(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = stamps;
 
         // create path and map variables
@@ -35713,6 +35914,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -35747,7 +35950,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postPagePdfPageStampsValidateBeforeCall(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postPagePdfPageStampsValidateBeforeCall(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -35765,7 +35968,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postPagePdfPageStampsCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPagePdfPageStampsCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -35778,13 +35981,14 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse postPagePdfPageStamps(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder) throws ApiException {
+    public AsposeResponse postPagePdfPageStamps(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = postPagePdfPageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+            ApiResponse<AsposeResponse> resp = postPagePdfPageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -35792,7 +35996,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = postPagePdfPageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+                ApiResponse<AsposeResponse> resp = postPagePdfPageStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -35807,11 +36011,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> postPagePdfPageStampsWithHttpInfo(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postPagePdfPageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> postPagePdfPageStampsWithHttpInfo(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postPagePdfPageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -35824,11 +36029,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postPagePdfPageStampsAsync(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postPagePdfPageStampsAsync(String name, Integer pageNumber, List<PdfPageStamp> stamps, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -35849,7 +36055,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postPagePdfPageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPagePdfPageStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -37871,12 +38077,13 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postPageTextStampsCall(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postPageTextStampsCall(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = stamps;
 
         // create path and map variables
@@ -37890,6 +38097,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -37924,7 +38133,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postPageTextStampsValidateBeforeCall(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postPageTextStampsValidateBeforeCall(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -37942,7 +38151,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postPageTextStampsCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageTextStampsCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -37955,13 +38164,14 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse postPageTextStamps(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder) throws ApiException {
+    public AsposeResponse postPageTextStamps(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = postPageTextStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+            ApiResponse<AsposeResponse> resp = postPageTextStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -37969,7 +38179,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = postPageTextStampsWithHttpInfo(name, pageNumber, stamps, storage, folder);
+                ApiResponse<AsposeResponse> resp = postPageTextStampsWithHttpInfo(name, pageNumber, stamps, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -37984,11 +38194,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> postPageTextStampsWithHttpInfo(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = postPageTextStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> postPageTextStampsWithHttpInfo(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postPageTextStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -38001,11 +38212,12 @@ public class PdfApi {
      * @param stamps The array of stamp. (required)
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postPageTextStampsAsync(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postPageTextStampsAsync(String name, Integer pageNumber, List<TextStamp> stamps, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -38026,7 +38238,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postPageTextStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postPageTextStampsValidateBeforeCall(name, pageNumber, stamps, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

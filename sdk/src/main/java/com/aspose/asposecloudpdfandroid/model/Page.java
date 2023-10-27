@@ -23,7 +23,6 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
-import com.aspose.asposecloudpdfandroid.model.Images;
 import com.aspose.asposecloudpdfandroid.model.Link;
 import com.aspose.asposecloudpdfandroid.model.LinkElement;
 import com.aspose.asposecloudpdfandroid.model.Rectangle;
@@ -46,9 +45,6 @@ public class Page extends LinkElement {
   @SerializedName("Id")
   private Integer id = null;
 
-  @SerializedName("Images")
-  private Images images = null;
-
   @SerializedName("Rectangle")
   private Rectangle rectangle = null;
 
@@ -68,24 +64,6 @@ public class Page extends LinkElement {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Page images(Images images) {
-    this.images = images;
-    return this;
-  }
-
-   /**
-   * Page&#39;s images
-   * @return images
-  **/
-  @ApiModelProperty(value = "Page's images")
-  public Images getImages() {
-    return images;
-  }
-
-  public void setImages(Images images) {
-    this.images = images;
   }
 
   public Page rectangle(Rectangle rectangle) {
@@ -117,14 +95,13 @@ public class Page extends LinkElement {
     }
     Page page = (Page) o;
     return Objects.equals(this.id, page.id) &&
-        Objects.equals(this.images, page.images) &&
         Objects.equals(this.rectangle, page.rectangle) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, images, rectangle, super.hashCode());
+    return Objects.hash(id, rectangle, super.hashCode());
   }
 
 
@@ -134,7 +111,6 @@ public class Page extends LinkElement {
     sb.append("class Page {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    rectangle: ").append(toIndentedString(rectangle)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -818,12 +818,13 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteBookmarkCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteBookmarkCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -837,6 +838,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -871,7 +874,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteBookmarkValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteBookmarkValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -884,7 +887,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deleteBookmarkCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteBookmarkCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -896,13 +899,14 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteBookmark(String name, String bookmarkPath, String folder, String storage) throws ApiException {
+    public AsposeResponse deleteBookmark(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deleteBookmarkWithHttpInfo(name, bookmarkPath, folder, storage);
+            ApiResponse<AsposeResponse> resp = deleteBookmarkWithHttpInfo(name, bookmarkPath, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -910,7 +914,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deleteBookmarkWithHttpInfo(name, bookmarkPath, folder, storage);
+                ApiResponse<AsposeResponse> resp = deleteBookmarkWithHttpInfo(name, bookmarkPath, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -924,11 +928,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deleteBookmarkWithHttpInfo(String name, String bookmarkPath, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> deleteBookmarkWithHttpInfo(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deleteBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -940,11 +945,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteBookmarkAsync(String name, String bookmarkPath, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteBookmarkAsync(String name, String bookmarkPath, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -965,7 +971,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1123,12 +1129,13 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteDocumentBookmarksCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteDocumentBookmarksCall(String name, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1141,6 +1148,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1175,7 +1184,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteDocumentBookmarksValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteDocumentBookmarksValidateBeforeCall(String name, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -1183,7 +1192,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deleteDocumentBookmarksCall(name, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteDocumentBookmarksCall(name, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1194,13 +1203,14 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteDocumentBookmarks(String name, String folder, String storage) throws ApiException {
+    public AsposeResponse deleteDocumentBookmarks(String name, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deleteDocumentBookmarksWithHttpInfo(name, folder, storage);
+            ApiResponse<AsposeResponse> resp = deleteDocumentBookmarksWithHttpInfo(name, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -1208,7 +1218,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deleteDocumentBookmarksWithHttpInfo(name, folder, storage);
+                ApiResponse<AsposeResponse> resp = deleteDocumentBookmarksWithHttpInfo(name, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -1221,11 +1231,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deleteDocumentBookmarksWithHttpInfo(String name, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteDocumentBookmarksValidateBeforeCall(name, folder, storage, null, null);
+    public ApiResponse<AsposeResponse> deleteDocumentBookmarksWithHttpInfo(String name, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deleteDocumentBookmarksValidateBeforeCall(name, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1236,11 +1247,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteDocumentBookmarksAsync(String name, String folder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteDocumentBookmarksAsync(String name, String folder, String storage, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1261,7 +1273,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteDocumentBookmarksValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteDocumentBookmarksValidateBeforeCall(name, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3274,15 +3286,16 @@ public class PdfApi {
     }
     /**
      * Build call for deleteProperties
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deletePropertiesCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deletePropertiesCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3295,6 +3308,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3329,7 +3344,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deletePropertiesValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deletePropertiesValidateBeforeCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -3337,7 +3352,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deletePropertiesCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePropertiesCall(name, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3345,16 +3360,17 @@ public class PdfApi {
     /**
      * Delete custom document properties.
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteProperties(String name, String storage, String folder) throws ApiException {
+    public AsposeResponse deleteProperties(String name, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder);
+            ApiResponse<AsposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -3362,7 +3378,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder);
+                ApiResponse<AsposeResponse> resp = deletePropertiesWithHttpInfo(name, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -3372,14 +3388,15 @@ public class PdfApi {
     /**
      * Delete custom document properties.
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deletePropertiesWithHttpInfo(String name, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = deletePropertiesValidateBeforeCall(name, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> deletePropertiesWithHttpInfo(String name, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deletePropertiesValidateBeforeCall(name, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3387,14 +3404,15 @@ public class PdfApi {
     /**
      * Delete custom document properties. (asynchronously)
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deletePropertiesAsync(String name, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deletePropertiesAsync(String name, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3415,23 +3433,24 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deletePropertiesValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePropertiesValidateBeforeCall(name, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for deleteProperty
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deletePropertyCall(String name, String propertyName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deletePropertyCall(String name, String propertyName, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3445,6 +3464,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3479,7 +3500,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deletePropertyValidateBeforeCall(String name, String propertyName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deletePropertyValidateBeforeCall(String name, String propertyName, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -3492,7 +3513,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = deletePropertyCall(name, propertyName, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePropertyCall(name, propertyName, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3500,17 +3521,18 @@ public class PdfApi {
     /**
      * Delete document property.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse deleteProperty(String name, String propertyName, String storage, String folder) throws ApiException {
+    public AsposeResponse deleteProperty(String name, String propertyName, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder);
+            ApiResponse<AsposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -3518,7 +3540,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder);
+                ApiResponse<AsposeResponse> resp = deletePropertyWithHttpInfo(name, propertyName, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -3528,15 +3550,16 @@ public class PdfApi {
     /**
      * Delete document property.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> deletePropertyWithHttpInfo(String name, String propertyName, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = deletePropertyValidateBeforeCall(name, propertyName, storage, folder, null, null);
+    public ApiResponse<AsposeResponse> deletePropertyWithHttpInfo(String name, String propertyName, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deletePropertyValidateBeforeCall(name, propertyName, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3544,15 +3567,16 @@ public class PdfApi {
     /**
      * Delete document property. (asynchronously)
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deletePropertyAsync(String name, String propertyName, String storage, String folder, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deletePropertyAsync(String name, String propertyName, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3573,7 +3597,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deletePropertyValidateBeforeCall(name, propertyName, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deletePropertyValidateBeforeCall(name, propertyName, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -4054,12 +4078,13 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getBookmarkCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getBookmarkCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -4073,6 +4098,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -4107,7 +4134,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getBookmarkValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getBookmarkValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -4120,7 +4147,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getBookmarkCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getBookmarkCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -4132,13 +4159,14 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return BookmarkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BookmarkResponse getBookmark(String name, String bookmarkPath, String folder, String storage) throws ApiException {
+    public BookmarkResponse getBookmark(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<BookmarkResponse> resp = getBookmarkWithHttpInfo(name, bookmarkPath, folder, storage);
+            ApiResponse<BookmarkResponse> resp = getBookmarkWithHttpInfo(name, bookmarkPath, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -4146,7 +4174,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<BookmarkResponse> resp = getBookmarkWithHttpInfo(name, bookmarkPath, folder, storage);
+                ApiResponse<BookmarkResponse> resp = getBookmarkWithHttpInfo(name, bookmarkPath, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -4160,11 +4188,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;BookmarkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BookmarkResponse> getBookmarkWithHttpInfo(String name, String bookmarkPath, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, null, null);
+    public ApiResponse<BookmarkResponse> getBookmarkWithHttpInfo(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<BookmarkResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -4176,11 +4205,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getBookmarkAsync(String name, String bookmarkPath, String folder, String storage, final ApiCallback<BookmarkResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getBookmarkAsync(String name, String bookmarkPath, String folder, String storage, String password, final ApiCallback<BookmarkResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4201,7 +4231,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getBookmarkValidateBeforeCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BookmarkResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -4212,12 +4242,13 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getBookmarksCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getBookmarksCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -4231,6 +4262,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -4265,7 +4298,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getBookmarksValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getBookmarksValidateBeforeCall(String name, String bookmarkPath, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -4278,7 +4311,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getBookmarksCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getBookmarksCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -4290,13 +4323,14 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return BookmarksResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BookmarksResponse getBookmarks(String name, String bookmarkPath, String folder, String storage) throws ApiException {
+    public BookmarksResponse getBookmarks(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<BookmarksResponse> resp = getBookmarksWithHttpInfo(name, bookmarkPath, folder, storage);
+            ApiResponse<BookmarksResponse> resp = getBookmarksWithHttpInfo(name, bookmarkPath, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -4304,7 +4338,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<BookmarksResponse> resp = getBookmarksWithHttpInfo(name, bookmarkPath, folder, storage);
+                ApiResponse<BookmarksResponse> resp = getBookmarksWithHttpInfo(name, bookmarkPath, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -4318,11 +4352,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;BookmarksResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BookmarksResponse> getBookmarksWithHttpInfo(String name, String bookmarkPath, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getBookmarksValidateBeforeCall(name, bookmarkPath, folder, storage, null, null);
+    public ApiResponse<BookmarksResponse> getBookmarksWithHttpInfo(String name, String bookmarkPath, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getBookmarksValidateBeforeCall(name, bookmarkPath, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -4334,11 +4369,12 @@ public class PdfApi {
      * @param bookmarkPath The bookmark path. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getBookmarksAsync(String name, String bookmarkPath, String folder, String storage, final ApiCallback<BookmarksResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getBookmarksAsync(String name, String bookmarkPath, String folder, String storage, String password, final ApiCallback<BookmarksResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4359,7 +4395,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getBookmarksValidateBeforeCall(name, bookmarkPath, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getBookmarksValidateBeforeCall(name, bookmarkPath, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -5741,12 +5777,13 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDocumentBookmarksCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentBookmarksCall(String name, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -5759,6 +5796,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -5793,7 +5832,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDocumentBookmarksValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDocumentBookmarksValidateBeforeCall(String name, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -5801,7 +5840,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getDocumentBookmarksCall(name, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentBookmarksCall(name, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -5812,13 +5851,14 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return BookmarksResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BookmarksResponse getDocumentBookmarks(String name, String folder, String storage) throws ApiException {
+    public BookmarksResponse getDocumentBookmarks(String name, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<BookmarksResponse> resp = getDocumentBookmarksWithHttpInfo(name, folder, storage);
+            ApiResponse<BookmarksResponse> resp = getDocumentBookmarksWithHttpInfo(name, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -5826,7 +5866,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<BookmarksResponse> resp = getDocumentBookmarksWithHttpInfo(name, folder, storage);
+                ApiResponse<BookmarksResponse> resp = getDocumentBookmarksWithHttpInfo(name, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -5839,11 +5879,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;BookmarksResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BookmarksResponse> getDocumentBookmarksWithHttpInfo(String name, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, folder, storage, null, null);
+    public ApiResponse<BookmarksResponse> getDocumentBookmarksWithHttpInfo(String name, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -5854,11 +5895,12 @@ public class PdfApi {
      * @param name The document name. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDocumentBookmarksAsync(String name, String folder, String storage, final ApiCallback<BookmarksResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentBookmarksAsync(String name, String folder, String storage, String password, final ApiCallback<BookmarksResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5879,7 +5921,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentBookmarksValidateBeforeCall(name, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -8264,15 +8306,16 @@ public class PdfApi {
     }
     /**
      * Build call for getDocumentProperties
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDocumentPropertiesCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentPropertiesCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -8285,6 +8328,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -8319,7 +8364,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDocumentPropertiesValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDocumentPropertiesValidateBeforeCall(String name, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -8327,7 +8372,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getDocumentPropertiesCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentPropertiesCall(name, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8335,16 +8380,17 @@ public class PdfApi {
     /**
      * Read document properties.
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return DocumentPropertiesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DocumentPropertiesResponse getDocumentProperties(String name, String storage, String folder) throws ApiException {
+    public DocumentPropertiesResponse getDocumentProperties(String name, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder);
+            ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -8352,7 +8398,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder);
+                ApiResponse<DocumentPropertiesResponse> resp = getDocumentPropertiesWithHttpInfo(name, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -8362,14 +8408,15 @@ public class PdfApi {
     /**
      * Read document properties.
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;DocumentPropertiesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DocumentPropertiesResponse> getDocumentPropertiesWithHttpInfo(String name, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getDocumentPropertiesValidateBeforeCall(name, storage, folder, null, null);
+    public ApiResponse<DocumentPropertiesResponse> getDocumentPropertiesWithHttpInfo(String name, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentPropertiesValidateBeforeCall(name, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<DocumentPropertiesResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8377,14 +8424,15 @@ public class PdfApi {
     /**
      * Read document properties. (asynchronously)
      * 
-     * @param name  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDocumentPropertiesAsync(String name, String storage, String folder, final ApiCallback<DocumentPropertiesResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentPropertiesAsync(String name, String storage, String folder, String password, final ApiCallback<DocumentPropertiesResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8405,23 +8453,24 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDocumentPropertiesValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentPropertiesValidateBeforeCall(name, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentPropertiesResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getDocumentProperty
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDocumentPropertyCall(String name, String propertyName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentPropertyCall(String name, String propertyName, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -8435,6 +8484,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -8469,7 +8520,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDocumentPropertyValidateBeforeCall(String name, String propertyName, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDocumentPropertyValidateBeforeCall(String name, String propertyName, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -8482,7 +8533,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getDocumentPropertyCall(name, propertyName, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentPropertyCall(name, propertyName, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8490,17 +8541,18 @@ public class PdfApi {
     /**
      * Read document property by name.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return DocumentPropertyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DocumentPropertyResponse getDocumentProperty(String name, String propertyName, String storage, String folder) throws ApiException {
+    public DocumentPropertyResponse getDocumentProperty(String name, String propertyName, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder);
+            ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -8508,7 +8560,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder);
+                ApiResponse<DocumentPropertyResponse> resp = getDocumentPropertyWithHttpInfo(name, propertyName, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -8518,15 +8570,16 @@ public class PdfApi {
     /**
      * Read document property by name.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;DocumentPropertyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DocumentPropertyResponse> getDocumentPropertyWithHttpInfo(String name, String propertyName, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = getDocumentPropertyValidateBeforeCall(name, propertyName, storage, folder, null, null);
+    public ApiResponse<DocumentPropertyResponse> getDocumentPropertyWithHttpInfo(String name, String propertyName, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = getDocumentPropertyValidateBeforeCall(name, propertyName, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8534,15 +8587,16 @@ public class PdfApi {
     /**
      * Read document property by name. (asynchronously)
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDocumentPropertyAsync(String name, String propertyName, String storage, String folder, final ApiCallback<DocumentPropertyResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDocumentPropertyAsync(String name, String propertyName, String storage, String folder, String password, final ApiCallback<DocumentPropertyResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8563,7 +8617,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDocumentPropertyValidateBeforeCall(name, propertyName, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDocumentPropertyValidateBeforeCall(name, propertyName, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -30054,12 +30108,13 @@ public class PdfApi {
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postBookmarkCall(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postBookmarkCall(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = bookmarks;
 
         // create path and map variables
@@ -30073,6 +30128,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -30107,7 +30164,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postBookmarkValidateBeforeCall(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postBookmarkValidateBeforeCall(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -30125,7 +30182,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = postBookmarkCall(name, bookmarkPath, bookmarks, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postBookmarkCall(name, bookmarkPath, bookmarks, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -30138,13 +30195,14 @@ public class PdfApi {
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return BookmarksResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BookmarksResponse postBookmark(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage) throws ApiException {
+    public BookmarksResponse postBookmark(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<BookmarksResponse> resp = postBookmarkWithHttpInfo(name, bookmarkPath, bookmarks, folder, storage);
+            ApiResponse<BookmarksResponse> resp = postBookmarkWithHttpInfo(name, bookmarkPath, bookmarks, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -30152,7 +30210,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<BookmarksResponse> resp = postBookmarkWithHttpInfo(name, bookmarkPath, bookmarks, folder, storage);
+                ApiResponse<BookmarksResponse> resp = postBookmarkWithHttpInfo(name, bookmarkPath, bookmarks, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -30167,11 +30225,12 @@ public class PdfApi {
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;BookmarksResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BookmarksResponse> postBookmarkWithHttpInfo(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = postBookmarkValidateBeforeCall(name, bookmarkPath, bookmarks, folder, storage, null, null);
+    public ApiResponse<BookmarksResponse> postBookmarkWithHttpInfo(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postBookmarkValidateBeforeCall(name, bookmarkPath, bookmarks, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -30184,11 +30243,12 @@ public class PdfApi {
      * @param bookmarks The array of bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postBookmarkAsync(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, final ApiCallback<BookmarksResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call postBookmarkAsync(String name, String bookmarkPath, List<Bookmark> bookmarks, String folder, String storage, String password, final ApiCallback<BookmarksResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -30209,7 +30269,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postBookmarkValidateBeforeCall(name, bookmarkPath, bookmarks, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postBookmarkValidateBeforeCall(name, bookmarkPath, bookmarks, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BookmarksResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -40195,12 +40255,13 @@ public class PdfApi {
      * @param bookmark The bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putBookmarkCall(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putBookmarkCall(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = bookmark;
 
         // create path and map variables
@@ -40214,6 +40275,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -40248,7 +40311,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putBookmarkValidateBeforeCall(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putBookmarkValidateBeforeCall(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -40266,7 +40329,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putBookmarkCall(name, bookmarkPath, bookmark, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putBookmarkCall(name, bookmarkPath, bookmark, folder, storage, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -40279,13 +40342,14 @@ public class PdfApi {
      * @param bookmark The bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return BookmarkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BookmarkResponse putBookmark(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage) throws ApiException {
+    public BookmarkResponse putBookmark(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, String password) throws ApiException {
         try
         {
-            ApiResponse<BookmarkResponse> resp = putBookmarkWithHttpInfo(name, bookmarkPath, bookmark, folder, storage);
+            ApiResponse<BookmarkResponse> resp = putBookmarkWithHttpInfo(name, bookmarkPath, bookmark, folder, storage, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -40293,7 +40357,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<BookmarkResponse> resp = putBookmarkWithHttpInfo(name, bookmarkPath, bookmark, folder, storage);
+                ApiResponse<BookmarkResponse> resp = putBookmarkWithHttpInfo(name, bookmarkPath, bookmark, folder, storage, password);
                 return resp.getData();
             }
             throw ex;
@@ -40308,11 +40372,12 @@ public class PdfApi {
      * @param bookmark The bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;BookmarkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BookmarkResponse> putBookmarkWithHttpInfo(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putBookmarkValidateBeforeCall(name, bookmarkPath, bookmark, folder, storage, null, null);
+    public ApiResponse<BookmarkResponse> putBookmarkWithHttpInfo(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putBookmarkValidateBeforeCall(name, bookmarkPath, bookmark, folder, storage, password, null, null);
         Type localVarReturnType = new TypeToken<BookmarkResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -40325,11 +40390,12 @@ public class PdfApi {
      * @param bookmark The bookmark. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putBookmarkAsync(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, final ApiCallback<BookmarkResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putBookmarkAsync(String name, String bookmarkPath, Bookmark bookmark, String folder, String storage, String password, final ApiCallback<BookmarkResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -40350,7 +40416,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putBookmarkValidateBeforeCall(name, bookmarkPath, bookmark, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putBookmarkValidateBeforeCall(name, bookmarkPath, bookmark, folder, storage, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BookmarkResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -55293,17 +55359,18 @@ public class PdfApi {
     }
     /**
      * Build call for putSetProperty
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param value  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param value Property value. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putSetPropertyCall(String name, String propertyName, String value, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putSetPropertyCall(String name, String propertyName, String value, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -55319,6 +55386,8 @@ public class PdfApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -55353,7 +55422,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putSetPropertyValidateBeforeCall(String name, String propertyName, String value, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putSetPropertyValidateBeforeCall(String name, String propertyName, String value, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -55371,7 +55440,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putSetPropertyCall(name, propertyName, value, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putSetPropertyCall(name, propertyName, value, storage, folder, password, progressListener, progressRequestListener);
         return call;
 
     }
@@ -55379,18 +55448,19 @@ public class PdfApi {
     /**
      * Add/update document property.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param value  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param value Property value. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return DocumentPropertyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DocumentPropertyResponse putSetProperty(String name, String propertyName, String value, String storage, String folder) throws ApiException {
+    public DocumentPropertyResponse putSetProperty(String name, String propertyName, String value, String storage, String folder, String password) throws ApiException {
         try
         {
-            ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, value, storage, folder);
+            ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, value, storage, folder, password);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -55398,7 +55468,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, value, storage, folder);
+                ApiResponse<DocumentPropertyResponse> resp = putSetPropertyWithHttpInfo(name, propertyName, value, storage, folder, password);
                 return resp.getData();
             }
             throw ex;
@@ -55408,16 +55478,17 @@ public class PdfApi {
     /**
      * Add/update document property.
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param value  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param value Property value. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @return ApiResponse&lt;DocumentPropertyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DocumentPropertyResponse> putSetPropertyWithHttpInfo(String name, String propertyName, String value, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = putSetPropertyValidateBeforeCall(name, propertyName, value, storage, folder, null, null);
+    public ApiResponse<DocumentPropertyResponse> putSetPropertyWithHttpInfo(String name, String propertyName, String value, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = putSetPropertyValidateBeforeCall(name, propertyName, value, storage, folder, password, null, null);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -55425,16 +55496,17 @@ public class PdfApi {
     /**
      * Add/update document property. (asynchronously)
      * 
-     * @param name  (required)
-     * @param propertyName  (required)
-     * @param value  (required)
-     * @param storage  (optional)
-     * @param folder  (optional)
+     * @param name The document name. (required)
+     * @param propertyName Property name. (required)
+     * @param value Property value. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password The password (Base64). (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putSetPropertyAsync(String name, String propertyName, String value, String storage, String folder, final ApiCallback<DocumentPropertyResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putSetPropertyAsync(String name, String propertyName, String value, String storage, String folder, String password, final ApiCallback<DocumentPropertyResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -55455,7 +55527,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putSetPropertyValidateBeforeCall(name, propertyName, value, storage, folder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putSetPropertyValidateBeforeCall(name, propertyName, value, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DocumentPropertyResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -58,10 +58,10 @@ public class PropertiesTests {
         property2.setValue("val2");
 
 
-        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
-        th.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder);
+        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder, null);
+        th.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder, null);
 
-        AsposeResponse response = th.pdfApi.deleteProperties(name, null, folder);
+        AsposeResponse response = th.pdfApi.deleteProperties(name, null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -84,9 +84,9 @@ public class PropertiesTests {
 
         String folder = th.tempFolder;
 
-        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder, null);
 
-        AsposeResponse response = th.pdfApi.deleteProperty(name, property1.getName(), null, folder);
+        AsposeResponse response = th.pdfApi.deleteProperty(name, property1.getName(), null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -113,10 +113,10 @@ public class PropertiesTests {
         property2.setName("prop2");
         property2.setValue("val2");
 
-        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
-        th.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder);
+        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder, null);
+        th.pdfApi.putSetProperty(name, property2.getName(), property2.getValue(), null, folder, null);
 
-        DocumentPropertiesResponse response = th.pdfApi.getDocumentProperties(name, null, folder);
+        DocumentPropertiesResponse response = th.pdfApi.getDocumentProperties(name, null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -139,9 +139,9 @@ public class PropertiesTests {
 
         String folder = th.tempFolder;
 
-        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder, null);
 
-        DocumentPropertyResponse response = th.pdfApi.getDocumentProperty(name, property1.getName(), null, folder);
+        DocumentPropertyResponse response = th.pdfApi.getDocumentProperty(name, property1.getName(), null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -164,7 +164,7 @@ public class PropertiesTests {
 
         String folder = th.tempFolder;
 
-        DocumentPropertyResponse response = th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder);
+        DocumentPropertyResponse response = th.pdfApi.putSetProperty(name, property1.getName(), property1.getValue(), null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
 }

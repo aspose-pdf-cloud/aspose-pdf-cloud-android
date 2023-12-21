@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteBookmark"></a>
 # **deleteBookmark**
-> AsposeResponse deleteBookmark(name, bookmarkPath, folder, storage)
+> AsposeResponse deleteBookmark(name, bookmarkPath, folder, storage, password)
 
 Delete document bookmark by ID.
 
@@ -477,6 +477,7 @@ Name | Type | Description  | Notes
  **bookmarkPath** | **String**| The bookmark path. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -512,7 +513,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteDocumentBookmarks"></a>
 # **deleteDocumentBookmarks**
-> AsposeResponse deleteDocumentBookmarks(name, folder, storage)
+> AsposeResponse deleteDocumentBookmarks(name, folder, storage, password)
 
 Delete all document bookmarks.
 
@@ -523,6 +524,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -844,7 +846,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteProperties"></a>
 # **deleteProperties**
-> AsposeResponse deleteProperties(name, storage, folder)
+> AsposeResponse deleteProperties(name, storage, folder, password)
 
 Delete custom document properties.
 
@@ -852,9 +854,10 @@ Delete custom document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  |
- **storage** | **String**|  | [optional]
- **folder** | **String**|  | [optional]
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -867,7 +870,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteProperty"></a>
 # **deleteProperty**
-> AsposeResponse deleteProperty(name, propertyName, storage, folder)
+> AsposeResponse deleteProperty(name, propertyName, storage, folder, password)
 
 Delete document property.
 
@@ -875,10 +878,11 @@ Delete document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  |
- **propertyName** | **String**|  |
- **storage** | **String**|  | [optional]
- **folder** | **String**|  | [optional]
+ **name** | **String**| The document name. |
+ **propertyName** | **String**| Property name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -963,7 +967,7 @@ Name | Type | Description  | Notes
 
 <a name="getBookmark"></a>
 # **getBookmark**
-> BookmarkResponse getBookmark(name, bookmarkPath, folder, storage)
+> BookmarkResponse getBookmark(name, bookmarkPath, folder, storage, password)
 
 Read document bookmark.
 
@@ -975,6 +979,7 @@ Name | Type | Description  | Notes
  **bookmarkPath** | **String**| The bookmark path. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -987,7 +992,7 @@ Name | Type | Description  | Notes
 
 <a name="getBookmarks"></a>
 # **getBookmarks**
-> BookmarksResponse getBookmarks(name, bookmarkPath, folder, storage)
+> BookmarksResponse getBookmarks(name, bookmarkPath, folder, storage, password)
 
 Read document bookmarks node list.
 
@@ -999,6 +1004,7 @@ Name | Type | Description  | Notes
  **bookmarkPath** | **String**| The bookmark path. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -1222,7 +1228,7 @@ Name | Type | Description  | Notes
 
 <a name="getDocumentBookmarks"></a>
 # **getDocumentBookmarks**
-> BookmarksResponse getDocumentBookmarks(name, folder, storage)
+> BookmarksResponse getDocumentBookmarks(name, folder, storage, password)
 
 Read document bookmarks tree.
 
@@ -1233,6 +1239,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -1614,7 +1621,7 @@ Name | Type | Description  | Notes
 
 <a name="getDocumentProperties"></a>
 # **getDocumentProperties**
-> DocumentPropertiesResponse getDocumentProperties(name, storage, folder)
+> DocumentPropertiesResponse getDocumentProperties(name, storage, folder, password)
 
 Read document properties.
 
@@ -1622,9 +1629,10 @@ Read document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  |
- **storage** | **String**|  | [optional]
- **folder** | **String**|  | [optional]
+ **name** | **String**| The document name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -1637,7 +1645,7 @@ Name | Type | Description  | Notes
 
 <a name="getDocumentProperty"></a>
 # **getDocumentProperty**
-> DocumentPropertyResponse getDocumentProperty(name, propertyName, storage, folder)
+> DocumentPropertyResponse getDocumentProperty(name, propertyName, storage, folder, password)
 
 Read document property by name.
 
@@ -1645,10 +1653,11 @@ Read document property by name.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  |
- **propertyName** | **String**|  |
- **storage** | **String**|  | [optional]
- **folder** | **String**|  | [optional]
+ **name** | **String**| The document name. |
+ **propertyName** | **String**| Property name. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -4951,7 +4960,7 @@ Name | Type | Description  | Notes
 
 <a name="postBookmark"></a>
 # **postBookmark**
-> BookmarksResponse postBookmark(name, bookmarkPath, bookmarks, folder, storage)
+> BookmarksResponse postBookmark(name, bookmarkPath, bookmarks, folder, storage, password)
 
 Add document bookmarks.
 
@@ -4964,6 +4973,7 @@ Name | Type | Description  | Notes
  **bookmarks** | [**List&lt;Bookmark&gt;**](Bookmark.md)| The array of bookmark. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -6482,7 +6492,7 @@ Name | Type | Description  | Notes
 
 <a name="putBookmark"></a>
 # **putBookmark**
-> BookmarkResponse putBookmark(name, bookmarkPath, bookmark, folder, storage)
+> BookmarkResponse putBookmark(name, bookmarkPath, bookmark, folder, storage, password)
 
 Update document bookmark.
 
@@ -6495,6 +6505,7 @@ Name | Type | Description  | Notes
  **bookmark** | [**Bookmark**](Bookmark.md)| The bookmark. |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -8785,7 +8796,7 @@ Name | Type | Description  | Notes
 
 <a name="putSetProperty"></a>
 # **putSetProperty**
-> DocumentPropertyResponse putSetProperty(name, propertyName, value, storage, folder)
+> DocumentPropertyResponse putSetProperty(name, propertyName, value, storage, folder, password)
 
 Add/update document property.
 
@@ -8793,11 +8804,12 @@ Add/update document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  |
- **propertyName** | **String**|  |
- **value** | **String**|  |
- **storage** | **String**|  | [optional]
- **folder** | **String**|  | [optional]
+ **name** | **String**| The document name. |
+ **propertyName** | **String**| Property name. |
+ **value** | **String**| Property value. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 

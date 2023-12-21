@@ -48,7 +48,7 @@ public class BookmarksTests {
         String name = "PdfWithBookmarks.pdf";
         th.uploadFile(name);
 
-        BookmarksResponse response = th.pdfApi.getDocumentBookmarks(name, th.tempFolder, null);
+        BookmarksResponse response = th.pdfApi.getDocumentBookmarks(name, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -65,7 +65,7 @@ public class BookmarksTests {
 
         String bookmarkPath = "1/1";
 
-        BookmarksResponse response = th.pdfApi.getBookmarks(name, bookmarkPath, th.tempFolder, null);
+        BookmarksResponse response = th.pdfApi.getBookmarks(name, bookmarkPath, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -82,7 +82,7 @@ public class BookmarksTests {
 
         String bookmarkPath = "1/1";
 
-        BookmarkResponse response = th.pdfApi.getBookmark(name, bookmarkPath, th.tempFolder, null);
+        BookmarkResponse response = th.pdfApi.getBookmark(name, bookmarkPath, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -97,7 +97,7 @@ public class BookmarksTests {
         String name = "PdfWithBookmarks.pdf";
         th.uploadFile(name);
 
-        AsposeResponse response = th.pdfApi.deleteDocumentBookmarks(name, th.tempFolder, null);
+        AsposeResponse response = th.pdfApi.deleteDocumentBookmarks(name, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -114,7 +114,7 @@ public class BookmarksTests {
 
         String bookmarkPath = "1/1";
 
-        AsposeResponse response = th.pdfApi.deleteBookmark(name, bookmarkPath, th.tempFolder, null);
+        AsposeResponse response = th.pdfApi.deleteBookmark(name, bookmarkPath, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -147,7 +147,7 @@ public class BookmarksTests {
         ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
         bookmarks.add(bookmark);
 
-        BookmarksResponse response = th.pdfApi.postBookmark(name, bookmarkPath, bookmarks, th.tempFolder, null);
+        BookmarksResponse response = th.pdfApi.postBookmark(name, bookmarkPath, bookmarks, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -179,7 +179,7 @@ public class BookmarksTests {
         bookmark.setColor(new Color().A(255).R(255));
 
 
-        BookmarkResponse response = th.pdfApi.putBookmark(name, bookmarkPath, bookmark, th.tempFolder, null);
+        BookmarkResponse response = th.pdfApi.putBookmark(name, bookmarkPath, bookmark, th.tempFolder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 }

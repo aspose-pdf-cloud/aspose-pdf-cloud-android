@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2023 Aspose.PDF Cloud
+ * Copyright (c) 2024 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -213,11 +213,8 @@ public class ConvertTests {
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
-
         String folder = th.tempFolder;
-
-
-        File response = th.pdfApi.getPdfInStorageToSvg(name, null, folder, null);
+        File response = th.pdfApi.getPdfInStorageToSvg(name, null, folder, null, null);
         assertNotNull(response);
     }
 
@@ -232,11 +229,9 @@ public class ConvertTests {
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
-
         String folder = th.tempFolder;
         String resFileName = "result.svg";
-
-        AsposeResponse response = th.pdfApi.putPdfInStorageToSvg(name, th.tempFolder + '/' + resFileName, folder, null);
+        AsposeResponse response = th.pdfApi.putPdfInStorageToSvg(name, th.tempFolder + '/' + resFileName, folder, null, null);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -252,8 +247,7 @@ public class ConvertTests {
         String name = "4pages.pdf";
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.svg";
-
-        AsposeResponse response = th.pdfApi.putPdfInRequestToSvg(th.tempFolder + '/' + resFileName, null, file);
+        AsposeResponse response = th.pdfApi.putPdfInRequestToSvg(th.tempFolder + '/' + resFileName, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 
@@ -927,4 +921,3 @@ public class ConvertTests {
         assertEquals(200, (int)response.getCode());
     }
 }
-

@@ -3925,7 +3925,7 @@ Name | Type | Description  | Notes
 
 <a name="getPdfInStorageToSvg"></a>
 # **getPdfInStorageToSvg**
-> File getPdfInStorageToSvg(name, compressOutputToZipArchive, folder, storage)
+> File getPdfInStorageToSvg(name, compressOutputToZipArchive, folder, storage, password)
 
 Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 
@@ -3937,6 +3937,7 @@ Name | Type | Description  | Notes
  **compressOutputToZipArchive** | **Boolean**| Specifies whether output will be created as one zip-archive. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -7928,7 +7929,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInRequestToSvg"></a>
 # **putPdfInRequestToSvg**
-> AsposeResponse putPdfInRequestToSvg(outPath, storage, file)
+> AsposeResponse putPdfInRequestToSvg(outPath, storage, password, file)
 
 Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 
@@ -7938,6 +7939,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.svg) |
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
  **file** | **File**| A file to be converted. | [optional]
 
 ### Return type
@@ -8303,7 +8305,7 @@ Name | Type | Description  | Notes
 
 <a name="putPdfInStorageToSvg"></a>
 # **putPdfInStorageToSvg**
-> AsposeResponse putPdfInStorageToSvg(name, outPath, folder, storage)
+> AsposeResponse putPdfInStorageToSvg(name, outPath, folder, storage, password)
 
 Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 
@@ -8315,6 +8317,7 @@ Name | Type | Description  | Notes
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.svg) |
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
+ **password** | **String**| The password (Base64). | [optional]
 
 ### Return type
 

@@ -29,8 +29,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.2
-- Memory leak when converting PDF to DOCX.
+## Enhancements in Version 24.3
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements
@@ -94,6 +93,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 	String folder = "folder_example"; // String | The document folder.
 
 	com.squareup.okhttp.Call result = pdfApi.deleteField(name, fieldName, storage, folder);
+```
+
+## SelfHost Aspose.PDF Cloud
+Create **PdfApi** object with one *host* parameter:
+```java
+        PdfApi pdfApi = new PdfApi("MY_SELFHOST_URL");
 ```
 
 ## Unit Tests

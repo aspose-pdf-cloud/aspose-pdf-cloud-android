@@ -187,8 +187,15 @@ public class PdfApi {
 
     public PdfApi(String appKey, String appSid) {
         this(Configuration.getDefaultApiClient());
+        apiClient.setSelfHost(false);
         apiClient.setAppKey(appKey);
         apiClient.setAppSid(appSid);
+    }
+
+    public PdfApi(String host) {
+        this(Configuration.getDefaultApiClient());
+        apiClient.setSelfHost(true);
+        apiClient.setBasePath(host);
     }
 
     public PdfApi(ApiClient apiClient) {

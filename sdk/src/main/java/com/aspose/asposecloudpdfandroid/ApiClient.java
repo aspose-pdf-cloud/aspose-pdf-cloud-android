@@ -62,6 +62,7 @@ import java.util.regex.Pattern;
 
 public class ApiClient {
 
+    private Boolean selfHost = false;
     private String basePath = "https://api.aspose.cloud/v3.0";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -92,11 +93,21 @@ public class ApiClient {
         
         // Add custom headers
         addDefaultHeader("x-aspose-client", "android sdk");
-        addDefaultHeader("x-aspose-client-version", "24.2.0");
+        addDefaultHeader("x-aspose-client-version", "24.3.0");
         
         // PDFCLOUD-418 Set default Connect Timeout
         setConnectTimeout(5 * 60 * 1000);
         setReadTimeout(5 * 60 * 1000);
+    }
+
+    /**
+     * Set SelfHost
+     *
+     * @param selfHost SelfHost
+     */
+    public void setSelfHost(Boolean selfHost)
+    {
+        this.selfHost = selfHost;
     }
 
      /**
@@ -856,7 +867,9 @@ public class ApiClient {
      * @throws ApiException If fail to serialize the request body object
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        addOAuthAuthentication(headerParams);
+        if (!selfHost) {
+            addOAuthAuthentication(headerParams);
+        }
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
         processHeaderParams(headerParams, reqBuilder);

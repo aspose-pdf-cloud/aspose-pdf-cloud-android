@@ -18,6 +18,7 @@ public class TestHelper {
     public static String setupFile = "..\\..\\..\\Settings\\servercreds.json";
 
     class ApiCreds{
+        public Boolean SelfHost = false;
         public String AppKey;
         public String AppSID;
         public String ProductUri;
@@ -36,8 +37,11 @@ public class TestHelper {
     private TestHelper() throws ApiException
     {
         TestHelper.ApiCreds apiCreds = getApiCreds();
-        pdfApi = new PdfApi(apiCreds.AppKey, apiCreds.AppSID);
-        pdfApi.getApiClient().setBasePath(apiCreds.ProductUri);
+        if (apiCreds.SelfHost) {
+            pdfApi = new PdfApi(apiCreds.ProductUri);
+        } else {
+            pdfApi = new PdfApi(apiCreds.AppKey, apiCreds.AppSID);
+        }
     }
 
     private TestHelper.ApiCreds getApiCreds() throws ApiException
@@ -45,7 +49,11 @@ public class TestHelper {
         Gson gson = new Gson();
         try {
             JsonReader reader = new JsonReader(new FileReader(setupFile));
-            return gson.fromJson(reader, TestHelper.ApiCreds.class);
+            TestHelper.ApiCreds creds = gson.fromJson(reader, TestHelper.ApiCreds.class);
+            if (creds.SelfHost == null) {
+                creds.SelfHost = false;
+            }
+            return creds;
         }
         catch (FileNotFoundException ex){
             throw new ApiException(ex.getMessage());

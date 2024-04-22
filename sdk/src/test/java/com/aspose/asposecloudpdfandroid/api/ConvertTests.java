@@ -43,14 +43,12 @@ public class ConvertTests {
      * @throws ApiException
      *          if the Api call fails
      */
-
     @Test
     public void getPdfInStorageToDocTest() throws ApiException
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
         String folder = th.tempFolder;
-
         File response = th.pdfApi.getPdfInStorageToDoc(name, null, null, null, null, null, null, null, null, folder, null, null);
         assertNotNull(response);
     }
@@ -404,34 +402,41 @@ public class ConvertTests {
      * @throws ApiException
      *          if the Api call fails
      */
-
     @Test
     public void putPdfInRequestToXlsxTest() throws ApiException
     {
         String name = "4pages.pdf";
         File file = new File(th.testDataFolder + "/" + name);
         String resFileName = "result.xlsx";
-
         AsposeResponse response = th.pdfApi.putPdfInRequestToXlsx(th.tempFolder + '/' + resFileName, null, null, null, null, null, null, file);
         assertEquals(200, (int)response.getCode());
     }
 
+    /**
+     * PostPdfToXlsx Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPdfToXlsxTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        File file = new File(th.testDataFolder + "/" + name);
+        File response = th.pdfApi.postPdfToXlsx(null, null, null, null, file);
+        assertNotNull(response);
+    }
 
     /**
      * GetPdfInStorageToHtml Test
      * @throws ApiException
      *          if the Api call fails
      */
-
     @Test
     public void getPdfInStorageToHtmlTest() throws ApiException
     {
         String name = "4pages.pdf";
         th.uploadFile(name);
-
         String folder = th.tempFolder;
-
-
         File response = th.pdfApi.getPdfInStorageToHtml(name, null, null, null, null, null,  null,  null, null,
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, folder, null, null);
         assertNotNull(response);
@@ -909,7 +914,6 @@ public class ConvertTests {
      * @throws ApiException
      *          if the Api call fails
      */
-
     @Test
     public void putPdfInRequestToXmlTest() throws ApiException
     {
@@ -919,5 +923,20 @@ public class ConvertTests {
 
         AsposeResponse response = th.pdfApi.putPdfInRequestToXml(th.tempFolder + '/' + resFileName, null, file);
         assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * GetPdfInStorageToText Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPdfInStorageToTextTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+        String folder = th.tempFolder;
+        File response = th.pdfApi.getPdfInStorageToText(name, folder, null);
+        assertNotNull(response);
     }
 }

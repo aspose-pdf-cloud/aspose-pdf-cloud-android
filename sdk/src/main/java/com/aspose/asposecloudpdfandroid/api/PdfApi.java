@@ -23671,6 +23671,154 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getPdfInStorageToText
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPdfInStorageToTextCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/convert/text"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getPdfInStorageToTextValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPdfInStorageToText(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getPdfInStorageToTextCall(name, folder, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts PDF document (located on storage) to Text format and returns resulting file in response content
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getPdfInStorageToText(String name, String folder, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<File> resp = getPdfInStorageToTextWithHttpInfo(name, folder, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<File> resp = getPdfInStorageToTextWithHttpInfo(name, folder, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Converts PDF document (located on storage) to Text format and returns resulting file in response content
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getPdfInStorageToTextWithHttpInfo(String name, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getPdfInStorageToTextValidateBeforeCall(name, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts PDF document (located on storage) to Text format and returns resulting file in response content (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPdfInStorageToTextAsync(String name, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPdfInStorageToTextValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getPdfInStorageToTiff
      * @param name The document name. (required)
      * @param brightness Image brightness. (optional)
@@ -38480,6 +38628,160 @@ public class PdfApi {
 
         com.squareup.okhttp.Call call = postPageUnderlineAnnotationsValidateBeforeCall(name, pageNumber, annotations, storage, folder, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postPdfToXlsx
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param password The password (Base64). (optional)
+     * @param file A file to be converted. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postPdfToXlsxCall(Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Boolean uniformWorksheets, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = file;
+
+        // create path and map variables
+        String localVarPath = "/pdf/convert/xlsx";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (insertBlankColumnAtFirst != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("insertBlankColumnAtFirst", insertBlankColumnAtFirst));
+        if (minimizeTheNumberOfWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimizeTheNumberOfWorksheets", minimizeTheNumberOfWorksheets));
+        if (uniformWorksheets != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("uniformWorksheets", uniformWorksheets));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/octet-stream"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postPdfToXlsxValidateBeforeCall(Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Boolean uniformWorksheets, String password, File file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = postPdfToXlsxCall(insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, uniformWorksheets, password, file, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+     * 
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param password The password (Base64). (optional)
+     * @param file A file to be converted. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File postPdfToXlsx(Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Boolean uniformWorksheets, String password, File file) throws ApiException {
+        try
+        {
+            ApiResponse<File> resp = postPdfToXlsxWithHttpInfo(insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, uniformWorksheets, password, file);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<File> resp = postPdfToXlsxWithHttpInfo(insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, uniformWorksheets, password, file);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+     * 
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param password The password (Base64). (optional)
+     * @param file A file to be converted. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> postPdfToXlsxWithHttpInfo(Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Boolean uniformWorksheets, String password, File file) throws ApiException {
+        com.squareup.okhttp.Call call = postPdfToXlsxValidateBeforeCall(insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, uniformWorksheets, password, file, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content. (asynchronously)
+     * 
+     * @param insertBlankColumnAtFirst Insert blank column at first (optional)
+     * @param minimizeTheNumberOfWorksheets Minimize the number of worksheets (optional)
+     * @param uniformWorksheets Uniform worksheets (optional)
+     * @param password The password (Base64). (optional)
+     * @param file A file to be converted. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postPdfToXlsxAsync(Boolean insertBlankColumnAtFirst, Boolean minimizeTheNumberOfWorksheets, Boolean uniformWorksheets, String password, File file, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postPdfToXlsxValidateBeforeCall(insertBlankColumnAtFirst, minimizeTheNumberOfWorksheets, uniformWorksheets, password, file, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

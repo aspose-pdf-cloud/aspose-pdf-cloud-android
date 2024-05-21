@@ -209,6 +209,7 @@ Method | HTTP request | Description
 [**postDocumentTextReplace**](PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 [**postEncryptDocumentInStorage**](PdfApi.md#postEncryptDocumentInStorage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**postFlattenDocument**](PdfApi.md#postFlattenDocument) | **POST** /pdf/\{name}/flatten | Flatten the document.
+[**postHtmlToPdf**](PdfApi.md#postHtmlToPdf) | **POST** /pdf/create/html | Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
 [**postImportFieldsFromFdf**](PdfApi.md#postImportFieldsFromFdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
 [**postImportFieldsFromXfdf**](PdfApi.md#postImportFieldsFromXfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
 [**postImportFieldsFromXml**](PdfApi.md#postImportFieldsFromXml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
@@ -5365,6 +5366,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+<a name="postHtmlToPdf"></a>
+# **postHtmlToPdf**
+> File postHtmlToPdf(htmlFileName, height, width, isLandscape, marginLeft, marginBottom, marginRight, marginTop)
+
+Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **htmlFileName** | **String**| Name of HTML file in ZIP. | [optional]
+ **height** | **Double**| Page height | [optional]
+ **width** | **Double**| Page width | [optional]
+ **isLandscape** | **Boolean**| Is page landscaped | [optional]
+ **marginLeft** | **Double**| Page margin left | [optional]
+ **marginBottom** | **Double**| Page margin bottom | [optional]
+ **marginRight** | **Double**| Page margin right | [optional]
+ **marginTop** | **Double**| Page margin top | [optional]
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: multipart/form-data
 
 <a name="postImportFieldsFromFdf"></a>
 # **postImportFieldsFromFdf**

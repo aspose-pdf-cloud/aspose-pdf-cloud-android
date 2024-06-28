@@ -29,11 +29,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.5
+## Enhancements in Version 24.6
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 24.5
-- Aspose.PDF Cloud Service Throws Bad Gateway Error intermittently.
 
 ## Requirements
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.

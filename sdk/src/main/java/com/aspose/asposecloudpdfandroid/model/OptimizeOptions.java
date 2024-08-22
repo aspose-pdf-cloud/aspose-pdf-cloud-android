@@ -106,10 +106,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * If true page contents will be reused when document is optimized for equal pages.
+   * If true page contents will be reused when document is optimized for equal pages. LinkDuplcateStreams option must be set to true.
    * @return allowReusePageContent
   **/
-  @ApiModelProperty(value = "If true page contents will be reused when document is optimized for equal pages.")
+  @ApiModelProperty(value = "If true page contents will be reused when document is optimized for equal pages. LinkDuplcateStreams option must be set to true.")
   public Boolean isAllowReusePageContent() {
     return allowReusePageContent;
   }
@@ -214,10 +214,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * Make fonts not embedded if set to true. 
+   * Make fonts not embedded if set to true. Unembedding a font means removing the embedded byte stream data of the font included in a PDF document.
    * @return unembedFonts
   **/
-  @ApiModelProperty(value = "Make fonts not embedded if set to true. ")
+  @ApiModelProperty(value = "Make fonts not embedded if set to true. Unembedding a font means removing the embedded byte stream data of the font included in a PDF document.")
   public Boolean isUnembedFonts() {
     return unembedFonts;
   }
@@ -268,10 +268,10 @@ public class OptimizeOptions {
   }
 
    /**
-   * Fonts will be converted into subsets if set to true.
+   * Fonts will be converted into subsets if set to true. Only those characters that are actually used in the layout are stored in the PDF. 
    * @return subsetFonts
   **/
-  @ApiModelProperty(value = "Fonts will be converted into subsets if set to true.")
+  @ApiModelProperty(value = "Fonts will be converted into subsets if set to true. Only those characters that are actually used in the layout are stored in the PDF. ")
   public Boolean isSubsetFonts() {
     return subsetFonts;
   }

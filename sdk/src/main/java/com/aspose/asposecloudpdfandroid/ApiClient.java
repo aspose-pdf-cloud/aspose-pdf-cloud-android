@@ -25,6 +25,7 @@ package com.aspose.asposecloudpdfandroid;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.internal.http.HttpMethod;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
@@ -93,7 +94,7 @@ public class ApiClient {
         
         // Add custom headers
         addDefaultHeader("x-aspose-client", "android sdk");
-        addDefaultHeader("x-aspose-client-version", "24.7.0");
+        addDefaultHeader("x-aspose-client-version", "24.8.0");
         
         // PDFCLOUD-418 Set default Connect Timeout
         setConnectTimeout(5 * 60 * 1000);
@@ -1049,8 +1050,25 @@ public class ApiClient {
                     .build();
 
             Response response = httpClient.newCall(request).execute();
-            GetAccessTokenResult result = json.deserialize(response.body().string(), GetAccessTokenResult.class);
-            setAccessToken(result.access_token);
+            String responseJson = response.body().string();
+            try
+            {
+                GetAccessTokenResult result = json.deserialize(responseJson, GetAccessTokenResult.class);
+                if (result == null || result.access_token == null || result.access_token.trim().isEmpty())
+                {
+                    throw new ApiException(String.format("empty token (%s)",  responseJson));
+                }
+
+                setAccessToken(result.access_token);
+            }
+            catch (JsonSyntaxException ex)
+            {
+                throw new ApiException(responseJson);
+            }
+        }
+        catch (ApiException apiException)
+        {
+            throw apiException;
         }
         catch (Exception ex)
         {

@@ -320,6 +320,39 @@ public class PdfApiExamples
       
    }
 
+
+   public void postDocumentTextStampsExample()throws ApiException
+   {
+       String name = "PageNumberStamp.pdf";
+       uploadFile(name);
+
+       TextState textState = new TextState().fontSize(14.);
+
+       TextStamp stamp = new TextStamp()
+           .textAlignment(HorizontalAlignment.CENTER)
+           .value("Text Stamp")
+           .textState(textState);
+           stamp.background(true)
+           .leftMargin(1.)
+           .rightMargin(2.)
+           .topMargin(3.)
+           .bottomMargin(4.)
+           .horizontalAlignment(HorizontalAlignment.CENTER)
+           .verticalAlignment(VerticalAlignment.CENTER)
+           .opacity(1.)
+           .rotate(Rotation.NONE)
+           .rotateAngle(0.)
+           .xindent(0.)
+           .yindent(0.)
+           .zoom(1.);
+
+       List<TextStamp> stamps = new ArrayList<>();
+       stamps.add(stamp);
+
+       AsposeResponse response = pdfApi.postDocumentTextStamps(name, stamps, null, tempFolder);
+      
+   }
+
    
    public void postPageImageStampsExample()throws ApiException
    {
@@ -349,6 +382,37 @@ public class PdfApiExamples
        stamps.add(stamp);
 
        AsposeResponse response = pdfApi.postPageImageStamps(name, pageNumber, stamps,null, tempFolder);
+      
+   }
+
+   
+   public void postDocumentImageStampsExample()throws ApiException
+   {
+       String name = "PageNumberStamp.pdf";
+       uploadFile(name);
+
+       String image = "Koala.jpg";
+       uploadFile(image);
+
+       ImageStamp stamp = new ImageStamp().fileName(tempFolder + '/' + image);
+       stamp.background(true)
+               .leftMargin(1.)
+               .rightMargin(2.)
+               .topMargin(3.)
+               .bottomMargin(4.)
+               .horizontalAlignment(HorizontalAlignment.CENTER)
+               .verticalAlignment(VerticalAlignment.CENTER)
+               .opacity(1.)
+               .rotate(Rotation.NONE)
+               .rotateAngle(0.)
+               .xindent(0.)
+               .yindent(0.)
+               .zoom(1.);
+
+       List<ImageStamp> stamps = new ArrayList<>();
+       stamps.add(stamp);
+
+       AsposeResponse response = pdfApi.postDocumentImageStamps(name, stamps, null, tempFolder);
       
    }
 

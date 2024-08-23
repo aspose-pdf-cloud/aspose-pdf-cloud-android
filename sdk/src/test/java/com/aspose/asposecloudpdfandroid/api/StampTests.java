@@ -138,6 +138,45 @@ public class StampTests {
     }
 
     /**
+     * PostDocumentTextStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentTextStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        th.uploadFile(name);
+
+        TextState textState = new TextState().fontSize(14.).font("Arial");
+
+        TextStamp stamp = new TextStamp()
+                .textAlignment(HorizontalAlignment.CENTER)
+                .value("Text Stamp")
+                .textState(textState)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER);
+
+        stamp.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        List<TextStamp> stamps = new ArrayList<>();
+        stamps.add(stamp);
+        AsposeResponse response = th.pdfApi.postDocumentTextStamps(name, stamps, null, th.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
      * PostPageImageStampsTest
      * @throws ApiException
      *          if the Api call fails
@@ -171,6 +210,42 @@ public class StampTests {
         List<ImageStamp> stamps = new ArrayList<>();
         stamps.add(stamp);
         AsposeResponse response = th.pdfApi.postPageImageStamps(name, pageNumber, stamps, null, th.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentImageStampsTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentImageStampsTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        th.uploadFile(name);
+
+        String image = "Koala.jpg";
+        th.uploadFile(image);
+
+        ImageStamp stamp = new ImageStamp()
+                .fileName(th.tempFolder + '/' + image)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER);
+        stamp.background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        List<ImageStamp> stamps = new ArrayList<>();
+        stamps.add(stamp);
+        AsposeResponse response = th.pdfApi.postDocumentImageStamps(name, stamps, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 

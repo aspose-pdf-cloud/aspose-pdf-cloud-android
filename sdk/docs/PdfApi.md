@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deleteBookmark**](PdfApi.md#deleteBookmark) | **DELETE** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Delete document bookmark by ID.
 [**deleteDocumentAnnotations**](PdfApi.md#deleteDocumentAnnotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 [**deleteDocumentBookmarks**](PdfApi.md#deleteDocumentBookmarks) | **DELETE** /pdf/\{name}/bookmarks/tree | Delete all document bookmarks.
+[**deleteDocumentLayer**](PdfApi.md#deleteDocumentLayer) | **DELETE** /pdf/\{name}/layers | Remove document layer.
 [**deleteDocumentLinkAnnotations**](PdfApi.md#deleteDocumentLinkAnnotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**deleteDocumentStamps**](PdfApi.md#deleteDocumentStamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
 [**deleteDocumentTables**](PdfApi.md#deleteDocumentTables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
@@ -50,6 +51,7 @@ Method | HTTP request | Description
 [**getDocumentFreeTextAnnotations**](PdfApi.md#getDocumentFreeTextAnnotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
 [**getDocumentHighlightAnnotations**](PdfApi.md#getDocumentHighlightAnnotations) | **GET** /pdf/\{name}/annotations/highlight | Read document highlight annotations.
 [**getDocumentInkAnnotations**](PdfApi.md#getDocumentInkAnnotations) | **GET** /pdf/\{name}/annotations/ink | Read document ink annotations.
+[**getDocumentLayers**](PdfApi.md#getDocumentLayers) | **GET** /pdf/\{name}/layers | Gets document layers.
 [**getDocumentLineAnnotations**](PdfApi.md#getDocumentLineAnnotations) | **GET** /pdf/\{name}/annotations/line | Read document line annotations.
 [**getDocumentListBoxFields**](PdfApi.md#getDocumentListBoxFields) | **GET** /pdf/\{name}/fields/listbox | Read document listbox fields.
 [**getDocumentMovieAnnotations**](PdfApi.md#getDocumentMovieAnnotations) | **GET** /pdf/\{name}/annotations/movie | Read document movie annotations.
@@ -266,6 +268,7 @@ Method | HTTP request | Description
 [**putCircleAnnotation**](PdfApi.md#putCircleAnnotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**putComboBoxField**](PdfApi.md#putComboBoxField) | **PUT** /pdf/\{name}/fields/combobox/\{fieldName} | Replace document combobox field
 [**putCreateDocument**](PdfApi.md#putCreateDocument) | **PUT** /pdf/\{name} | Create empty document.
+[**putCreatePdfFromLayer**](PdfApi.md#putCreatePdfFromLayer) | **PUT** /pdf/\{name}/layers | Create a separate PDF from a PDF Layer and upload resulting file to storage.
 [**putDecryptDocument**](PdfApi.md#putDecryptDocument) | **PUT** /pdf/decrypt | Decrypt document from content.
 [**putDocumentDisplayProperties**](PdfApi.md#putDocumentDisplayProperties) | **PUT** /pdf/\{name}/displayproperties | Update document display properties.
 [**putEncryptDocument**](PdfApi.md#putEncryptDocument) | **PUT** /pdf/encrypt | Encrypt document from content.
@@ -530,6 +533,32 @@ Name | Type | Description  | Notes
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **password** | **String**| The password (Base64). | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="deleteDocumentLayer"></a>
+# **deleteDocumentLayer**
+> AsposeResponse deleteDocumentLayer(name, pageNumber, layerId, folder, storage, passBase64)
+
+Remove document layer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| Layer page. |
+ **layerId** | **String**| Layer Id. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **passBase64** | **String**| The password (Base64). | [optional]
 
 ### Return type
 
@@ -1456,6 +1485,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InkAnnotationsResponse**](InkAnnotationsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getDocumentLayers"></a>
+# **getDocumentLayers**
+> DocumentLayers getDocumentLayers(name, folder, storage, passBase64)
+
+Gets document layers.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **passBase64** | **String**| The password (Base64). | [optional]
+
+### Return type
+
+[**DocumentLayers**](DocumentLayers.md)
 
 ### HTTP request headers
 
@@ -6791,6 +6844,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="putCreatePdfFromLayer"></a>
+# **putCreatePdfFromLayer**
+> AsposeResponse putCreatePdfFromLayer(name, pageNumber, outPath, layerId, folder, storage, passBase64)
+
+Create a separate PDF from a PDF Layer and upload resulting file to storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| The page number. |
+ **outPath** | **String**| The out path of result image. |
+ **layerId** | **String**| Layer Id. |
+ **folder** | **String**| The document folder. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **passBase64** | **String**| The password (Base64). | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 

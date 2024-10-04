@@ -21431,7 +21431,7 @@ public class PdfApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (format != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "format", format));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "format", format));
         if (regex != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("regex", regex));
         if (splitRects != null)
@@ -22969,7 +22969,7 @@ public class PdfApi {
         if (cssClassNamesPrefix != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("cssClassNamesPrefix", cssClassNamesPrefix));
         if (explicitListOfSavedPages != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "explicitListOfSavedPages", explicitListOfSavedPages));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "explicitListOfSavedPages", explicitListOfSavedPages));
         if (fontEncodingStrategy != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("fontEncodingStrategy", fontEncodingStrategy));
         if (fontSavingMode != null)
@@ -28071,7 +28071,7 @@ public class PdfApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (format != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "format", format));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "format", format));
         if (regex != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("regex", regex));
         if (splitRects != null)
@@ -33110,7 +33110,7 @@ public class PdfApi {
         if (cryptoAlgorithm != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("cryptoAlgorithm", cryptoAlgorithm));
         if (permissionsFlags != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "permissionsFlags", permissionsFlags));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "permissionsFlags", permissionsFlags));
         if (usePdf20 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("usePdf20", usePdf20));
         if (storage != null)
@@ -41255,7 +41255,7 @@ public class PdfApi {
         if (endPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("endPage", endPage));
         if (annotationTypes != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "annotationTypes", annotationTypes));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "annotationTypes", annotationTypes));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
@@ -43097,7 +43097,7 @@ public class PdfApi {
         if (cryptoAlgorithm != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("cryptoAlgorithm", cryptoAlgorithm));
         if (permissionsFlags != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "permissionsFlags", permissionsFlags));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "permissionsFlags", permissionsFlags));
         if (usePdf20 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("usePdf20", usePdf20));
         if (storage != null)
@@ -50311,7 +50311,7 @@ public class PdfApi {
         if (cssClassNamesPrefix != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("cssClassNamesPrefix", cssClassNamesPrefix));
         if (explicitListOfSavedPages != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "explicitListOfSavedPages", explicitListOfSavedPages));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "explicitListOfSavedPages", explicitListOfSavedPages));
         if (fontEncodingStrategy != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("fontEncodingStrategy", fontEncodingStrategy));
         if (fontSavingMode != null)
@@ -52679,7 +52679,7 @@ public class PdfApi {
         if (cssClassNamesPrefix != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("cssClassNamesPrefix", cssClassNamesPrefix));
         if (explicitListOfSavedPages != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "explicitListOfSavedPages", explicitListOfSavedPages));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "explicitListOfSavedPages", explicitListOfSavedPages));
         if (fontEncodingStrategy != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("fontEncodingStrategy", fontEncodingStrategy));
         if (fontSavingMode != null)
@@ -56066,7 +56066,7 @@ public class PdfApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (imageIds != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "imageIds", imageIds));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "imageIds", imageIds));
         if (imageFilePath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("imageFilePath", imageFilePath));
         if (storage != null)

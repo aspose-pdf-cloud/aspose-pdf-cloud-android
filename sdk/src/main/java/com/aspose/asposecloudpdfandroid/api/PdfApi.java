@@ -176,6 +176,7 @@ import com.aspose.asposecloudpdfandroid.model.UnderlineAnnotation;
 import com.aspose.asposecloudpdfandroid.model.UnderlineAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.UnderlineAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.WordCountResponse;
+import com.aspose.asposecloudpdfandroid.model.XmpMetadata;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -29518,6 +29519,314 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for getXmpMetadataJson
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getXmpMetadataJsonCall(String name, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/xmpmetadata/json"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (passBase64 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("passBase64", passBase64));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getXmpMetadataJsonValidateBeforeCall(String name, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getXmpMetadataJson(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getXmpMetadataJsonCall(name, folder, storage, passBase64, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Gets document XMP Metadata as JSON.
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return XmpMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public XmpMetadata getXmpMetadataJson(String name, String folder, String storage, String passBase64) throws ApiException {
+        try
+        {
+            ApiResponse<XmpMetadata> resp = getXmpMetadataJsonWithHttpInfo(name, folder, storage, passBase64);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<XmpMetadata> resp = getXmpMetadataJsonWithHttpInfo(name, folder, storage, passBase64);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Gets document XMP Metadata as JSON.
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return ApiResponse&lt;XmpMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<XmpMetadata> getXmpMetadataJsonWithHttpInfo(String name, String folder, String storage, String passBase64) throws ApiException {
+        com.squareup.okhttp.Call call = getXmpMetadataJsonValidateBeforeCall(name, folder, storage, passBase64, null, null);
+        Type localVarReturnType = new TypeToken<XmpMetadata>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Gets document XMP Metadata as JSON. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getXmpMetadataJsonAsync(String name, String folder, String storage, String passBase64, final ApiCallback<XmpMetadata> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getXmpMetadataJsonValidateBeforeCall(name, folder, storage, passBase64, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<XmpMetadata>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getXmpMetadataXml
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getXmpMetadataXmlCall(String name, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/xmpmetadata/xml"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (passBase64 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("passBase64", passBase64));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getXmpMetadataXmlValidateBeforeCall(String name, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getXmpMetadataXml(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getXmpMetadataXmlCall(name, folder, storage, passBase64, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Gets document XMP Metadata as XML file.
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File getXmpMetadataXml(String name, String folder, String storage, String passBase64) throws ApiException {
+        try
+        {
+            ApiResponse<File> resp = getXmpMetadataXmlWithHttpInfo(name, folder, storage, passBase64);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<File> resp = getXmpMetadataXmlWithHttpInfo(name, folder, storage, passBase64);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Gets document XMP Metadata as XML file.
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> getXmpMetadataXmlWithHttpInfo(String name, String folder, String storage, String passBase64) throws ApiException {
+        com.squareup.okhttp.Call call = getXmpMetadataXmlValidateBeforeCall(name, folder, storage, passBase64, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Gets document XMP Metadata as XML file. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getXmpMetadataXmlAsync(String name, String folder, String storage, String passBase64, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getXmpMetadataXmlValidateBeforeCall(name, folder, storage, passBase64, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getXpsInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.xps) (required)
      * @param storage The document storage. (optional)
@@ -40909,6 +41218,169 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postTextBoxFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postXmpMetadata
+     * @param name The document name. (required)
+     * @param metadata XmpMetadata instance. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postXmpMetadataCall(String name, XmpMetadata metadata, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = metadata;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/xmpmetadata"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (passBase64 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("passBase64", passBase64));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postXmpMetadataValidateBeforeCall(String name, XmpMetadata metadata, String folder, String storage, String passBase64, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postXmpMetadata(Async)");
+        }
+        
+        // verify the required parameter 'metadata' is set
+        if (metadata == null) {
+            throw new ApiException("Missing the required parameter 'metadata' when calling postXmpMetadata(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postXmpMetadataCall(name, metadata, folder, storage, passBase64, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Add or remove XMP Metadata properties.
+     * 
+     * @param name The document name. (required)
+     * @param metadata XmpMetadata instance. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postXmpMetadata(String name, XmpMetadata metadata, String folder, String storage, String passBase64) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postXmpMetadataWithHttpInfo(name, metadata, folder, storage, passBase64);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postXmpMetadataWithHttpInfo(name, metadata, folder, storage, passBase64);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Add or remove XMP Metadata properties.
+     * 
+     * @param name The document name. (required)
+     * @param metadata XmpMetadata instance. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postXmpMetadataWithHttpInfo(String name, XmpMetadata metadata, String folder, String storage, String passBase64) throws ApiException {
+        com.squareup.okhttp.Call call = postXmpMetadataValidateBeforeCall(name, metadata, folder, storage, passBase64, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add or remove XMP Metadata properties. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param metadata XmpMetadata instance. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @param passBase64 The password (Base64). (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postXmpMetadataAsync(String name, XmpMetadata metadata, String folder, String storage, String passBase64, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postXmpMetadataValidateBeforeCall(name, metadata, folder, storage, passBase64, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

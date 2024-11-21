@@ -95,6 +95,7 @@ Method | HTTP request | Description
 [**getImageExtractAsPng**](PdfApi.md#getImageExtractAsPng) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 [**getImageExtractAsTiff**](PdfApi.md#getImageExtractAsTiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**getImages**](PdfApi.md#getImages) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+[**getImagesExtractSvg**](PdfApi.md#getImagesExtractSvg) | **GET** /pdf/\{name}/pages/\{pageNumber}/images/extract/svg | Extract SVG images from document page.
 [**getImportFieldsFromFdfInStorage**](PdfApi.md#getImportFieldsFromFdfInStorage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
 [**getImportFieldsFromXfdfInStorage**](PdfApi.md#getImportFieldsFromXfdfInStorage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**getImportFieldsFromXmlInStorage**](PdfApi.md#getImportFieldsFromXmlInStorage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
@@ -2535,6 +2536,31 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getImagesExtractSvg"></a>
+# **getImagesExtractSvg**
+> SvgImages getImagesExtractSvg(name, pageNumber, storage, folder, passBase64)
+
+Extract SVG images from document page.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pageNumber** | **Integer**| The page number. |
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **passBase64** | **String**| The password (Base64). | [optional]
+
+### Return type
+
+[**SvgImages**](SvgImages.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getImportFieldsFromFdfInStorage"></a>
 # **getImportFieldsFromFdfInStorage**
 > File getImportFieldsFromFdfInStorage(name, fdfFilePath, storage, folder)
@@ -3818,7 +3844,7 @@ Name | Type | Description  | Notes
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow, EnhancedFlow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **folder** | **String**| The document folder. | [optional]
@@ -8047,7 +8073,7 @@ Name | Type | Description  | Notes
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow, EnhancedFlow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **storage** | **String**| The document storage. | [optional]
@@ -8418,7 +8444,7 @@ Name | Type | Description  | Notes
  **imageResolutionX** | **Integer**| Image resolution X. | [optional]
  **imageResolutionY** | **Integer**| Image resolution Y. | [optional]
  **maxDistanceBetweenTextLines** | **Double**| Max distance between text lines. | [optional]
- **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow]
+ **mode** | **String**| Allows to control how a PDF document is converted into a word processing document. | [optional] [enum: Textbox, Flow, EnhancedFlow]
  **recognizeBullets** | **Boolean**| Recognize bullets. | [optional]
  **relativeHorizontalProximity** | **Double**| Relative horizontal proximity. | [optional]
  **folder** | **String**| The document folder. | [optional]

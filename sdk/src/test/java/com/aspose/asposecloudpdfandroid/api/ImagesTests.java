@@ -466,5 +466,23 @@ public class ImagesTests {
                 th.tempFolder);
         assertNotNull(response);
     }
+
+    /**
+     * GetImageExtractAsSvg Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+     @Test
+    public void getImageExtractAsSvgTest() throws ApiException
+    {
+        final String name = "Alfa.pdf";
+        th.uploadFile(name);
+
+        int pageNumber = 1;
+
+        SvgImages response = th.pdfApi.getImagesExtractSvg(name, pageNumber, null, th.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 }
 

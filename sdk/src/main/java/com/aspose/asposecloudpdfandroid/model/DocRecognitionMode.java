@@ -40,7 +40,9 @@ public enum DocRecognitionMode {
   
   TEXTBOX("Textbox"),
   
-  FLOW("Flow");
+  FLOW("Flow"),
+  
+  ENHANCEDFLOW("EnhancedFlow");
 
   private String value;
 

@@ -3970,7 +3970,7 @@ Converts PDF document (located on storage) to PdfA format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A, PDFA3B]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **password** | **String**| The password (Base64). | [optional]
@@ -8200,7 +8200,7 @@ Converts PDF document (in request content) to PdfA format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A, PDFA3B]
  **storage** | **String**| The document storage. | [optional]
  **password** | **String**| The password (Base64). | [optional]
  **file** | **File**| A file to be converted. | [optional]
@@ -8575,7 +8575,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **outPath** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) |
- **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A]
+ **type** | **String**| Type of PdfA format. | [enum: PDFA1A, PDFA1B, PDFA3A, PDFA3B]
  **folder** | **String**| The document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
  **password** | **String**| The password (Base64). | [optional]

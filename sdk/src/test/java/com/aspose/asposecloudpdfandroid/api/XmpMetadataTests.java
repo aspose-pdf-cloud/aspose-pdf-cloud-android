@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2024 Aspose.PDF Cloud
+ * Copyright (c) 2025 Aspose.PDF Cloud
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of TestHelper.getInstance() software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -84,7 +84,7 @@ public class XmpMetadataTests {
         name = "4pages.pdf";
         th.uploadFile(name);
 
-        String date = "2024-10-27T09:59:52+02:00";
+        String date = "2025-10-27T09:59:52+02:00";
         XmpMetadata metadata = new XmpMetadata()
             // Modify Default property without prefix
             .addPropertiesItem(new XmpMetadataProperty()

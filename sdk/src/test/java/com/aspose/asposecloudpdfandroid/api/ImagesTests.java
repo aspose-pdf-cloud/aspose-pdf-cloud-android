@@ -476,7 +476,7 @@ public class ImagesTests {
      @Test
     public void getImageExtractAsSvgTest() throws ApiException
     {
-        final String name = "Alfa.pdf";
+        final String name = "alfa.pdf";
         th.uploadFile(name);
 
         int pageNumber = 1;

@@ -1,0 +1,21 @@
+{
+	"name": "Android",
+	"image": "mcr.microsoft.com/devcontainers/java:8",
+	"features": {
+		"ghcr.io/nordcominc/devcontainer-features/android-sdk:1.2.0": {
+			"build_tools": "27.0.3",
+			"platform": "27"
+		}
+	},
+	"workspaceFolder": "/SDKs/Android",
+	"workspaceMount": "source=${localWorkspaceFolder}/sdk,target=/SDKs/Android,type=bind,consistency=cached",
+	"customizations": {
+		"vscode": {
+			"settings": {
+			}
+		}
+	},
+	"mounts": [
+		"source=${localWorkspaceFolder}/../../Settings,target=/Settings,type=bind,consistency=cached"
+	]
+}

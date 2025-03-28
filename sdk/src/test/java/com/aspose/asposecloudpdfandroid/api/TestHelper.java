@@ -15,7 +15,7 @@ public class TestHelper {
     public static PdfApi pdfApi;
     public static String tempFolder = "TempPdfCloud";
     public static String testDataFolder = "testData";
-    public static String setupFile = "..\\..\\..\\Settings\\servercreds.json";
+    public static String setupFile = "../../Settings/servercreds.json";
 
     class ApiCreds{
         public Boolean SelfHost = false;

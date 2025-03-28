@@ -29,7 +29,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 25.2
+## Enhancements in Version 25.3
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements
@@ -57,7 +57,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-pdf-cloud-android</artifactId>
-    <version>25.2.0</version>
+    <version>25.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +66,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.aspose:aspose-pdf-cloud-android:25.2.0"
+compile "com.aspose:aspose-pdf-cloud-android:25.3.0"
 ```
 
 ### Others
@@ -76,7 +76,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-pdf-cloud-android-25.2.0.jar
+* target/aspose-pdf-cloud-android-25.3.0.jar
 * target/lib/*.jar
 
 ## Getting Started

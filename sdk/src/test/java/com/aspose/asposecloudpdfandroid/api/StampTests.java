@@ -176,6 +176,65 @@ public class StampTests {
         assertEquals(200, (int)response.getCode());
     }
 
+        /**
+     * PostDocumentTextStampsPageSpecified
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+     @Test
+     public void postDocumentTextStampsPageSpecifiedTest()throws ApiException
+     {
+         String name = "PageNumberStamp.pdf";
+         th.uploadFile(name);
+ 
+         TextState textState = new TextState().fontSize(14.).font("Arial");
+ 
+         TextStampPageSpecified stamp1 = new TextStampPageSpecified()
+                 .pageNumber(2);
+         stamp1.textAlignment(HorizontalAlignment.CENTER)
+                 .value("Text Stamp 1")
+                 .textState(textState)
+                 .leftMargin(1.)
+                 .rightMargin(2.)
+                 .topMargin(3.)
+                 .bottomMargin(4.)
+                 .verticalAlignment(VerticalAlignment.CENTER)
+                 .background(true)
+                 .horizontalAlignment(HorizontalAlignment.CENTER)
+                 .opacity(1.)
+                 .zoom(1.)
+                 .rotate(Rotation.NONE)
+                 .rotateAngle(0.)
+                 .xindent(0.)
+                 .yindent(0.);
+
+         TextStampPageSpecified stamp2 = new TextStampPageSpecified()
+                 .pageNumber(4);
+         stamp2.textAlignment(HorizontalAlignment.CENTER)
+                 .value("Text Stamp 2")
+                 .textState(textState)
+                 .leftMargin(1.)
+                 .rightMargin(2.)
+                 .topMargin(3.)
+                 .bottomMargin(4.)
+                 .verticalAlignment(VerticalAlignment.CENTER)
+                 .background(true)
+                 .horizontalAlignment(HorizontalAlignment.CENTER)
+                 .opacity(1.)
+                 .zoom(1.)
+                 .rotate(Rotation.NONE)
+                 .rotateAngle(0.)
+                 .xindent(0.)
+                 .yindent(0.);
+
+         List<TextStampPageSpecified> stamps = new ArrayList<>();
+         stamps.add(stamp1);
+         stamps.add(stamp2);
+         AsposeResponse response = th.pdfApi.postDocumentTextStampsPageSpecified(name, stamps, null, th.tempFolder, null);
+         assertEquals(200, (int)response.getCode());
+      }
+ 
     /**
      * PostPageImageStampsTest
      * @throws ApiException
@@ -246,6 +305,61 @@ public class StampTests {
         List<ImageStamp> stamps = new ArrayList<>();
         stamps.add(stamp);
         AsposeResponse response = th.pdfApi.postDocumentImageStamps(name, stamps, null, th.tempFolder, null);
+        assertEquals(200, (int)response.getCode());
+    }
+
+    /**
+     * PostDocumentImageStampsPageSpecifiedTest
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postDocumentImageStampsPageSpecifiedTest()throws ApiException
+    {
+        String name = "PageNumberStamp.pdf";
+        th.uploadFile(name);
+
+        String image = "Koala.jpg";
+        th.uploadFile(image);
+
+        ImageStampPageSpecified stamp1 = new ImageStampPageSpecified()
+                .pageNumber(2);
+        stamp1.fileName(th.tempFolder + '/' + image)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER)
+                .background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        ImageStampPageSpecified stamp2 = new ImageStampPageSpecified()
+                .pageNumber(4);
+        stamp2.fileName(th.tempFolder + '/' + image)
+                .leftMargin(1.)
+                .rightMargin(2.)
+                .topMargin(3.)
+                .bottomMargin(4.)
+                .verticalAlignment(VerticalAlignment.CENTER)
+                .background(true)
+                .horizontalAlignment(HorizontalAlignment.CENTER)
+                .opacity(1.)
+                .rotate(Rotation.NONE)
+                .rotateAngle(0.)
+                .xindent(0.)
+                .yindent(0.)
+                .zoom(1.);
+
+        List<ImageStampPageSpecified> stamps = new ArrayList<>();
+        stamps.add(stamp1);
+        stamps.add(stamp2);
+        AsposeResponse response = th.pdfApi.postDocumentImageStampsPageSpecified(name, stamps, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 

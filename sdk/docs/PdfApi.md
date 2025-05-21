@@ -2765,12 +2765,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.mht) |
- **height** | **Double**| Page height |
- **width** | **Double**| Page width |
- **marginLeft** | **Double**| Page margin left |
- **marginBottom** | **Double**| Page margin bottom |
- **marginRight** | **Double**| Page margin right |
- **marginTop** | **Double**| Page margin top |
+ **height** | **Double**| Page height | [optional]
+ **width** | **Double**| Page width | [optional]
+ **marginLeft** | **Double**| Page margin left | [optional]
+ **marginBottom** | **Double**| Page margin bottom | [optional]
+ **marginRight** | **Double**| Page margin right | [optional]
+ **marginTop** | **Double**| Page margin top | [optional]
  **storage** | **String**| The document storage. | [optional]
 
 ### Return type
@@ -7861,12 +7861,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.mht) |
- **height** | **Double**| Page height |
- **width** | **Double**| Page width |
- **marginLeft** | **Double**| Page margin left |
- **marginBottom** | **Double**| Page margin bottom |
- **marginRight** | **Double**| Page margin right |
- **marginTop** | **Double**| Page margin top |
+ **height** | **Double**| Page height | [optional]
+ **width** | **Double**| Page width | [optional]
+ **marginLeft** | **Double**| Page margin left | [optional]
+ **marginBottom** | **Double**| Page margin bottom | [optional]
+ **marginRight** | **Double**| Page margin right | [optional]
+ **marginTop** | **Double**| Page margin top | [optional]
  **dstFolder** | **String**| The destination document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 

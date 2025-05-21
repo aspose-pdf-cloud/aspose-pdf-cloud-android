@@ -15609,12 +15609,12 @@ public class PdfApi {
     /**
      * Build call for getMhtInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -15686,36 +15686,6 @@ public class PdfApi {
             throw new ApiException("Missing the required parameter 'srcPath' when calling getMhtInStorageToPdf(Async)");
         }
         
-        // verify the required parameter 'height' is set
-        if (height == null) {
-            throw new ApiException("Missing the required parameter 'height' when calling getMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'width' is set
-        if (width == null) {
-            throw new ApiException("Missing the required parameter 'width' when calling getMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginLeft' is set
-        if (marginLeft == null) {
-            throw new ApiException("Missing the required parameter 'marginLeft' when calling getMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginBottom' is set
-        if (marginBottom == null) {
-            throw new ApiException("Missing the required parameter 'marginBottom' when calling getMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginRight' is set
-        if (marginRight == null) {
-            throw new ApiException("Missing the required parameter 'marginRight' when calling getMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginTop' is set
-        if (marginTop == null) {
-            throw new ApiException("Missing the required parameter 'marginTop' when calling getMhtInStorageToPdf(Async)");
-        }
-        
 
         com.squareup.okhttp.Call call = getMhtInStorageToPdfCall(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage, progressListener, progressRequestListener);
         return call;
@@ -15726,12 +15696,12 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response. 
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -15758,12 +15728,12 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response. 
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -15778,12 +15748,12 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response.  (asynchronously)
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -49139,12 +49109,12 @@ public class PdfApi {
      * Build call for putMhtInStorageToPdf
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -49225,36 +49195,6 @@ public class PdfApi {
             throw new ApiException("Missing the required parameter 'srcPath' when calling putMhtInStorageToPdf(Async)");
         }
         
-        // verify the required parameter 'height' is set
-        if (height == null) {
-            throw new ApiException("Missing the required parameter 'height' when calling putMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'width' is set
-        if (width == null) {
-            throw new ApiException("Missing the required parameter 'width' when calling putMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginLeft' is set
-        if (marginLeft == null) {
-            throw new ApiException("Missing the required parameter 'marginLeft' when calling putMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginBottom' is set
-        if (marginBottom == null) {
-            throw new ApiException("Missing the required parameter 'marginBottom' when calling putMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginRight' is set
-        if (marginRight == null) {
-            throw new ApiException("Missing the required parameter 'marginRight' when calling putMhtInStorageToPdf(Async)");
-        }
-        
-        // verify the required parameter 'marginTop' is set
-        if (marginTop == null) {
-            throw new ApiException("Missing the required parameter 'marginTop' when calling putMhtInStorageToPdf(Async)");
-        }
-        
 
         com.squareup.okhttp.Call call = putMhtInStorageToPdfCall(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, progressListener, progressRequestListener);
         return call;
@@ -49266,12 +49206,12 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @return AsposeResponse
@@ -49300,12 +49240,12 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
@@ -49322,12 +49262,12 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
-     * @param height Page height (required)
-     * @param width Page width (required)
-     * @param marginLeft Page margin left (required)
-     * @param marginBottom Page margin bottom (required)
-     * @param marginRight Page margin right (required)
-     * @param marginTop Page margin top (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes

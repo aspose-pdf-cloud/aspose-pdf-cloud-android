@@ -171,7 +171,7 @@ public class ConvertToPdfTests {
 
         String srcPath = th.tempFolder + '/' + name;
 
-        File response = th.pdfApi.getMhtInStorageToPdf(srcPath, null);
+        File response = th.pdfApi.getMhtInStorageToPdf(srcPath, null, null, null, null, null, null, null);
         assertNotNull(response);
     }
 
@@ -192,7 +192,7 @@ public class ConvertToPdfTests {
         String srcPath = th.tempFolder + '/' + name;
         String resultName = "fromMht.pdf";
 
-        AsposeResponse response = th.pdfApi.putMhtInStorageToPdf(resultName, srcPath, th.tempFolder, null);
+        AsposeResponse response = th.pdfApi.putMhtInStorageToPdf(resultName, srcPath, null, null, null, null, null, null, th.tempFolder, null);
         assertEquals(200, (int)response.getCode());
     }
 

@@ -15609,13 +15609,19 @@ public class PdfApi {
     /**
      * Build call for getMhtInStorageToPdf
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getMhtInStorageToPdfCall(String srcPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getMhtInStorageToPdfCall(String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -15625,6 +15631,18 @@ public class PdfApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (srcPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (marginLeft != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginLeft", marginLeft));
+        if (marginBottom != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginBottom", marginBottom));
+        if (marginRight != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginRight", marginRight));
+        if (marginTop != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginTop", marginTop));
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
 
@@ -15661,7 +15679,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getMhtInStorageToPdfValidateBeforeCall(String srcPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getMhtInStorageToPdfValidateBeforeCall(String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'srcPath' is set
         if (srcPath == null) {
@@ -15669,7 +15687,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = getMhtInStorageToPdfCall(srcPath, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getMhtInStorageToPdfCall(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -15678,14 +15696,20 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response. 
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File getMhtInStorageToPdf(String srcPath, String storage) throws ApiException {
+    public File getMhtInStorageToPdf(String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String storage) throws ApiException {
         try
         {
-            ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath, storage);
+            ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -15693,7 +15717,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath, storage);
+                ApiResponse<File> resp = getMhtInStorageToPdfWithHttpInfo(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage);
                 return resp.getData();
             }
             throw ex;
@@ -15704,12 +15728,18 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response. 
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> getMhtInStorageToPdfWithHttpInfo(String srcPath, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getMhtInStorageToPdfValidateBeforeCall(srcPath, storage, null, null);
+    public ApiResponse<File> getMhtInStorageToPdfWithHttpInfo(String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getMhtInStorageToPdfValidateBeforeCall(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -15718,12 +15748,18 @@ public class PdfApi {
      * Convert MHT file (located on storage) to PDF format and return resulting file in response.  (asynchronously)
      * 
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getMhtInStorageToPdfAsync(String srcPath, String storage, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call getMhtInStorageToPdfAsync(String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String storage, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -15744,7 +15780,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getMhtInStorageToPdfValidateBeforeCall(srcPath, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getMhtInStorageToPdfValidateBeforeCall(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -31733,6 +31769,171 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postComboBoxFieldsValidateBeforeCall(name, fields, storage, folder, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postComparePdf
+     * @param path1 Path to first PDF document. (required)
+     * @param path2 Path to second PDF document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postComparePdfCall(String path1, String path2, String outPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/compare";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (path1 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path1", path1));
+        if (path2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("path2", path2));
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postComparePdfValidateBeforeCall(String path1, String path2, String outPath, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'path1' is set
+        if (path1 == null) {
+            throw new ApiException("Missing the required parameter 'path1' when calling postComparePdf(Async)");
+        }
+        
+        // verify the required parameter 'path2' is set
+        if (path2 == null) {
+            throw new ApiException("Missing the required parameter 'path2' when calling postComparePdf(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling postComparePdf(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postComparePdfCall(path1, path2, outPath, storage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Compare two PDF documents.
+     * 
+     * @param path1 Path to first PDF document. (required)
+     * @param path2 Path to second PDF document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postComparePdf(String path1, String path2, String outPath, String storage) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postComparePdfWithHttpInfo(path1, path2, outPath, storage);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postComparePdfWithHttpInfo(path1, path2, outPath, storage);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Compare two PDF documents.
+     * 
+     * @param path1 Path to first PDF document. (required)
+     * @param path2 Path to second PDF document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postComparePdfWithHttpInfo(String path1, String path2, String outPath, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = postComparePdfValidateBeforeCall(path1, path2, outPath, storage, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Compare two PDF documents. (asynchronously)
+     * 
+     * @param path1 Path to first PDF document. (required)
+     * @param path2 Path to second PDF document. (required)
+     * @param outPath Full filename of the resulting document. (required)
+     * @param storage The documents storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postComparePdfAsync(String path1, String path2, String outPath, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postComparePdfValidateBeforeCall(path1, path2, outPath, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -48908,6 +49109,12 @@ public class PdfApi {
      * Build call for putMhtInStorageToPdf
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -48915,7 +49122,7 @@ public class PdfApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putMhtInStorageToPdfCall(String name, String srcPath, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call putMhtInStorageToPdfCall(String name, String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -48926,6 +49133,18 @@ public class PdfApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (srcPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("srcPath", srcPath));
+        if (height != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("height", height));
+        if (width != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
+        if (marginLeft != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginLeft", marginLeft));
+        if (marginBottom != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginBottom", marginBottom));
+        if (marginRight != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginRight", marginRight));
+        if (marginTop != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marginTop", marginTop));
         if (dstFolder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("dstFolder", dstFolder));
         if (storage != null)
@@ -48964,7 +49183,7 @@ public class PdfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putMhtInStorageToPdfValidateBeforeCall(String name, String srcPath, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call putMhtInStorageToPdfValidateBeforeCall(String name, String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -48977,7 +49196,7 @@ public class PdfApi {
         }
         
 
-        com.squareup.okhttp.Call call = putMhtInStorageToPdfCall(name, srcPath, dstFolder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putMhtInStorageToPdfCall(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -48987,15 +49206,21 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @return AsposeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AsposeResponse putMhtInStorageToPdf(String name, String srcPath, String dstFolder, String storage) throws ApiException {
+    public AsposeResponse putMhtInStorageToPdf(String name, String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder, String storage) throws ApiException {
         try
         {
-            ApiResponse<AsposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, storage);
+            ApiResponse<AsposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage);
             return resp.getData();
         }
         catch (ApiException ex)
@@ -49003,7 +49228,7 @@ public class PdfApi {
             if (ex.getCode() == 401)
             {
                 apiClient.requestToken();
-                ApiResponse<AsposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, dstFolder, storage);
+                ApiResponse<AsposeResponse> resp = putMhtInStorageToPdfWithHttpInfo(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage);
                 return resp.getData();
             }
             throw ex;
@@ -49015,13 +49240,19 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;AsposeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AsposeResponse> putMhtInStorageToPdfWithHttpInfo(String name, String srcPath, String dstFolder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = putMhtInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, storage, null, null);
+    public ApiResponse<AsposeResponse> putMhtInStorageToPdfWithHttpInfo(String name, String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = putMhtInStorageToPdfValidateBeforeCall(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, null, null);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -49031,13 +49262,19 @@ public class PdfApi {
      * 
      * @param name The document name. (required)
      * @param srcPath Full source filename (ex. /folder1/folder2/template.mht) (required)
+     * @param height Page height (optional)
+     * @param width Page width (optional)
+     * @param marginLeft Page margin left (optional)
+     * @param marginBottom Page margin bottom (optional)
+     * @param marginRight Page margin right (optional)
+     * @param marginTop Page margin top (optional)
      * @param dstFolder The destination document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call putMhtInStorageToPdfAsync(String name, String srcPath, String dstFolder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call putMhtInStorageToPdfAsync(String name, String srcPath, Double height, Double width, Double marginLeft, Double marginBottom, Double marginRight, Double marginTop, String dstFolder, String storage, final ApiCallback<AsposeResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -49058,7 +49295,7 @@ public class PdfApi {
             };
         }
 
-        com.squareup.okhttp.Call call = putMhtInStorageToPdfValidateBeforeCall(name, srcPath, dstFolder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putMhtInStorageToPdfValidateBeforeCall(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

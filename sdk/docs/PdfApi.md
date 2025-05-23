@@ -203,6 +203,7 @@ Method | HTTP request | Description
 [**postChangePasswordDocumentInStorage**](PdfApi.md#postChangePasswordDocumentInStorage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**postCheckBoxFields**](PdfApi.md#postCheckBoxFields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 [**postComboBoxFields**](PdfApi.md#postComboBoxFields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
+[**postComparePdf**](PdfApi.md#postComparePdf) | **POST** /pdf/compare | Compare two PDF documents.
 [**postCreateDocument**](PdfApi.md#postCreateDocument) | **POST** /pdf/\{name} | Create empty document.
 [**postCreateField**](PdfApi.md#postCreateField) | **POST** /pdf/\{name}/fields | Create field.
 [**postDecryptDocumentInStorage**](PdfApi.md#postDecryptDocumentInStorage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -2755,7 +2756,7 @@ Name | Type | Description  | Notes
 
 <a name="getMhtInStorageToPdf"></a>
 # **getMhtInStorageToPdf**
-> File getMhtInStorageToPdf(srcPath, storage)
+> File getMhtInStorageToPdf(srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, storage)
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
@@ -2764,6 +2765,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.mht) |
+ **height** | **Double**| Page height | [optional]
+ **width** | **Double**| Page width | [optional]
+ **marginLeft** | **Double**| Page margin left | [optional]
+ **marginBottom** | **Double**| Page margin bottom | [optional]
+ **marginRight** | **Double**| Page margin right | [optional]
+ **marginTop** | **Double**| Page margin top | [optional]
  **storage** | **String**| The document storage. | [optional]
 
 ### Return type
@@ -5209,6 +5216,30 @@ Name | Type | Description  | Notes
  **fields** | [**List&lt;ComboBoxField&gt;**](ComboBoxField.md)| The array of field. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postComparePdf"></a>
+# **postComparePdf**
+> AsposeResponse postComparePdf(path1, path2, outPath, storage)
+
+Compare two PDF documents.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path1** | **String**| Path to first PDF document. |
+ **path2** | **String**| Path to second PDF document. |
+ **outPath** | **String**| Full filename of the resulting document. |
+ **storage** | **String**| The documents storage. | [optional]
 
 ### Return type
 
@@ -7820,7 +7851,7 @@ Name | Type | Description  | Notes
 
 <a name="putMhtInStorageToPdf"></a>
 # **putMhtInStorageToPdf**
-> AsposeResponse putMhtInStorageToPdf(name, srcPath, dstFolder, storage)
+> AsposeResponse putMhtInStorageToPdf(name, srcPath, height, width, marginLeft, marginBottom, marginRight, marginTop, dstFolder, storage)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 
@@ -7830,6 +7861,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. |
  **srcPath** | **String**| Full source filename (ex. /folder1/folder2/template.mht) |
+ **height** | **Double**| Page height | [optional]
+ **width** | **Double**| Page width | [optional]
+ **marginLeft** | **Double**| Page margin left | [optional]
+ **marginBottom** | **Double**| Page margin bottom | [optional]
+ **marginRight** | **Double**| Page margin right | [optional]
+ **marginTop** | **Double**| Page margin top | [optional]
  **dstFolder** | **String**| The destination document folder. | [optional]
  **storage** | **String**| The document storage. | [optional]
 

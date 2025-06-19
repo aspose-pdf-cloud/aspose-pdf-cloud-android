@@ -33262,6 +33262,182 @@ public class PdfApi {
         return call;
     }
     /**
+     * Build call for postDocumentPagesRotate
+     * @param name The document name. (required)
+     * @param rotationAngle Rotation Angle (CKW). Can be 90, 180, 270. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPagesRotateCall(String name, String rotationAngle, String pages, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/rotate"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (rotationAngle != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("rotationAngle", rotationAngle));
+        if (pages != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("pages", pages));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentPagesRotateValidateBeforeCall(String name, String rotationAngle, String pages, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentPagesRotate(Async)");
+        }
+        
+        // verify the required parameter 'rotationAngle' is set
+        if (rotationAngle == null) {
+            throw new ApiException("Missing the required parameter 'rotationAngle' when calling postDocumentPagesRotate(Async)");
+        }
+        
+        // verify the required parameter 'pages' is set
+        if (pages == null) {
+            throw new ApiException("Missing the required parameter 'pages' when calling postDocumentPagesRotate(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentPagesRotateCall(name, rotationAngle, pages, storage, folder, password, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Rotate PDF document.
+     * 
+     * @param name The document name. (required)
+     * @param rotationAngle Rotation Angle (CKW). Can be 90, 180, 270. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentPagesRotate(String name, String rotationAngle, String pages, String storage, String folder, String password) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentPagesRotateWithHttpInfo(name, rotationAngle, pages, storage, folder, password);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postDocumentPagesRotateWithHttpInfo(name, rotationAngle, pages, storage, folder, password);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Rotate PDF document.
+     * 
+     * @param name The document name. (required)
+     * @param rotationAngle Rotation Angle (CKW). Can be 90, 180, 270. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentPagesRotateWithHttpInfo(String name, String rotationAngle, String pages, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentPagesRotateValidateBeforeCall(name, rotationAngle, pages, storage, folder, password, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Rotate PDF document. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param rotationAngle Rotation Angle (CKW). Can be 90, 180, 270. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPagesRotateAsync(String name, String rotationAngle, String pages, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentPagesRotateValidateBeforeCall(name, rotationAngle, pages, storage, folder, password, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for postDocumentTextFooter
      * @param name The document name. (required)
      * @param textFooter The text footer. (required)

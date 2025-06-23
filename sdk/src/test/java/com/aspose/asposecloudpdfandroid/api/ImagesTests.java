@@ -147,9 +147,18 @@ public class ImagesTests {
          th.uploadFile(imageFileName); 
          String folder = th.tempFolder;
          String imageFile = folder + '/' + imageFileName; 
+
+        ImagesResponse imagesResponse1 = th.pdfApi.getImages(name, 1, null, folder);
+        assertEquals((int)imagesResponse1.getCode(), 200);
+        String imageId1 = imagesResponse1.getImages().getList().get(0).getId();
+
+        ImagesResponse imagesResponse2 = th.pdfApi.getImages(name, 16, null, folder);
+        assertEquals((int)imagesResponse2.getCode(), 200);
+        String imageId2 = imagesResponse2.getImages().getList().get(0).getId();
+
          ArrayList<String> imageIds = new ArrayList<String>();
-         imageIds.add("GE5TENJVGQZTWMJYGQWDINRUFQ2DCMRMGY4TC");
-         imageIds.add("GE5TIMJSGY3TWMJXG4WDIMBZFQ2DCOJMGQ3DK");
+         imageIds.add(imageId1);
+         imageIds.add(imageId2);
          ImagesResponse response = th.pdfApi.putReplaceMultipleImage(name, imageIds, imageFile, null, folder, null);
          assertEquals(200, (int)response.getCode());
      }

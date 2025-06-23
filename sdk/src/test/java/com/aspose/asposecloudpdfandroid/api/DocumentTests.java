@@ -302,4 +302,22 @@ public class DocumentTests {
         AsposeResponse response = TestHelper.pdfApi.postOrganizeDocuments(request, this.th.tempFolder + "/OrganizeMany.pdf", null);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * PostDocumentPagesRotate Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentPagesRotateTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        AsposeResponse response = th.pdfApi.postDocumentPagesRotate(name, Rotation.ON90.toString(), "2-3", null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 }

@@ -212,6 +212,7 @@ Method | HTTP request | Description
 [**postDocumentImageStamps**](PdfApi.md#postDocumentImageStamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**postDocumentImageStampsPageSpecified**](PdfApi.md#postDocumentImageStampsPageSpecified) | **POST** /pdf/\{name}/stamps/image/pagespecified | Add document image stamps to specified pages.
 [**postDocumentPageNumberStamps**](PdfApi.md#postDocumentPageNumberStamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**postDocumentPagesRotate**](PdfApi.md#postDocumentPagesRotate) | **POST** /pdf/\{name}/rotate | Rotate PDF document.
 [**postDocumentTextFooter**](PdfApi.md#postDocumentTextFooter) | **POST** /pdf/\{name}/footer/text | Add document text footer.
 [**postDocumentTextHeader**](PdfApi.md#postDocumentTextHeader) | **POST** /pdf/\{name}/header/text | Add document text header.
 [**postDocumentTextReplace**](PdfApi.md#postDocumentTextReplace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
@@ -5439,6 +5440,32 @@ Name | Type | Description  | Notes
  **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. |
  **startPageNumber** | **Integer**| The start page number. | [optional]
  **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentPagesRotate"></a>
+# **postDocumentPagesRotate**
+> AsposeResponse postDocumentPagesRotate(name, rotationAngle, pages, storage, folder, password)
+
+Rotate PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **rotationAngle** | **String**| Rotation Angle (CKW). Can be 90, 180, 270. | [enum: None, on90, on180, on270]
+ **pages** | **String**| Comma separated list of pages and page ranges. (Example: 1,3-5,8) |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **password** | **String**| Base64 encoded password. | [optional]

@@ -23,6 +23,9 @@
 package com.aspose.asposecloudpdfandroid.model;
 
 import java.util.Objects;
+import com.aspose.asposecloudpdfandroid.model.Color;
+import com.aspose.asposecloudpdfandroid.model.Rotation;
+import com.aspose.asposecloudpdfandroid.model.SignatureSubjectNameElements;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -31,6 +34,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An abstract class which represents signature custom appearance object.
@@ -43,6 +48,9 @@ public class SignatureCustomAppearance {
 
   @SerializedName("FontSize")
   private Double fontSize = null;
+
+  @SerializedName("Rotation")
+  private Rotation rotation = null;
 
   @SerializedName("ShowContactInfo")
   private Boolean showContactInfo = null;
@@ -74,6 +82,18 @@ public class SignatureCustomAppearance {
   @SerializedName("DateTimeFormat")
   private String dateTimeFormat = null;
 
+  @SerializedName("BackgroundColor")
+  private Color backgroundColor = null;
+
+  @SerializedName("ForegroundColor")
+  private Color foregroundColor = null;
+
+  @SerializedName("UseDigitalSubjectFormat")
+  private Boolean useDigitalSubjectFormat = null;
+
+  @SerializedName("DigitalSubjectFormat")
+  private List<SignatureSubjectNameElements> digitalSubjectFormat = null;
+
   public SignatureCustomAppearance fontFamilyName(String fontFamilyName) {
     this.fontFamilyName = fontFamilyName;
     return this;
@@ -101,13 +121,31 @@ public class SignatureCustomAppearance {
    * Gets/sets font size. Default value: 10.
    * @return fontSize
   **/
-  @ApiModelProperty(required = true, value = "Gets/sets font size. Default value: 10.")
+  @ApiModelProperty(value = "Gets/sets font size. Default value: 10.")
   public Double getFontSize() {
     return fontSize;
   }
 
   public void setFontSize(Double fontSize) {
     this.fontSize = fontSize;
+  }
+
+  public SignatureCustomAppearance rotation(Rotation rotation) {
+    this.rotation = rotation;
+    return this;
+  }
+
+   /**
+   * Gets or sets signature rotation.
+   * @return rotation
+  **/
+  @ApiModelProperty(required = true, value = "Gets or sets signature rotation.")
+  public Rotation getRotation() {
+    return rotation;
+  }
+
+  public void setRotation(Rotation rotation) {
+    this.rotation = rotation;
   }
 
   public SignatureCustomAppearance showContactInfo(Boolean showContactInfo) {
@@ -290,6 +328,86 @@ public class SignatureCustomAppearance {
     this.dateTimeFormat = dateTimeFormat;
   }
 
+  public SignatureCustomAppearance backgroundColor(Color backgroundColor) {
+    this.backgroundColor = backgroundColor;
+    return this;
+  }
+
+   /**
+   * Gets/sets background color.
+   * @return backgroundColor
+  **/
+  @ApiModelProperty(value = "Gets/sets background color.")
+  public Color getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public void setBackgroundColor(Color backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
+  public SignatureCustomAppearance foregroundColor(Color foregroundColor) {
+    this.foregroundColor = foregroundColor;
+    return this;
+  }
+
+   /**
+   * Gets/sets foreground color.
+   * @return foregroundColor
+  **/
+  @ApiModelProperty(value = "Gets/sets foreground color.")
+  public Color getForegroundColor() {
+    return foregroundColor;
+  }
+
+  public void setForegroundColor(Color foregroundColor) {
+    this.foregroundColor = foregroundColor;
+  }
+
+  public SignatureCustomAppearance useDigitalSubjectFormat(Boolean useDigitalSubjectFormat) {
+    this.useDigitalSubjectFormat = useDigitalSubjectFormat;
+    return this;
+  }
+
+   /**
+   * Gets/sets subject format usage.
+   * @return useDigitalSubjectFormat
+  **/
+  @ApiModelProperty(required = true, value = "Gets/sets subject format usage.")
+  public Boolean isUseDigitalSubjectFormat() {
+    return useDigitalSubjectFormat;
+  }
+
+  public void setUseDigitalSubjectFormat(Boolean useDigitalSubjectFormat) {
+    this.useDigitalSubjectFormat = useDigitalSubjectFormat;
+  }
+
+  public SignatureCustomAppearance digitalSubjectFormat(List<SignatureSubjectNameElements> digitalSubjectFormat) {
+    this.digitalSubjectFormat = digitalSubjectFormat;
+    return this;
+  }
+
+  public SignatureCustomAppearance addDigitalSubjectFormatItem(SignatureSubjectNameElements digitalSubjectFormatItem) {
+    if (this.digitalSubjectFormat == null) {
+      this.digitalSubjectFormat = new ArrayList<SignatureSubjectNameElements>();
+    }
+    this.digitalSubjectFormat.add(digitalSubjectFormatItem);
+    return this;
+  }
+
+   /**
+   * Gets/sets subject format.
+   * @return digitalSubjectFormat
+  **/
+  @ApiModelProperty(value = "Gets/sets subject format.")
+  public List<SignatureSubjectNameElements> getDigitalSubjectFormat() {
+    return digitalSubjectFormat;
+  }
+
+  public void setDigitalSubjectFormat(List<SignatureSubjectNameElements> digitalSubjectFormat) {
+    this.digitalSubjectFormat = digitalSubjectFormat;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -302,6 +420,7 @@ public class SignatureCustomAppearance {
     SignatureCustomAppearance signatureCustomAppearance = (SignatureCustomAppearance) o;
     return Objects.equals(this.fontFamilyName, signatureCustomAppearance.fontFamilyName) &&
         Objects.equals(this.fontSize, signatureCustomAppearance.fontSize) &&
+        Objects.equals(this.rotation, signatureCustomAppearance.rotation) &&
         Objects.equals(this.showContactInfo, signatureCustomAppearance.showContactInfo) &&
         Objects.equals(this.showReason, signatureCustomAppearance.showReason) &&
         Objects.equals(this.showLocation, signatureCustomAppearance.showLocation) &&
@@ -311,12 +430,16 @@ public class SignatureCustomAppearance {
         Objects.equals(this.digitalSignedLabel, signatureCustomAppearance.digitalSignedLabel) &&
         Objects.equals(this.dateSignedAtLabel, signatureCustomAppearance.dateSignedAtLabel) &&
         Objects.equals(this.dateTimeLocalFormat, signatureCustomAppearance.dateTimeLocalFormat) &&
-        Objects.equals(this.dateTimeFormat, signatureCustomAppearance.dateTimeFormat);
+        Objects.equals(this.dateTimeFormat, signatureCustomAppearance.dateTimeFormat) &&
+        Objects.equals(this.backgroundColor, signatureCustomAppearance.backgroundColor) &&
+        Objects.equals(this.foregroundColor, signatureCustomAppearance.foregroundColor) &&
+        Objects.equals(this.useDigitalSubjectFormat, signatureCustomAppearance.useDigitalSubjectFormat) &&
+        Objects.equals(this.digitalSubjectFormat, signatureCustomAppearance.digitalSubjectFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fontFamilyName, fontSize, showContactInfo, showReason, showLocation, contactInfoLabel, reasonLabel, locationLabel, digitalSignedLabel, dateSignedAtLabel, dateTimeLocalFormat, dateTimeFormat);
+    return Objects.hash(fontFamilyName, fontSize, rotation, showContactInfo, showReason, showLocation, contactInfoLabel, reasonLabel, locationLabel, digitalSignedLabel, dateSignedAtLabel, dateTimeLocalFormat, dateTimeFormat, backgroundColor, foregroundColor, useDigitalSubjectFormat, digitalSubjectFormat);
   }
 
 
@@ -327,6 +450,7 @@ public class SignatureCustomAppearance {
     
     sb.append("    fontFamilyName: ").append(toIndentedString(fontFamilyName)).append("\n");
     sb.append("    fontSize: ").append(toIndentedString(fontSize)).append("\n");
+    sb.append("    rotation: ").append(toIndentedString(rotation)).append("\n");
     sb.append("    showContactInfo: ").append(toIndentedString(showContactInfo)).append("\n");
     sb.append("    showReason: ").append(toIndentedString(showReason)).append("\n");
     sb.append("    showLocation: ").append(toIndentedString(showLocation)).append("\n");
@@ -337,6 +461,10 @@ public class SignatureCustomAppearance {
     sb.append("    dateSignedAtLabel: ").append(toIndentedString(dateSignedAtLabel)).append("\n");
     sb.append("    dateTimeLocalFormat: ").append(toIndentedString(dateTimeLocalFormat)).append("\n");
     sb.append("    dateTimeFormat: ").append(toIndentedString(dateTimeFormat)).append("\n");
+    sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
+    sb.append("    foregroundColor: ").append(toIndentedString(foregroundColor)).append("\n");
+    sb.append("    useDigitalSubjectFormat: ").append(toIndentedString(useDigitalSubjectFormat)).append("\n");
+    sb.append("    digitalSubjectFormat: ").append(toIndentedString(digitalSubjectFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

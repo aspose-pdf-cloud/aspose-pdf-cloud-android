@@ -212,6 +212,7 @@ Method | HTTP request | Description
 [**postDocumentImageStamps**](PdfApi.md#postDocumentImageStamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**postDocumentImageStampsPageSpecified**](PdfApi.md#postDocumentImageStampsPageSpecified) | **POST** /pdf/\{name}/stamps/image/pagespecified | Add document image stamps to specified pages.
 [**postDocumentPageNumberStamps**](PdfApi.md#postDocumentPageNumberStamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**postDocumentPagesResize**](PdfApi.md#postDocumentPagesResize) | **POST** /pdf/\{name}/resize | Rsize PDF document.
 [**postDocumentPagesRotate**](PdfApi.md#postDocumentPagesRotate) | **POST** /pdf/\{name}/rotate | Rotate PDF document.
 [**postDocumentTextFooter**](PdfApi.md#postDocumentTextFooter) | **POST** /pdf/\{name}/footer/text | Add document text footer.
 [**postDocumentTextHeader**](PdfApi.md#postDocumentTextHeader) | **POST** /pdf/\{name}/header/text | Add document text header.
@@ -5440,6 +5441,33 @@ Name | Type | Description  | Notes
  **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. |
  **startPageNumber** | **Integer**| The start page number. | [optional]
  **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentPagesResize"></a>
+# **postDocumentPagesResize**
+> AsposeResponse postDocumentPagesResize(name, height, width, pages, storage, folder, password)
+
+Rsize PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **height** | **Double**| Page Height |
+ **width** | **Double**| Page width |
+ **pages** | **String**| Comma separated list of pages and page ranges. (Example: 1,3-5,8) |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **password** | **String**| Base64 encoded password. | [optional]

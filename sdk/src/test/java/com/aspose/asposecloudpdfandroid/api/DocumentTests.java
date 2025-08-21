@@ -320,4 +320,22 @@ public class DocumentTests {
         AsposeResponse response = th.pdfApi.postDocumentPagesRotate(name, Rotation.ON90.toString(), "2-3", null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * PostDocumentPagesResize Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentPagesResizeTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        AsposeResponse response = th.pdfApi.postDocumentPagesResize(name, 100., 200., "2-3", null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 }

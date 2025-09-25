@@ -212,6 +212,7 @@ Method | HTTP request | Description
 [**postDocumentImageStamps**](PdfApi.md#postDocumentImageStamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**postDocumentImageStampsPageSpecified**](PdfApi.md#postDocumentImageStampsPageSpecified) | **POST** /pdf/\{name}/stamps/image/pagespecified | Add document image stamps to specified pages.
 [**postDocumentPageNumberStamps**](PdfApi.md#postDocumentPageNumberStamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**postDocumentPagesCrop**](PdfApi.md#postDocumentPagesCrop) | **POST** /pdf/\{name}/crop | Crop PDF document pages.
 [**postDocumentPagesResize**](PdfApi.md#postDocumentPagesResize) | **POST** /pdf/\{name}/resize | Rsize PDF document.
 [**postDocumentPagesRotate**](PdfApi.md#postDocumentPagesRotate) | **POST** /pdf/\{name}/rotate | Rotate PDF document.
 [**postDocumentTextFooter**](PdfApi.md#postDocumentTextFooter) | **POST** /pdf/\{name}/footer/text | Add document text footer.
@@ -5441,6 +5442,32 @@ Name | Type | Description  | Notes
  **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. |
  **startPageNumber** | **Integer**| The start page number. | [optional]
  **endPageNumber** | **Integer**| The end page number. | [optional]
+ **storage** | **String**| The document storage. | [optional]
+ **folder** | **String**| The document folder. | [optional]
+ **password** | **String**| Base64 encoded password. | [optional]
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="postDocumentPagesCrop"></a>
+# **postDocumentPagesCrop**
+> AsposeResponse postDocumentPagesCrop(name, pages, rect, storage, folder, password)
+
+Crop PDF document pages.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. |
+ **pages** | **String**| Comma separated list of pages and page ranges. (Example: 1,3-5,8) |
+ **rect** | [**Rectangle**](Rectangle.md)| Rectangle of document area. |
  **storage** | **String**| The document storage. | [optional]
  **folder** | **String**| The document folder. | [optional]
  **password** | **String**| Base64 encoded password. | [optional]

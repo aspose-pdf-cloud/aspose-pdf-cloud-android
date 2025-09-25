@@ -127,6 +127,7 @@ import com.aspose.asposecloudpdfandroid.model.PopupAnnotationsResponse;
 import com.aspose.asposecloudpdfandroid.model.RadioButtonField;
 import com.aspose.asposecloudpdfandroid.model.RadioButtonFieldResponse;
 import com.aspose.asposecloudpdfandroid.model.RadioButtonFieldsResponse;
+import com.aspose.asposecloudpdfandroid.model.Rectangle;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotation;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotationResponse;
 import com.aspose.asposecloudpdfandroid.model.RedactionAnnotationsResponse;
@@ -33257,6 +33258,180 @@ public class PdfApi {
         }
 
         com.squareup.okhttp.Call call = postDocumentPageNumberStampsValidateBeforeCall(name, stamp, startPageNumber, endPageNumber, storage, folder, password, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for postDocumentPagesCrop
+     * @param name The document name. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param rect Rectangle of document area. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPagesCropCall(String name, String pages, Rectangle rect, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = rect;
+
+        // create path and map variables
+        String localVarPath = "/pdf/{name}/crop"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.escapePathSegmentString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pages != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("pages", pages));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (password != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call postDocumentPagesCropValidateBeforeCall(String name, String pages, Rectangle rect, String storage, String folder, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postDocumentPagesCrop(Async)");
+        }
+        
+        // verify the required parameter 'pages' is set
+        if (pages == null) {
+            throw new ApiException("Missing the required parameter 'pages' when calling postDocumentPagesCrop(Async)");
+        }
+        
+        // verify the required parameter 'rect' is set
+        if (rect == null) {
+            throw new ApiException("Missing the required parameter 'rect' when calling postDocumentPagesCrop(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = postDocumentPagesCropCall(name, pages, rect, storage, folder, password, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Crop PDF document pages.
+     * 
+     * @param name The document name. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param rect Rectangle of document area. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @return AsposeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsposeResponse postDocumentPagesCrop(String name, String pages, Rectangle rect, String storage, String folder, String password) throws ApiException {
+        try
+        {
+            ApiResponse<AsposeResponse> resp = postDocumentPagesCropWithHttpInfo(name, pages, rect, storage, folder, password);
+            return resp.getData();
+        }
+        catch (ApiException ex)
+        {
+            if (ex.getCode() == 401)
+            {
+                apiClient.requestToken();
+                ApiResponse<AsposeResponse> resp = postDocumentPagesCropWithHttpInfo(name, pages, rect, storage, folder, password);
+                return resp.getData();
+            }
+            throw ex;
+        }
+    }
+
+    /**
+     * Crop PDF document pages.
+     * 
+     * @param name The document name. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param rect Rectangle of document area. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @return ApiResponse&lt;AsposeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AsposeResponse> postDocumentPagesCropWithHttpInfo(String name, String pages, Rectangle rect, String storage, String folder, String password) throws ApiException {
+        com.squareup.okhttp.Call call = postDocumentPagesCropValidateBeforeCall(name, pages, rect, storage, folder, password, null, null);
+        Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Crop PDF document pages. (asynchronously)
+     * 
+     * @param name The document name. (required)
+     * @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+     * @param rect Rectangle of document area. (required)
+     * @param storage The document storage. (optional)
+     * @param folder The document folder. (optional)
+     * @param password Base64 encoded password. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postDocumentPagesCropAsync(String name, String pages, Rectangle rect, String storage, String folder, String password, final ApiCallback<AsposeResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postDocumentPagesCropValidateBeforeCall(name, pages, rect, storage, folder, password, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AsposeResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

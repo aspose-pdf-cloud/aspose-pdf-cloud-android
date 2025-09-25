@@ -338,4 +338,27 @@ public class DocumentTests {
         AsposeResponse response = th.pdfApi.postDocumentPagesResize(name, 100., 200., "2-3", null, folder, null);
         assertEquals(200, (int)response.getCode());
     }
+
+    /**
+     * PostDocumentPagesCrop Test
+     * @throws ApiException
+     *          if the Api call fails
+     */
+
+    @Test
+    public void postDocumentPagesCropTest() throws ApiException
+    {
+        String name = "4pages.pdf";
+        th.uploadFile(name);
+
+        String folder = th.tempFolder;
+
+        Rectangle rect = new Rectangle()
+            .LLX(0.)
+            .LLY(0.)
+            .URX(800.)
+            .URY(400.);
+        AsposeResponse response = th.pdfApi.postDocumentPagesCrop(name, "2-3", rect, null, folder, null);
+        assertEquals(200, (int)response.getCode());
+    }
 }

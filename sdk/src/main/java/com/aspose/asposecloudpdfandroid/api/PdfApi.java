@@ -191,11 +191,11 @@ import java.util.Map;
 public class PdfApi {
     private ApiClient apiClient;
 
-    public PdfApi(String appKey, String appSid) {
+    public PdfApi(String clientSecret, String clientId) {
         this(Configuration.getDefaultApiClient());
         apiClient.setSelfHost(false);
-        apiClient.setAppKey(appKey);
-        apiClient.setAppSid(appSid);
+        apiClient.setClientSecret(clientSecret);
+        apiClient.setClientId(clientId);
     }
 
     public PdfApi(String host) {

@@ -3,6 +3,7 @@ package com.aspose.asposecloudpdfandroid.api;
 import com.aspose.asposecloudpdfandroid.ApiException;
 import com.aspose.asposecloudpdfandroid.model.FilesUploadResult;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 
 import java.io.File;
@@ -15,12 +16,16 @@ public class TestHelper {
     public static PdfApi pdfApi;
     public static String tempFolder = "TempPdfCloud";
     public static String testDataFolder = "testData";
-    public static String setupFile = "../../../Settings/servercreds.json";
+    public static String setupFile = "settings/credentials.json";
 
     class ApiCreds{
+        @SerializedName("self_host")
         public Boolean SelfHost = false;
-        public String AppKey;
-        public String AppSID;
+        @SerializedName("client_secret")
+        public String ClientSecret;
+        @SerializedName("client_id")
+        public String ClientId;
+        @SerializedName("api_url")
         public String ProductUri;
     }
 
@@ -40,7 +45,7 @@ public class TestHelper {
         if (apiCreds.SelfHost) {
             pdfApi = new PdfApi(apiCreds.ProductUri);
         } else {
-            pdfApi = new PdfApi(apiCreds.AppKey, apiCreds.AppSID);
+            pdfApi = new PdfApi(apiCreds.ClientSecret, apiCreds.ClientId);
         }
     }
 

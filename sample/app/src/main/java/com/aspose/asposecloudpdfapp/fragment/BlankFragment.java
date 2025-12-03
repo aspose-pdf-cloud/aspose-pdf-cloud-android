@@ -188,19 +188,19 @@ public class BlankFragment extends Fragment
     {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(rootView.getContext());
 
-        String appKey = prefs.getString(rootView.getContext().getString(R.string.pref_key_app_key), null);
-        String appSID = prefs.getString(rootView.getContext().getString(R.string.pref_key_app_sid), null);
+        String clientSecret = prefs.getString(rootView.getContext().getString(R.string.pref_key_client_secret), null);
+        String clientId = prefs.getString(rootView.getContext().getString(R.string.pref_key_client_id), null);
         String basePath = prefs.getString(rootView.getContext().getString(R.string.pref_key_base_path), "http://api-dev.aspose.cloud/v1.1");
 
-        if (null == appKey || null == appSID)
+        if (null == clientSecret || null == clientId)
         {
             btnInvoke.setVisibility(View.GONE);
             tvResult.setTextColor(Color.RED);
             tvResult.setVisibility(View.VISIBLE);
-            tvResult.setText("Please set AppSid and AppKey");
+            tvResult.setText("Please set ClientId and ClientSecret");
         }
 
-        pdfApi = new PdfApi(appKey, appSID);
+        pdfApi = new PdfApi(clientSecret, clientId);
         pdfApi.getApiClient().setBasePath(basePath);
     }
 

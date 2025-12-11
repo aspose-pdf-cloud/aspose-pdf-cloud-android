@@ -75,8 +75,8 @@ public class ApiClient {
     private HttpLoggingInterceptor loggingInterceptor;
 
     private String accessToken;
-    private String appKey;
-    private String appSid;
+    private String clientSecret;
+    private String clientId;
 
     /*
      * Constructor for ApiClient
@@ -94,7 +94,7 @@ public class ApiClient {
         
         // Add custom headers
         addDefaultHeader("x-aspose-client", "android sdk");
-        addDefaultHeader("x-aspose-client-version", "25.9.0");
+        addDefaultHeader("x-aspose-client-version", "25.10.0");
         
         // PDFCLOUD-418 Set default Connect Timeout
         setConnectTimeout(5 * 60 * 1000);
@@ -112,43 +112,43 @@ public class ApiClient {
     }
 
      /**
-     * Get App Key
+     * Get Client Secret
      *
-     * @return App Key
+     * @return Client Secret
      */
-    public String getAppKey() 
+    public String getClientSecret() 
     {
-        return appKey;
+        return clientSecret;
     }
     
     /**
-     * Set App Key
+     * Set Client Secret
      *
-     * @param appKey App Key
+     * @param ClientSecret Client Secret
      */
-    public void setAppKey(String appKey) 
+    public void setClientSecret(String clientSecret) 
     {
-        this.appKey = appKey;
+        this.clientSecret = clientSecret;
     }
     
      /**
-     * Get App Sid
+     * Get Client Id
      *
-     * @return App Sid
+     * @return Client Id
      */
-    public String getAppSid() 
+    public String getClientId() 
     {
-        return appSid;
+        return clientId;
     }
     
     /**
-     * Set App Sid
+     * Set Client Id
      *
-     * @param appSid App Sid
+     * @param ClientId Client Id
      */
-    public void setAppSid(String appSid) 
+    public void setClientId(String clientId) 
     {
-        this.appSid = appSid;
+        this.clientId = clientId;
     }
     
     
@@ -1038,8 +1038,8 @@ public class ApiClient {
         try {
             RequestBody requestBody = new FormEncodingBuilder()
                     .addEncoded("grant_type", "client_credentials")
-                    .addEncoded("client_id", getAppSid())
-                    .addEncoded("client_secret", getAppKey())
+                    .addEncoded("client_id", getClientId())
+                    .addEncoded("client_secret", getClientSecret())
                     .build();
 
             String url = basePath.replace("/v3.0", "") + "/connect/token";

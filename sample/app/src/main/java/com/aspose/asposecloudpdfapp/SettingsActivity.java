@@ -65,9 +65,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
             if (preference instanceof EditTextPreference)
             {
-                if (preference.getContext().getString(R.string.pref_key_app_sid).equals(preference.getKey())
+                if (preference.getContext().getString(R.string.pref_key_client_id).equals(preference.getKey())
                         ||
-                        preference.getContext().getString(R.string.pref_key_app_key).equals(preference.getKey()))
+                        preference.getContext().getString(R.string.pref_key_client_secret).equals(preference.getKey()))
                 {
                     stringValue = toStars(stringValue);
                 }
@@ -195,8 +195,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_credentials);
             setHasOptionsMenu(true);
 
-            bindPreferenceSummaryToValue(findPreference("pref_key_app_sid"));
-            bindPreferenceSummaryToValue(findPreference("pref_key_app_key"));
+            bindPreferenceSummaryToValue(findPreference("pref_key_client_id"));
+            bindPreferenceSummaryToValue(findPreference("pref_key_client_secret"));
         }
 
         @Override

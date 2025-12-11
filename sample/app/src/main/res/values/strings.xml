@@ -11,11 +11,11 @@
     <!-- Strings related to Settings -->
     <string name="pref_header_credentials">Credentials</string>
 
-    <string name="pref_title_app_sid">App SID</string>
-    <string name="pref_key_app_sid">pref_key_app_sid</string>
+    <string name="pref_title_client_id">Client Id</string>
+    <string name="pref_key_client_id">pref_key_client_id</string>
 
-    <string name="pref_title_app_key">App Key</string>
-    <string name="pref_key_app_key">pref_key_app_key</string>
+    <string name="pref_title_client_secret">Client Secret</string>
+    <string name="pref_key_client_secret">pref_key_client_secret</string>
 
     <string name="pref_header_general">General</string>
 

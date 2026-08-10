@@ -1,7 +1,7 @@
 # Aspose.PDF Cloud SDK for Android — Agent Analysis
 
 > **Repository:** [aspose-pdf-cloud/aspose-pdf-cloud-android](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android)  
-> **Version:** 26.4.0 | **Maven:** `com.aspose:aspose-pdf-cloud-android:26.4.0`  
+> **Version:** 26.7.0 | **Maven:** `com.aspose:aspose-pdf-cloud-android:26.7.0`  
 > **License:** MIT | **API Version:** v3.0  
 > **Min SDK:** 19 | **Target SDK:** 27 | **Build Tools:** 27.0.3
 
@@ -264,7 +264,7 @@ public AsposeResponse deleteAnnotation(String name, String annotationId, String 
 | **MIT license header** | Every `.java` file starts with the same license block |
 | **Synchronous/Async** | Both `execute()` and `executeAsync()` via OkHttp Callback |
 | **Optional params** | Method signature parameters with nullable fields (String, Integer, etc.) |
-| **Custom headers** | `x-aspose-client: android sdk`, `x-aspose-client-version: 26.4.0` |
+| **Custom headers** | `x-aspose-client: android sdk`, `x-aspose-client-version: 26.7.0` |
 | **Self-host support** | `PdfApi(String host)` constructor skips OAuth2 authentication |
 | **401 auto-retry** | All public methods retry once with fresh token on 401 |
 | **Jakarta annotations** | `@SerializedName` for JSON field mapping |
@@ -418,20 +418,20 @@ targetCompatibility JavaVersion.VERSION_1_7
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-pdf-cloud-android</artifactId>
-    <version>26.4.0</version>
+    <version>26.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
 
 **Gradle:**
 ```groovy
-compile "com.aspose:aspose-pdf-cloud-android:26.4.0"
+compile "com.aspose:aspose-pdf-cloud-android:26.7.0"
 ```
 
 **Manual JAR:**
 ```shell
 mvn package
-# JAR available at target/aspose-pdf-cloud-android-26.4.0.jar
+# JAR available at target/aspose-pdf-cloud-android-26.7.0.jar
 ```
 
 ---
@@ -488,6 +488,6 @@ All example methods in `PdfApiExamples.java` follow a consistent pattern:
 | **401 auto-retry** | All public methods retry with fresh token on 401 |
 | **Self-host support** | Constructor with host URL skips OAuth2 authentication |
 | **Async support** | `executeAsync()` via OkHttp `Callback` interface |
-| **Custom headers** | `x-aspose-client: android sdk`, `x-aspose-client-version: 26.4.0` |
+| **Custom headers** | `x-aspose-client: android sdk`, `x-aspose-client-version: 26.7.0` |
 | **Flat model files** | One `.java` file per model/concept in `model/` package |
 | **MIT license** | Every source file starts with the same MIT license header |
